@@ -1,0 +1,603 @@
+Screen: (800,600)
+Backup: 100
+Observer: Vertex: (0,0,-450)
+Light: Vertex: (50,50,-500)
+TexDirectory: textures
+NumTextures: 3
+nTriangles: 72
+ListTransform: [12,71]
+{
+ RotateX: 80
+ RotateY: 70
+ Scale: (70,70,70)
+ InvertN: 
+}
+ListTransform: [12,13]
+{
+ Translate: (0,0,1.5)
+}
+ListTransform: [42,43]
+{
+ Translate: (0,0,1.5)
+}
+ListTransform: [42,71]
+{
+ Translate: (0,0,-2.227033)
+ RotateX: 180
+}
+ListTransform: [12,41]
+{
+ Translate: (0,0,2.227033)
+}
+ListTransform: [17,21]
+{
+RotateZ: 0.000000
+ Translate: (0,-1.376382,0)
+ RotateX: 63.434949
+ Translate: (0,-1.376382,0)
+ RotateZ: 180
+}
+ListTransform: [22,26]
+{
+RotateZ: 72.000000
+ Translate: (0,-1.376382,0)
+ RotateX: 63.434949
+ Translate: (0,-1.376382,0)
+ RotateZ: 180
+}
+ListTransform: [27,31]
+{
+RotateZ: 144.000000
+ Translate: (0,-1.376382,0)
+ RotateX: 63.434949
+ Translate: (0,-1.376382,0)
+ RotateZ: 180
+}
+ListTransform: [32,36]
+{
+RotateZ: 216.000000
+ Translate: (0,-1.376382,0)
+ RotateX: 63.434949
+ Translate: (0,-1.376382,0)
+ RotateZ: 180
+}
+ListTransform: [37,41]
+{
+RotateZ: 288.000000
+ Translate: (0,-1.376382,0)
+ RotateX: 63.434949
+ Translate: (0,-1.376382,0)
+ RotateZ: 180
+}
+ListTransform: [47,51]
+{
+RotateZ: 0.000000
+ Translate: (0,-1.376382,0)
+ RotateX: 63.434949
+ Translate: (0,-1.376382,0)
+ RotateZ: 180
+}
+ListTransform: [52,56]
+{
+RotateZ: 72.000000
+ Translate: (0,-1.376382,0)
+ RotateX: 63.434949
+ Translate: (0,-1.376382,0)
+ RotateZ: 180
+}
+ListTransform: [57,61]
+{
+RotateZ: 144.000000
+ Translate: (0,-1.376382,0)
+ RotateX: 63.434949
+ Translate: (0,-1.376382,0)
+ RotateZ: 180
+}
+ListTransform: [62,66]
+{
+RotateZ: 216.000000
+ Translate: (0,-1.376382,0)
+ RotateX: 63.434949
+ Translate: (0,-1.376382,0)
+ RotateZ: 180
+}
+ListTransform: [67,71]
+{
+RotateZ: 288.000000
+ Translate: (0,-1.376382,0)
+ RotateX: 63.434949
+ Translate: (0,-1.376382,0)
+ RotateZ: 180
+}
+Triangle: 0
+{
+ a: Vertex: (500,-500,500)
+ b: Vertex: (500,500,500)
+ c: Vertex: (500,500,-1000)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (-1,0,0)
+ nb: Vector: (-1,0,0)
+ nc: Vector: (-1,0,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 1
+{
+ a: Vertex: (500,-500,500)
+ b: Vertex: (500,500,-1000)
+ c: Vertex: (500,-500,-1000)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (-1,0,0)
+ nb: Vector: (-1,0,0)
+ nc: Vector: (-1,0,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 2
+{
+ a: Vertex: (-500,-500,-1000)
+ b: Vertex: (-500,500,-1000)
+ c: Vertex: (-500,500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (1,0,0)
+ nb: Vector: (1,0,0)
+ nc: Vector: (1,0,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 3
+{
+ a: Vertex: (-500,-500,-1000)
+ b: Vertex: (-500,500,500)
+ c: Vertex: (-500,-500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (1,0,0)
+ nb: Vector: (1,0,0)
+ nc: Vector: (1,0,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 4
+{
+ a: Vertex: (-500,500,500)
+ b: Vertex: (500,500,-1000)
+ c: Vertex: (500,500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (0,-1,0)
+ nb: Vector: (0,-1,0)
+ nc: Vector: (0,-1,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 5
+{
+ a: Vertex: (-500,500,500)
+ b: Vertex: (-500,500,-1000)
+ c: Vertex: (500,500,-1000)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,-1,0)
+ nb: Vector: (0,-1,0)
+ nc: Vector: (0,-1,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 6
+{
+ a: Vertex: (-500,-500,-1000)
+ b: Vertex: (500,-500,500)
+ c: Vertex: (500,-500,-1000)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (0,1,0)
+ nb: Vector: (0,1,0)
+ nc: Vector: (0,1,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 7
+{
+ a: Vertex: (-500,-500,-1000)
+ b: Vertex: (-500,-500,500)
+ c: Vertex: (500,-500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,1,0)
+ nb: Vector: (0,1,0)
+ nc: Vector: (0,1,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 8
+{
+ a: Vertex: (-500,-500,500)
+ b: Vertex: (500,500,500)
+ c: Vertex: (500,-500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (0,0,-1)
+ nb: Vector: (0,0,-1)
+ nc: Vector: (0,0,-1)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 9
+{
+ a: Vertex: (-500,-500,500)
+ b: Vertex: (-500,500,500)
+ c: Vertex: (500,500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,-1)
+ nb: Vector: (0,0,-1)
+ nc: Vector: (0,0,-1)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 10
+{
+ a: Vertex: (-500,-500,-500)
+ b: Vertex: (500,-500,-500)
+ c: Vertex: (500,500,-500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (0,0,1)
+ nb: Vector: (0,0,1)
+ nc: Vector: (0,0,1)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 11
+{
+ a: Vertex: (-500,-500,-500)
+ b: Vertex: (500,500,-500)
+ c: Vertex: (-500,500,-500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,1)
+ nb: Vector: (0,0,1)
+ nc: Vector: (0,0,1)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (.4,.4,.4)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (.4,.4,.4)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (.4,.4,.4)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 2
+}
+Triangle: 12
+{
+ a:  Vertex: (0,0,0.000000)
+ b: Vertex: (1,-1.376382,0)
+ c: Vertex: (-1,-1.376382,0)
+ texA: TexCoord: (0.5,0.428571)
+ texB: TexCoord: (0.785714,0.035319)
+ texC: TexCoord: (0.214286,0.035319)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)
+ transparency: RGB: (0.200000,0.200000,0.200000)
+ specular: RGB: (1.000000,1.000000,1.000000)
+ diffuse: RGB: (0.000000,0.000000,0.000000)
+ transparencyFactR: (1,1.300000)
+ transparencyFactG: (1,2.000000)
+ transparencyFactB: (1,2.700000)
+ specularFact: 150.000000
+ faces: 2
+ texture: 0
+ Transform:
+ {
+ RotateZ: 0.000000
+ }
+}
+Triangle: 13
+{
+ a:  Vertex: (0,0,0.000000)
+ b: Vertex: (1,-1.376382,0)
+ c: Vertex: (-1,-1.376382,0)
+  texA: TexCoord: (0.5,0.428571)
+  texB: TexCoord: (0.962295,0.57878)
+  texC: TexCoord: (0.785714,0.035319)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)
+ transparency: RGB: (0.200000,0.200000,0.200000)
+ specular: RGB: (1.000000,1.000000,1.000000)
+ diffuse: RGB: (0.000000,0.000000,0.000000)
+ transparencyFactR: (1,1.300000)
+ transparencyFactG: (1,2.000000)
+ transparencyFactB: (1,2.700000)
+ specularFact: 150.000000
+ faces: 2
+ texture: 0
+ Transform:
+ {
+ RotateZ: 72.000000
+ }
+}
+Triangle: 14
+{
+ a:  Vertex: (0,0,0.000000)
+ b: Vertex: (1,-1.376382,0)
+ c: Vertex: (-1,-1.376382,0)
+  texA: TexCoord: (0.5,0.428571)
+  texB: TexCoord: (0.5,0.914658)
+  texC: TexCoord: (0.962295,0.57878)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)
+ transparency: RGB: (0.200000,0.200000,0.200000)
+ specular: RGB: (1.000000,1.000000,1.000000)
+ diffuse: RGB: (0.000000,0.000000,0.000000)
+ transparencyFactR: (1,1.300000)
+ transparencyFactG: (1,2.000000)
+ transparencyFactB: (1,2.700000)
+ specularFact: 150.000000
+ faces: 2
+ texture: 0
+ Transform:
+ {
+ RotateZ: 144.000000
+ }
+}
+Triangle: 15
+{
+ a:  Vertex: (0,0,0.000000)
+ b: Vertex: (1,-1.376382,0)
+ c: Vertex: (-1,-1.376382,0)
+  texA: TexCoord: (0.5,0.428571)
+  texB: TexCoord: (0.037705,0.57878)
+  texC: TexCoord: (0.5,0.914658)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)
+ transparency: RGB: (0.200000,0.200000,0.200000)
+ specular: RGB: (1.000000,1.000000,1.000000)
+ diffuse: RGB: (0.000000,0.000000,0.000000)
+ transparencyFactR: (1,1.300000)
+ transparencyFactG: (1,2.000000)
+ transparencyFactB: (1,2.700000)
+ specularFact: 150.000000
+ faces: 2
+ texture: 0
+ Transform:
+ {
+ RotateZ: 216.000000
+ }
+}
+Triangle: 16
+{
+ a:  Vertex: (0,0,0.000000)
+ b: Vertex: (1,-1.376382,0)
+ c: Vertex: (-1,-1.376382,0)
+  texA: TexCoord: (0.5,0.428571)
+  texB: TexCoord: (0.214286,0.035319)
+  texC: TexCoord: (0.037705,0.57878)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)
+ transparency: RGB: (0.200000,0.200000,0.200000)
+ specular: RGB: (1.000000,1.000000,1.000000)
+ diffuse: RGB: (0.000000,0.000000,0.000000)
+ transparencyFactR: (1,1.300000)
+ transparencyFactG: (1,2.000000)
+ transparencyFactB: (1,2.700000)
+ specularFact: 150.000000
+ faces: 2
+ texture: 0
+ Transform:
+ {
+ RotateZ: 288.000000
+ }
+}
+CopyTriangle: 17<-12
+CopyTriangle: 18<-13
+CopyTriangle: 19<-14
+CopyTriangle: 20<-15
+CopyTriangle: 21<-16
+CopyTriangle: 22<-12
+CopyTriangle: 23<-13
+CopyTriangle: 24<-14
+CopyTriangle: 25<-15
+CopyTriangle: 26<-16
+CopyTriangle: 27<-12
+CopyTriangle: 28<-13
+CopyTriangle: 29<-14
+CopyTriangle: 30<-15
+CopyTriangle: 31<-16
+CopyTriangle: 32<-12
+CopyTriangle: 33<-13
+CopyTriangle: 34<-14
+CopyTriangle: 35<-15
+CopyTriangle: 36<-16
+CopyTriangle: 37<-12
+CopyTriangle: 38<-13
+CopyTriangle: 39<-14
+CopyTriangle: 40<-15
+CopyTriangle: 41<-16
+CopyTriangle: 42<-12
+CopyTriangle: 43<-13
+CopyTriangle: 44<-14
+CopyTriangle: 45<-15
+CopyTriangle: 46<-16
+CopyTriangle: 47<-12
+CopyTriangle: 48<-13
+CopyTriangle: 49<-14
+CopyTriangle: 50<-15
+CopyTriangle: 51<-16
+CopyTriangle: 52<-12
+CopyTriangle: 53<-13
+CopyTriangle: 54<-14
+CopyTriangle: 55<-15
+CopyTriangle: 56<-16
+CopyTriangle: 57<-12
+CopyTriangle: 58<-13
+CopyTriangle: 59<-14
+CopyTriangle: 60<-15
+CopyTriangle: 61<-16
+CopyTriangle: 62<-12
+CopyTriangle: 63<-13
+CopyTriangle: 64<-14
+CopyTriangle: 65<-15
+CopyTriangle: 66<-16
+CopyTriangle: 67<-12
+CopyTriangle: 68<-13
+CopyTriangle: 69<-14
+CopyTriangle: 70<-15
+CopyTriangle: 71<-16

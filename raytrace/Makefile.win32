@@ -1,0 +1,10 @@
+all: rays32.exe rays64.exe rays96.exe
+rays32.exe: rays.c rayslib.c rayslib.h
+	$(CC) -DREAL=__REAL_32bit -funroll-all-loops -fomit-frame-pointer -fexpensive-optimizations -ffast-math -D_REENTRANT -Wall -ansi -pedantic -O4 -o rays32.exe rays.c rayslib.c -lc -lm -ljpeg -lopengl32 -lglu32 -lglut32
+	strip -s rays32.exe
+rays64.exe: rays.c rayslib.c rayslib.h
+	$(CC) -DREAL=__REAL_64bit -funroll-all-loops -fomit-frame-pointer -fexpensive-optimizations -ffast-math -D_REENTRANT -Wall -ansi -pedantic -O4 -o rays64.exe rays.c rayslib.c -lc -lm -ljpeg -lopengl32 -lglu32 -lglut32
+	strip -s rays64.exe
+rays96.exe: rays.c rayslib.c rayslib.h
+	$(CC) -DREAL=__REAL_80bit -funroll-all-loops -fomit-frame-pointer -fexpensive-optimizations -ffast-math -D_REENTRANT -Wall -ansi -pedantic -O4 -o rays96.exe rays.c rayslib.c -lc -lm -ljpeg -lopengl32 -lglu32 -lglut32
+	strip -s rays96.exe

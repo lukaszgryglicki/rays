@@ -1,0 +1,452 @@
+BList	btreeconv.c	/^} BList;$/
+BMPTag	getbmp.c	/^} BMPTag;$/
+BTree	btreeconv.c	/^} BTree;$/
+Box	btreeconv.c	/^} Box;$/
+CustomVertex	md22dat.c	/^} CustomVertex;$/
+Frame	md22dat.c	/^} Frame;$/
+IGS6Object	xcam.c	/^struct IGS6Object$/
+IGSObject	iges2dat.c	/^struct IGSObject$/
+I_matrix	mmaker.c	/^void I_matrix(REAL** dst, int siz)$/
+IdxTree	rayslib.h	/^} IdxTree;$/
+Init	spherical.c	/^void Init(char* fn)$/
+ListTransform	sizes.c	/^} ListTransform;$/
+M60faces	60faces.c	/^int main(int lb, char** par)$/
+Material	convold.c	/^} Material;$/
+MaterialTransform	rayslib.h	/^} MaterialTransform;$/
+Mball	ball.c	/^int main(int lb, char** par)$/
+Mcone	cone.c	/^int main(int lb, char** par)$/
+Mconvert	convert.c	/^int main(int lb, char** par)$/
+Mcube	cube.c	/^int main(int lb, char** par)$/
+Mcylinder	cylinder.c	/^int main(int lb, char** par)$/
+Mesh	md22dat.c	/^} Mesh;$/
+Mgetbmp	getbmp.c	/^int main(int lb, char** par)$/
+Miges2dat	iges2dat.c	/^int main(int lb, char** par)$/
+Mmmaker	mmaker.c	/^int main(int lb, char** par)$/
+ModelData	md22dat.c	/^} ModelData;$/
+ModelHeader	md22dat.c	/^} ModelHeader;$/
+Mrandnurb	randnurb.c	/^int main(int lb, char** par)$/
+Mrandnurbfull	randnurbfull.c	/^int main(int lb, char** par)$/
+Mrays	rays.c	/^int main(int lb, char** par)$/
+Mrays4d	rays4d.c	/^int main(int lb, char** par)$/
+Mrtriangle	rtriangle.c	/^int main(int lb, char** par)$/
+Msizes	sizes.c	/^int main()$/
+Msnum	snum.c	/^int main(int lb, char** par)$/
+Mspherical	spherical.c	/^int main(int lb, char** par)$/
+Mtable	table.c	/^int main(int lb, char** par)$/
+Mtetraedr	tetraedr.c	/^int main()$/
+Mtex	tex.c	/^int main(int lb, char** par)$/
+Mtorrusgen	torrusgen.c	/^int main(int lb, char** par)$/
+Mwrapper	wrapper.c	/^int main()$/
+Mxcam	xcam.c	/^int main(int lb, char** par)$/
+NURBS	convold.c	/^} NURBS;$/
+PcxHeader	md22dat.c	/^} PcxHeader;$/
+Point	iges2dat.c	/^struct Point$/
+PtrList	sizes.c	/^} PtrList;$/
+REAL	btreeconv.c	/^typedef long double REAL;$/
+Ray	sizes.c	/^} Ray;$/
+Screen	convold.c	/^} Screen;$/
+StIndex	md22dat.c	/^} StIndex;$/
+Surface	convold.c	/^} Surface;$/
+TexCoord	convold.c	/^} TexCoord;$/
+Texture	convold.c	/^typedef struct _Screen Texture;$/
+ThreadRuntime	rayslib.h	/^} ThreadRuntime;$/
+Triangle	btreeconv.c	/^} Triangle;$/
+VList	sizes.c	/^} VList;$/
+Vector	btreeconv.c	/^typedef struct _Vertex Vector;$/
+Vertex	btreeconv.c	/^} Vertex;$/
+Voxel	rayslib.h	/^} Voxel;$/
+X	xcam.c	/^void X(char* camfile, char* igsfile)$/
+XNormalF	xcam.c	/^void XNormalF(double x1,double y1,double z1,double/
+ZDrawLine	xcam.c	/^void ZDrawLine(int sx, int sy, int ex, int ey, int/
+Zbuff	xcam.c	/^struct Zbuff$/
+add_box	rayslib.c	/^void add_box(BList** head, Triangle* t1, Triangle*/
+all_distorb	rayslib.c	/^void all_distorb(REAL di)$/
+alloc_itree	rayslib.c	/^IdxTree* alloc_itree()$/
+anim	spherical.c	/^void anim(void)$/
+args_fprintf	rayslib.c	/^int args_fprintf(FILE* f, char* fmt, ...)$/
+args_fscanf	rayslib.c	/^int args_fscanf(FILE* f, char* fmt, ...)$/
+args_sprintf	rayslib.c	/^int args_sprintf(char* f, char* fmt, ...)$/
+args_sscanf	rayslib.c	/^int args_sscanf(char* f, char* fmt, ...)$/
+argsconv	rayslib.c	/^char* argsconv(char* ap)$/
+assoc_idx_tree	rayslib.c	/^void assoc_idx_tree(BTree* t, void** pi)$/
+awt_apply	rayslib.c	/^void awt_apply(int* tuse)$/
+b0	rayslib.c	/^REAL b0(REAL* knot, REAL t, int i)$/
+ball_gen	ball.c	/^void ball_gen(int s_idx, $/
+basis_bspline	iges2dat.c	/^double basis_bspline(double* T, double val, int di/
+blank_line	rayslib.c	/^void blank_line(Screen* s, int idx)$/
+blist_add	rayslib.c	/^void blist_add(BList** head, REAL ix, REAL iy, REA/
+blist_add_box	rayslib.c	/^void blist_add_box(BList** head, Box* b)$/
+blist_free	rayslib.c	/^void blist_free(BList** head)$/
+bspline_CALKA_126X	xcam.c	/^double bspline_CALKA_126X(double t, int K, int idx/
+bspline_CALKA_126Y	xcam.c	/^double bspline_CALKA_126Y(double t, int K, int idx/
+bspline_CALKA_X	xcam.c	/^double bspline_CALKA_X(double s, double t, int K1,/
+bspline_CALKA_Y	xcam.c	/^double bspline_CALKA_Y(double s, double t, int K1,/
+bspline_CALKA_Z	xcam.c	/^double bspline_CALKA_Z(double s, double t, int K1,/
+bspline_Integral_X	iges2dat.c	/^double bspline_Integral_X(double s, double t, int /
+bspline_Integral_Y	iges2dat.c	/^double bspline_Integral_Y(double s, double t, int /
+bspline_Integral_Z	iges2dat.c	/^double bspline_Integral_Z(double s, double t, int /
+btree_height	rayslib.c	/^void btree_height(BTree* b, int level)$/
+btree_info	rayslib.c	/^void btree_info()$/
+calc_box	rayslib.c	/^REAL calc_box(Triangle* t1, Triangle* t2)$/
+calc_boxes	rayslib.c	/^REAL calc_boxes(BTree* b1, BTree* b2)$/
+calc_curvature	rayslib.c	/^void calc_curvature(NURBS* nu, REAL u, REAL v, int/
+calc_curvature_old	rayslib.c	/^void calc_curvature_old(NURBS* nu, REAL u, REAL v)/
+calc_normal	rayslib.c	/^void calc_normal(NURBS* nu, REAL u, REAL v, REAL* /
+calc_surface	rayslib.c	/^REAL calc_surface(Triangle* t)$/
+calculate_color	rayslib.c	/^void calculate_color(Screen* s, Ray* r, Triangle* /
+catch_signal	rayslib.c	/^void catch_signal(int signo)$/
+check_angles	xcam.c	/^void check_angles()$/
+check_light	rayslib.c	/^void check_light()$/
+check_lights	xcam.c	/^void check_lights()$/
+check_options	rayslib.c	/^void check_options()$/
+check_scene	spherical.c	/^void check_scene()$/
+check_triangles	rayslib.c	/^void check_triangles(Triangle* t)$/
+clear_material_transform	rayslib.c	/^void clear_material_transform(MaterialTransform* t/
+clear_transforms	rayslib.c	/^void clear_transforms()$/
+clear_zbuff	xcam.c	/^void clear_zbuff()$/
+client	getbmp.c	/^void client(char* ipstr, int port, char* out)$/
+color_background	rayslib.c	/^void color_background(Screen* s, int x, int y)$/
+color_backgroundr	rayslib.c	/^void color_backgroundr(Ray* ray, int* r, int* g, i/
+compute_angle	rayslib.c	/^REAL compute_angle(Vertex* a, Vertex* b, Vertex* c/
+compute_normals	rayslib.c	/^void  compute_normals(Triangle* t)$/
+compute_slimits	rays4d.c	/^void compute_slimits(int n)$/
+compute_surface	rayslib.c	/^void  compute_surface(Triangle* t)$/
+conegen	cone.c	/^void conegen(double r, double h, int n, int idx, d/
+construct_tool	xcam.c	/^void construct_tool(double r, double h)$/
+copy_from_buffers	xcam.c	/^void copy_from_buffers()$/
+copy_line	rayslib.c	/^void copy_line(unsigned char* line, Screen* s, int/
+copy_matrix	rayslib.c	/^void copy_matrix(REAL** dst, REAL** src, int siz)$/
+copy_matrix3	rayslib.c	/^void copy_matrix3(REAL*** dst, REAL*** src, int si/
+copy_to_buffers	xcam.c	/^void copy_to_buffers()$/
+count_indices	rayslib.c	/^void count_indices()$/
+count_items	rayslib.c	/^int count_items(PtrList* head)$/
+create_assoc_table	rayslib.c	/^void create_assoc_table(void** pi)$/
+create_async_timer	xcam.c	/^void create_async_timer()$/
+create_btree	rayslib.c	/^void create_btree(BList* head, BTree** a_btree)$/
+create_btree_box	rayslib.c	/^void create_btree_box(Box** b, BTree* b1, BTree* b/
+create_f_table	xcam.c	/^void create_f_table()$/
+create_lights	xcam.c	/^void create_lights()$/
+create_texture	rayslib.c	/^void create_texture(Texture* t, char* dir, int n, /
+create_textures	rayslib.c	/^void create_textures(char* dir)$/
+create_zbuff	xcam.c	/^void create_zbuff()$/
+cube_gen	cube.c	/^void cube_gen(int s_idx, $/
+cylindergen	cylinder.c	/^void cylindergen(double r, double h, int n, int id/
+d2u	convert.c	/^void d2u(char* f1, char* f2)$/
+d_rand	randnurb.c	/^double d_rand()$/
+debug	iges2dat.c	/^void debug(char* fmt, ...)$/
+debug_matrix	rayslib.c	/^void debug_matrix(char* f, int l, REAL** m, int si/
+debugs	rayslib.c	/^int debugs(char* fmt, ...)$/
+delete_zbuff	xcam.c	/^void delete_zbuff()$/
+display_num	snum.c	/^void display_num(double fp)$/
+distance	rayslib.c	/^REAL distance(Vertex* a, Vertex* b)$/
+downcase	rayslib.c	/^void downcase(char* b)$/
+draw_bspline	xcam.c	/^void draw_bspline()$/
+draw_bspline_2D	xcam.c	/^void draw_bspline_2D()$/
+draw_light	xcam.c	/^void draw_light()$/
+draw_tool	xcam.c	/^void draw_tool()$/
+draw_triangle	xcam.c	/^void draw_triangle(ulong col, double z1, double z2/
+dump_variables	rayslib.c	/^void dump_variables(FILE* ff)$/
+enumTexture	md22dat.c	/^enum enumTexture { PCX, BMP};$/
+error	getbmp.c	/^void error(char* fmt, ...)$/
+error_handler	xcam.c	/^int error_handler(Display*d,  XErrorEvent* xer)$/
+exception	libfparser.c	/^void exception(char* reason)$/
+execute_cmd	rayslib.c	/^int execute_cmd(int s, char* cmd)$/
+exponential	libfparser.c	/^double exponential()$/
+expression	libfparser.c	/^double expression()$/
+faces	60faces.c	/^void faces(int idx, double tr, double tg, double t/
+factor	libfparser.c	/^double factor()$/
+fastnurbs	rayslib.c	/^REAL fastnurbs(NURBS* nurb, REAL u, REAL v, int xy/
+fastnurbs_array	rayslib.c	/^void fastnurbs_array(NURBS* nurb, REAL u, REAL v, /
+fill_args	iges2dat.c	/^void fill_args(double* array, char** par, int len,/
+find_last_ok_line	rayslib.c	/^int find_last_ok_line(char* recfr)$/
+find_nearest_boxes	rayslib.c	/^BTree* find_nearest_boxes(PtrList* head, PtrList**/
+find_nearest_boxes_fast	rayslib.c	/^BTree* find_nearest_boxes_fast(PtrList* head, PtrL/
+find_nearest_boxes_part	rayslib.c	/^BTree* find_nearest_boxes_part(PtrList* head, PtrL/
+find_nearest_boxes_smart	rayslib.c	/^BTree* find_nearest_boxes_smart(PtrList* head, Ptr/
+flush_zbuff	xcam.c	/^void flush_zbuff()$/
+fpar2_f	libfparser.c	/^double fpar2_f(double X, double Y)$/
+fpar2_ok	libfparser.c	/^int fpar2_ok()$/
+fpar3_f	libfparser.c	/^double fpar3_f(double X, double Y, double Z)$/
+fpar3_ok	libfparser.c	/^int fpar3_ok()$/
+fpar_f	libfparser.c	/^double fpar_f(double X)$/
+fpar_free	libfparser.c	/^void fpar_free()$/
+fpar_function	libfparser.c	/^int fpar_function(char* tab)$/
+fpar_info	libfparser.c	/^void fpar_info()$/
+fpar_ok	libfparser.c	/^int fpar_ok()$/
+free_igs6obj	xcam.c	/^void free_igs6obj(struct IGS6Object* obj)$/
+free_igsobj	iges2dat.c	/^void free_igsobj(struct IGSObject* obj)$/
+free_matrix	mmaker.c	/^void free_matrix(REAL** m, int siz)$/
+free_matrix3	mmaker.c	/^void free_matrix3(REAL*** m, int siz1, int siz2)$/
+free_mem	rayslib.c	/^void free_mem()$/
+free_pixels	rayslib.c	/^void free_pixels(unsigned char** pix)$/
+free_scene	rayslib.c	/^void free_scene(Triangle** ts)$/
+free_screen	rayslib.c	/^void free_screen(Screen* scr)$/
+free_temporary_structures	iges2dat.c	/^void free_temporary_structures()$/
+free_texture	rayslib.c	/^void free_texture(Texture* t)$/
+full_copy_nurbs	rayslib.c	/^void full_copy_nurbs(NURBS* dst, NURBS* src)$/
+generate_bspline_buffers	xcam.c	/^void generate_bspline_buffers()$/
+generate_structures	iges2dat.c	/^void generate_structures(double* args, int nargs, /
+generate_structures_126	xcam.c	/^void generate_structures_126(double* args, int nar/
+get_blue	rayslib.c	/^int get_blue(Screen* s, int x, int y)$/
+get_char	wrapper.c	/^void get_char(char *s)$/
+get_double	wrapper.c	/^void get_double(double *s, double def)$/
+get_fname	wrapper.c	/^void get_fname(char* nam)$/
+get_green	rayslib.c	/^int get_green(Screen* s, int x, int y)$/
+get_head	rayslib.c	/^PtrList* get_head(PtrList* ptr)$/
+get_host	getbmp.c	/^void get_host(char* to, char* name)$/
+get_int	wrapper.c	/^void get_int(int *s, int def)$/
+get_line	iges2dat.c	/^void get_line(double* array, char* line, int idx, /
+get_normal_new	rayslib.c	/^void get_normal_new(Vector* n, Triangle* t, Vertex/
+get_normal_nurbs	rayslib.c	/^void get_normal_nurbs(Vector* n, Triangle* t, Vert/
+get_normal_nurbs_l1	rayslib.c	/^void get_normal_nurbs_l1(Vector* n, Triangle* t, V/
+get_normal_nurbs_l2	rayslib.c	/^void get_normal_nurbs_l2(Vector* n, Triangle* t, V/
+get_normal_old	rayslib.c	/^void get_normal_old(Vector* n, Triangle* t, Vertex/
+get_nurbs_index	rayslib.c	/^int get_nurbs_index(Triangle* t)$/
+get_nurbs_indices	rayslib.c	/^void get_nurbs_indices(Triangle *ts, ListTransform/
+get_nurbs_pt	rayslib.c	/^void get_nurbs_pt(Triangle* t, Vector* p)$/
+get_red	rayslib.c	/^int get_red(Screen* s, int x, int y)$/
+get_string	wrapper.c	/^void get_string(char* s)$/
+get_texture	rayslib.c	/^void get_texture(Texture* t, REAL x, REAL y, REAL /
+get_texturei	rayslib.c	/^void get_texturei(Texture* t, REAL x, REAL y, int /
+get_timers	rayslib.c	/^void get_timers(int* s, char* remain)$/
+get_timers_elapsed	rayslib.c	/^void get_timers_elapsed(int* s, char* remain)$/
+get_triangulation_factor	rayslib.c	/^REAL get_triangulation_factor(int i, int n)$/
+get_word_count	iges2dat.c	/^int get_word_count(char* line)$/
+glCube	rayslib.c	/^void glCube(GLfloat x, GLfloat y, GLfloat z, GLflo/
+handle_client	rayslib.c	/^void handle_client(int s)$/
+help	60faces.c	/^void help()$/
+i_rand	randnurb.c	/^int i_rand(int i)$/
+indices_nurbs2lt	rayslib.c	/^void indices_nurbs2lt(int* i1, int* i2)$/
+info	spherical.c	/^void info()$/
+info_out	xcam.c	/^void info_out()$/
+init_bmp	getbmp.c	/^void init_bmp(BMPTag* b)$/
+init_mutex	xcam.c	/^void init_mutex()$/
+init_pixels	rayslib.c	/^void init_pixels(unsigned char** pix, int x, int y/
+init_screen	rayslib.c	/^void init_screen(Screen* scr, int x, int y)$/
+intersection_btree	rayslib.c	/^void intersection_btree(Ray* r, BTree* tree)$/
+intersection_btree_old_algorithm	rayslib.c	/^void intersection_btree_old_algorithm(VList** head/
+intersection_itree_separate_tris	rayslib.c	/^int intersection_itree_separate_tris(Ray* r, IdxTr/
+intersection_itree_spec_shadow	rayslib.c	/^int intersection_itree_spec_shadow(Ray* r, IdxTree/
+intersection_new	rayslib.c	/^int intersection_new(Triangle* tr, Ray* r, Vertex*/
+intersection_old	rayslib.c	/^int intersection_old(Triangle* tr, Ray* r, Vertex*/
+intersection_triangle	rayslib.c	/^int intersection_triangle(Triangle* tr, Ray* r, Ve/
+invert_matrix	rayslib.c	/^REAL** invert_matrix(REAL** srcC, int dim)$/
+is_binary	rayslib.c	/^int is_binary(FILE* f)$/
+is_blank	rayslib.c	/^int is_blank(int zn)$/
+jpeg_compute_gray_pixels	rayslib.c	/^void jpeg_compute_gray_pixels(unsigned char* pix)$/
+jpeg_compute_pixels	rayslib.c	/^void jpeg_compute_pixels(unsigned char* pix)$/
+jpeg_compute_rgb_pixels	rayslib.c	/^void jpeg_compute_rgb_pixels(unsigned char* pix, c/
+keyboard	spherical.c	/^void keyboard(unsigned char key, int x, int y)$/
+length	rayslib.c	/^REAL length(Vector* v)$/
+line_intersect	rayslib.c	/^int line_intersect(Vertex* p, Ray* l1, Ray* l2)$/
+list_transform_nurbs	rayslib.c	/^void list_transform_nurbs(NURBS* nu, int idx)$/
+list_transform_triangle	rayslib.c	/^void list_transform_triangle(Triangle* t)$/
+load_126	xcam.c	/^void load_126(FILE* f, int n)$/
+load_128	iges2dat.c	/^void load_128(FILE* f, int n)$/
+load_bin_preprocessed	rayslib.c	/^int load_bin_preprocessed(FILE* f, Triangle* ts)$/
+load_binary_nurb	rayslib.c	/^void load_binary_nurb(FILE* f, NURBS* n)$/
+load_binary_nurbs	rayslib.c	/^void load_binary_nurbs(FILE* f)$/
+load_binary_scene	rayslib.c	/^void load_binary_scene(FILE* f, Triangle** ts)$/
+load_camfile	xcam.c	/^void load_camfile(char* fpath)$/
+load_igsfile	iges2dat.c	/^void load_igsfile(char* fpath)$/
+load_jpeg_file	rayslib.c	/^int load_jpeg_file(unsigned long*** bits, int* x, /
+load_jpeg_texture	rayslib.c	/^void load_jpeg_texture(Texture* t, FILE* texfile)$/
+load_preprocessed	rayslib.c	/^int load_preprocessed(Triangle* ts, int p)$/
+load_scene	rays4d.c	/^void load_scene(Triangle** ts, char* scenefile)$/
+load_tool	xcam.c	/^void load_tool(char* fpath)$/
+m_ownmatrix	mmaker.c	/^void m_ownmatrix(REAL*** m, REAL** mat)$/
+m_rotatex	mmaker.c	/^void m_rotatex(REAL*** m, REAL ang)$/
+m_rotatey	mmaker.c	/^void m_rotatey(REAL*** m, REAL ang)$/
+m_rotatez	mmaker.c	/^void m_rotatez(REAL***m, REAL ang)$/
+m_scale	mmaker.c	/^void m_scale(REAL*** m, REAL x, REAL y, REAL z)$/
+m_translate	mmaker.c	/^void m_translate(REAL*** m, REAL x, REAL y, REAL z/
+make_inet_get	rayslib.c	/^int make_inet_get(int s)$/
+make_inet_help	rayslib.c	/^void make_inet_help(char* buf)$/
+make_inet_see	rayslib.c	/^void make_inet_see(char* buf)$/
+make_inet_stat	rayslib.c	/^void make_inet_stat(char* buf)$/
+make_ray	rayslib.c	/^void make_ray(Ray* l, Vertex* a, Vertex* b)$/
+make_stub_texture	rayslib.c	/^void make_stub_texture(Texture* t)$/
+materialize	rayslib.c	/^void materialize(Material* t)$/
+matrix	mmaker.c	/^REAL** matrix(int siz)$/
+matrix2	mmaker.c	/^REAL** matrix2(int siz1, int siz2)$/
+matrix3	mmaker.c	/^REAL*** matrix3(int siz1, int siz2, int siz3)$/
+matrix_mul	mmaker.c	/^REAL** matrix_mul(REAL** m, REAL** n, int ma, int /
+matrix_mul_vector	mmaker.c	/^void matrix_mul_vector(REAL* dst, REAL** m, REAL* /
+merge_voxel_trees	rayslib.c	/^void merge_voxel_trees(PtrList* phead, int algorit/
+minimalization_algorithm	rayslib.c	/^void minimalization_algorithm(char* optarg)$/
+move_tool	xcam.c	/^void move_tool(int idx)$/
+my_error_exit	rayslib.c	/^static void my_error_exit (j_common_ptr cinfo)$/
+my_error_mgr	rayslib.c	/^struct my_error_mgr$/
+my_error_ptr	rayslib.c	/^typedef struct my_error_mgr * my_error_ptr;$/
+nearly_equal	rayslib.c	/^int nearly_equal(REAL x, REAL y, REAL eps)$/
+normal_distorb	rayslib.c	/^void normal_distorb(REAL factor, Vector* n, TexCoo/
+normalize	cone.c	/^void normalize(double* x, double* y, double* z)$/
+normalize_2d	rayslib.c	/^void normalize_2d(Vector* v)$/
+normalize_color_factors	rayslib.c	/^void normalize_color_factors(Triangle* t)$/
+normals	spherical.c	/^void normals()$/
+offset_igs	xcam.c	/^void offset_igs()$/
+offset_igs6	xcam.c	/^void offset_igs6()$/
+open_files	convert.c	/^void open_files(FILE** iF, FILE** oF, char* i, cha/
+opengl_display_thread	rayslib.c	/^void opengl_display_thread()$/
+panic	rayslib.c	/^void panic(char* f, int l)$/
+param_id	iges2dat.c	/^int param_id(char* line)$/
+parse_options	rayslib.c	/^void parse_options(int lb, char** par, char** recf/
+partial_copy_nurbs	rayslib.c	/^void partial_copy_nurbs(NURBS* dst, NURBS* src)$/
+partial_transform_nurbs	rayslib.c	/^void partial_transform_nurbs(NURBS* nu, REAL** m, /
+pernament_disable_texturing	rayslib.c	/^void pernament_disable_texturing(int* t_use, Trian/
+postprocess_textures	rayslib.c	/^void postprocess_textures(int* t_use, Triangle* t,/
+precompute_nurbs	rayslib.c	/^REAL*** precompute_nurbs(REAL* knot, REAL t, int d/
+prenurbs_free	rayslib.c	/^void prenurbs_free(REAL**** ptr, int dim, int npts/
+preprocess_scene_btree	rayslib.c	/^void preprocess_scene_btree(Triangle* tl)$/
+preprocess_scene_voxels_btree	rayslib.c	/^void preprocess_scene_voxels_btree(Triangle* tl)$/
+preview_Init	rayslib.c	/^void preview_Init()$/
+preview_bind_textures	rayslib.c	/^void preview_bind_textures()$/
+preview_btree	rayslib.c	/^void preview_btree()$/
+preview_btree_info	rayslib.c	/^void preview_btree_info()$/
+preview_check_trans	rayslib.c	/^void preview_check_trans()$/
+preview_ctlpts	rayslib.c	/^void preview_ctlpts(int trans)$/
+preview_current_config	rayslib.c	/^void preview_current_config()$/
+preview_go_left	rayslib.c	/^void preview_go_left()$/
+preview_go_left_box	rayslib.c	/^void preview_go_left_box()$/
+preview_go_right	rayslib.c	/^void preview_go_right()$/
+preview_go_right_box	rayslib.c	/^void preview_go_right_box()$/
+preview_go_up	rayslib.c	/^void preview_go_up()$/
+preview_keyboard	rayslib.c	/^void preview_keyboard(unsigned char key, int x, in/
+preview_light_init	rayslib.c	/^void preview_light_init()$/
+preview_medium_z	rayslib.c	/^REAL preview_medium_z(Triangle* t)$/
+preview_priority_sort_triangles	rayslib.c	/^void preview_priority_sort_triangles()$/
+preview_render_scene	rayslib.c	/^void preview_render_scene(void)$/
+preview_resize_scene	rayslib.c	/^void preview_resize_scene(int w, int h)$/
+preview_triangle	rayslib.c	/^void preview_triangle(Triangle* t)$/
+print_bd	rayslib.c	/^void print_bd(Box* b)$/
+print_btree	rayslib.c	/^void print_btree(BTree* b)$/
+print_matrix	rayslib.c	/^void print_matrix(REAL** m, int siz)$/
+print_ray	rayslib.c	/^void print_ray(Ray* r)$/
+process_IGES	iges2dat.c	/^void process_IGES(char* igsfile, char* datfile)$/
+process_voxel	rayslib.c	/^void process_voxel(Voxel* vx, int whendiv, int ndi/
+pseudo_distance	rayslib.c	/^REAL pseudo_distance(Vertex* a, Vertex* b)$/
+pseudo_length	rayslib.c	/^REAL pseudo_length(Vector* v)$/
+pseudo_screen	rayslib.c	/^char pseudo_screen(int i, int j)$/
+ptrlist_add	rayslib.c	/^void ptrlist_add(PtrList** head, void* t)$/
+ptrlist_add_on_tail	rayslib.c	/^void ptrlist_add_on_tail(PtrList** tail, void* t)$/
+ptrlist_delete	rayslib.c	/^void ptrlist_delete(PtrList** head, PtrList* ptr)$/
+ptrlist_delete_with_tail	rayslib.c	/^void ptrlist_delete_with_tail(PtrList** head, PtrL/
+ptrlist_free	rayslib.c	/^void ptrlist_free(PtrList** head)$/
+ptrlist_get_tail	rayslib.c	/^PtrList* ptrlist_get_tail(PtrList* head)$/
+randomize_list	rayslib.c	/^void randomize_list(PtrList** head, int no)$/
+raytrace	rays4d.c	/^void raytrace(Screen* s)$/
+read_id	libfparser.c	/^void read_id(char *ident)$/
+read_next_char	libfparser.c	/^void read_next_char()$/
+read_nurbs	rayslib.c	/^void read_nurbs(FILE* f, NURBS* n, int cidx)$/
+read_nurbs_from_file	rayslib.c	/^int read_nurbs_from_file(FILE* f, int n, int nt)$/
+read_texcoord	rayslib.c	/^int read_texcoord(FILE* f, TexCoord* t)$/
+read_transformation_long	rayslib.c	/^void read_transformation_long(FILE* f, REAL*** mm,/
+read_triangle	rayslib.c	/^int read_triangle(FILE* f, Triangle* t, int* idx, /
+read_vector	rayslib.c	/^int read_vector(FILE* f, Vector* v)$/
+read_vertex	rayslib.c	/^int read_vertex(FILE* f, Vertex* v)$/
+readline	iges2dat.c	/^int readline(FILE* f, char* str)$/
+reconstruct_nurbs_addr	rayslib.c	/^void reconstruct_nurbs_addr(Triangle* t)$/
+recurse_color	rayslib.c	/^REAL recurse_color(Ray* r, Triangle* ptrlist, Vert/
+refresh_window	xcam.c	/^void refresh_window(int isBlack)$/
+renderSpherical	spherical.c	/^void renderSpherical()$/
+render_ctlpts	rayslib.c	/^void render_ctlpts(NURBS* nu)$/
+render_scene	spherical.c	/^void render_scene(void)$/
+resize_scene	spherical.c	/^void resize_scene(int w, int h)$/
+resize_texture_to_gl_format	rayslib.c	/^void resize_texture_to_gl_format(Texture* t)$/
+rnurbs	randnurb.c	/^void rnurbs(int num)$/
+roll_back_list_transform_triangle	rayslib.c	/^void roll_back_list_transform_triangle(Triangle* t/
+roll_back_transform_triangle	rayslib.c	/^void roll_back_transform_triangle(Triangle* t, REA/
+rotate_tool	xcam.c	/^void rotate_tool()$/
+rotatex	mmaker.c	/^void rotatex(REAL** m, REAL ang)$/
+rotatey	mmaker.c	/^void rotatey(REAL** m, REAL ang)$/
+rotatez	mmaker.c	/^void rotatez(REAL** m, REAL ang)$/
+rotator	mmaker.c	/^void rotator()$/
+rrandom	rayslib.c	/^REAL rrandom(REAL rstart, REAL rend)$/
+rtriangle	rtriangle.c	/^void rtriangle(int num)$/
+runRT	mmaker.c	/^void runRT(REAL** m, int i)$/
+run_RT	rayslib.c	/^int run_RT(int lb, char** par)$/
+run_fast_preview	rayslib.c	/^void run_fast_preview(int tmout)$/
+run_inet_server	rayslib.c	/^void run_inet_server()$/
+save_bin_box_to_file	rayslib.c	/^void save_bin_box_to_file(FILE* f, Box* b)$/
+save_binary_nurb	rayslib.c	/^void save_binary_nurb(FILE* f, NURBS* n)$/
+save_binary_nurbs	rayslib.c	/^void save_binary_nurbs(FILE* f)$/
+save_binary_scene	rayslib.c	/^void save_binary_scene(char* name, Triangle* t)$/
+save_box_to_file	rayslib.c	/^void save_box_to_file(FILE* f, Box* b)$/
+save_computed_scene	rayslib.c	/^void save_computed_scene(char* name, Triangle* t)$/
+save_datfile	iges2dat.c	/^void save_datfile(char* datfile)$/
+save_gray_jpeg_file	rayslib.c	/^int save_gray_jpeg_file(unsigned char* bits, int x/
+save_jpeg_file	rayslib.c	/^int save_jpeg_file(unsigned char* bits, int x, int/
+save_preprocessed	rayslib.c	/^void save_preprocessed()$/
+save_rgb_jpeg_file	rayslib.c	/^int save_rgb_jpeg_file(unsigned char* bits, int x,/
+scalar_prod	rayslib.c	/^REAL scalar_prod(Vector* v, Vector* w)$/
+scale	mmaker.c	/^void scale(REAL** m, REAL x, REAL y, REAL z)$/
+scalex	mmaker.c	/^void scalex(REAL** m, REAL arg)$/
+scaley	mmaker.c	/^void scaley(REAL** m, REAL arg)$/
+scalez	mmaker.c	/^void scalez(REAL** m, REAL arg)$/
+send_signal	xcam.c	/^void send_signal()$/
+server_thread	rayslib.c	/^void* server_thread(void* dummy)$/
+set_3val	iges2dat.c	/^void set_3val(double* v1, double* v2, double* v3, /
+set_addictional_world_trans	rayslib.c	/^void set_addictional_world_trans(char* par)$/
+set_bkgnd_col	rayslib.c	/^void set_bkgnd_col(char* pcarg)$/
+set_color	rayslib.c	/^void set_color(Screen* s, int x, int y, int r, int/
+set_color_uchar	rayslib.c	/^void set_color_uchar(unsigned char* s, int Y, int /
+set_error_handler	xcam.c	/^void set_error_handler()$/
+set_light_col	rayslib.c	/^void set_light_col(char* pcarg)$/
+set_rows	rayslib.c	/^void set_rows(int cur_row, JSAMPARRAY pixel_data, /
+set_stub_tex_col	rayslib.c	/^void set_stub_tex_col(char* pcarg)$/
+set_vars	xcam.c	/^void set_vars()$/
+set_voxel_args	rayslib.c	/^void set_voxel_args(char* pcarg)$/
+setup_signals	rayslib.c	/^void setup_signals()$/
+skip_comments	rayslib.c	/^void skip_comments(FILE* f)$/
+skip_to_eol	rayslib.c	/^void skip_to_eol(FILE* f)$/
+skipblanks	libfparser.c	/^void skipblanks()$/
+spanic	rayslib.c	/^void spanic(char* f, int l, char* why, ...)$/
+table	table.c	/^void table(char* cubecmd, int sidx, int tid1, int /
+term	libfparser.c	/^double term()$/
+tetragen	tetraedr.c	/^int tetragen()$/
+thr_Init	rayslib.c	/^void thr_Init()$/
+thr_anim	rayslib.c	/^void thr_anim(void)$/
+thr_compute_glpixels	rayslib.c	/^void thr_compute_glpixels(unsigned char* glpix)$/
+thr_compute_glpixels_all	rayslib.c	/^void thr_compute_glpixels_all(unsigned char* glpix/
+thr_keyboard	rayslib.c	/^void thr_keyboard(unsigned char key, int x, int y)/
+thr_opengl_thread	rayslib.c	/^void* thr_opengl_thread(void* dummy)$/
+thr_render_scene	rayslib.c	/^void thr_render_scene(void)$/
+thr_resize_scene	rayslib.c	/^void thr_resize_scene(int w, int h)$/
+thr_visible	rayslib.c	/^void thr_visible(int vis)$/
+threaded_raytrace	rayslib.c	/^void* threaded_raytrace(void* runparm)$/
+time_counter	rayslib.c	/^void time_counter()$/
+timer_thr_proc	xcam.c	/^void* timer_thr_proc(void* dummy)$/
+torrusgen	torrusgen.c	/^void torrusgen(double R, double r, int N, int n, i/
+transform_light	rayslib.c	/^void transform_light(void* t, REAL** m, REAL** nm,/
+transform_observer	rayslib.c	/^void transform_observer(Vertex* t, REAL** m, REAL*/
+transform_triangle	rayslib.c	/^void transform_triangle(Triangle* t, REAL** m, REA/
+transform_triangle_material	rayslib.c	/^void transform_triangle_material(Triangle* t, Mate/
+translate	mmaker.c	/^void translate(REAL** m, REAL x, REAL y, REAL z)$/
+translate_jpeg_to_uchar_format	rayslib.c	/^void translate_jpeg_to_uchar_format(unsigned long*/
+translatex	mmaker.c	/^void translatex(REAL** m, REAL arg)$/
+translatey	mmaker.c	/^void translatey(REAL** m, REAL arg)$/
+translatez	mmaker.c	/^void translatez(REAL** m, REAL arg)$/
+travel_tree	rayslib.c	/^void travel_tree(BTree* t)$/
+triangulate_nurbs	rayslib.c	/^void triangulate_nurbs(NURBS* n, Triangle* tts)$/
+try_swap	rayslib.c	/^int try_swap(REAL** m, int idx, int dim)$/
+u2d	convert.c	/^void u2d(char* f1, char* f2)$/
+ulong	iges2dat.c	/^typedef unsigned long ulong;$/
+unblank_line	rayslib.c	/^void unblank_line(Screen* s, int idx, unsigned cha/
+update_list_transform	rayslib.c	/^void update_list_transform(Triangle* ts, PtrList* /
+v_fscanf	rayslib.c	/^int v_fscanf(FILE* f, char* fmt, ...)$/
+vdebug	iges2dat.c	/^void vdebug(char* fmt, ...)$/
+vector	mmaker.c	/^REAL* vector(int siz)$/
+vertex_in_triangle	rayslib.c	/^int vertex_in_triangle(Triangle* t, Vertex* w)$/
+visible	spherical.c	/^void visible(int vis)$/
+vlist_add	rayslib.c	/^void vlist_add(VList** head, Vertex* v, int idx)$/
+vlist_free	rayslib.c	/^void vlist_free(VList** head)$/
+world_transforms	xcam.c	/^void world_transforms()$/
+wrapper	wrapper.c	/^void wrapper()$/
+write_bin_btree_to_file	rayslib.c	/^void write_bin_btree_to_file(BTree* t, FILE* f, vo/
+write_bmp	getbmp.c	/^void write_bmp(int s, char* fn)$/
+write_btree_to_file	rayslib.c	/^void write_btree_to_file(BTree* t, FILE* f, void**/
+write_config	rayslib.c	/^void write_config()$/
+write_header	iges2dat.c	/^void write_header(FILE* f)$/
+write_nurbs	iges2dat.c	/^void write_nurbs(struct IGSObject* obj, FILE* f, i/
+write_transform	iges2dat.c	/^void write_transform(FILE* f)$/
+wrt_bmp	rayslib.c	/^void wrt_bmp(Screen* s, char* out_f)$/

@@ -1,0 +1,6 @@
+Nazwa Wydzia³u: Matematyki i Nauk Informacyjnych (MiNI)
+Numer albumu (indeksu): 181556
+Nazwisko i imiê: Gryglicki £ukasz
+Rodzaj pracy dyplomowej: praca magisterska
+Tytu³ pracy magisterskiej: Raytracing powierzchni NURBS
+Imiê i nazwisko promotora: profesor Krzysztof Marciniak

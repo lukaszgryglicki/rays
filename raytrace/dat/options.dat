@@ -1,0 +1,426 @@
+#run this file with: rays -i thisfile.dat -J -N -G
+#try pressing 't' then 'h' to see help
+#if you are done with this, press 't' again
+#for help: rays -h from cmd line
+#This file contains all possible options
+#This is one line comment in SH style
+#You can use -C option to generate preprocessed scene 
+#scene.dat ==> scene.btree, BUT NOT EDIT *.btree files
+#program is **VERY** optimized (specially with intersections)
+#which are called bilions times, *AND* ***IT NOT CHECKS IF *.btree
+# DATA IS CORRECT TO BE FASTER ***
+/*
+And this is multiline comment
+in C style
+*/
+# is FILE starts from BINT means it's binary scene snapshot, this file isn't
+Screen: (400,300)	# Screen definition, mandatory
+Background: 2		# Texture ID or 0, option is not mandatory
+NormalDistorber: 1%	# optional, range 0-100%, default 0%
+MinShadow: 0.2		# optional, range 0-1, default 0.1
+MaxShadow: 0.5		# optional, range 0-1, default 0.5
+Ambient: 0.4		# optional, range 0-1, default 0.3
+MaxRecurse: 10		# optional, 0-~32, default 6
+Backup: 200		# optional, 1-screenX+1, default 64
+Observer: Vertex: (0,0,-450)	# mandatory
+ObserverTransform:	# optional
+{
+ RotateX: 1
+ RotateY: 1
+ RotateZ: 1
+ Rotate: (1,1,1)
+ Scale: (1.01,1.02,1.03)
+ Translate: (1,-1,0)
+ # all transformations will be presented in worldtransform
+ # because they are not applicabe for observer (not all)
+}
+LookZ: 35%		# optional, range ~20-~80%, default 33%
+Light: Vertex: (100,100,-200)	
+LightColor: deadbe	# kolr swiatla RRGGBB, values in hex 00-FF
+#VLight: Vector: (0,1,1)	/* Light or VLight are mandatory */
+LightTransform:		# optional
+{
+ Scale: (-1,-1,-1)	# invert direction
+ Identity:		# load I matrix
+}	/* rest of transforms in WorldTransform */
+WorldTransform:
+{
+ NormalDistorber: 3%	# if normal distorber defined above (below screen) this (3%) would be overrided by that (1%)
+			# so finally priority is world_transform --> global, value 1% will be used
+ RotateX: 1		# rotateI rotates world and normals
+ RotateY: 1		# rotateNI rotates normals
+ RotateZ: 1		# rotateWI rotates only world, I={X,Y,Z}
+ RotateNX: 1
+ RotateNY: 1
+ RotateNZ: 1
+ RotateWX: 1
+ RotateWY: 1
+ RotateWZ: 1
+ Translate: (1,2,3)
+ Scale: (1.01,1.03,0.9)	# scales world and normals (normals are normalized after)
+ ScaleN: (-1,-1,-1)	# scales normals only (this inverts)
+ ScaleW: (0.99,0.9,0.9) /* scales world only
+ 			 scaleN chages only if at least 2 parameters differ each other
+ 			*/
+ Matrix: [(1,0,0,0),(0,1,0,0),(0,0,1,0),(0,0,0,1)]	# own world matrix, advanced given by row ()
+ MatrixN: [(1,0,0,0),(0,1,0,0),(0,0,1,0),(0,0,0,1)]	# own normal matrix, advanced given by row ()
+ Identity:		# set world and normals matrices to I
+ IdentityN:
+ IdentityW:
+ NegateN:		# same as ScaleN: (-1,-1,-1)
+ Invert:		# inverts world and normal matrix (
+ InvertW:
+ InvertN: 		# inverts normal transformations (not normals itself like NegateN)	
+}
+TexDirectory: pict	# mandatory
+NumTextures: 33		# mandatory
+TextureMapping:		# optional, for some (or all or none) textures You can use string names instead of
+{			# numbers, if for example 1: alpha: mapped, You can use both 1 and alpha
+ 10: alpha		# in texture: in triangle --> texture: 1 or texture: alpha
+ 13: beta
+ 1: gamma
+ 5: delta
+ 4: epsilon
+}
+nTriangles: 10		# mandatory
+nNURBS: 2		# one nurbs surface
+NURBS: 0		# nurbs surfaces are optional
+  {
+DimU: 4
+DimV: 5
+nptsU: 8
+nptsV: 8
+divU: 17
+divV: 16
+ITex: 1
+Faces: 1
+Tid: 33
+userNodes: 0
+userKnots: 0
+Line=0
+{v=(-346.624480,-337.633796,131.940955),t=(0.272113,0.406324,0.094117),s=(0.831334,0.236305,0.569853),c=(0.521087,0.915438,0.758132),f=(1.185410,1.185280,1.000421),sf=169.640746,nd=0.116513%,tc=(0.043167,0.005093),w=0.910906}
+{v=(-334.105979,-239.192517,-129.435799),t=(0.075091,0.054096,0.195914),s=(0.734947,0.254684,0.467608),c=(0.092953,0.258328,0.724248),f=(1.088310,1.022582,1.133511),sf=226.849659,nd=0.498790%,tc=(0.000000,0.192558),w=1.454368}
+{v=(-334.365601,-142.648205,-125.838756),t=(0.593440,0.944315,0.107988),s=(0.950496,0.989070,0.293145),c=(0.885709,0.103943,0.972836),f=(1.092060,1.055689,1.160642),sf=204.368061,nd=0.075988%,tc=(0.024581,0.316416),w=1.044012}
+{v=(-342.826092,-38.120379,-138.184194),t=(0.960816,0.429051,0.059279),s=(0.296345,0.669896,0.934714),c=(0.733497,0.889302,0.500974),f=(1.173694,1.080864,1.076903),sf=201.277299,nd=0.834091%,tc=(0.013039,0.477265),w=0.718510}
+{v=(-330.095614,63.009722,65.872418),t=(0.892421,0.916806,0.763901),s=(0.886052,0.883099,0.237895),c=(0.297922,0.167509,0.319425),f=(1.116634,1.060511,1.002481),sf=196.455152,nd=0.833853%,tc=(0.012054,0.558069),w=0.466794}
+{v=(-335.854432,154.567813,18.491663),t=(0.464591,0.381766,0.345459),s=(0.126531,0.610897,0.347847),c=(0.269928,0.679193,0.191111),f=(1.000089,1.099784,1.075725),sf=210.223943,nd=0.290615%,tc=(0.000000,0.733884),w=0.647026}
+{v=(-344.402649,264.681395,3.143101),t=(0.586996,0.647995,0.853696),s=(0.066946,0.164997,0.101798),c=(0.923343,0.625143,0.778772),f=(1.165770,1.089819,1.192445),sf=122.795317,nd=0.241667%,tc=(0.000000,0.855259),w=1.834526}
+{v=(-341.281939,354.457245,43.775593),t=(0.954616,0.234343,0.602846),s=(0.027630,0.372361,0.266081),c=(0.025666,0.364789,0.012268),f=(1.036041,1.137821,1.155658),sf=250.626132,nd=0.066104%,tc=(0.000000,1.000000),w=0.378296}
+Line=1
+{v=(-249.739761,-336.163259,61.697190),t=(0.982224,0.245180,0.743879),s=(0.376647,0.311606,0.161351),c=(0.824176,0.921937,0.992693),f=(1.038892,1.057437,1.144258),sf=248.301156,nd=0.000462%,tc=(0.190342,0.000000),w=0.584980}
+{v=(-232.478380,-244.129208,5.975492),t=(0.266970,0.958723,0.252229),s=(0.213650,0.812520,0.019845),c=(0.540010,0.950831,0.616855),f=(1.097169,1.112159,1.048161),sf=147.582936,nd=0.232440%,tc=(0.190992,0.146619),w=1.446383}
+{v=(-236.483838,-143.862176,126.076299),t=(0.714534,0.173719,0.693083),s=(0.651127,0.486961,0.345206),c=(0.873792,0.818349,0.994241),f=(1.041869,1.084225,1.166938),sf=222.923971,nd=0.378284%,tc=(0.093775,0.256136),w=0.434737}
+{v=(-243.686688,-42.160821,46.277158),t=(0.100651,0.647457,0.813676),s=(0.450920,0.614278,0.176617),c=(0.404891,0.999873,0.859832),f=(1.040521,1.038203,1.073905),sf=220.465244,nd=0.145224%,tc=(0.125062,0.440516),w=0.111796}
+{v=(-240.468804,60.806270,-135.316919),t=(0.595127,0.303931,0.174028),s=(0.884791,0.689807,0.589097),c=(0.955369,0.881169,0.803151),f=(1.111580,1.117358,1.032839),sf=229.766600,nd=0.363601%,tc=(0.123555,0.558715),w=1.308329}
+{v=(-239.121209,169.843377,-35.562186),t=(0.187780,0.014154,0.880701),s=(0.948458,0.734499,0.728933),c=(0.177446,0.326789,0.336622),f=(1.121838,1.139305,1.105490),sf=264.665707,nd=0.379756%,tc=(0.108304,0.671794),w=1.671638}
+{v=(-237.859936,268.050220,0.751283),t=(0.589357,0.321246,0.183982),s=(0.187295,0.864790,0.528042),c=(0.794616,0.111631,0.187633),f=(1.109100,1.035853,1.174578),sf=228.137381,nd=0.003917%,tc=(0.132528,0.857392),w=0.771492}
+{v=(-245.317004,357.118398,133.638823),t=(0.392342,0.085850,0.881881),s=(0.767157,0.612339,0.575117),c=(0.989215,0.736553,0.246242),f=(1.119349,1.092265,1.091471),sf=254.866740,nd=0.096512%,tc=(0.096938,1.000000),w=1.152002}
+Line=2
+{v=(-132.999936,-349.918858,-93.576122),t=(0.053741,0.219394,0.349947),s=(0.562048,0.339516,0.252543),c=(0.484240,0.620567,0.868024),f=(1.176971,1.143839,1.098259),sf=142.437267,nd=0.390786%,tc=(0.262821,0.038268),w=0.293000}
+{v=(-145.530742,-235.177579,-143.582727),t=(0.517021,0.573413,0.356099),s=(0.950969,0.928358,0.908495),c=(0.081492,0.639970,0.975950),f=(1.157954,1.130876,1.036042),sf=263.244066,nd=0.059896%,tc=(0.261708,0.165253),w=1.003042}
+{v=(-148.671599,-143.572565,-61.491654),t=(0.532580,0.066372,0.521376),s=(0.765399,0.067756,0.767187),c=(0.119902,0.195291,0.261175),f=(1.114712,1.159978,1.151371),sf=189.163692,nd=0.499272%,tc=(0.306155,0.333362),w=1.272800}
+{v=(-130.566760,-35.531628,-1.007526),t=(0.055063,0.438550,0.708939),s=(0.139023,0.567849,0.832763),c=(0.241736,0.850535,0.945590),f=(1.106516,1.013417,1.098263),sf=205.096744,nd=0.032605%,tc=(0.283349,0.382358),w=0.779063}
+{v=(-132.861123,63.110862,63.812495),t=(0.488685,0.330203,0.729869),s=(0.907125,0.051070,0.336935),c=(0.862486,0.806062,0.487865),f=(1.110276,1.007085,1.075732),sf=128.042106,nd=0.281496%,tc=(0.306362,0.596822),w=0.743551}
+{v=(-141.457875,157.490742,103.426341),t=(0.788369,0.118321,0.615298),s=(0.309706,0.222267,0.635351),c=(0.337482,0.067619,0.474805),f=(1.008813,1.123679,1.068857),sf=177.176884,nd=0.178087%,tc=(0.291423,0.760431),w=0.377706}
+{v=(-148.961062,251.435464,-62.290270),t=(0.791449,0.888290,0.486298),s=(0.217831,0.077366,0.283359),c=(0.409675,0.406535,0.629187),f=(1.148049,1.067494,1.174398),sf=211.250472,nd=0.197569%,tc=(0.263921,0.870362),w=0.502158}
+{v=(-132.340723,369.469202,133.058081),t=(0.857217,0.242155,0.907298),s=(0.965336,0.405417,0.838285),c=(0.062436,0.360224,0.288797),f=(1.160788,1.167791,1.069274),sf=187.712889,nd=0.091033%,tc=(0.255501,1.000000),w=0.479195}
+Line=3
+{v=(-31.701220,-342.402740,-42.851286),t=(0.828094,0.780177,0.430744),s=(0.509884,0.620710,0.271667),c=(0.901885,0.981352,0.578462),f=(1.043782,1.035997,1.000386),sf=186.493277,nd=0.801467%,tc=(0.468478,0.014918),w=1.685096}
+{v=(-35.843248,-237.470190,-22.174232),t=(0.225616,0.926433,0.563324),s=(0.791454,0.962163,0.071481),c=(0.376467,0.275961,0.073313),f=(1.033087,1.092133,1.086650),sf=223.804411,nd=0.796815%,tc=(0.420105,0.145442),w=1.837582}
+{v=(-47.556243,-137.775434,124.277562),t=(0.943291,0.897340,0.593640),s=(0.304849,0.592687,0.297372),c=(0.934616,0.086148,0.894889),f=(1.080704,1.195631,1.165364),sf=164.452029,nd=0.237830%,tc=(0.461528,0.278575),w=1.186048}
+{v=(-30.871047,-49.692186,51.393139),t=(0.714980,0.672015,0.548685),s=(0.753821,0.464004,0.512793),c=(0.509988,0.371297,0.381043),f=(1.037829,1.185112,1.177718),sf=214.357418,nd=0.000903%,tc=(0.448582,0.446297),w=1.406624}
+{v=(-38.684870,63.394460,-139.754489),t=(0.987682,0.978422,0.340981),s=(0.871545,0.064437,0.991119),c=(0.738209,0.079684,0.245748),f=(1.058840,1.130215,1.119230),sf=190.216753,nd=0.162969%,tc=(0.462255,0.592310),w=0.189771}
+{v=(-35.217706,156.021596,-75.486282),t=(0.506864,0.871550,0.137449),s=(0.107145,0.780260,0.826765),c=(0.431306,0.964451,0.530298),f=(1.145018,1.121451,1.022967),sf=106.782853,nd=0.760056%,tc=(0.462419,0.695508),w=0.907368}
+{v=(-48.704836,257.829408,-17.164918),t=(0.864105,0.009778,0.343361),s=(0.868824,0.322228,0.683017),c=(0.470764,0.135090,0.465254),f=(1.104378,1.083388,1.108518),sf=167.305628,nd=0.031328%,tc=(0.412460,0.868961),w=1.558480}
+{v=(-36.255144,359.797372,-83.580492),t=(0.042240,0.925408,0.339012),s=(0.769619,0.991049,0.567893),c=(0.576534,0.803894,0.046725),f=(1.060445,1.106844,1.126880),sf=165.874397,nd=0.138171%,tc=(0.456733,1.000000),w=1.997134}
+Line=4
+{v=(68.309669,-339.400626,-94.885049),t=(0.723275,0.078113,0.853157),s=(0.015069,0.269222,0.809017),c=(0.143212,0.964326,0.430335),f=(1.127463,1.068562,1.114018),sf=192.307814,nd=0.276718%,tc=(0.592045,0.000000),w=1.119508}
+{v=(65.664426,-237.984663,-123.402303),t=(0.091651,0.383603,0.211775),s=(0.299198,0.618233,0.640688),c=(0.051584,0.967683,0.841419),f=(1.146412,1.152610,1.107984),sf=181.800993,nd=0.073679%,tc=(0.617825,0.133094),w=1.308866}
+{v=(51.127786,-135.306429,72.623211),t=(0.094343,0.620228,0.178763),s=(0.462829,0.764304,0.657646),c=(0.060458,0.119607,0.234265),f=(1.059760,1.187659,1.180473),sf=112.759958,nd=0.332235%,tc=(0.559764,0.332051),w=0.757169}
+{v=(67.399503,-36.554475,133.969441),t=(0.914650,0.518310,0.240075),s=(0.936474,0.325829,0.209277),c=(0.318357,0.634188,0.802301),f=(1.055539,1.037405,1.058395),sf=146.914383,nd=0.358859%,tc=(0.562952,0.459548),w=1.519045}
+{v=(55.975909,67.109032,22.463523),t=(0.981464,0.471387,0.606037),s=(0.661237,0.416087,0.180343),c=(0.026129,0.145672,0.302786),f=(1.184853,1.029292,1.114504),sf=169.733563,nd=0.032737%,tc=(0.607798,0.532339),w=1.426523}
+{v=(65.770654,167.385163,36.503684),t=(0.558036,0.909037,0.188232),s=(0.615640,0.062040,0.707325),c=(0.013532,0.432545,0.790514),f=(1.032600,1.110943,1.022421),sf=125.359151,nd=0.004074%,tc=(0.533381,0.749375),w=1.884888}
+{v=(63.055063,266.446948,-92.265214),t=(0.495177,0.434972,0.574600),s=(0.309247,0.516470,0.318372),c=(0.870881,0.899628,0.049452),f=(1.028593,1.154307,1.043449),sf=144.095225,nd=0.200585%,tc=(0.527738,0.854029),w=0.367516}
+{v=(58.395805,358.302141,61.323417),t=(0.042210,0.422282,0.300763),s=(0.925877,0.208669,0.093269),c=(0.566282,0.493696,0.549536),f=(1.010696,1.173342,1.163969),sf=125.695445,nd=0.012070%,tc=(0.568928,0.968255),w=0.225936}
+Line=5
+{v=(163.139180,-339.802249,54.108753),t=(0.852688,0.125651,0.812657),s=(0.330346,0.125826,0.754049),c=(0.308802,0.029672,0.691780),f=(1.150481,1.135926,1.103387),sf=131.562172,nd=0.012380%,tc=(0.674452,0.011971),w=0.795935}
+{v=(162.828432,-242.538654,-107.359580),t=(0.858444,0.860506,0.527104),s=(0.029710,0.335765,0.207765),c=(0.907960,0.084392,0.377174),f=(1.032964,1.020382,1.166292),sf=165.423811,nd=0.461337%,tc=(0.716846,0.180225),w=1.791243}
+{v=(164.224291,-142.339540,-9.820744),t=(0.309172,0.254437,0.323882),s=(0.490256,0.731255,0.201351),c=(0.098330,0.638994,0.566190),f=(1.191570,1.114798,1.013011),sf=172.964564,nd=0.337645%,tc=(0.678767,0.324947),w=0.682184}
+{v=(164.697262,-33.117728,-144.768628),t=(0.078918,0.369101,0.486748),s=(0.770519,0.120595,0.843042),c=(0.005135,0.306422,0.031728),f=(1.050655,1.166811,1.192362),sf=135.263007,nd=0.072621%,tc=(0.708331,0.455303),w=0.716707}
+{v=(166.884586,69.235952,129.717175),t=(0.688532,0.149572,0.864680),s=(0.683969,0.466360,0.118800),c=(0.667599,0.330717,0.358903),f=(1.015856,1.099901,1.033548),sf=135.000031,nd=0.745352%,tc=(0.704420,0.565760),w=1.614531}
+{v=(164.282766,160.452240,11.991670),t=(0.313350,0.469398,0.165534),s=(0.131597,0.751018,0.355311),c=(0.706881,0.553288,0.113669),f=(1.088179,1.028580,1.140287),sf=111.094244,nd=0.015184%,tc=(0.668579,0.729558),w=0.592252}
+{v=(169.723758,267.202566,-97.184438),t=(0.903859,0.150436,0.377610),s=(0.491403,0.018442,0.953384),c=(0.520268,0.144354,0.154560),f=(1.138450,1.124104,1.018067),sf=147.584096,nd=0.178800%,tc=(0.732215,0.895436),w=0.785143}
+{v=(168.916307,356.379856,-56.380840),t=(0.857403,0.376609,0.659912),s=(0.141270,0.324602,0.584102),c=(0.997601,0.681974,0.929038),f=(1.067036,1.081818,1.108980),sf=135.232258,nd=0.385906%,tc=(0.723846,0.977068),w=0.710954}
+Line=6
+{v=(259.993014,-337.417061,-128.265973),t=(0.612622,0.336664,0.316446),s=(0.503366,0.069204,0.118450),c=(0.792367,0.307771,0.710347),f=(1.160240,1.146536,1.032688),sf=284.548357,nd=0.269171%,tc=(0.861371,0.000000),w=1.229670}
+{v=(260.689634,-249.328620,-91.819168),t=(0.484171,0.464103,0.186759),s=(0.864419,0.282450,0.140460),c=(0.708019,0.668005,0.167465),f=(1.117670,1.075060,1.139639),sf=217.256251,nd=0.115032%,tc=(0.843938,0.111325),w=1.667226}
+{v=(260.746695,-130.297384,-121.956120),t=(0.111650,0.506338,0.027306),s=(0.939193,0.023561,0.988129),c=(0.480756,0.070082,0.866586),f=(1.140990,1.013320,1.071469),sf=281.530633,nd=1.206058%,tc=(0.860855,0.278424),w=0.505392}
+{v=(251.289373,-39.505738,105.920062),t=(0.494946,0.553093,0.831681),s=(0.069438,0.051036,0.768615),c=(0.114462,0.769986,0.149886),f=(1.025134,1.019030,1.037362),sf=239.986084,nd=0.515535%,tc=(0.883863,0.416008),w=1.766794}
+{v=(255.140317,63.305957,48.324095),t=(0.776879,0.007425,0.799378),s=(0.148184,0.534986,0.507453),c=(0.760981,0.812698,0.014692),f=(1.184312,1.127805,1.026997),sf=245.935646,nd=0.278363%,tc=(0.894539,0.585361),w=0.264577}
+{v=(257.394024,161.358507,-113.526652),t=(0.358536,0.912573,0.614715),s=(0.510168,0.390052,0.610534),c=(0.251599,0.619845,0.736338),f=(1.126660,1.177368,1.017440),sf=217.280956,nd=1.302343%,tc=(0.826663,0.732876),w=0.084349}
+{v=(266.549098,250.685018,46.372155),t=(0.422692,0.184924,0.011243),s=(0.961730,0.794460,0.488749),c=(0.402541,0.511449,0.925951),f=(1.091509,1.194547,1.154872),sf=234.239494,nd=0.074689%,tc=(0.837074,0.856527),w=0.132461}
+{v=(252.677275,366.954969,-117.549986),t=(0.957943,0.146457,0.505910),s=(0.830553,0.103031,0.638326),c=(0.342018,0.302059,0.712376),f=(1.179131,1.059365,1.139604),sf=227.099486,nd=1.542333%,tc=(0.867509,1.000000),w=1.109835}
+Line=7
+{v=(359.885383,-346.361164,118.869040),t=(0.939872,0.432161,0.331896),s=(0.181789,0.329838,0.594535),c=(0.357328,0.615237,0.280366),f=(1.021859,1.182433,1.150966),sf=191.004042,nd=1.180165%,tc=(1.000000,0.020682),w=1.198367}
+{v=(359.469092,-242.966545,19.189867),t=(0.580292,0.960025,0.142654),s=(0.590926,0.699147,0.566686),c=(0.297957,0.765623,0.831809),f=(1.041741,1.144317,1.136598),sf=100.034503,nd=0.758389%,tc=(1.000000,0.167425),w=1.181600}
+{v=(361.438487,-143.344130,-71.947835),t=(0.742466,0.631146,0.663944),s=(0.900809,0.895215,0.878473),c=(0.500925,0.041170,0.939347),f=(1.122544,1.195378,1.122294),sf=299.995096,nd=1.117917%,tc=(1.000000,0.249826),w=1.408088}
+{v=(367.314665,-42.433334,44.325202),t=(0.745564,0.698110,0.130929),s=(0.519700,0.605520,0.977607),c=(0.636320,0.629181,0.652005),f=(1.049782,1.084397,1.055203),sf=296.566132,nd=0.111735%,tc=(1.000000,0.437439),w=1.794080}
+{v=(361.077300,66.184990,-132.998830),t=(0.462220,0.537619,0.756031),s=(0.608367,0.826823,0.416208),c=(0.205862,0.926465,0.092293),f=(1.033496,1.162936,1.063319),sf=109.701784,nd=0.206885%,tc=(1.000000,0.567099),w=1.514871}
+{v=(354.349419,150.678274,146.158392),t=(0.780324,0.902515,0.563362),s=(0.427197,0.908232,0.647408),c=(0.985333,0.491423,0.346977),f=(1.129331,1.064097,1.071918),sf=231.530445,nd=0.126040%,tc=(1.000000,0.691078),w=1.990392}
+{v=(355.156117,268.851849,-104.704497),t=(0.605087,0.700531,0.827838),s=(0.466525,0.879591,0.280055),c=(0.886148,0.486189,0.386116),f=(1.089455,1.078266,1.019640),sf=186.244367,nd=0.055871%,tc=(1.000000,0.836354),w=1.146417}
+{v=(368.286239,366.819048,116.108002),t=(0.257280,0.099030,0.396517),s=(0.259166,0.810962,0.832579),c=(0.154749,0.874607,0.515935),f=(1.065289,1.110913,1.108723),sf=205.866355,nd=0.434779%,tc=(0.971792,1.000000),w=0.808406}
+}
+CopyNURBS: 1<-0		# optional if You want to copy NURBS instead of defining
+			# use NURBSTransform then is needed
+/*
+ListTransform: [0,10]	# transforms starting with TNew have first conditional
+{			# argument, a texture (T10 for example) on which it works
+ NewTexture: 5
+ TNewTexture: T10 9
+ NewTransparencyFactor: R (1,122)
+ TNewTransparencyFactor: T10 G (1,4)
+ TNewTransparencyFactor: T11 B (1,4)
+ TNewSpecularFactor: T10 RGB: (16,24,32)
+ NewSpecularFactor: RGB: (10,20,30)
+ NewMaterial: a r (1,0,0)
+ NewMaterial: a g (1,0,0)
+ NewMaterial: a b (1,0,0)
+ NewMaterial: b r (1,0,0)
+ NewMaterial: b g (1,0,0)
+ NewMaterial: b b (1,0,0)
+ NewMaterial: c r (1,0,0)
+ NewMaterial: c g (1,0,0)
+ NewMaterial: c b (1,0,0)
+ TMaterialRedefine: T0 AR(1,0,0) AG(0,0,0) AB(0,0,0) BR(0,0,0) BG(1,0,0) BB(0,0,0) CR(0,0,0) CG(0,0,0) CB(1,0,0)
+ TMaterialAll: T0 (0,1,0)
+ TMaterialRGB: T0 R(1,0,0) G(0,1,0) B(0,0,1)
+}
+*/
+ListTransform: [0,2]	# optional, triangle 0,1,2 will be affected
+{
+ NormalDistorber: 4%	# overrides global (this is specific transformation, all other global transorms
+ #TNewTexture: tex:1: 2
+			# are applied in order: triangle_own->list_transform(from backward - so this [0,2]
+			# will be used after [2,4])->world_transform
+			# and with normal disturber: if no list_transfom and triangle own then
+			# world_transform and below screen, if local used (list or own) then owm->list
+			# so LIST is the strongest one
+}
+ListTransform: [2,4]	# optional, you can define as many as You wnat list transforms, triangle 2,3,4 will be affected
+{
+			# triangle 3,4,5 are not affected by normal distorber, they can have own one
+			# all wold have own, but 0,1,2 will be overrided by ListTransform [0,2]
+ Scale: (1,.9,1.1)
+ RotateZ: 10
+}
+NURBSTransform: [0,1]
+{
+ Scale: (.5,.5,.8)
+ Translate: (0,0,270)
+}
+NURBSTransform: [0,1]	# transforms nurbs 0 and 1
+{			# use NURBSTransform instead of ListTransform
+ RotateZ: -10		# if You want NURBS structure to be transformed too
+}			# not only triangles
+NURBSTransform: [1,1]	# transforms nurbs 1
+{
+ Translate: (-150,50,-30)
+}
+#ListTransform: [10,553]	# You can transorm NURBS also using its
+				# triangles indirect, but You want to know
+				# their range, so NURBSTransform is better idea
+NURBSTransform: [0,0]	# optiolal, transforms entire nurbs range
+{
+ RotateZ: 20		# when list transform used is such way that par of the
+}			# NURBS surface is moved, entire nurbs is transformed
+ListTransform: [5,5]	# that's why You should use NURBSTransform instead
+{			# of ListTransform in such situations
+ Scale: (1.1,0.7,0.6)
+ RotateZ: 180
+}
+ListTransform: [6,7]
+{
+ RotateX: 30
+ Translate: (50,60,70)
+}
+ListTransform: [7,8]
+{
+ NewTexture: 3		# gives new texture id, can be applied in triangle's own
+}			# (senseless) and in list_transform, lt overrides triangle's
+ListTransform: [8,9]	# the las lt applied sets current texture id
+{
+ RotateY: 30
+}
+Triangle: 0		# idx is only for this file purpose
+{			# program (rays) computes idx internally
+ a: Vertex: (-1,-1,1)	# vertices are mandatory
+ b: Vertex: (-1,1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)	# texcoord are mandatory
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+			# normals are mandatory
+ na: Vector: (0,0,1)	# if at least one normal is (0,0,0) the normals are computed
+ nb: Vector: (0,0,1)	# using vertices and assuming triangle is flat
+ nc: Vector: (0,0,0)	# like there, one normal is 0 so compute by hand
+			# normals can be given not unit length ex. (1,1,2) will be normalised
+		# next three options can be given as just opt, or optA, optB, optC
+		# where opt = {transparency, specular, diffuse }
+ transparency: RGB: (0.000000,0.000000,0.000000)	# T/S/D are mandatory: or common for 3 vertices or
+ specular: RGB: (0.100000,0.100000,0.100000)		# vertex specific, optA, optB, optC etc.
+ diffuse: RGB: (1.000000,1.000000,1.000000)
+ surface: ABCD: (0,0,0,0)		# optional, You can provide surface definition Ax+By+Cz+D=0
+					# if all params are set to 0 or no surface is given then rays 
+					# computes it internally
+ transparencyFactR: (1,1.200000)	# can be given three values R,G,B or just one: transparencyFactor
+ transparencyFactG: (1,1.400000)	# one or another option is mandatory
+ transparencyFactB: (1,1.600000)	# transparencies for different wave lengths: Red,Green,Blue
+ normalDist: 10%			# optional, will be overrided by ListTransform: [0,2] to 4%
+ specularFact: 60.000000		# mandatory
+ faces: 2				# optional, =1 or =2 if not defined rays assumes 1
+ texture: alpha				# texture mapping used
+ Transform:				# optional triangle own transformation
+ {					# always used first, then list(from backward), then world
+  Scale: (100,100,100)
+ }
+}
+Triangle: 1
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (-1,1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,1)	# all normals nonzero, so they will be used
+ nb: Vector: (0,.1,.9)	# these two will be normalised
+ nc: Vector: (.1,0,.9)	# blank lines below, they are allowed
+			# curvilinear triangle because different normals
+			# but surface computed by rays is FLAT
+			# so suggest use small curvature and small normal differences
+
+ transparencyA: RGB: (0.000000,0.000000,0.000000)	# for A vertex
+ specularA: RGB: (0.100000,0.100000,0.100000)
+ diffuseA: RGB: (0.000000,1.000000,1.000000)
+ transparencyB: RGB: (0.000000,0.000000,0.000000)	# for B vertex
+ specularB: RGB: (0.100000,0.100000,0.100000)
+ diffuseB: RGB: (1.000000,0.000000,1.000000)
+ transparencyC: RGB: (0.000000,0.000000,0.000000)	# for C vertex
+ specularC: RGB: (0.100000,0.100000,0.100000)
+ diffuseC: RGB: (1.000000,1.000000,0.000000)
+ surface: ABCD: (0.,0.,1.,0.)		# surface z=0, plane: XY
+ transparencyFact: (1,1.200000)		# all waves R,G,B have the same transFactor: 1->1.2
+ normalDist: 20%			# will be overrided by list transform [0,2]
+ specularFact: RGB: (10,20,40)		# different specular factors
+ 					# for each color
+ faces: 1				# still defined
+ texture: 10		# same as alpha but number used
+ Transform:
+ {
+  Scale: (50,60,70)
+  RotateZ: 30
+  RotateX: 10		# surface computed will be transformed too
+ }
+}
+Triangle: 2
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (-1,1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)	# just compute normals
+ transparency: RGB: (0.000000,0.000000,0.000000)	# for all vertices
+ specular: RGB: (0.100000,0.100000,0.100000)
+ diffuse: RGB: (0.000000,1.000000,1.000000)
+ #surface: ABCD: (0.,0.,1.,0.)		# no more surface definition
+ transparencyFact: (1,1.200000)	
+ #normalDist: 15%			# not defined because will be overrided by list transform [0,2]
+ specularFact: 100.000000
+ #faces: 1				# not defined, use 1 default
+ texture: 2		# must use number because 2 have no mapping
+ #texture: water	# will generate: unknown mapping error
+ Transform:
+ {
+  Scale: (70,60,50)
+  RotateZ: 50
+  RotateY: 10		# surface computed will be transformed too
+ }
+}
+Triangle: 3
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (-1,1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)	# just compute normals
+ transparency: RGB: (0.000000,0.000000,0.000000)	# for all vertices
+ specular: RGB: (0.100000,0.100000,0.100000)
+ diffuse: RGB: (1.000000,0.000000,0.000000)
+ transparencyFact: (1,1.200000)	
+ normalDist: 15%			# will be used, because local overrides global and no listtransform
+					# for this triangle (list tarns [2,4] has no NormalDistorber)
+ specularFact: 100.000000
+ faces: 2
+ texture: epsilon			# will use 4.bmp which is not present, so 4.jpeg will be loaded, use -J
+					# option else rays will panic
+ Transform:
+ {
+  Scale: (80,80,50)
+  RotateZ: 90
+  RotateX: -20		# surface computed will be transformed too
+  RotateY: -20
+ }
+}
+Triangle: 4
+{
+ a: Vertex: (-1,-1,0)
+ b: Vertex: (1,1,0)
+ c: Vertex: (-1,1,0)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (.1,.1,1)	# flat triangle but with not natural normals
+ nb: Vector: (.1,.1,1)	# (.1,.1,1) will be normalized but triangle has natural normal (0,0,1)
+ nc: Vector: (.1,.1,1)
+ transparency: RGB: (0.500000,0.500000,0.500000)	# this triangle is quate transparent
+ specular: RGB: (0.100000,0.100000,0.100000)
+ diffuse: RGB: (0.200000,0.200000,0.200000)
+ transparencyFactR: (1,1.500000)	
+ transparencyFactG: (1,2.000000)	# and prismatic
+ transparencyFactB: (1,2.500000)	
+ #normalDist: 15%			# not used own, not used from list, global 4% will be used as NormalDistorber	
+ specularFact: 200.000000
+ faces: 2
+ texture: gamma	
+ Transform:
+ {
+  Translate: (10,-10,-120)		# buzzz
+  Scale: (40,50,60)			# scale and translate was exchanged and
+  #InvertN:				# triangle goes into z = -26400
+ }
+}
+CopyTriangle: 5<-3	# copies triangle 3 into 5, you no more need to define 5th triangle
+			# to do something useful with this 5th triangle use just ListTransform: [5,5]
+			# with copied triangle all its list ang global transformations are rolled back
+			# in reverse order (but local own remains) and then list transforms
+			# for its index are applied from back and then global trans
+			# try dat/60faces_tcopy.dat to see how it works.
+CopyTriangles: dst=6,src=1,num=2
+CopyTrianglesAdv: dst=8,src=1,num=2,rollW=0,rollLT=0
+			# you can copy (num) triangles from (src) to (dst)
+			# to see how it works read: test_mcopy*.dat
+			# rollW=0 ==> not rollback world transform else rollback
+			# same rollLT (list transforms)
+			# rollback disables transformation done on source triangle
+			# using invert matrix algorithm
+			# option adv lets you choose rollback or no transfroms
+			# option without Adv postfix assumes both = 1, so roll
+			# back world and list

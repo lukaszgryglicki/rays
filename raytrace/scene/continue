@@ -1,0 +1,1 @@
+rays -J -i prog.dat -E -c -j 2500 -x 1600 -y 1000 -G -R continue.bmp

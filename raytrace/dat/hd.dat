@@ -1,0 +1,6 @@
+Screen: (800,600)
+Observer: Vertex: (0,0,-450)
+Light: Vertex: (50,50,-250)
+TexDirectory: textures
+NumTextures: 18
+nTriangles: 200

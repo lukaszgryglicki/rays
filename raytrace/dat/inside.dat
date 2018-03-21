@@ -1,0 +1,13 @@
+ListTransform: [0,199]
+{
+ Scale: (1.000000,1.000000,1.000000)
+ RotateX: 3.000000
+ RotateY: 357.000000
+ RotateZ: 15.000000
+ Translate: (320.000000,-780.000000,990.000000)
+ NegateN:
+}
+LightTransform:
+{
+ Translate: (0.000000,0.000000,0.000000)
+}

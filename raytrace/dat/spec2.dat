@@ -1,0 +1,52 @@
+Screen: (512,384)
+Observer: Vertex: (0,0,-450)
+Light: Vertex: (170,120,-200)
+LightColor: deadbe
+TexDirectory: textures
+NumTextures: 0
+nTriangles: 2
+ListTransform: [0,1]
+{
+ TMaterialRGB: T-1 R(1,0,0) G(1,0,0) B(1,0,0)
+# Rotate: (1,-1,1)
+}
+Triangle: 1
+{
+ a: Vertex: (-200,-200,30)
+ b: Vertex: (200,200,0)
+ c: Vertex: (200,-200,40)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (-.4,-.4,-1)
+ nb: Vector: (.4,.4,-1)
+ nc: Vector: (.4,-.4,-1)
+ transparency: RGB: (0,0,0)
+ specular: RGB: (1,1,1)
+ diffuse: RGB: (0,0,0)
+ transparencyFact: (1,1.1)
+ specularFact: 150
+ faces: 1
+ texture: 0
+}
+Triangle: 2
+{
+ a: Vertex: (-200,-200,30)
+ b: Vertex: (-200,200,90)
+ c: Vertex: (200,200,0)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (-.4,-.4,-1)
+ nb: Vector: (-.4,.4,-1)
+ nc: Vector: (.4,.4,-1)
+ transparency: RGB: (0,0,0)
+ specular: RGB: (1,1,1)
+ diffuse: RGB: (0,0,0)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.1)
+ specularFact: 150
+ faces: 1
+ texture: 0
+}
+

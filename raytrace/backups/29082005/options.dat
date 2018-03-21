@@ -1,0 +1,248 @@
+#run this file with: rays -i thisfile.dat -J -N -G
+#try pressing 't' then 'h' to see help
+#if you are done with this, press 't' again
+#for help: rays -h from cmd line
+#This file contains all possible options
+# This is one line comment in SH style
+/*
+And this is multiline comment
+in C style
+*/
+# is FILE starts from BINT means it's binary scene snapshot, this file isn't
+Screen: (400,300)	# Screen definition, mandatory
+NormalDistorber: 1%	# optional, range 0-100%, default 0%
+MinShadow: 0.2		# optional, range 0-1, default 0.2
+Ambient: 0.4		# optional, range 0-1, default 0.25
+MaxRecurse: 10		# optional, 0-~32, default 6
+Backup: 200		# optional, 1-screenX+1, default 64
+Observer: Vertex: (0,0,-450)	# mandatory
+ObserverTransform:	# optional
+{
+ RotateX: 1
+ RotateY: 1
+ RotateZ: 1
+ Scale: (1.01,1.02,1.03)
+ Translate: (1,-1,0)
+ # all transformations will be presented in worldtransform
+ # because they are not applicabe for observer (not all)
+}
+LookZ: 35%		# optional, range ~20-~80%, default 33%
+Light: Vertex: (100,100,-200)	
+#VLight: Vector: (0,1,1)	/* Light or VLight are mandatory */
+LightTransform:		# optional
+{
+ Scale: (-1,-1,-1)	# invert direction
+ Identity:		# load I matrix
+}	/* rest of transforms in WorldTransform */
+WorldTransform:
+{
+ NormalDistorber: 3%	# if normal distorber defined above (below screen) this (3%) would be overrided by that (1%)
+			# so finally priority is world_transform --> global, value 1% will be used
+ RotateX: 1		# rotateI rotates world and normals
+ RotateY: 1		# rotateNI rotates normals
+ RotateZ: 1		# rotateWI rotates only world, I={X,Y,Z}
+ RotateNX: 1
+ RotateNY: 1
+ RotateNZ: 1
+ RotateWX: 1
+ RotateWY: 1
+ RotateWZ: 1
+ Translate: (1,2,3)
+ Scale: (1.01,1.03,0.9)	# scales world and normals (normals are normalized after)
+ ScaleN: (-1,-1,-1)	# scales normals only (this inverts)
+ ScaleW: (0.99,0.9,0.9) /* scales world only
+ 			 scaleN chages only if at least 2 parameters differ each other
+ 			*/
+ Matrix: [(1,0,0,0),(0,1,0,0),(0,0,1,0),(0,0,0,1)]	# own world matrix, advanced given by row ()
+ MatrixN: [(1,0,0,0),(0,1,0,0),(0,0,1,0),(0,0,0,1)]	# own normal matrix, advanced given by row ()
+ Identity:		# set world and normals matrices to I
+ IdentityN:
+ IdentityW:
+ NegateN:		# same as ScaleN: (-1,-1,-1)
+ Invert:		# inverts world and normal matrix (
+ InvertW:
+ InvertN: 	
+}
+TexDirectory: textures	# mandatory
+NumTextures: 20		# mandatory
+TextureMapping:		# optional, for some (or all or none) textures You can use string names instead of
+{			# numbers, if for example 1: alpha: mapped, You can use both 1 and alpha
+ 10: alpha		# in texture: in triangle --> texture: 1 or texture: alpha
+ 13: beta
+ 1: gamma
+ 5: delta
+ 4: epsilon
+}
+nTriangles: 5		# mandatory
+ListTransform: [0,2]	# optional, triangle 0,1,2 will be affected
+{
+ NormalDistorber: 4%	# overrides global (this is specific transformation, all other global transorms
+			# are applied in order: triangle_own->list_transform(from backward - so this [0,2]
+			# will be used after [2,4])->world_transform
+			# and with normal disturber: if no list_transfom and triangle own then
+			# world_transform and below screen, if local used (list or own) then owm->list
+			# so LIST is the strongest one
+}
+ListTransform: [2,4]	# optional, you can define as many as You wnat list transforms, triangle 2,3,4 will be affected
+{
+			# triangle 3,4,5 are not affected by normal distorber, they can have own one
+			# all wold have own, but 0,1,2 will be overrided by ListTransform [0,2]
+ Scale: (1,.9,1.1)
+ RotateZ: 10
+}
+Triangle: 0		# idx is only for this file purpose
+{			# program (rays) computes idx internally
+ a: Vertex: (-1,-1,1)	# vertices are mandatory
+ b: Vertex: (-1,1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)	# texcoord are mandatory
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+			# normals are mandatory
+ na: Vector: (0,0,1)	# if at least one normal is (0,0,0) the normals are computed
+ nb: Vector: (0,0,1)	# using vertices and assuming triangle is flat
+ nc: Vector: (0,0,0)	# like there, one normal is 0 so compute by hand
+			# normals can be given not unit length ex. (1,1,2) will be normalised
+		# next three options can be given as just opt, or optA, optB, optC
+		# where opt = {transparency, specular, diffuse }
+ transparency: RGB: (0.000000,0.000000,0.000000)	# T/S/D are mandatory: or common for 3 vertices or
+ specular: RGB: (0.100000,0.100000,0.100000)		# vertex specific, optA, optB, optC etc.
+ diffuse: RGB: (1.000000,1.000000,1.000000)
+ surface: ABCD: (0,0,0,0)		# optional, You can provide surface definition Ax+By+Cz+D=0
+					# if all params are set to 0 or no surface is given then rays 
+					# computes it internally
+ transparencyFactR: (1,1.200000)	# can be given three values R,G,B or just one: transparencyFactor
+ transparencyFactG: (1,1.400000)	# one or another option is mandatory
+ transparencyFactB: (1,1.600000)	# transparencies for different wave lengths: Red,Green,Blue
+ normalDist: 10%			# optional, will be overrided by ListTransform: [0,2] to 4%
+ specularFact: 60.000000		# mandatory
+ faces: 2				# optional, =1 or =2 if not defined rays assumes 1
+ texture: alpha				# texture mapping used
+ Transform:				# optional triangle own transformation
+ {					# always used first, then list(from backward), then world
+  Scale: (100,100,100)
+ }
+}
+Triangle: 1
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (-1,1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,1)	# all normals nonzero, so they will be used
+ nb: Vector: (0,.1,.9)	# these two will be normalised
+ nc: Vector: (.1,0,.9)	# blank lines below, they are allowed
+			# curvilinear triangle because different normals
+			# but surface computed by rays is FLAT
+			# so suggest use small curvature and small normal differences
+
+ transparencyA: RGB: (0.000000,0.000000,0.000000)	# for A vertex
+ specularA: RGB: (0.100000,0.100000,0.100000)
+ diffuseA: RGB: (0.000000,1.000000,1.000000)
+ transparencyB: RGB: (0.000000,0.000000,0.000000)	# for B vertex
+ specularB: RGB: (0.100000,0.100000,0.100000)
+ diffuseB: RGB: (1.000000,0.000000,1.000000)
+ transparencyC: RGB: (0.000000,0.000000,0.000000)	# for C vertex
+ specularC: RGB: (0.100000,0.100000,0.100000)
+ diffuseC: RGB: (1.000000,1.000000,0.000000)
+ surface: ABCD: (0.,0.,1.,0.)		# surface z=0, plane: XY
+ transparencyFact: (1,1.200000)		# all waves R,G,B have the same transFactor: 1->1.2
+ normalDist: 20%			# will be overrided by list transform [0,2]
+ specularFact: 100.000000
+ faces: 1				# still defined
+ texture: 10		# same as alpha but number used
+ Transform:
+ {
+  Scale: (50,60,70)
+  RotateZ: 30
+  RotateX: 10		# surface computed will be transformed too
+ }
+}
+Triangle: 2
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (-1,1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)	# just compute normals
+ transparency: RGB: (0.000000,0.000000,0.000000)	# for all vertices
+ specular: RGB: (0.100000,0.100000,0.100000)
+ diffuse: RGB: (0.000000,1.000000,1.000000)
+ #surface: ABCD: (0.,0.,1.,0.)		# no more surface definition
+ transparencyFact: (1,1.200000)	
+ #normalDist: 15%			# not defined because will be overrided by list transform [0,2]
+ specularFact: 100.000000
+ #faces: 1				# not defined, use 1 default
+ texture: 2		# must use number because 2 have no mapping
+ #texture: water	# will generate: unknown mapping error
+ Transform:
+ {
+  Scale: (70,60,50)
+  RotateZ: 50
+  RotateY: 10		# surface computed will be transformed too
+ }
+}
+Triangle: 3
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (-1,1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)	# just compute normals
+ transparency: RGB: (0.000000,0.000000,0.000000)	# for all vertices
+ specular: RGB: (0.100000,0.100000,0.100000)
+ diffuse: RGB: (1.000000,0.000000,0.000000)
+ transparencyFact: (1,1.200000)	
+ normalDist: 15%			# will be used, because local overrides global and no listtransform
+					# for this triangle (list tarns [2,4] has no NormalDistorber)
+ specularFact: 100.000000
+ faces: 2
+ texture: epsilon			# will use 4.bmp which is not present, so 4.jpeg will be loaded, use -J
+					# option else rays will panic
+ Transform:
+ {
+  Scale: (80,80,50)
+  RotateZ: 90
+  RotateX: -20		# surface computed will be transformed too
+  RotateY: -20
+ }
+}
+Triangle: 4
+{
+ a: Vertex: (-1,-1,0)
+ b: Vertex: (1,1,0)
+ c: Vertex: (-1,1,0)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (.1,.1,1)	# flat triangle but with not natural normals
+ nb: Vector: (.1,.1,1)	# (.1,.1,1) will be normalized but triangle has natural normal (0,0,1)
+ nc: Vector: (.1,.1,1)
+ transparency: RGB: (0.500000,0.500000,0.500000)	# this triangle is quate transparent
+ specular: RGB: (0.100000,0.100000,0.100000)
+ diffuse: RGB: (0.200000,0.200000,0.200000)
+ transparencyFactR: (1,1.500000)	
+ transparencyFactG: (1,2.000000)	# and prismatic
+ transparencyFactB: (1,2.500000)	
+ #normalDist: 15%			# not used own, not used from list, global 4% will be used as NormalDistorber	
+ specularFact: 200.000000
+ faces: 2
+ texture: gamma	
+ Transform:
+ {
+  Scale: (200,200,200)
+  Translate: (10,-10,-120)
+  #InvertN:
+ }
+}
+

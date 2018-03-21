@@ -1,0 +1,57 @@
+Konwersje:
+=============
+-MD2,ULI,TRI,IGES,NURBS,3DS
+-zamiana MD2 (Quake data file) na format programu (DAT)
+-zamiana ULI/TRI (nasz format z MG/GK/PUSN) na DAT
+-zamiana obiektow NURBS z IGES na DAT
+-zamiana plików 3DS na pliki TRI
+
+Tworzenie obiektow:
+=============
+-12/60 sciany
+-walce,stozki,torrusy,szesciany
+-wlasne NURBSY, losowe NURBSY
+-stol z teksturami
+
+Biblioteka RT (RayTracing'u)
+==============
+-napsana w calosci w jezyku C, przenosna
+-poddawanie raytracingowi trojkatow krzywoliniowych
+-mozliwosc uzycia materialow/tekstur
+-mozliwosc wczytania sceny z plikow DAT w ktorych sa trojkaty
+-w plikach DAT moga byc NURBSy, beda ztriangulowane
+-odczytywanie tekstur z plikow BMP/JPEG
+-lokalizacja obiektow za pomoca drzewa box'ow (szybkosc)
+-mozliwosc przeksztalcen swiata/sceny/obiektow/list obiektow
+-mozliwosc kopiowania obiektow i ich pozniejszego przeksztalcania
+-zapis wynikowej sceny jako JPEG/BMP
+-preprocessing NURBSow i bazy BSPLINE (szybkosc)
+-zapisywanie/odczytywanie drzewa lokalizacji
+-obsluga sygnalow: zapis/odczyt w trakcie dzialania, wznowienie
+-interpolacja normalnej na trojkacie krzywoliniowym
+-zapisy sceny/drzewa lokalizacji w formacie tekstowym i binarnym
+-obsluga komentarzy w pliku wejsciowym
+-obsluga tekstury tla
+-czesciowa minimalizacja drzewa boxow (szybkosc)
+-przypadki szczegolne: krawedzie,wierzcholki
+-odzielne obliczenia dla promieni R,G,B: rozne wspolczynniki
+-efekty pryzmatu, soczewkowe
+-mozliwosc okreslania glebi rekursji
+-zakonczenie rekursji gdy wklad promienia < 1/256
+-obsluga cieni (polprzezroczyste tez)
+-obsluga sterowanie przez internet
+-wielowatkowosc serwera
+-mozliwosc kompilacji z roznymi opcjami na roznych systemach operacyjnych
+-obsluga zaisu wyniku w reakcji na sygnal
+-mozliwosc wznowienia od ostatnio zapisanego obrazu (raczej z BMP)
+-konfigurowalnosc wielkosci ekranu/rekursji/swiatel/cienia/itp
+-obsluga wyswietlania w OpenGL i konfiguracji w trakcie dzialania klawiatura
+-prosty antaliasing
+-chropowatosc materialu 9wlasciwosc zaburzenia normalnej na materiale)
+-prosty konfigurator do wyboru opcji (program na konsole!)
+-tryb podgladu sceny 
+(nie wykonuje RT tylko uzywa OpenGL do szybkiego wyswietlenia podgladu sceny)
+
+GUI:
+============
+-zupelnie nie zrobione (jeszcze), bedzie w Qt (bo jest przenosne)

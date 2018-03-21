@@ -1,0 +1,58 @@
+Screen: (1024,768)
+Observer: Vertex: (0,0,-450)
+Light: Vertex: (100,100,-250)
+TexDirectory: textures
+NumTextures: 2
+nTriangles: 2
+Triangle: 0
+{
+ a: Vertex: (-200,-150,-100)
+ b: Vertex: (200,150,-100)
+ c: Vertex: (200,-150,-100)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (-1,-1,-1)
+ nb: Vector: (1,1,-1)
+ nc: Vector: (1,-1,-1)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.,0.,0.)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.,0.,0.)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.,0.,0.)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 1
+ texture: 0
+}
+Triangle: 1
+{
+ a: Vertex: (-200,-150,-100)
+ b: Vertex: (-200,150,-100)
+ c: Vertex: (200,150,-100)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (-1,-1,-1)
+ nb: Vector: (-1,1,-1)
+ nc: Vector: (1,1,-1)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.,0.,0.)
+ diffuseA: RGB: (1,1,1)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.,0.,0.)
+ diffuseB: RGB: (1,1,1)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.,0.,0.)
+ diffuseC: RGB: (1,1,1)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 1
+ texture: 0
+}

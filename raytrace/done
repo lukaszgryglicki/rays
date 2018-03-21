@@ -1,0 +1,33 @@
+//check: calc_boxes changed: see how exactly the tree looks
+//TOopt, rc.gcov, more gcov options, more gcov testing
+//write program that computes how many sqrt's per 10sec
+//XCreateWindow: bad parameters: ? fixed by loaded = 0 ??
+//check ALL double ==> long double changed
+//windows: bad disturbers effects
+//check all GUI keyboard
+//check mallocs
+//check all FIXME's
+//handle ambiguous solutions  ALMOST ??
+//option to save preprocessed scene
+//optimize btree creation algorithm: 10000 => triangles quite fast...
+//bla.uli transform to bla.dat
+//priority sort
+//port to windows
+//normal distorbers: priorities
+//light on/off in recurse_color
+//texture on/off in recurse color
+//copy triangles (adv) testing, add triangles after adv
+//rt_hlt while: sigproc, opengl_drawing
+//new texture transform (working ok?)
+//-G option: Rtracing while processing signal (line dropping)
+//--> binary saves casts seems to work, try on win32: torri_trans.*
+//--> is fixed? line dropping in test.dat & 1.dat
+//--> -f option: testing
+//--> -G option: exiting 'k', 'q', 's' (FP exceptions)
+//--> new_scene.dat Adv: rollW=1 (shold be 1 or 0) ?
+//--> teapot, ogro.md2, md22dat
+//--> sizeof REAL = 12 on 32bit platf, = 16 on 64bit platf
+//-->NURBSTransform
+//-->NURBSCopy
+//--> add handler for -d, -v, -U in wrapper.c
+//--> objects inside torrus

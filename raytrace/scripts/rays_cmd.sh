@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/home/morgoth/RT/./rays.gcov -i /usr/home/morgoth/RT/dat/bigest4.dat -T /usr/home/morgoth/RT/ -o /usr/home/morgoth/RT/bmp/screen.bmp -D /usr/home/morgoth/RT/bmp/demand.bmp -S /usr/home/morgoth/RT/bmp/signal.bmp -P /usr/home/morgoth/RT/bmp/panic.bmp -p /usr/home/morgoth/RT/bmp/part.bmp -r 6 -b 64 -x 400 -y 300 -N -n 2.000000 -s 1125389106 -G -t 500 -a 0.250000 -m 0.200000 -J -q 90 -g -B -A -K 

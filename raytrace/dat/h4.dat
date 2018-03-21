@@ -1,0 +1,77 @@
+Screen: (1920,1200)
+MaxRecurse: 32
+Backup: 960
+Observer: Vertex: (0.0,100.0,-1350.0)
+LookZ: 15.0%
+Light: Vertex: (-100.0, 250.0,-400.0)
+WorldTransform:
+{
+ Scale: (1.000000,1.000000,1.000000)
+ RotateX: 0.000000
+ RotateY: 0.000000
+ RotateZ: 0.000000
+ Translate: (-90.000000,280.000000,700.000000)
+ RotateX: 45.0
+ RotateY: 45.0
+# RotateZ: 20.0
+}
+TexDirectory: textures
+NumTextures: 6
+nTriangles: 100000
+# transformations
+ListTransform: [0,19999]
+{		
+ # full mirror
+ TMaterialRGB: T-1 R(0,1,0) G(0,1,0) B(0,1,0)
+ NewTexture: 2
+}
+ListTransform: [20000,39999]
+{		
+ # full transparent
+ TMaterialRGB: T-1 R(0,1,0) G(0,1,0) B(0,1,0)
+ NewTexture: 3
+}
+ListTransform: [40000,59999]
+{		
+ # half transparent mirror
+ TMaterialRGB: T-1 R(0,1,0) G(0,1,0) B(0,1,0)
+ NewTexture: 4
+}
+ListTransform: [60000,99999]
+{
+ # little shining texture wall
+ TMaterialRGB: T-1 R(1,0,0) G(1,0,0) B(0.5,0,0.5)
+ NewTexture: 1
+}
+ListTransform: [0,19999]
+{		
+ NewTexture: 1
+ RotateX: 90
+}
+ListTransform: [20000,39999]
+{		
+ NewTexture: 2
+ RotateY: 90
+}
+ListTransform: [40000,59999]
+{		
+ NewTexture: 3
+ RotateZ: 90
+}
+ListTransform: [60000,79999]
+{
+RotateX: 5.000000
+RotateY: 15.000000
+RotateZ: 10.000000
+Scale: (1800.000000,2200.000000,1550.000000)
+NegateN:
+}
+ListTransform: [80000,99999]
+{
+RotateX: 5.000000
+RotateY: 15.000000
+RotateZ: 10.000000
+Scale: (1800.000000,2200.000000,1550.000000)
+NegateN:
+}
+

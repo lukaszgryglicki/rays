@@ -1,0 +1,33 @@
+Windows compilation:
+You will need:
+(cygwin + binutils + gcc) OR (mingw + binutils + gcc) for base build
+NOTE: base build is gcc -DNOSIGNALS -DNOGL -DNOJPEG
+-DNOSIGNALS must be used on mingw 
+(not fully supported signals when cross-compiling with wine and mingw (freebsd --> win32)
+-DNOSIGNALS can be skipped on cygwin 
+(and possibly on mingw from win32->win32 (windows native) - but not tested)
+standard linking -lc -lm
+
+OpenGL:
+You will need: 
+glut.h, glu.h, gl.h, opengl32.lib, opengl32.dll, glu32.lib, glu32.dll, glut32.lib, glut32.dll
+file *.lib are not mandatory (in cygwin, don't known if they are neccesary for mingw)
+if You got them You can remove -DNOGL flag and link with: -lopengl32 -lglu32 -lglut32
+remember to set proper paths for includes -I, and libraries -L
+also OpenGL display uses pthreads, no special switches (like -pthread on FreeBSD) are needed
+cygwin seems to support fully pthread, mingw cross-compiler DONT, dont know about native mingw
+
+JPEG:
+You will need:
+jconfig.h, jpeglib.h, jerror.h, jmorecfg.h, libjpeg.a (libjpeg_mingw.a)
+if You got them You can remove -DNOJPEG flag and link with -ljpeg (or -ljpeg_mingw - not tested)
+remember to set proper paths for includes -I, and libraries -L
+
+Look for file in this directory, essential are there included:
+
+If You want to setup all Yourself just install:
+cygwin, coreutils, binutils, gcc, cygwin-opengl, cygwin-glut, cygwin-libjpeg, make tool
+
+Good Luck, examples in Makefile and compile_win32.sh
+
+morgothdbma

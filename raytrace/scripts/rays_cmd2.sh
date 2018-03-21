@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/home/morgoth/RT/rays.fast -i /usr/home/morgoth/RT/dat/tricol.dat -T /usr/home/morgoth/RT/ -o /usr/home/morgoth/RT/bmp/screen.bmp -D /usr/home/morgoth/RT/bmp/demand.bmp -S /usr/home/morgoth/RT/bmp/signal.bmp -P /usr/home/morgoth/RT/bmp/panic.bmp -p /usr/home/morgoth/RT/bmp/part.bmp -U /usr/home/morgoth/RT/debug.txt -r 8 -b 400 -j 2500 -x 800 -y 600 -N -n 0.050000 -s 1127718971 -G -t 500 -v 1.200000 -V 1.000000 -a 0.330000 -m 0.100000 -M 0.750000 -J -q 90 -A -2 -K 

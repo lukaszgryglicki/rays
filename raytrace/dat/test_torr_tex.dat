@@ -1,0 +1,4498 @@
+Screen: (256,256)
+Observer: Vertex: (0,0,-450)
+Light: Vertex: (150,150,-250)
+TexDirectory: textures
+NumTextures: 3
+nTriangles: 172
+Triangle: 0
+{
+ a: Vertex: (500,-500,500)
+ b: Vertex: (500,500,500)
+ c: Vertex: (500,500,-1000)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (-1,0,0)
+ nb: Vector: (-1,0,0)
+ nc: Vector: (-1,0,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 1
+{
+ a: Vertex: (500,-500,500)
+ b: Vertex: (500,500,-1000)
+ c: Vertex: (500,-500,-1000)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (-1,0,0)
+ nb: Vector: (-1,0,0)
+ nc: Vector: (-1,0,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 2
+{
+ a: Vertex: (-500,-500,-1000)
+ b: Vertex: (-500,500,-1000)
+ c: Vertex: (-500,500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (1,0,0)
+ nb: Vector: (1,0,0)
+ nc: Vector: (1,0,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 3
+{
+ a: Vertex: (-500,-500,-1000)
+ b: Vertex: (-500,500,500)
+ c: Vertex: (-500,-500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (1,0,0)
+ nb: Vector: (1,0,0)
+ nc: Vector: (1,0,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 4
+{
+ a: Vertex: (-500,500,500)
+ b: Vertex: (500,500,-1000)
+ c: Vertex: (500,500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (0,-1,0)
+ nb: Vector: (0,-1,0)
+ nc: Vector: (0,-1,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 5
+{
+ a: Vertex: (-500,500,500)
+ b: Vertex: (-500,500,-1000)
+ c: Vertex: (500,500,-1000)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,-1,0)
+ nb: Vector: (0,-1,0)
+ nc: Vector: (0,-1,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 6
+{
+ a: Vertex: (-500,-500,-1000)
+ b: Vertex: (500,-500,500)
+ c: Vertex: (500,-500,-1000)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (0,1,0)
+ nb: Vector: (0,1,0)
+ nc: Vector: (0,1,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 7
+{
+ a: Vertex: (-500,-500,-1000)
+ b: Vertex: (-500,-500,500)
+ c: Vertex: (500,-500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,1,0)
+ nb: Vector: (0,1,0)
+ nc: Vector: (0,1,0)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 8
+{
+ a: Vertex: (-500,-500,500)
+ b: Vertex: (500,500,500)
+ c: Vertex: (500,-500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (0,0,-1)
+ nb: Vector: (0,0,-1)
+ nc: Vector: (0,0,-1)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 9
+{
+ a: Vertex: (-500,-500,500)
+ b: Vertex: (-500,500,500)
+ c: Vertex: (500,500,500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,-1)
+ nb: Vector: (0,0,-1)
+ nc: Vector: (0,0,-1)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 10
+{
+ a: Vertex: (-500,-500,-500)
+ b: Vertex: (500,-500,-500)
+ c: Vertex: (500,500,-500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (0,0,1)
+ nb: Vector: (0,0,1)
+ nc: Vector: (0,0,1)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 11
+{
+ a: Vertex: (-500,-500,-500)
+ b: Vertex: (500,500,-500)
+ c: Vertex: (-500,500,-500)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,1)
+ nb: Vector: (0,0,1)
+ nc: Vector: (0,0,1)
+ transparencyA: RGB: (0,0,0)
+ specularA: RGB: (0.0,0.0,0.0)
+ diffuseA: RGB: (.7,.6,0.)
+ transparencyB: RGB: (0,0,0)
+ specularB: RGB: (0.0,0.0,0.0)
+ diffuseB: RGB: (.7,.6,0.)
+ transparencyC: RGB: (0,0,0)
+ specularC: RGB: (0.0,0.0,0.0)
+ diffuseC: RGB: (.7,.6,0.)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 150
+ faces: 2
+ texture: 3
+}
+Triangle: 12
+{
+a: Vertex: (340.000000,0.000000,0.000000)
+b: Vertex: (180.000012,0.000000,160.000000)
+c: Vertex: (171.190185,55.623060,160.000000)
+texA: TexCoord: (0.000000,0.000000)
+texB: TexCoord: (0.000000,0.250000)
+texC: TexCoord: (0.050000,0.250000)
+na: Vector: (1.000000,0.000000,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 13
+{
+a: Vertex: (340.000000,0.000000,0.000000)
+b: Vertex: (171.190185,55.623060,160.000000)
+c: Vertex: (323.359217,105.065773,0.000000)
+texA: TexCoord: (0.000000,0.000000)
+texB: TexCoord: (0.050000,0.250000)
+texC: TexCoord: (0.050000,0.250000)
+na: Vector: (1.000000,0.000000,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (0.951057,0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 14
+{
+a: Vertex: (180.000012,0.000000,160.000000)
+b: Vertex: (20.000000,0.000000,0.000024)
+c: Vertex: (19.021130,6.180340,0.000024)
+texA: TexCoord: (0.000000,0.250000)
+texB: TexCoord: (0.000000,0.500000)
+texC: TexCoord: (0.050000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-1.000000,-0.000000,0.000000)
+nc: Vector: (-0.951057,-0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 15
+{
+a: Vertex: (180.000012,0.000000,160.000000)
+b: Vertex: (19.021130,6.180340,0.000024)
+c: Vertex: (171.190185,55.623060,160.000000)
+texA: TexCoord: (0.000000,0.250000)
+texB: TexCoord: (0.050000,0.500000)
+texC: TexCoord: (0.050000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-0.951057,-0.309017,0.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 16
+{
+a: Vertex: (20.000000,0.000000,0.000024)
+b: Vertex: (179.999964,0.000000,-160.000000)
+c: Vertex: (171.190139,55.623045,-160.000000)
+texA: TexCoord: (0.000000,0.500000)
+texB: TexCoord: (0.000000,0.750000)
+texC: TexCoord: (0.050000,0.750000)
+na: Vector: (-1.000000,-0.000000,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 17
+{
+a: Vertex: (20.000000,0.000000,0.000024)
+b: Vertex: (171.190139,55.623045,-160.000000)
+c: Vertex: (19.021130,6.180340,0.000024)
+texA: TexCoord: (0.000000,0.500000)
+texB: TexCoord: (0.050000,0.750000)
+texC: TexCoord: (0.050000,0.750000)
+na: Vector: (-1.000000,-0.000000,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-0.951057,-0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 18
+{
+a: Vertex: (179.999964,0.000000,-160.000000)
+b: Vertex: (340.000000,0.000000,0.000000)
+c: Vertex: (323.359217,105.065773,0.000000)
+texA: TexCoord: (0.000000,0.750000)
+texB: TexCoord: (0.000000,1.000000)
+texC: TexCoord: (0.050000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (1.000000,0.000000,0.000000)
+nc: Vector: (0.951057,0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 19
+{
+a: Vertex: (179.999964,0.000000,-160.000000)
+b: Vertex: (323.359217,105.065773,0.000000)
+c: Vertex: (171.190139,55.623045,-160.000000)
+texA: TexCoord: (0.000000,0.750000)
+texB: TexCoord: (0.050000,1.000000)
+texC: TexCoord: (0.050000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (0.951057,0.309017,0.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 20
+{
+a: Vertex: (323.359217,105.065773,0.000000)
+b: Vertex: (171.190185,55.623060,160.000000)
+c: Vertex: (145.623072,105.801348,160.000000)
+texA: TexCoord: (0.050000,0.000000)
+texB: TexCoord: (0.050000,0.250000)
+texC: TexCoord: (0.100000,0.250000)
+na: Vector: (0.951057,0.309017,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 21
+{
+a: Vertex: (323.359217,105.065773,0.000000)
+b: Vertex: (145.623072,105.801348,160.000000)
+c: Vertex: (275.065784,199.846977,0.000000)
+texA: TexCoord: (0.050000,0.000000)
+texB: TexCoord: (0.100000,0.250000)
+texC: TexCoord: (0.100000,0.250000)
+na: Vector: (0.951057,0.309017,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (0.809017,0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 22
+{
+a: Vertex: (171.190185,55.623060,160.000000)
+b: Vertex: (19.021130,6.180340,0.000024)
+c: Vertex: (16.180340,11.755705,0.000024)
+texA: TexCoord: (0.050000,0.250000)
+texB: TexCoord: (0.050000,0.500000)
+texC: TexCoord: (0.100000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-0.951057,-0.309017,0.000000)
+nc: Vector: (-0.809017,-0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 23
+{
+a: Vertex: (171.190185,55.623060,160.000000)
+b: Vertex: (16.180340,11.755705,0.000024)
+c: Vertex: (145.623072,105.801348,160.000000)
+texA: TexCoord: (0.050000,0.250000)
+texB: TexCoord: (0.100000,0.500000)
+texC: TexCoord: (0.100000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-0.809017,-0.587785,0.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 24
+{
+a: Vertex: (19.021130,6.180340,0.000024)
+b: Vertex: (171.190139,55.623045,-160.000000)
+c: Vertex: (145.623033,105.801320,-160.000000)
+texA: TexCoord: (0.050000,0.500000)
+texB: TexCoord: (0.050000,0.750000)
+texC: TexCoord: (0.100000,0.750000)
+na: Vector: (-0.951057,-0.309017,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 25
+{
+a: Vertex: (19.021130,6.180340,0.000024)
+b: Vertex: (145.623033,105.801320,-160.000000)
+c: Vertex: (16.180340,11.755705,0.000024)
+texA: TexCoord: (0.050000,0.500000)
+texB: TexCoord: (0.100000,0.750000)
+texC: TexCoord: (0.100000,0.750000)
+na: Vector: (-0.951057,-0.309017,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-0.809017,-0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 26
+{
+a: Vertex: (171.190139,55.623045,-160.000000)
+b: Vertex: (323.359217,105.065773,0.000000)
+c: Vertex: (275.065784,199.846977,0.000000)
+texA: TexCoord: (0.050000,0.750000)
+texB: TexCoord: (0.050000,1.000000)
+texC: TexCoord: (0.100000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (0.951057,0.309017,0.000000)
+nc: Vector: (0.809017,0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 27
+{
+a: Vertex: (171.190139,55.623045,-160.000000)
+b: Vertex: (275.065784,199.846977,0.000000)
+c: Vertex: (145.623033,105.801320,-160.000000)
+texA: TexCoord: (0.050000,0.750000)
+texB: TexCoord: (0.100000,1.000000)
+texC: TexCoord: (0.100000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (0.809017,0.587785,0.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 28
+{
+a: Vertex: (275.065784,199.846977,0.000000)
+b: Vertex: (145.623072,105.801348,160.000000)
+c: Vertex: (105.801359,145.623064,160.000000)
+texA: TexCoord: (0.100000,0.000000)
+texB: TexCoord: (0.100000,0.250000)
+texC: TexCoord: (0.150000,0.250000)
+na: Vector: (0.809017,0.587785,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 29
+{
+a: Vertex: (275.065784,199.846977,0.000000)
+b: Vertex: (105.801359,145.623064,160.000000)
+c: Vertex: (199.846998,275.065769,0.000000)
+texA: TexCoord: (0.100000,0.000000)
+texB: TexCoord: (0.150000,0.250000)
+texC: TexCoord: (0.150000,0.250000)
+na: Vector: (0.809017,0.587785,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (0.587785,0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 30
+{
+a: Vertex: (145.623072,105.801348,160.000000)
+b: Vertex: (16.180340,11.755705,0.000024)
+c: Vertex: (11.755706,16.180339,0.000024)
+texA: TexCoord: (0.100000,0.250000)
+texB: TexCoord: (0.100000,0.500000)
+texC: TexCoord: (0.150000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-0.809017,-0.587785,0.000000)
+nc: Vector: (-0.587785,-0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 31
+{
+a: Vertex: (145.623072,105.801348,160.000000)
+b: Vertex: (11.755706,16.180339,0.000024)
+c: Vertex: (105.801359,145.623064,160.000000)
+texA: TexCoord: (0.100000,0.250000)
+texB: TexCoord: (0.150000,0.500000)
+texC: TexCoord: (0.150000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-0.587785,-0.809017,0.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 32
+{
+a: Vertex: (16.180340,11.755705,0.000024)
+b: Vertex: (145.623033,105.801320,-160.000000)
+c: Vertex: (105.801331,145.623025,-160.000000)
+texA: TexCoord: (0.100000,0.500000)
+texB: TexCoord: (0.100000,0.750000)
+texC: TexCoord: (0.150000,0.750000)
+na: Vector: (-0.809017,-0.587785,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 33
+{
+a: Vertex: (16.180340,11.755705,0.000024)
+b: Vertex: (105.801331,145.623025,-160.000000)
+c: Vertex: (11.755706,16.180339,0.000024)
+texA: TexCoord: (0.100000,0.500000)
+texB: TexCoord: (0.150000,0.750000)
+texC: TexCoord: (0.150000,0.750000)
+na: Vector: (-0.809017,-0.587785,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-0.587785,-0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 34
+{
+a: Vertex: (145.623033,105.801320,-160.000000)
+b: Vertex: (275.065784,199.846977,0.000000)
+c: Vertex: (199.846998,275.065769,0.000000)
+texA: TexCoord: (0.100000,0.750000)
+texB: TexCoord: (0.100000,1.000000)
+texC: TexCoord: (0.150000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (0.809017,0.587785,0.000000)
+nc: Vector: (0.587785,0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 35
+{
+a: Vertex: (145.623033,105.801320,-160.000000)
+b: Vertex: (199.846998,275.065769,0.000000)
+c: Vertex: (105.801331,145.623025,-160.000000)
+texA: TexCoord: (0.100000,0.750000)
+texB: TexCoord: (0.150000,1.000000)
+texC: TexCoord: (0.150000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (0.587785,0.809017,0.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 36
+{
+a: Vertex: (199.846998,275.065769,0.000000)
+b: Vertex: (105.801359,145.623064,160.000000)
+c: Vertex: (55.623073,171.190181,160.000000)
+texA: TexCoord: (0.150000,0.000000)
+texB: TexCoord: (0.150000,0.250000)
+texC: TexCoord: (0.200000,0.250000)
+na: Vector: (0.587785,0.809017,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 37
+{
+a: Vertex: (199.846998,275.065769,0.000000)
+b: Vertex: (55.623073,171.190181,160.000000)
+c: Vertex: (105.065798,323.359209,0.000000)
+texA: TexCoord: (0.150000,0.000000)
+texB: TexCoord: (0.200000,0.250000)
+texC: TexCoord: (0.200000,0.250000)
+na: Vector: (0.587785,0.809017,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (0.309017,0.951056,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 38
+{
+a: Vertex: (105.801359,145.623064,160.000000)
+b: Vertex: (11.755706,16.180339,0.000024)
+c: Vertex: (6.180341,19.021130,0.000024)
+texA: TexCoord: (0.150000,0.250000)
+texB: TexCoord: (0.150000,0.500000)
+texC: TexCoord: (0.200000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-0.587785,-0.809017,0.000000)
+nc: Vector: (-0.309017,-0.951056,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 39
+{
+a: Vertex: (105.801359,145.623064,160.000000)
+b: Vertex: (6.180341,19.021130,0.000024)
+c: Vertex: (55.623073,171.190181,160.000000)
+texA: TexCoord: (0.150000,0.250000)
+texB: TexCoord: (0.200000,0.500000)
+texC: TexCoord: (0.200000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-0.309017,-0.951056,0.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 40
+{
+a: Vertex: (11.755706,16.180339,0.000024)
+b: Vertex: (105.801331,145.623025,-160.000000)
+c: Vertex: (55.623058,171.190135,-160.000000)
+texA: TexCoord: (0.150000,0.500000)
+texB: TexCoord: (0.150000,0.750000)
+texC: TexCoord: (0.200000,0.750000)
+na: Vector: (-0.587785,-0.809017,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 41
+{
+a: Vertex: (11.755706,16.180339,0.000024)
+b: Vertex: (55.623058,171.190135,-160.000000)
+c: Vertex: (6.180341,19.021130,0.000024)
+texA: TexCoord: (0.150000,0.500000)
+texB: TexCoord: (0.200000,0.750000)
+texC: TexCoord: (0.200000,0.750000)
+na: Vector: (-0.587785,-0.809017,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-0.309017,-0.951056,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 42
+{
+a: Vertex: (105.801331,145.623025,-160.000000)
+b: Vertex: (199.846998,275.065769,0.000000)
+c: Vertex: (105.065798,323.359209,0.000000)
+texA: TexCoord: (0.150000,0.750000)
+texB: TexCoord: (0.150000,1.000000)
+texC: TexCoord: (0.200000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (0.587785,0.809017,0.000000)
+nc: Vector: (0.309017,0.951056,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 43
+{
+a: Vertex: (105.801331,145.623025,-160.000000)
+b: Vertex: (105.065798,323.359209,0.000000)
+c: Vertex: (55.623058,171.190135,-160.000000)
+texA: TexCoord: (0.150000,0.750000)
+texB: TexCoord: (0.200000,1.000000)
+texC: TexCoord: (0.200000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (0.309017,0.951056,0.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 44
+{
+a: Vertex: (105.065798,323.359209,0.000000)
+b: Vertex: (55.623073,171.190181,160.000000)
+c: Vertex: (0.000014,180.000012,160.000000)
+texA: TexCoord: (0.200000,0.000000)
+texB: TexCoord: (0.200000,0.250000)
+texC: TexCoord: (0.250000,0.250000)
+na: Vector: (0.309017,0.951056,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 45
+{
+a: Vertex: (105.065798,323.359209,0.000000)
+b: Vertex: (0.000014,180.000012,160.000000)
+c: Vertex: (0.000026,340.000000,0.000000)
+texA: TexCoord: (0.200000,0.000000)
+texB: TexCoord: (0.250000,0.250000)
+texC: TexCoord: (0.250000,0.250000)
+na: Vector: (0.309017,0.951056,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (0.000000,1.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 46
+{
+a: Vertex: (55.623073,171.190181,160.000000)
+b: Vertex: (6.180341,19.021130,0.000024)
+c: Vertex: (0.000002,20.000000,0.000024)
+texA: TexCoord: (0.200000,0.250000)
+texB: TexCoord: (0.200000,0.500000)
+texC: TexCoord: (0.250000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-0.309017,-0.951056,0.000000)
+nc: Vector: (-0.000000,-1.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 47
+{
+a: Vertex: (55.623073,171.190181,160.000000)
+b: Vertex: (0.000002,20.000000,0.000024)
+c: Vertex: (0.000014,180.000012,160.000000)
+texA: TexCoord: (0.200000,0.250000)
+texB: TexCoord: (0.250000,0.500000)
+texC: TexCoord: (0.250000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-0.000000,-1.000000,0.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 48
+{
+a: Vertex: (6.180341,19.021130,0.000024)
+b: Vertex: (55.623058,171.190135,-160.000000)
+c: Vertex: (0.000014,179.999964,-160.000000)
+texA: TexCoord: (0.200000,0.500000)
+texB: TexCoord: (0.200000,0.750000)
+texC: TexCoord: (0.250000,0.750000)
+na: Vector: (-0.309017,-0.951056,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 49
+{
+a: Vertex: (6.180341,19.021130,0.000024)
+b: Vertex: (0.000014,179.999964,-160.000000)
+c: Vertex: (0.000002,20.000000,0.000024)
+texA: TexCoord: (0.200000,0.500000)
+texB: TexCoord: (0.250000,0.750000)
+texC: TexCoord: (0.250000,0.750000)
+na: Vector: (-0.309017,-0.951056,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-0.000000,-1.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 50
+{
+a: Vertex: (55.623058,171.190135,-160.000000)
+b: Vertex: (105.065798,323.359209,0.000000)
+c: Vertex: (0.000026,340.000000,0.000000)
+texA: TexCoord: (0.200000,0.750000)
+texB: TexCoord: (0.200000,1.000000)
+texC: TexCoord: (0.250000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (0.309017,0.951056,0.000000)
+nc: Vector: (0.000000,1.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 51
+{
+a: Vertex: (55.623058,171.190135,-160.000000)
+b: Vertex: (0.000026,340.000000,0.000000)
+c: Vertex: (0.000014,179.999964,-160.000000)
+texA: TexCoord: (0.200000,0.750000)
+texB: TexCoord: (0.250000,1.000000)
+texC: TexCoord: (0.250000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (0.000000,1.000000,0.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 52
+{
+a: Vertex: (0.000026,340.000000,0.000000)
+b: Vertex: (0.000014,180.000012,160.000000)
+c: Vertex: (-55.623047,171.190189,160.000000)
+texA: TexCoord: (0.250000,0.000000)
+texB: TexCoord: (0.250000,0.250000)
+texC: TexCoord: (0.300000,0.250000)
+na: Vector: (0.000000,1.000000,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (-0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 53
+{
+a: Vertex: (0.000026,340.000000,0.000000)
+b: Vertex: (-55.623047,171.190189,160.000000)
+c: Vertex: (-105.065749,323.359225,0.000000)
+texA: TexCoord: (0.250000,0.000000)
+texB: TexCoord: (0.300000,0.250000)
+texC: TexCoord: (0.300000,0.250000)
+na: Vector: (0.000000,1.000000,0.000000)
+nb: Vector: (-0.000000,0.000000,1.000000)
+nc: Vector: (-0.309017,0.951057,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 54
+{
+a: Vertex: (0.000014,180.000012,160.000000)
+b: Vertex: (0.000002,20.000000,0.000024)
+c: Vertex: (-6.180338,19.021131,0.000024)
+texA: TexCoord: (0.250000,0.250000)
+texB: TexCoord: (0.250000,0.500000)
+texC: TexCoord: (0.300000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (-0.000000,-1.000000,0.000000)
+nc: Vector: (0.309017,-0.951057,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 55
+{
+a: Vertex: (0.000014,180.000012,160.000000)
+b: Vertex: (-6.180338,19.021131,0.000024)
+c: Vertex: (-55.623047,171.190189,160.000000)
+texA: TexCoord: (0.250000,0.250000)
+texB: TexCoord: (0.300000,0.500000)
+texC: TexCoord: (0.300000,0.500000)
+na: Vector: (0.000000,0.000000,1.000000)
+nb: Vector: (0.309017,-0.951057,0.000000)
+nc: Vector: (-0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 56
+{
+a: Vertex: (0.000002,20.000000,0.000024)
+b: Vertex: (0.000014,179.999964,-160.000000)
+c: Vertex: (-55.623032,171.190144,-160.000000)
+texA: TexCoord: (0.250000,0.500000)
+texB: TexCoord: (0.250000,0.750000)
+texC: TexCoord: (0.300000,0.750000)
+na: Vector: (-0.000000,-1.000000,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 57
+{
+a: Vertex: (0.000002,20.000000,0.000024)
+b: Vertex: (-55.623032,171.190144,-160.000000)
+c: Vertex: (-6.180338,19.021131,0.000024)
+texA: TexCoord: (0.250000,0.500000)
+texB: TexCoord: (0.300000,0.750000)
+texC: TexCoord: (0.300000,0.750000)
+na: Vector: (-0.000000,-1.000000,0.000000)
+nb: Vector: (0.000000,-0.000000,-1.000000)
+nc: Vector: (0.309017,-0.951057,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 58
+{
+a: Vertex: (0.000014,179.999964,-160.000000)
+b: Vertex: (0.000026,340.000000,0.000000)
+c: Vertex: (-105.065749,323.359225,0.000000)
+texA: TexCoord: (0.250000,0.750000)
+texB: TexCoord: (0.250000,1.000000)
+texC: TexCoord: (0.300000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (0.000000,1.000000,0.000000)
+nc: Vector: (-0.309017,0.951057,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 59
+{
+a: Vertex: (0.000014,179.999964,-160.000000)
+b: Vertex: (-105.065749,323.359225,0.000000)
+c: Vertex: (-55.623032,171.190144,-160.000000)
+texA: TexCoord: (0.250000,0.750000)
+texB: TexCoord: (0.300000,1.000000)
+texC: TexCoord: (0.300000,1.000000)
+na: Vector: (-0.000000,-0.000000,-1.000000)
+nb: Vector: (-0.309017,0.951057,0.000000)
+nc: Vector: (0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 60
+{
+a: Vertex: (-105.065749,323.359225,0.000000)
+b: Vertex: (-55.623047,171.190189,160.000000)
+c: Vertex: (-105.801337,145.623080,160.000000)
+texA: TexCoord: (0.300000,0.000000)
+texB: TexCoord: (0.300000,0.250000)
+texC: TexCoord: (0.350000,0.250000)
+na: Vector: (-0.309017,0.951057,0.000000)
+nb: Vector: (-0.000000,0.000000,1.000000)
+nc: Vector: (-0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 61
+{
+a: Vertex: (-105.065749,323.359225,0.000000)
+b: Vertex: (-105.801337,145.623080,160.000000)
+c: Vertex: (-199.846957,275.065799,0.000000)
+texA: TexCoord: (0.300000,0.000000)
+texB: TexCoord: (0.350000,0.250000)
+texC: TexCoord: (0.350000,0.250000)
+na: Vector: (-0.309017,0.951057,0.000000)
+nb: Vector: (-0.000000,0.000000,1.000000)
+nc: Vector: (-0.587785,0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 62
+{
+a: Vertex: (-55.623047,171.190189,160.000000)
+b: Vertex: (-6.180338,19.021131,0.000024)
+c: Vertex: (-11.755703,16.180341,0.000024)
+texA: TexCoord: (0.300000,0.250000)
+texB: TexCoord: (0.300000,0.500000)
+texC: TexCoord: (0.350000,0.500000)
+na: Vector: (-0.000000,0.000000,1.000000)
+nb: Vector: (0.309017,-0.951057,0.000000)
+nc: Vector: (0.587785,-0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 63
+{
+a: Vertex: (-55.623047,171.190189,160.000000)
+b: Vertex: (-11.755703,16.180341,0.000024)
+c: Vertex: (-105.801337,145.623080,160.000000)
+texA: TexCoord: (0.300000,0.250000)
+texB: TexCoord: (0.350000,0.500000)
+texC: TexCoord: (0.350000,0.500000)
+na: Vector: (-0.000000,0.000000,1.000000)
+nb: Vector: (0.587785,-0.809017,0.000000)
+nc: Vector: (-0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 64
+{
+a: Vertex: (-6.180338,19.021131,0.000024)
+b: Vertex: (-55.623032,171.190144,-160.000000)
+c: Vertex: (-105.801309,145.623041,-160.000000)
+texA: TexCoord: (0.300000,0.500000)
+texB: TexCoord: (0.300000,0.750000)
+texC: TexCoord: (0.350000,0.750000)
+na: Vector: (0.309017,-0.951057,0.000000)
+nb: Vector: (0.000000,-0.000000,-1.000000)
+nc: Vector: (0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 65
+{
+a: Vertex: (-6.180338,19.021131,0.000024)
+b: Vertex: (-105.801309,145.623041,-160.000000)
+c: Vertex: (-11.755703,16.180341,0.000024)
+texA: TexCoord: (0.300000,0.500000)
+texB: TexCoord: (0.350000,0.750000)
+texC: TexCoord: (0.350000,0.750000)
+na: Vector: (0.309017,-0.951057,0.000000)
+nb: Vector: (0.000000,-0.000000,-1.000000)
+nc: Vector: (0.587785,-0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 66
+{
+a: Vertex: (-55.623032,171.190144,-160.000000)
+b: Vertex: (-105.065749,323.359225,0.000000)
+c: Vertex: (-199.846957,275.065799,0.000000)
+texA: TexCoord: (0.300000,0.750000)
+texB: TexCoord: (0.300000,1.000000)
+texC: TexCoord: (0.350000,1.000000)
+na: Vector: (0.000000,-0.000000,-1.000000)
+nb: Vector: (-0.309017,0.951057,0.000000)
+nc: Vector: (-0.587785,0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 67
+{
+a: Vertex: (-55.623032,171.190144,-160.000000)
+b: Vertex: (-199.846957,275.065799,0.000000)
+c: Vertex: (-105.801309,145.623041,-160.000000)
+texA: TexCoord: (0.300000,0.750000)
+texB: TexCoord: (0.350000,1.000000)
+texC: TexCoord: (0.350000,1.000000)
+na: Vector: (0.000000,-0.000000,-1.000000)
+nb: Vector: (-0.587785,0.809017,0.000000)
+nc: Vector: (0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 68
+{
+a: Vertex: (-199.846957,275.065799,0.000000)
+b: Vertex: (-105.801337,145.623080,160.000000)
+c: Vertex: (-145.623056,105.801370,160.000000)
+texA: TexCoord: (0.350000,0.000000)
+texB: TexCoord: (0.350000,0.250000)
+texC: TexCoord: (0.400000,0.250000)
+na: Vector: (-0.587785,0.809017,0.000000)
+nb: Vector: (-0.000000,0.000000,1.000000)
+nc: Vector: (-0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 69
+{
+a: Vertex: (-199.846957,275.065799,0.000000)
+b: Vertex: (-145.623056,105.801370,160.000000)
+c: Vertex: (-275.065754,199.847019,0.000000)
+texA: TexCoord: (0.350000,0.000000)
+texB: TexCoord: (0.400000,0.250000)
+texC: TexCoord: (0.400000,0.250000)
+na: Vector: (-0.587785,0.809017,0.000000)
+nb: Vector: (-0.000000,0.000000,1.000000)
+nc: Vector: (-0.809017,0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 70
+{
+a: Vertex: (-105.801337,145.623080,160.000000)
+b: Vertex: (-11.755703,16.180341,0.000024)
+c: Vertex: (-16.180338,11.755707,0.000024)
+texA: TexCoord: (0.350000,0.250000)
+texB: TexCoord: (0.350000,0.500000)
+texC: TexCoord: (0.400000,0.500000)
+na: Vector: (-0.000000,0.000000,1.000000)
+nb: Vector: (0.587785,-0.809017,0.000000)
+nc: Vector: (0.809017,-0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 71
+{
+a: Vertex: (-105.801337,145.623080,160.000000)
+b: Vertex: (-16.180338,11.755707,0.000024)
+c: Vertex: (-145.623056,105.801370,160.000000)
+texA: TexCoord: (0.350000,0.250000)
+texB: TexCoord: (0.400000,0.500000)
+texC: TexCoord: (0.400000,0.500000)
+na: Vector: (-0.000000,0.000000,1.000000)
+nb: Vector: (0.809017,-0.587785,0.000000)
+nc: Vector: (-0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 72
+{
+a: Vertex: (-11.755703,16.180341,0.000024)
+b: Vertex: (-105.801309,145.623041,-160.000000)
+c: Vertex: (-145.623017,105.801342,-160.000000)
+texA: TexCoord: (0.350000,0.500000)
+texB: TexCoord: (0.350000,0.750000)
+texC: TexCoord: (0.400000,0.750000)
+na: Vector: (0.587785,-0.809017,0.000000)
+nb: Vector: (0.000000,-0.000000,-1.000000)
+nc: Vector: (0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 73
+{
+a: Vertex: (-11.755703,16.180341,0.000024)
+b: Vertex: (-145.623017,105.801342,-160.000000)
+c: Vertex: (-16.180338,11.755707,0.000024)
+texA: TexCoord: (0.350000,0.500000)
+texB: TexCoord: (0.400000,0.750000)
+texC: TexCoord: (0.400000,0.750000)
+na: Vector: (0.587785,-0.809017,0.000000)
+nb: Vector: (0.000000,-0.000000,-1.000000)
+nc: Vector: (0.809017,-0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 74
+{
+a: Vertex: (-105.801309,145.623041,-160.000000)
+b: Vertex: (-199.846957,275.065799,0.000000)
+c: Vertex: (-275.065754,199.847019,0.000000)
+texA: TexCoord: (0.350000,0.750000)
+texB: TexCoord: (0.350000,1.000000)
+texC: TexCoord: (0.400000,1.000000)
+na: Vector: (0.000000,-0.000000,-1.000000)
+nb: Vector: (-0.587785,0.809017,0.000000)
+nc: Vector: (-0.809017,0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 75
+{
+a: Vertex: (-105.801309,145.623041,-160.000000)
+b: Vertex: (-275.065754,199.847019,0.000000)
+c: Vertex: (-145.623017,105.801342,-160.000000)
+texA: TexCoord: (0.350000,0.750000)
+texB: TexCoord: (0.400000,1.000000)
+texC: TexCoord: (0.400000,1.000000)
+na: Vector: (0.000000,-0.000000,-1.000000)
+nb: Vector: (-0.809017,0.587785,0.000000)
+nc: Vector: (0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 76
+{
+a: Vertex: (-275.065754,199.847019,0.000000)
+b: Vertex: (-145.623056,105.801370,160.000000)
+c: Vertex: (-171.190177,55.623086,160.000000)
+texA: TexCoord: (0.400000,0.000000)
+texB: TexCoord: (0.400000,0.250000)
+texC: TexCoord: (0.450000,0.250000)
+na: Vector: (-0.809017,0.587785,0.000000)
+nb: Vector: (-0.000000,0.000000,1.000000)
+nc: Vector: (-0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 77
+{
+a: Vertex: (-275.065754,199.847019,0.000000)
+b: Vertex: (-171.190177,55.623086,160.000000)
+c: Vertex: (-323.359201,105.065822,0.000000)
+texA: TexCoord: (0.400000,0.000000)
+texB: TexCoord: (0.450000,0.250000)
+texC: TexCoord: (0.450000,0.250000)
+na: Vector: (-0.809017,0.587785,0.000000)
+nb: Vector: (-0.000000,0.000000,1.000000)
+nc: Vector: (-0.951056,0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 78
+{
+a: Vertex: (-145.623056,105.801370,160.000000)
+b: Vertex: (-16.180338,11.755707,0.000024)
+c: Vertex: (-19.021129,6.180342,0.000024)
+texA: TexCoord: (0.400000,0.250000)
+texB: TexCoord: (0.400000,0.500000)
+texC: TexCoord: (0.450000,0.500000)
+na: Vector: (-0.000000,0.000000,1.000000)
+nb: Vector: (0.809017,-0.587785,0.000000)
+nc: Vector: (0.951056,-0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 79
+{
+a: Vertex: (-145.623056,105.801370,160.000000)
+b: Vertex: (-19.021129,6.180342,0.000024)
+c: Vertex: (-171.190177,55.623086,160.000000)
+texA: TexCoord: (0.400000,0.250000)
+texB: TexCoord: (0.450000,0.500000)
+texC: TexCoord: (0.450000,0.500000)
+na: Vector: (-0.000000,0.000000,1.000000)
+nb: Vector: (0.951056,-0.309017,0.000000)
+nc: Vector: (-0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 80
+{
+a: Vertex: (-16.180338,11.755707,0.000024)
+b: Vertex: (-145.623017,105.801342,-160.000000)
+c: Vertex: (-171.190131,55.623071,-160.000000)
+texA: TexCoord: (0.400000,0.500000)
+texB: TexCoord: (0.400000,0.750000)
+texC: TexCoord: (0.450000,0.750000)
+na: Vector: (0.809017,-0.587785,0.000000)
+nb: Vector: (0.000000,-0.000000,-1.000000)
+nc: Vector: (0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 81
+{
+a: Vertex: (-16.180338,11.755707,0.000024)
+b: Vertex: (-171.190131,55.623071,-160.000000)
+c: Vertex: (-19.021129,6.180342,0.000024)
+texA: TexCoord: (0.400000,0.500000)
+texB: TexCoord: (0.450000,0.750000)
+texC: TexCoord: (0.450000,0.750000)
+na: Vector: (0.809017,-0.587785,0.000000)
+nb: Vector: (0.000000,-0.000000,-1.000000)
+nc: Vector: (0.951056,-0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 82
+{
+a: Vertex: (-145.623017,105.801342,-160.000000)
+b: Vertex: (-275.065754,199.847019,0.000000)
+c: Vertex: (-323.359201,105.065822,0.000000)
+texA: TexCoord: (0.400000,0.750000)
+texB: TexCoord: (0.400000,1.000000)
+texC: TexCoord: (0.450000,1.000000)
+na: Vector: (0.000000,-0.000000,-1.000000)
+nb: Vector: (-0.809017,0.587785,0.000000)
+nc: Vector: (-0.951056,0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 83
+{
+a: Vertex: (-145.623017,105.801342,-160.000000)
+b: Vertex: (-323.359201,105.065822,0.000000)
+c: Vertex: (-171.190131,55.623071,-160.000000)
+texA: TexCoord: (0.400000,0.750000)
+texB: TexCoord: (0.450000,1.000000)
+texC: TexCoord: (0.450000,1.000000)
+na: Vector: (0.000000,-0.000000,-1.000000)
+nb: Vector: (-0.951056,0.309017,0.000000)
+nc: Vector: (0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 84
+{
+a: Vertex: (-323.359201,105.065822,0.000000)
+b: Vertex: (-171.190177,55.623086,160.000000)
+c: Vertex: (-180.000012,0.000027,160.000000)
+texA: TexCoord: (0.450000,0.000000)
+texB: TexCoord: (0.450000,0.250000)
+texC: TexCoord: (0.500000,0.250000)
+na: Vector: (-0.951056,0.309017,0.000000)
+nb: Vector: (-0.000000,0.000000,1.000000)
+nc: Vector: (-0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 85
+{
+a: Vertex: (-323.359201,105.065822,0.000000)
+b: Vertex: (-180.000012,0.000027,160.000000)
+c: Vertex: (-340.000000,0.000051,0.000000)
+texA: TexCoord: (0.450000,0.000000)
+texB: TexCoord: (0.500000,0.250000)
+texC: TexCoord: (0.500000,0.250000)
+na: Vector: (-0.951056,0.309017,0.000000)
+nb: Vector: (-0.000000,0.000000,1.000000)
+nc: Vector: (-1.000000,0.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 86
+{
+a: Vertex: (-171.190177,55.623086,160.000000)
+b: Vertex: (-19.021129,6.180342,0.000024)
+c: Vertex: (-20.000000,0.000003,0.000024)
+texA: TexCoord: (0.450000,0.250000)
+texB: TexCoord: (0.450000,0.500000)
+texC: TexCoord: (0.500000,0.500000)
+na: Vector: (-0.000000,0.000000,1.000000)
+nb: Vector: (0.951056,-0.309017,0.000000)
+nc: Vector: (1.000000,-0.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 87
+{
+a: Vertex: (-171.190177,55.623086,160.000000)
+b: Vertex: (-20.000000,0.000003,0.000024)
+c: Vertex: (-180.000012,0.000027,160.000000)
+texA: TexCoord: (0.450000,0.250000)
+texB: TexCoord: (0.500000,0.500000)
+texC: TexCoord: (0.500000,0.500000)
+na: Vector: (-0.000000,0.000000,1.000000)
+nb: Vector: (1.000000,-0.000000,0.000000)
+nc: Vector: (-0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 88
+{
+a: Vertex: (-19.021129,6.180342,0.000024)
+b: Vertex: (-171.190131,55.623071,-160.000000)
+c: Vertex: (-179.999964,0.000027,-160.000000)
+texA: TexCoord: (0.450000,0.500000)
+texB: TexCoord: (0.450000,0.750000)
+texC: TexCoord: (0.500000,0.750000)
+na: Vector: (0.951056,-0.309017,0.000000)
+nb: Vector: (0.000000,-0.000000,-1.000000)
+nc: Vector: (0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 89
+{
+a: Vertex: (-19.021129,6.180342,0.000024)
+b: Vertex: (-179.999964,0.000027,-160.000000)
+c: Vertex: (-20.000000,0.000003,0.000024)
+texA: TexCoord: (0.450000,0.500000)
+texB: TexCoord: (0.500000,0.750000)
+texC: TexCoord: (0.500000,0.750000)
+na: Vector: (0.951056,-0.309017,0.000000)
+nb: Vector: (0.000000,-0.000000,-1.000000)
+nc: Vector: (1.000000,-0.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 90
+{
+a: Vertex: (-171.190131,55.623071,-160.000000)
+b: Vertex: (-323.359201,105.065822,0.000000)
+c: Vertex: (-340.000000,0.000051,0.000000)
+texA: TexCoord: (0.450000,0.750000)
+texB: TexCoord: (0.450000,1.000000)
+texC: TexCoord: (0.500000,1.000000)
+na: Vector: (0.000000,-0.000000,-1.000000)
+nb: Vector: (-0.951056,0.309017,0.000000)
+nc: Vector: (-1.000000,0.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 91
+{
+a: Vertex: (-171.190131,55.623071,-160.000000)
+b: Vertex: (-340.000000,0.000051,0.000000)
+c: Vertex: (-179.999964,0.000027,-160.000000)
+texA: TexCoord: (0.450000,0.750000)
+texB: TexCoord: (0.500000,1.000000)
+texC: TexCoord: (0.500000,1.000000)
+na: Vector: (0.000000,-0.000000,-1.000000)
+nb: Vector: (-1.000000,0.000000,0.000000)
+nc: Vector: (0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 92
+{
+a: Vertex: (-340.000000,0.000051,0.000000)
+b: Vertex: (-180.000012,0.000027,160.000000)
+c: Vertex: (-171.190194,-55.623034,160.000000)
+texA: TexCoord: (0.500000,0.000000)
+texB: TexCoord: (0.500000,0.250000)
+texC: TexCoord: (0.550000,0.250000)
+na: Vector: (-1.000000,0.000000,0.000000)
+nb: Vector: (-0.000000,0.000000,1.000000)
+nc: Vector: (-0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 93
+{
+a: Vertex: (-340.000000,0.000051,0.000000)
+b: Vertex: (-171.190194,-55.623034,160.000000)
+c: Vertex: (-323.359233,-105.065724,0.000000)
+texA: TexCoord: (0.500000,0.000000)
+texB: TexCoord: (0.550000,0.250000)
+texC: TexCoord: (0.550000,0.250000)
+na: Vector: (-1.000000,0.000000,0.000000)
+nb: Vector: (-0.000000,-0.000000,1.000000)
+nc: Vector: (-0.951057,-0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 94
+{
+a: Vertex: (-180.000012,0.000027,160.000000)
+b: Vertex: (-20.000000,0.000003,0.000024)
+c: Vertex: (-19.021131,-6.180337,0.000024)
+texA: TexCoord: (0.500000,0.250000)
+texB: TexCoord: (0.500000,0.500000)
+texC: TexCoord: (0.550000,0.500000)
+na: Vector: (-0.000000,0.000000,1.000000)
+nb: Vector: (1.000000,-0.000000,0.000000)
+nc: Vector: (0.951057,0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 95
+{
+a: Vertex: (-180.000012,0.000027,160.000000)
+b: Vertex: (-19.021131,-6.180337,0.000024)
+c: Vertex: (-171.190194,-55.623034,160.000000)
+texA: TexCoord: (0.500000,0.250000)
+texB: TexCoord: (0.550000,0.500000)
+texC: TexCoord: (0.550000,0.500000)
+na: Vector: (-0.000000,0.000000,1.000000)
+nb: Vector: (0.951057,0.309017,0.000000)
+nc: Vector: (-0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 96
+{
+a: Vertex: (-20.000000,0.000003,0.000024)
+b: Vertex: (-179.999964,0.000027,-160.000000)
+c: Vertex: (-171.190148,-55.623019,-160.000000)
+texA: TexCoord: (0.500000,0.500000)
+texB: TexCoord: (0.500000,0.750000)
+texC: TexCoord: (0.550000,0.750000)
+na: Vector: (1.000000,-0.000000,0.000000)
+nb: Vector: (0.000000,-0.000000,-1.000000)
+nc: Vector: (0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 97
+{
+a: Vertex: (-20.000000,0.000003,0.000024)
+b: Vertex: (-171.190148,-55.623019,-160.000000)
+c: Vertex: (-19.021131,-6.180337,0.000024)
+texA: TexCoord: (0.500000,0.500000)
+texB: TexCoord: (0.550000,0.750000)
+texC: TexCoord: (0.550000,0.750000)
+na: Vector: (1.000000,-0.000000,0.000000)
+nb: Vector: (0.000000,0.000000,-1.000000)
+nc: Vector: (0.951057,0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 98
+{
+a: Vertex: (-179.999964,0.000027,-160.000000)
+b: Vertex: (-340.000000,0.000051,0.000000)
+c: Vertex: (-323.359233,-105.065724,0.000000)
+texA: TexCoord: (0.500000,0.750000)
+texB: TexCoord: (0.500000,1.000000)
+texC: TexCoord: (0.550000,1.000000)
+na: Vector: (0.000000,-0.000000,-1.000000)
+nb: Vector: (-1.000000,0.000000,0.000000)
+nc: Vector: (-0.951057,-0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 99
+{
+a: Vertex: (-179.999964,0.000027,-160.000000)
+b: Vertex: (-323.359233,-105.065724,0.000000)
+c: Vertex: (-171.190148,-55.623019,-160.000000)
+texA: TexCoord: (0.500000,0.750000)
+texB: TexCoord: (0.550000,1.000000)
+texC: TexCoord: (0.550000,1.000000)
+na: Vector: (0.000000,-0.000000,-1.000000)
+nb: Vector: (-0.951057,-0.309017,0.000000)
+nc: Vector: (0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 100
+{
+a: Vertex: (-323.359233,-105.065724,0.000000)
+b: Vertex: (-171.190194,-55.623034,160.000000)
+c: Vertex: (-145.623088,-105.801326,160.000000)
+texA: TexCoord: (0.550000,0.000000)
+texB: TexCoord: (0.550000,0.250000)
+texC: TexCoord: (0.600000,0.250000)
+na: Vector: (-0.951057,-0.309017,0.000000)
+nb: Vector: (-0.000000,-0.000000,1.000000)
+nc: Vector: (-0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 101
+{
+a: Vertex: (-323.359233,-105.065724,0.000000)
+b: Vertex: (-145.623088,-105.801326,160.000000)
+c: Vertex: (-275.065814,-199.846936,0.000000)
+texA: TexCoord: (0.550000,0.000000)
+texB: TexCoord: (0.600000,0.250000)
+texC: TexCoord: (0.600000,0.250000)
+na: Vector: (-0.951057,-0.309017,0.000000)
+nb: Vector: (-0.000000,-0.000000,1.000000)
+nc: Vector: (-0.809017,-0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 102
+{
+a: Vertex: (-171.190194,-55.623034,160.000000)
+b: Vertex: (-19.021131,-6.180337,0.000024)
+c: Vertex: (-16.180342,-11.755702,0.000024)
+texA: TexCoord: (0.550000,0.250000)
+texB: TexCoord: (0.550000,0.500000)
+texC: TexCoord: (0.600000,0.500000)
+na: Vector: (-0.000000,-0.000000,1.000000)
+nb: Vector: (0.951057,0.309017,0.000000)
+nc: Vector: (0.809017,0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 103
+{
+a: Vertex: (-171.190194,-55.623034,160.000000)
+b: Vertex: (-16.180342,-11.755702,0.000024)
+c: Vertex: (-145.623088,-105.801326,160.000000)
+texA: TexCoord: (0.550000,0.250000)
+texB: TexCoord: (0.600000,0.500000)
+texC: TexCoord: (0.600000,0.500000)
+na: Vector: (-0.000000,-0.000000,1.000000)
+nb: Vector: (0.809017,0.587785,0.000000)
+nc: Vector: (-0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 104
+{
+a: Vertex: (-19.021131,-6.180337,0.000024)
+b: Vertex: (-171.190148,-55.623019,-160.000000)
+c: Vertex: (-145.623049,-105.801298,-160.000000)
+texA: TexCoord: (0.550000,0.500000)
+texB: TexCoord: (0.550000,0.750000)
+texC: TexCoord: (0.600000,0.750000)
+na: Vector: (0.951057,0.309017,0.000000)
+nb: Vector: (0.000000,0.000000,-1.000000)
+nc: Vector: (0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 105
+{
+a: Vertex: (-19.021131,-6.180337,0.000024)
+b: Vertex: (-145.623049,-105.801298,-160.000000)
+c: Vertex: (-16.180342,-11.755702,0.000024)
+texA: TexCoord: (0.550000,0.500000)
+texB: TexCoord: (0.600000,0.750000)
+texC: TexCoord: (0.600000,0.750000)
+na: Vector: (0.951057,0.309017,0.000000)
+nb: Vector: (0.000000,0.000000,-1.000000)
+nc: Vector: (0.809017,0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 106
+{
+a: Vertex: (-171.190148,-55.623019,-160.000000)
+b: Vertex: (-323.359233,-105.065724,0.000000)
+c: Vertex: (-275.065814,-199.846936,0.000000)
+texA: TexCoord: (0.550000,0.750000)
+texB: TexCoord: (0.550000,1.000000)
+texC: TexCoord: (0.600000,1.000000)
+na: Vector: (0.000000,0.000000,-1.000000)
+nb: Vector: (-0.951057,-0.309017,0.000000)
+nc: Vector: (-0.809017,-0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 107
+{
+a: Vertex: (-171.190148,-55.623019,-160.000000)
+b: Vertex: (-275.065814,-199.846936,0.000000)
+c: Vertex: (-145.623049,-105.801298,-160.000000)
+texA: TexCoord: (0.550000,0.750000)
+texB: TexCoord: (0.600000,1.000000)
+texC: TexCoord: (0.600000,1.000000)
+na: Vector: (0.000000,0.000000,-1.000000)
+nb: Vector: (-0.809017,-0.587785,0.000000)
+nc: Vector: (0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 108
+{
+a: Vertex: (-275.065814,-199.846936,0.000000)
+b: Vertex: (-145.623088,-105.801326,160.000000)
+c: Vertex: (-105.801381,-145.623048,160.000000)
+texA: TexCoord: (0.600000,0.000000)
+texB: TexCoord: (0.600000,0.250000)
+texC: TexCoord: (0.650000,0.250000)
+na: Vector: (-0.809017,-0.587785,0.000000)
+nb: Vector: (-0.000000,-0.000000,1.000000)
+nc: Vector: (-0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 109
+{
+a: Vertex: (-275.065814,-199.846936,0.000000)
+b: Vertex: (-105.801381,-145.623048,160.000000)
+c: Vertex: (-199.847040,-275.065739,0.000000)
+texA: TexCoord: (0.600000,0.000000)
+texB: TexCoord: (0.650000,0.250000)
+texC: TexCoord: (0.650000,0.250000)
+na: Vector: (-0.809017,-0.587785,0.000000)
+nb: Vector: (-0.000000,-0.000000,1.000000)
+nc: Vector: (-0.587785,-0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 110
+{
+a: Vertex: (-145.623088,-105.801326,160.000000)
+b: Vertex: (-16.180342,-11.755702,0.000024)
+c: Vertex: (-11.755708,-16.180338,0.000024)
+texA: TexCoord: (0.600000,0.250000)
+texB: TexCoord: (0.600000,0.500000)
+texC: TexCoord: (0.650000,0.500000)
+na: Vector: (-0.000000,-0.000000,1.000000)
+nb: Vector: (0.809017,0.587785,0.000000)
+nc: Vector: (0.587785,0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 111
+{
+a: Vertex: (-145.623088,-105.801326,160.000000)
+b: Vertex: (-11.755708,-16.180338,0.000024)
+c: Vertex: (-105.801381,-145.623048,160.000000)
+texA: TexCoord: (0.600000,0.250000)
+texB: TexCoord: (0.650000,0.500000)
+texC: TexCoord: (0.650000,0.500000)
+na: Vector: (-0.000000,-0.000000,1.000000)
+nb: Vector: (0.587785,0.809017,0.000000)
+nc: Vector: (-0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 112
+{
+a: Vertex: (-16.180342,-11.755702,0.000024)
+b: Vertex: (-145.623049,-105.801298,-160.000000)
+c: Vertex: (-105.801353,-145.623009,-160.000000)
+texA: TexCoord: (0.600000,0.500000)
+texB: TexCoord: (0.600000,0.750000)
+texC: TexCoord: (0.650000,0.750000)
+na: Vector: (0.809017,0.587785,0.000000)
+nb: Vector: (0.000000,0.000000,-1.000000)
+nc: Vector: (0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 113
+{
+a: Vertex: (-16.180342,-11.755702,0.000024)
+b: Vertex: (-105.801353,-145.623009,-160.000000)
+c: Vertex: (-11.755708,-16.180338,0.000024)
+texA: TexCoord: (0.600000,0.500000)
+texB: TexCoord: (0.650000,0.750000)
+texC: TexCoord: (0.650000,0.750000)
+na: Vector: (0.809017,0.587785,0.000000)
+nb: Vector: (0.000000,0.000000,-1.000000)
+nc: Vector: (0.587785,0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 114
+{
+a: Vertex: (-145.623049,-105.801298,-160.000000)
+b: Vertex: (-275.065814,-199.846936,0.000000)
+c: Vertex: (-199.847040,-275.065739,0.000000)
+texA: TexCoord: (0.600000,0.750000)
+texB: TexCoord: (0.600000,1.000000)
+texC: TexCoord: (0.650000,1.000000)
+na: Vector: (0.000000,0.000000,-1.000000)
+nb: Vector: (-0.809017,-0.587785,0.000000)
+nc: Vector: (-0.587785,-0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 115
+{
+a: Vertex: (-145.623049,-105.801298,-160.000000)
+b: Vertex: (-199.847040,-275.065739,0.000000)
+c: Vertex: (-105.801353,-145.623009,-160.000000)
+texA: TexCoord: (0.600000,0.750000)
+texB: TexCoord: (0.650000,1.000000)
+texC: TexCoord: (0.650000,1.000000)
+na: Vector: (0.000000,0.000000,-1.000000)
+nb: Vector: (-0.587785,-0.809017,0.000000)
+nc: Vector: (0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 116
+{
+a: Vertex: (-199.847040,-275.065739,0.000000)
+b: Vertex: (-105.801381,-145.623048,160.000000)
+c: Vertex: (-55.623099,-171.190173,160.000000)
+texA: TexCoord: (0.650000,0.000000)
+texB: TexCoord: (0.650000,0.250000)
+texC: TexCoord: (0.700000,0.250000)
+na: Vector: (-0.587785,-0.809017,0.000000)
+nb: Vector: (-0.000000,-0.000000,1.000000)
+nc: Vector: (-0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 117
+{
+a: Vertex: (-199.847040,-275.065739,0.000000)
+b: Vertex: (-55.623099,-171.190173,160.000000)
+c: Vertex: (-105.065846,-323.359193,0.000000)
+texA: TexCoord: (0.650000,0.000000)
+texB: TexCoord: (0.700000,0.250000)
+texC: TexCoord: (0.700000,0.250000)
+na: Vector: (-0.587785,-0.809017,0.000000)
+nb: Vector: (-0.000000,-0.000000,1.000000)
+nc: Vector: (-0.309017,-0.951056,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 118
+{
+a: Vertex: (-105.801381,-145.623048,160.000000)
+b: Vertex: (-11.755708,-16.180338,0.000024)
+c: Vertex: (-6.180344,-19.021129,0.000024)
+texA: TexCoord: (0.650000,0.250000)
+texB: TexCoord: (0.650000,0.500000)
+texC: TexCoord: (0.700000,0.500000)
+na: Vector: (-0.000000,-0.000000,1.000000)
+nb: Vector: (0.587785,0.809017,0.000000)
+nc: Vector: (0.309017,0.951056,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 119
+{
+a: Vertex: (-105.801381,-145.623048,160.000000)
+b: Vertex: (-6.180344,-19.021129,0.000024)
+c: Vertex: (-55.623099,-171.190173,160.000000)
+texA: TexCoord: (0.650000,0.250000)
+texB: TexCoord: (0.700000,0.500000)
+texC: TexCoord: (0.700000,0.500000)
+na: Vector: (-0.000000,-0.000000,1.000000)
+nb: Vector: (0.309017,0.951056,0.000000)
+nc: Vector: (-0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 120
+{
+a: Vertex: (-11.755708,-16.180338,0.000024)
+b: Vertex: (-105.801353,-145.623009,-160.000000)
+c: Vertex: (-55.623084,-171.190127,-160.000000)
+texA: TexCoord: (0.650000,0.500000)
+texB: TexCoord: (0.650000,0.750000)
+texC: TexCoord: (0.700000,0.750000)
+na: Vector: (0.587785,0.809017,0.000000)
+nb: Vector: (0.000000,0.000000,-1.000000)
+nc: Vector: (0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 121
+{
+a: Vertex: (-11.755708,-16.180338,0.000024)
+b: Vertex: (-55.623084,-171.190127,-160.000000)
+c: Vertex: (-6.180344,-19.021129,0.000024)
+texA: TexCoord: (0.650000,0.500000)
+texB: TexCoord: (0.700000,0.750000)
+texC: TexCoord: (0.700000,0.750000)
+na: Vector: (0.587785,0.809017,0.000000)
+nb: Vector: (0.000000,0.000000,-1.000000)
+nc: Vector: (0.309017,0.951056,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 122
+{
+a: Vertex: (-105.801353,-145.623009,-160.000000)
+b: Vertex: (-199.847040,-275.065739,0.000000)
+c: Vertex: (-105.065846,-323.359193,0.000000)
+texA: TexCoord: (0.650000,0.750000)
+texB: TexCoord: (0.650000,1.000000)
+texC: TexCoord: (0.700000,1.000000)
+na: Vector: (0.000000,0.000000,-1.000000)
+nb: Vector: (-0.587785,-0.809017,0.000000)
+nc: Vector: (-0.309017,-0.951056,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 123
+{
+a: Vertex: (-105.801353,-145.623009,-160.000000)
+b: Vertex: (-105.065846,-323.359193,0.000000)
+c: Vertex: (-55.623084,-171.190127,-160.000000)
+texA: TexCoord: (0.650000,0.750000)
+texB: TexCoord: (0.700000,1.000000)
+texC: TexCoord: (0.700000,1.000000)
+na: Vector: (0.000000,0.000000,-1.000000)
+nb: Vector: (-0.309017,-0.951056,0.000000)
+nc: Vector: (0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 124
+{
+a: Vertex: (-105.065846,-323.359193,0.000000)
+b: Vertex: (-55.623099,-171.190173,160.000000)
+c: Vertex: (-0.000041,-180.000012,160.000000)
+texA: TexCoord: (0.700000,0.000000)
+texB: TexCoord: (0.700000,0.250000)
+texC: TexCoord: (0.750000,0.250000)
+na: Vector: (-0.309017,-0.951056,0.000000)
+nb: Vector: (-0.000000,-0.000000,1.000000)
+nc: Vector: (-0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 125
+{
+a: Vertex: (-105.065846,-323.359193,0.000000)
+b: Vertex: (-0.000041,-180.000012,160.000000)
+c: Vertex: (-0.000077,-340.000000,0.000000)
+texA: TexCoord: (0.700000,0.000000)
+texB: TexCoord: (0.750000,0.250000)
+texC: TexCoord: (0.750000,0.250000)
+na: Vector: (-0.309017,-0.951056,0.000000)
+nb: Vector: (-0.000000,-0.000000,1.000000)
+nc: Vector: (-0.000000,-1.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 126
+{
+a: Vertex: (-55.623099,-171.190173,160.000000)
+b: Vertex: (-6.180344,-19.021129,0.000024)
+c: Vertex: (-0.000005,-20.000000,0.000024)
+texA: TexCoord: (0.700000,0.250000)
+texB: TexCoord: (0.700000,0.500000)
+texC: TexCoord: (0.750000,0.500000)
+na: Vector: (-0.000000,-0.000000,1.000000)
+nb: Vector: (0.309017,0.951056,0.000000)
+nc: Vector: (0.000000,1.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 127
+{
+a: Vertex: (-55.623099,-171.190173,160.000000)
+b: Vertex: (-0.000005,-20.000000,0.000024)
+c: Vertex: (-0.000041,-180.000012,160.000000)
+texA: TexCoord: (0.700000,0.250000)
+texB: TexCoord: (0.750000,0.500000)
+texC: TexCoord: (0.750000,0.500000)
+na: Vector: (-0.000000,-0.000000,1.000000)
+nb: Vector: (0.000000,1.000000,0.000000)
+nc: Vector: (-0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 128
+{
+a: Vertex: (-6.180344,-19.021129,0.000024)
+b: Vertex: (-55.623084,-171.190127,-160.000000)
+c: Vertex: (-0.000041,-179.999964,-160.000000)
+texA: TexCoord: (0.700000,0.500000)
+texB: TexCoord: (0.700000,0.750000)
+texC: TexCoord: (0.750000,0.750000)
+na: Vector: (0.309017,0.951056,0.000000)
+nb: Vector: (0.000000,0.000000,-1.000000)
+nc: Vector: (0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 129
+{
+a: Vertex: (-6.180344,-19.021129,0.000024)
+b: Vertex: (-0.000041,-179.999964,-160.000000)
+c: Vertex: (-0.000005,-20.000000,0.000024)
+texA: TexCoord: (0.700000,0.500000)
+texB: TexCoord: (0.750000,0.750000)
+texC: TexCoord: (0.750000,0.750000)
+na: Vector: (0.309017,0.951056,0.000000)
+nb: Vector: (0.000000,0.000000,-1.000000)
+nc: Vector: (0.000000,1.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 130
+{
+a: Vertex: (-55.623084,-171.190127,-160.000000)
+b: Vertex: (-105.065846,-323.359193,0.000000)
+c: Vertex: (-0.000077,-340.000000,0.000000)
+texA: TexCoord: (0.700000,0.750000)
+texB: TexCoord: (0.700000,1.000000)
+texC: TexCoord: (0.750000,1.000000)
+na: Vector: (0.000000,0.000000,-1.000000)
+nb: Vector: (-0.309017,-0.951056,0.000000)
+nc: Vector: (-0.000000,-1.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 131
+{
+a: Vertex: (-55.623084,-171.190127,-160.000000)
+b: Vertex: (-0.000077,-340.000000,0.000000)
+c: Vertex: (-0.000041,-179.999964,-160.000000)
+texA: TexCoord: (0.700000,0.750000)
+texB: TexCoord: (0.750000,1.000000)
+texC: TexCoord: (0.750000,1.000000)
+na: Vector: (0.000000,0.000000,-1.000000)
+nb: Vector: (-0.000000,-1.000000,0.000000)
+nc: Vector: (0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 132
+{
+a: Vertex: (-0.000077,-340.000000,0.000000)
+b: Vertex: (-0.000041,-180.000012,160.000000)
+c: Vertex: (55.623021,-171.190198,160.000000)
+texA: TexCoord: (0.750000,0.000000)
+texB: TexCoord: (0.750000,0.250000)
+texC: TexCoord: (0.800000,0.250000)
+na: Vector: (-0.000000,-1.000000,0.000000)
+nb: Vector: (-0.000000,-0.000000,1.000000)
+nc: Vector: (0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 133
+{
+a: Vertex: (-0.000077,-340.000000,0.000000)
+b: Vertex: (55.623021,-171.190198,160.000000)
+c: Vertex: (105.065700,-323.359241,0.000000)
+texA: TexCoord: (0.750000,0.000000)
+texB: TexCoord: (0.800000,0.250000)
+texC: TexCoord: (0.800000,0.250000)
+na: Vector: (-0.000000,-1.000000,0.000000)
+nb: Vector: (0.000000,-0.000000,1.000000)
+nc: Vector: (0.309017,-0.951057,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 134
+{
+a: Vertex: (-0.000041,-180.000012,160.000000)
+b: Vertex: (-0.000005,-20.000000,0.000024)
+c: Vertex: (6.180335,-19.021132,0.000024)
+texA: TexCoord: (0.750000,0.250000)
+texB: TexCoord: (0.750000,0.500000)
+texC: TexCoord: (0.800000,0.500000)
+na: Vector: (-0.000000,-0.000000,1.000000)
+nb: Vector: (0.000000,1.000000,0.000000)
+nc: Vector: (-0.309017,0.951057,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 135
+{
+a: Vertex: (-0.000041,-180.000012,160.000000)
+b: Vertex: (6.180335,-19.021132,0.000024)
+c: Vertex: (55.623021,-171.190198,160.000000)
+texA: TexCoord: (0.750000,0.250000)
+texB: TexCoord: (0.800000,0.500000)
+texC: TexCoord: (0.800000,0.500000)
+na: Vector: (-0.000000,-0.000000,1.000000)
+nb: Vector: (-0.309017,0.951057,0.000000)
+nc: Vector: (0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 136
+{
+a: Vertex: (-0.000005,-20.000000,0.000024)
+b: Vertex: (-0.000041,-179.999964,-160.000000)
+c: Vertex: (55.623006,-171.190152,-160.000000)
+texA: TexCoord: (0.750000,0.500000)
+texB: TexCoord: (0.750000,0.750000)
+texC: TexCoord: (0.800000,0.750000)
+na: Vector: (0.000000,1.000000,0.000000)
+nb: Vector: (0.000000,0.000000,-1.000000)
+nc: Vector: (-0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 137
+{
+a: Vertex: (-0.000005,-20.000000,0.000024)
+b: Vertex: (55.623006,-171.190152,-160.000000)
+c: Vertex: (6.180335,-19.021132,0.000024)
+texA: TexCoord: (0.750000,0.500000)
+texB: TexCoord: (0.800000,0.750000)
+texC: TexCoord: (0.800000,0.750000)
+na: Vector: (0.000000,1.000000,0.000000)
+nb: Vector: (-0.000000,0.000000,-1.000000)
+nc: Vector: (-0.309017,0.951057,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 138
+{
+a: Vertex: (-0.000041,-179.999964,-160.000000)
+b: Vertex: (-0.000077,-340.000000,0.000000)
+c: Vertex: (105.065700,-323.359241,0.000000)
+texA: TexCoord: (0.750000,0.750000)
+texB: TexCoord: (0.750000,1.000000)
+texC: TexCoord: (0.800000,1.000000)
+na: Vector: (0.000000,0.000000,-1.000000)
+nb: Vector: (-0.000000,-1.000000,0.000000)
+nc: Vector: (0.309017,-0.951057,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 139
+{
+a: Vertex: (-0.000041,-179.999964,-160.000000)
+b: Vertex: (105.065700,-323.359241,0.000000)
+c: Vertex: (55.623006,-171.190152,-160.000000)
+texA: TexCoord: (0.750000,0.750000)
+texB: TexCoord: (0.800000,1.000000)
+texC: TexCoord: (0.800000,1.000000)
+na: Vector: (0.000000,0.000000,-1.000000)
+nb: Vector: (0.309017,-0.951057,0.000000)
+nc: Vector: (-0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 140
+{
+a: Vertex: (105.065700,-323.359241,0.000000)
+b: Vertex: (55.623021,-171.190198,160.000000)
+c: Vertex: (105.801315,-145.623096,160.000000)
+texA: TexCoord: (0.800000,0.000000)
+texB: TexCoord: (0.800000,0.250000)
+texC: TexCoord: (0.850000,0.250000)
+na: Vector: (0.309017,-0.951057,0.000000)
+nb: Vector: (0.000000,-0.000000,1.000000)
+nc: Vector: (0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 141
+{
+a: Vertex: (105.065700,-323.359241,0.000000)
+b: Vertex: (105.801315,-145.623096,160.000000)
+c: Vertex: (199.846915,-275.065829,0.000000)
+texA: TexCoord: (0.800000,0.000000)
+texB: TexCoord: (0.850000,0.250000)
+texC: TexCoord: (0.850000,0.250000)
+na: Vector: (0.309017,-0.951057,0.000000)
+nb: Vector: (0.000000,-0.000000,1.000000)
+nc: Vector: (0.587785,-0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 142
+{
+a: Vertex: (55.623021,-171.190198,160.000000)
+b: Vertex: (6.180335,-19.021132,0.000024)
+c: Vertex: (11.755701,-16.180343,0.000024)
+texA: TexCoord: (0.800000,0.250000)
+texB: TexCoord: (0.800000,0.500000)
+texC: TexCoord: (0.850000,0.500000)
+na: Vector: (0.000000,-0.000000,1.000000)
+nb: Vector: (-0.309017,0.951057,0.000000)
+nc: Vector: (-0.587785,0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 143
+{
+a: Vertex: (55.623021,-171.190198,160.000000)
+b: Vertex: (11.755701,-16.180343,0.000024)
+c: Vertex: (105.801315,-145.623096,160.000000)
+texA: TexCoord: (0.800000,0.250000)
+texB: TexCoord: (0.850000,0.500000)
+texC: TexCoord: (0.850000,0.500000)
+na: Vector: (0.000000,-0.000000,1.000000)
+nb: Vector: (-0.587785,0.809017,0.000000)
+nc: Vector: (0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 144
+{
+a: Vertex: (6.180335,-19.021132,0.000024)
+b: Vertex: (55.623006,-171.190152,-160.000000)
+c: Vertex: (105.801287,-145.623057,-160.000000)
+texA: TexCoord: (0.800000,0.500000)
+texB: TexCoord: (0.800000,0.750000)
+texC: TexCoord: (0.850000,0.750000)
+na: Vector: (-0.309017,0.951057,0.000000)
+nb: Vector: (-0.000000,0.000000,-1.000000)
+nc: Vector: (-0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 145
+{
+a: Vertex: (6.180335,-19.021132,0.000024)
+b: Vertex: (105.801287,-145.623057,-160.000000)
+c: Vertex: (11.755701,-16.180343,0.000024)
+texA: TexCoord: (0.800000,0.500000)
+texB: TexCoord: (0.850000,0.750000)
+texC: TexCoord: (0.850000,0.750000)
+na: Vector: (-0.309017,0.951057,0.000000)
+nb: Vector: (-0.000000,0.000000,-1.000000)
+nc: Vector: (-0.587785,0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 146
+{
+a: Vertex: (55.623006,-171.190152,-160.000000)
+b: Vertex: (105.065700,-323.359241,0.000000)
+c: Vertex: (199.846915,-275.065829,0.000000)
+texA: TexCoord: (0.800000,0.750000)
+texB: TexCoord: (0.800000,1.000000)
+texC: TexCoord: (0.850000,1.000000)
+na: Vector: (-0.000000,0.000000,-1.000000)
+nb: Vector: (0.309017,-0.951057,0.000000)
+nc: Vector: (0.587785,-0.809017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 147
+{
+a: Vertex: (55.623006,-171.190152,-160.000000)
+b: Vertex: (199.846915,-275.065829,0.000000)
+c: Vertex: (105.801287,-145.623057,-160.000000)
+texA: TexCoord: (0.800000,0.750000)
+texB: TexCoord: (0.850000,1.000000)
+texC: TexCoord: (0.850000,1.000000)
+na: Vector: (-0.000000,0.000000,-1.000000)
+nb: Vector: (0.587785,-0.809017,0.000000)
+nc: Vector: (-0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 148
+{
+a: Vertex: (199.846915,-275.065829,0.000000)
+b: Vertex: (105.801315,-145.623096,160.000000)
+c: Vertex: (145.623040,-105.801392,160.000000)
+texA: TexCoord: (0.850000,0.000000)
+texB: TexCoord: (0.850000,0.250000)
+texC: TexCoord: (0.900000,0.250000)
+na: Vector: (0.587785,-0.809017,0.000000)
+nb: Vector: (0.000000,-0.000000,1.000000)
+nc: Vector: (0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 149
+{
+a: Vertex: (199.846915,-275.065829,0.000000)
+b: Vertex: (145.623040,-105.801392,160.000000)
+c: Vertex: (275.065724,-199.847061,0.000000)
+texA: TexCoord: (0.850000,0.000000)
+texB: TexCoord: (0.900000,0.250000)
+texC: TexCoord: (0.900000,0.250000)
+na: Vector: (0.587785,-0.809017,0.000000)
+nb: Vector: (0.000000,-0.000000,1.000000)
+nc: Vector: (0.809017,-0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 150
+{
+a: Vertex: (105.801315,-145.623096,160.000000)
+b: Vertex: (11.755701,-16.180343,0.000024)
+c: Vertex: (16.180337,-11.755709,0.000024)
+texA: TexCoord: (0.850000,0.250000)
+texB: TexCoord: (0.850000,0.500000)
+texC: TexCoord: (0.900000,0.500000)
+na: Vector: (0.000000,-0.000000,1.000000)
+nb: Vector: (-0.587785,0.809017,0.000000)
+nc: Vector: (-0.809017,0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 151
+{
+a: Vertex: (105.801315,-145.623096,160.000000)
+b: Vertex: (16.180337,-11.755709,0.000024)
+c: Vertex: (145.623040,-105.801392,160.000000)
+texA: TexCoord: (0.850000,0.250000)
+texB: TexCoord: (0.900000,0.500000)
+texC: TexCoord: (0.900000,0.500000)
+na: Vector: (0.000000,-0.000000,1.000000)
+nb: Vector: (-0.809017,0.587785,0.000000)
+nc: Vector: (0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 152
+{
+a: Vertex: (11.755701,-16.180343,0.000024)
+b: Vertex: (105.801287,-145.623057,-160.000000)
+c: Vertex: (145.623001,-105.801364,-160.000000)
+texA: TexCoord: (0.850000,0.500000)
+texB: TexCoord: (0.850000,0.750000)
+texC: TexCoord: (0.900000,0.750000)
+na: Vector: (-0.587785,0.809017,0.000000)
+nb: Vector: (-0.000000,0.000000,-1.000000)
+nc: Vector: (-0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 153
+{
+a: Vertex: (11.755701,-16.180343,0.000024)
+b: Vertex: (145.623001,-105.801364,-160.000000)
+c: Vertex: (16.180337,-11.755709,0.000024)
+texA: TexCoord: (0.850000,0.500000)
+texB: TexCoord: (0.900000,0.750000)
+texC: TexCoord: (0.900000,0.750000)
+na: Vector: (-0.587785,0.809017,0.000000)
+nb: Vector: (-0.000000,0.000000,-1.000000)
+nc: Vector: (-0.809017,0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 154
+{
+a: Vertex: (105.801287,-145.623057,-160.000000)
+b: Vertex: (199.846915,-275.065829,0.000000)
+c: Vertex: (275.065724,-199.847061,0.000000)
+texA: TexCoord: (0.850000,0.750000)
+texB: TexCoord: (0.850000,1.000000)
+texC: TexCoord: (0.900000,1.000000)
+na: Vector: (-0.000000,0.000000,-1.000000)
+nb: Vector: (0.587785,-0.809017,0.000000)
+nc: Vector: (0.809017,-0.587785,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 155
+{
+a: Vertex: (105.801287,-145.623057,-160.000000)
+b: Vertex: (275.065724,-199.847061,0.000000)
+c: Vertex: (145.623001,-105.801364,-160.000000)
+texA: TexCoord: (0.850000,0.750000)
+texB: TexCoord: (0.900000,1.000000)
+texC: TexCoord: (0.900000,1.000000)
+na: Vector: (-0.000000,0.000000,-1.000000)
+nb: Vector: (0.809017,-0.587785,0.000000)
+nc: Vector: (-0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 156
+{
+a: Vertex: (275.065724,-199.847061,0.000000)
+b: Vertex: (145.623040,-105.801392,160.000000)
+c: Vertex: (171.190168,-55.623112,160.000000)
+texA: TexCoord: (0.900000,0.000000)
+texB: TexCoord: (0.900000,0.250000)
+texC: TexCoord: (0.950000,0.250000)
+na: Vector: (0.809017,-0.587785,0.000000)
+nb: Vector: (0.000000,-0.000000,1.000000)
+nc: Vector: (0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 157
+{
+a: Vertex: (275.065724,-199.847061,0.000000)
+b: Vertex: (171.190168,-55.623112,160.000000)
+c: Vertex: (323.359185,-105.065871,0.000000)
+texA: TexCoord: (0.900000,0.000000)
+texB: TexCoord: (0.950000,0.250000)
+texC: TexCoord: (0.950000,0.250000)
+na: Vector: (0.809017,-0.587785,0.000000)
+nb: Vector: (0.000000,-0.000000,1.000000)
+nc: Vector: (0.951056,-0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 158
+{
+a: Vertex: (145.623040,-105.801392,160.000000)
+b: Vertex: (16.180337,-11.755709,0.000024)
+c: Vertex: (19.021129,-6.180345,0.000024)
+texA: TexCoord: (0.900000,0.250000)
+texB: TexCoord: (0.900000,0.500000)
+texC: TexCoord: (0.950000,0.500000)
+na: Vector: (0.000000,-0.000000,1.000000)
+nb: Vector: (-0.809017,0.587785,0.000000)
+nc: Vector: (-0.951056,0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 159
+{
+a: Vertex: (145.623040,-105.801392,160.000000)
+b: Vertex: (19.021129,-6.180345,0.000024)
+c: Vertex: (171.190168,-55.623112,160.000000)
+texA: TexCoord: (0.900000,0.250000)
+texB: TexCoord: (0.950000,0.500000)
+texC: TexCoord: (0.950000,0.500000)
+na: Vector: (0.000000,-0.000000,1.000000)
+nb: Vector: (-0.951056,0.309017,0.000000)
+nc: Vector: (0.000000,-0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 160
+{
+a: Vertex: (16.180337,-11.755709,0.000024)
+b: Vertex: (145.623001,-105.801364,-160.000000)
+c: Vertex: (171.190123,-55.623097,-160.000000)
+texA: TexCoord: (0.900000,0.500000)
+texB: TexCoord: (0.900000,0.750000)
+texC: TexCoord: (0.950000,0.750000)
+na: Vector: (-0.809017,0.587785,0.000000)
+nb: Vector: (-0.000000,0.000000,-1.000000)
+nc: Vector: (-0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 161
+{
+a: Vertex: (16.180337,-11.755709,0.000024)
+b: Vertex: (171.190123,-55.623097,-160.000000)
+c: Vertex: (19.021129,-6.180345,0.000024)
+texA: TexCoord: (0.900000,0.500000)
+texB: TexCoord: (0.950000,0.750000)
+texC: TexCoord: (0.950000,0.750000)
+na: Vector: (-0.809017,0.587785,0.000000)
+nb: Vector: (-0.000000,0.000000,-1.000000)
+nc: Vector: (-0.951056,0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 162
+{
+a: Vertex: (145.623001,-105.801364,-160.000000)
+b: Vertex: (275.065724,-199.847061,0.000000)
+c: Vertex: (323.359185,-105.065871,0.000000)
+texA: TexCoord: (0.900000,0.750000)
+texB: TexCoord: (0.900000,1.000000)
+texC: TexCoord: (0.950000,1.000000)
+na: Vector: (-0.000000,0.000000,-1.000000)
+nb: Vector: (0.809017,-0.587785,0.000000)
+nc: Vector: (0.951056,-0.309017,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 163
+{
+a: Vertex: (145.623001,-105.801364,-160.000000)
+b: Vertex: (323.359185,-105.065871,0.000000)
+c: Vertex: (171.190123,-55.623097,-160.000000)
+texA: TexCoord: (0.900000,0.750000)
+texB: TexCoord: (0.950000,1.000000)
+texC: TexCoord: (0.950000,1.000000)
+na: Vector: (-0.000000,0.000000,-1.000000)
+nb: Vector: (0.951056,-0.309017,0.000000)
+nc: Vector: (-0.000000,0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+
+Triangle: 164
+{
+a: Vertex: (323.359185,-105.065871,0.000000)
+b: Vertex: (171.190168,-55.623112,160.000000)
+c: Vertex: (180.000012,0.000000,160.000000)
+texA: TexCoord: (0.950000,0.000000)
+texB: TexCoord: (0.950000,0.250000)
+texC: TexCoord: (1.000000,0.250000)
+na: Vector: (0.951056,-0.309017,0.000000)
+nb: Vector: (0.000000,-0.000000,1.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 165
+{
+a: Vertex: (323.359185,-105.065871,0.000000)
+b: Vertex: (180.000012,0.000000,160.000000)
+c: Vertex: (340.000000,0.000000,0.000000)
+texA: TexCoord: (0.950000,0.000000)
+texB: TexCoord: (1.000000,0.250000)
+texC: TexCoord: (1.000000,0.250000)
+na: Vector: (0.951056,-0.309017,0.000000)
+nb: Vector: (0.000000,0.000000,1.000000)
+nc: Vector: (1.000000,0.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 166
+{
+a: Vertex: (171.190168,-55.623112,160.000000)
+b: Vertex: (19.021129,-6.180345,0.000024)
+c: Vertex: (20.000000,0.000000,0.000024)
+texA: TexCoord: (0.950000,0.250000)
+texB: TexCoord: (0.950000,0.500000)
+texC: TexCoord: (1.000000,0.500000)
+na: Vector: (0.000000,-0.000000,1.000000)
+nb: Vector: (-0.951056,0.309017,0.000000)
+nc: Vector: (-1.000000,-0.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 167
+{
+a: Vertex: (171.190168,-55.623112,160.000000)
+b: Vertex: (20.000000,0.000000,0.000024)
+c: Vertex: (180.000012,0.000000,160.000000)
+texA: TexCoord: (0.950000,0.250000)
+texB: TexCoord: (1.000000,0.500000)
+texC: TexCoord: (1.000000,0.500000)
+na: Vector: (0.000000,-0.000000,1.000000)
+nb: Vector: (-1.000000,-0.000000,0.000000)
+nc: Vector: (0.000000,0.000000,1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 168
+{
+a: Vertex: (19.021129,-6.180345,0.000024)
+b: Vertex: (171.190123,-55.623097,-160.000000)
+c: Vertex: (179.999964,0.000000,-160.000000)
+texA: TexCoord: (0.950000,0.500000)
+texB: TexCoord: (0.950000,0.750000)
+texC: TexCoord: (1.000000,0.750000)
+na: Vector: (-0.951056,0.309017,0.000000)
+nb: Vector: (-0.000000,0.000000,-1.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 169
+{
+a: Vertex: (19.021129,-6.180345,0.000024)
+b: Vertex: (179.999964,0.000000,-160.000000)
+c: Vertex: (20.000000,0.000000,0.000024)
+texA: TexCoord: (0.950000,0.500000)
+texB: TexCoord: (1.000000,0.750000)
+texC: TexCoord: (1.000000,0.750000)
+na: Vector: (-0.951056,0.309017,0.000000)
+nb: Vector: (-0.000000,-0.000000,-1.000000)
+nc: Vector: (-1.000000,-0.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 170
+{
+a: Vertex: (171.190123,-55.623097,-160.000000)
+b: Vertex: (323.359185,-105.065871,0.000000)
+c: Vertex: (340.000000,0.000000,0.000000)
+texA: TexCoord: (0.950000,0.750000)
+texB: TexCoord: (0.950000,1.000000)
+texC: TexCoord: (1.000000,1.000000)
+na: Vector: (-0.000000,0.000000,-1.000000)
+nb: Vector: (0.951056,-0.309017,0.000000)
+nc: Vector: (1.000000,0.000000,0.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+Triangle: 171
+{
+a: Vertex: (171.190123,-55.623097,-160.000000)
+b: Vertex: (340.000000,0.000000,0.000000)
+c: Vertex: (179.999964,0.000000,-160.000000)
+texA: TexCoord: (0.950000,0.750000)
+texB: TexCoord: (1.000000,1.000000)
+texC: TexCoord: (1.000000,1.000000)
+na: Vector: (-0.000000,0.000000,-1.000000)
+nb: Vector: (1.000000,0.000000,0.000000)
+nc: Vector: (-0.000000,-0.000000,-1.000000)
+transparencyA: RGB: (0.000000,0.000000,0.000000)
+specularA: RGB: (0.000000,0.000000,0.000000)
+diffuseA: RGB: (1.000000,1.000000,1.000000)
+transparencyB: RGB: (0.000000,0.000000,0.000000)
+specularB: RGB: (0.000000,0.000000,0.000000)
+diffuseB: RGB: (1.000000,1.000000,1.000000)
+transparencyC: RGB: (0.000000,0.000000,0.000000)
+specularC: RGB: (0.000000,0.000000,0.000000)
+diffuseC: RGB: (1.000000,1.000000,1.000000)
+surface: ABCD: (0,0,0,0)
+transparencyFact: (1,1.05)
+specularFact: 100
+faces: 1
+texture: 2
+}
+

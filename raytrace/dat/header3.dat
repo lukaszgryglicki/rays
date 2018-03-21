@@ -1,0 +1,15 @@
+Screen: (800,600)
+Backup: 400
+Observer: Vertex: (0,0,-450)
+Light: Vertex: (0,0,-500)
+TexDirectory: textures
+NumTextures: 8
+nTriangles: 60
+ListTransform: [0,59]
+{
+ Translate: (0,0,-100)
+ RotateX: 90
+ RotateY: 10
+ NegateN:
+ Scale: (20,20,20)
+}

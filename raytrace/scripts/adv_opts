@@ -1,0 +1,2 @@
+#!/bin/sh
+./rays.fast -i ./dat/glass.dat -t 1000 -m .2 -a .3 -q 95 -J -g -G -b 512 -A -2 -o advopts.bmp -D demand.bmp -S signal.bmp -P fatal.bmp -p part.bmp -r 12 

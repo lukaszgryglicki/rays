@@ -1,0 +1,9 @@
+generate other scenes:
+dodac stozki,walce,kule jak torrusgen
+//check all recurse_color
+strange errors:
+	--> when mD < 1. strange triagles seen in clue, cubox
+	 (wiele odbic wewnetrznych w NURBS a ten ma plakie trojkaty ? hmm)
+	--> probably broken recovery (signaled or partial - black lines)
+feature requests:
+	--> Qt GUI

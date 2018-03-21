@@ -1,0 +1,155 @@
+Screen: (900,600)
+Observer: Vertex: (0,0,-450)
+LookZ: 40%	
+Light: Vertex: (170,120,-300)
+TexDirectory: textures
+NumTextures: 32
+nTriangles: 24
+ListTransform: [12,23]
+{
+ Rotate: (0,0,0)
+}
+ListTransform: [12,23]
+{
+ Scale: (275,150,70)
+}
+ListTransform: [0,11]
+{
+ Scale: (500,500,500)
+}
+ListTransform: [2,3]
+{
+ RotateY: 90
+ NewTexture: 1
+}
+ListTransform: [4,5]
+{
+ RotateY: 180
+ NewTexture: 3
+}
+ListTransform: [6,7]
+{
+ RotateY: 270
+ NewTexture: 25
+}
+ListTransform: [8,9]
+{
+ RotateX: 90
+ NewTexture: 10
+}
+ListTransform: [10,11]
+{
+ RotateX: 270
+ NewTexture: 32
+}
+ListTransform: [14,15]
+{
+ RotateY: 90
+}
+ListTransform: [16,17]
+{
+ RotateY: 180
+}
+ListTransform: [18,19]
+{
+ RotateY: 270
+}
+ListTransform: [20,21]
+{
+ RotateX: 90
+}
+ListTransform: [22,23]
+{
+ RotateX: 270
+}
+Triangle: 0
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (1,-1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,0)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)
+ transparency: RGB: (.3,.3,.3)
+ specular: RGB: (.3,.3,.3)
+ diffuse: RGB: (1.4,1.4,1.4)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 64
+ faces: 1
+ texture: 2
+}
+Triangle: 1
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (1,1,1)
+ c: Vertex: (-1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (0,1)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)
+ transparency: RGB: (.3,.3,.3)
+ specular: RGB: (.3,.3,.3)
+ diffuse: RGB: (1.4,1.4,1.4)
+ surface: ABCD: (0,0,0,0)
+ transparencyFact: (1,1.5)
+ specularFact: 64
+ faces: 1
+ texture: 2
+}
+CopyTriangles: dst=2,src=0,num=2
+CopyTriangles: dst=4,src=0,num=4
+CopyTriangles: dst=8,src=0,num=4
+Triangle: 12
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (1,-1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,0)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)
+ transparency: RGB: (1.,1.,1.)
+ specular: RGB: (.0,.0,.0)
+ diffuse: RGB: (.0,.0,.0)
+ surface: ABCD: (0,0,0,0)
+ transparencyFactR: (1,3.0)
+ transparencyFactG: (1,4.5)
+ transparencyFactB: (1,6.0)
+ specularFact: 300
+ faces: 1
+ texture: 0
+}
+Triangle: 13
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (1,1,1)
+ c: Vertex: (-1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (0,1)
+ na: Vector: (0,0,0)
+ nb: Vector: (0,0,0)
+ nc: Vector: (0,0,0)
+ transparency: RGB: (1.,1.,1.)
+ specular: RGB: (.0,.0,.0)
+ diffuse: RGB: (.0,.0,.0)
+ surface: ABCD: (0,0,0,0)
+ transparencyFactR: (1,3.0)
+ transparencyFactG: (1,4.5)
+ transparencyFactB: (1,6.0)
+ specularFact: 300
+ faces: 1
+ texture: 0
+}
+CopyTriangles: dst=14,src=12,num=2
+CopyTriangles: dst=16,src=12,num=4
+CopyTriangles: dst=20,src=12,num=4
+

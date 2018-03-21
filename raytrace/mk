@@ -1,0 +1,4 @@
+all: spherical
+spherical: spherical.c
+	gcc -I/usr/local/include -L/usr/local/lib -O4 -o spherical spherical.c -lc -lm -lGL -lglut -ljpeg
+

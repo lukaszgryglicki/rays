@@ -1,0 +1,2 @@
+#!/bin/sh
+./rays.fast -i dat/tables.dat -G -A -2 -t 5000 -J -g -b 5000 -q 100 -a 0.3 -m 0.2 -r 32 -o long.bmp

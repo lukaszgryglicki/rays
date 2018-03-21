@@ -1,0 +1,1 @@
+This mouse model may require one additional iteration of smoothing by using a Meshmooth or Turbosmooth modifier for example when rendering up close.

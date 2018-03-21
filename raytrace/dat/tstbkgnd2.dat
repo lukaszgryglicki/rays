@@ -1,0 +1,55 @@
+Screen: (800,600)	
+Background: 36
+Backup: 800
+Observer: Vertex: (0,0,-400)
+Light: Vertex: (-100,150,-200)
+TexDirectory: textures
+NumTextures: 36
+nTriangles: 2
+ListTransform: [0,1]
+{
+ NewTexture: 2
+ Scale: (540,420,300)
+}
+Triangle: 0
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (1,1,1)
+ c: Vertex: (1,-1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (1,1)
+ texC: TexCoord: (1,0)
+ na: Vector: (0,0,1)
+ nb: Vector: (0,0,1)
+ nc: Vector: (0,0,1)
+ transparency: RGB: (1.000000,1.000000,1.000000)
+ specular: RGB: (0.000000,0.000000,0.000000)
+ diffuse: RGB: (1.000000,1.000000,1.000000)
+ transparencyFactR: (1,1.100000)
+ transparencyFactG: (1,1.130000)
+ transparencyFactB: (1,1.160000)
+ specularFact: 161.000000
+ faces: 1
+ texture: 2
+}
+Triangle: 1
+{
+ a: Vertex: (-1,-1,1)
+ b: Vertex: (-1,1,1)
+ c: Vertex: (1,1,1)
+ texA: TexCoord: (0,0)
+ texB: TexCoord: (0,1)
+ texC: TexCoord: (1,1)
+ na: Vector: (0,0,1)
+ nb: Vector: (0,0,1)
+ nc: Vector: (0,0,1)
+ transparency: RGB: (1.000000,1.000000,1.000000)
+ specular: RGB: (0.000000,0.000000,0.000000)
+ diffuse: RGB: (1.000000,1.000000,1.000000)
+ transparencyFactR: (1,1.100000)
+ transparencyFactG: (1,1.130000)
+ transparencyFactB: (1,1.160000)
+ specularFact: 161.000000
+ faces: 1
+ texture: 2
+}
