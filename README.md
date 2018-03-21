@@ -139,48 +139,112 @@ Spis treści
 
  1. Wstęp
 
- Raytracing (ang. śledzenie promieni) jest techniką renderowania realistycznych scen 3D.W przeciwieństwie do standardowych metod wyświetlania sceny w grafice komputerowej, które dokonują szeregu uproszczeń, raytracing oblicza dokładny wygląd sceny poprzez prześledzenie biegu każdego promienia od oka obserwatora do wybranych pikseli ekranu. Uwzględniane są przy tym zjawiska fizyczne takie jak: efekt Fresnela, ugięcie światła, załamanie, pochłonięcie przez materiał. W przeciwieństwie do algorytmów uproszczonych (używanych w grafice komputerowej, np. w grach) raytracing na ogól nie daje się obliczyć w czasie rzeczywistym na współczesnym sprzęcie.
+ Raytracing (ang. śledzenie promieni) jest techniką renderowania realistycznych scen 3D.W przeciwieństwie do standardowy
+ch metod wyświetlania sceny w grafice komputerowej, które dokonują szeregu uproszczeń, raytracing oblicza dokładny wyglą
+d sceny poprzez prześledzenie biegu każdego promienia od oka obserwatora do wybranych pikseli ekranu. Uwzględniane są pr
+zy tym zjawiska fizyczne takie jak: efekt Fresnela, ugięcie światła, załamanie, pochłonięcie przez materiał. W przeciwie
+ństwie do algorytmów uproszczonych (używanych w grafice komputerowej, np. w grach) raytracing na ogól nie daje się oblic
+zyć w czasie rzeczywistym na współczesnym sprzęcie.
 
- Są próby implementacji raytracingu bezpośrednio na procesorach graficznych, używając do tego dodatkowego przejścia renderowania: pixel/vertex shader'ów. Współczesne karty graficzne implementujące Pixel Shader 3.0 (lub conajmniej 2.0) są w stanie generować kilkanaście klatek na sekundę, przy małej rozdzielczości (400x300, 640x480) i ograniczonej rekursji (do co najwyżej kilku odbić/załamań), takie wyniki są osiągane przez najszybsze/najlepsze programy tego typu dostępne na rynku.
+ Są próby implementacji raytracingu bezpośrednio na procesorach graficznych, używając do tego dodatkowego przejścia rend
+erowania: pixel/vertex shader'ów. Współczesne karty graficzne implementujące Pixel Shader 3.0 (lub conajmniej 2.0) są w 
+stanie generować kilkanaście klatek na sekundę, przy małej rozdzielczości (400x300, 640x480) i ograniczonej rekursji (do
+ co najwyżej kilku odbić/załamań), takie wyniki są osiągane przez najszybsze/najlepsze programy tego typu dostępne na ry
+nku.
 
-   Przykładowy system http://gpurt.sourceforge.net/DA07_0405_Ray_Tracing_on_GPU-1.0.5.pdf, wymaga karty graficznej GeForce 6600 GT (PS 3.0), osiąga wynik 0.25 FPS dla średniej wielkości scen. Jednak możliwości programowania jednostek PS i VS są jeszcze zbyt małe aby była możliwość zaimplementowania tam odpowiednich procedur przecinających powierzchnię Spline/NURBS z promieniem, poza tym zwolniłoby to rendering o następne kilka rzędów wielkości.
+   Przykładowy system http://gpurt.sourceforge.net/DA07_0405_Ray_Tracing_on_GPU-1.0.5.pdf, wymaga karty graficznej GeFor
+ce 6600 GT (PS 3.0), osiąga wynik 0.25 FPS dla średniej wielkości scen. Jednak możliwości programowania jednostek PS i V
+S są jeszcze zbyt małe aby była możliwość zaimplementowania tam odpowiednich procedur przecinających powierzchnię Spline
+/NURBS z promieniem, poza tym zwolniłoby to rendering o następne kilka rzędów wielkości.
 
- Tworząc algorytmy raytracingu zrezygnowałem więc z działania w czasie rzeczywistym, skoncentrowałem się na dokładnym (nie koniecznie najszybszym) zaimplementowaniu wszystkich efektów raytracingu. Zastosowałem także szczególne podejście do powierzchni NURBS, które opiszę poniżej. Mój algorytm daje dobre efekty, istnieją jednak lepsze algorytmu, generujące na przykład “miękkie cienie” oraz likwidujące efekty aliasingu, czy pozwalające na rozszczepienie światła.
+ Tworząc algorytmy raytracingu zrezygnowałem więc z działania w czasie rzeczywistym, skoncentrowałem się na dokładnym (n
+ie koniecznie najszybszym) zaimplementowaniu wszystkich efektów raytracingu. Zastosowałem także szczególne podejście do 
+powierzchni NURBS, które opiszę poniżej. Mój algorytm daje dobre efekty, istnieją jednak lepsze algorytmu, generujące na
+ przykład “miękkie cienie” oraz likwidujące efekty aliasingu, czy pozwalające na rozszczepienie światła.
 
- Takim algorytmem jest na przykład algorytm : “Forward Raytracing” [3] - jest to metoda śledzenia promieni, która w przeciwieństwie do normalnego (czyli wstecznego – backward) raytracingu zaczyna się nie od kamery, lecz od źródeł światła. Określenie “forward” oznacza, że symulowane promienie poruszają się w tym samym kierunku co rzeczywistym świecie. Daje ona lepsze wyniki niż raytracing wsteczny, lecz wymaga nieporównywalnie więcej mocy obliczeniowej, więc jest używana tylko do pewnych specjalnych zastosowań, mających niewiele wspólnego z fotorealistycznym renderingiem, takich jak badanie właściwości sprzętu optycznego oraz w rozwiązaniach hybrydowych w połączeniu ze zwykłym raytracingiem. Metoda wymaga dużo większej mocy obliczeniowej, ponieważ potrzebujemy wystrzelić promienie od źródła światła we wszystkich kierunkach, a tylko niewielka część z nich dotrze do oka obserwatora (szansa jest bardzo mała), poza tym musimy zrobić to dla każdego źródła światła. Zaletą jest to, że promienie poruszają się tak w rzeczywistości co pozwala uzyskać pewne efekty nieosiągalne zwykłym raytracingiem, np. efekty soczewkowe: (rozszczepienie światła, ogniska świateł skupionych przez soczewkę, miękkie cienie, światła odbite - “zajączki”). Poza tym w raytracingu wstecznym (backward), określanie czy w danym punkcie jest cień odbywa się na podstawie testu czy z danego punktu wysyłając promień do źródła światła, przetnie on jakiś obiekt czy nie. Powoduje to, że granice cienia są “ostre” a cienie “zupełnie czarne”. Innym problemem raytracingu (a także innych metod generowania obrazów) jest aliasing (ostre krawędzie, artefakty na teksturach itp). W moim algorytmie jest możliwość ustawienia prostego, programowego (software) antyaliasingu 2x2. Spowalnia to proces około 4x.
+ Takim algorytmem jest na przykład algorytm : “Forward Raytracing” [3] - jest to metoda śledzenia promieni, która w prze
+ciwieństwie do normalnego (czyli wstecznego – backward) raytracingu zaczyna się nie od kamery, lecz od źródeł światła. O
+kreślenie “forward” oznacza, że symulowane promienie poruszają się w tym samym kierunku co rzeczywistym świecie. Daje on
+a lepsze wyniki niż raytracing wsteczny, lecz wymaga nieporównywalnie więcej mocy obliczeniowej, więc jest używana tylko
+ do pewnych specjalnych zastosowań, mających niewiele wspólnego z fotorealistycznym renderingiem, takich jak badanie wła
+ściwości sprzętu optycznego oraz w rozwiązaniach hybrydowych w połączeniu ze zwykłym raytracingiem. Metoda wymaga dużo w
+iększej mocy obliczeniowej, ponieważ potrzebujemy wystrzelić promienie od źródła światła we wszystkich kierunkach, a tyl
+ko niewielka część z nich dotrze do oka obserwatora (szansa jest bardzo mała), poza tym musimy zrobić to dla każdego źró
+dła światła. Zaletą jest to, że promienie poruszają się tak w rzeczywistości co pozwala uzyskać pewne efekty nieosiągaln
+e zwykłym raytracingiem, np. efekty soczewkowe: (rozszczepienie światła, ogniska świateł skupionych przez soczewkę, mięk
+kie cienie, światła odbite - “zajączki”). Poza tym w raytracingu wstecznym (backward), określanie czy w danym punkcie je
+st cień odbywa się na podstawie testu czy z danego punktu wysyłając promień do źródła światła, przetnie on jakiś obiekt 
+czy nie. Powoduje to, że granice cienia są “ostre” a cienie “zupełnie czarne”. Innym problemem raytracingu (a także inny
+ch metod generowania obrazów) jest aliasing (ostre krawędzie, artefakty na teksturach itp). W moim algorytmie jest możli
+wość ustawienia prostego, programowego (software) antyaliasingu 2x2. Spowalnia to proces około 4x.
 
- Inne metody generowania obrazów to: radiosity, photon map, ray-casting [1] (będący raytracingiem o rekursji ograniczonej do 0 oraz różne kombinacje wyżej wymienionych.
+ Inne metody generowania obrazów to: radiosity, photon map, ray-casting [1] (będący raytracingiem o rekursji ograniczone
+j do 0 oraz różne kombinacje wyżej wymienionych.
 
- W moim algorytmie próbuję poradzić sobie z różnymi problemami raytracingu: takimi jak: rozszczepienie światła, aliasing, szybkość, działania, teksturowanie, cienie (problem czarnego cienia i problem zbyt ostrego cienia), chropowate powierzchnie, efekt Fresnela, głębokość rekursji.
+ W moim algorytmie próbuję poradzić sobie z różnymi problemami raytracingu: takimi jak: rozszczepienie światła, aliasing
+, szybkość, działania, teksturowanie, cienie (problem czarnego cienia i problem zbyt ostrego cienia), chropowate powierz
+chnie, efekt Fresnela, głębokość rekursji.
 
- Raytracing, mimo swoich zalet, nie jest idealnym sposobem tworzenia obrazów. Przede wszystkim słabo radzi sobie ze światłem rozproszonym i z modelowaniem bardziej skomplikowanych źródeł światła (w moim modelu zakładam, że źródła światła są punktami, co nie zdarza się w praktyce). Efektem są bardzo ostre, nierealistycznie wyglądające, krawędzie cieni.
+ Raytracing, mimo swoich zalet, nie jest idealnym sposobem tworzenia obrazów. Przede wszystkim słabo radzi sobie ze świa
+tłem rozproszonym i z modelowaniem bardziej skomplikowanych źródeł światła (w moim modelu zakładam, że źródła światła są
+ punktami, co nie zdarza się w praktyce). Efektem są bardzo ostre, nierealistycznie wyglądające, krawędzie cieni.
 
- Ponieważ raytracing operuje na pojedynczych promieniach, nie możne prawidłowo modelować dyfrakcji, np. Na pryzmacie, interferencji fal świetlnych i innych zjawisk falowych. Pewnym rozwiązaniem jest rozdzielenie pojedynczego promienia na kilka promieni reprezentujących różne długości fal (w rzeczywistości jest to problem ciągły a nie dyskretny). Wybrałem podejście jak najbardziej zbliżone do modelu maszynowego. Kolor jest zapisywany w obrazach jako RGB lub RGBA. Model RGB (24bity) definiuje po 8 bitów na czerwony, zielony i niebieski kolor. Odpowiednie kombinacje tych składowych dają każdy widzialny kolor. Założyłem, że przez jeden pixel wystrzelane są 3 promienie: czerwony, zielony i niebieski. Każdy z nich może mieć natężenie 8bitowe, tj: 0-255.
+ Ponieważ raytracing operuje na pojedynczych promieniach, nie możne prawidłowo modelować dyfrakcji, np. Na pryzmacie, in
+terferencji fal świetlnych i innych zjawisk falowych. Pewnym rozwiązaniem jest rozdzielenie pojedynczego promienia na ki
+lka promieni reprezentujących różne długości fal (w rzeczywistości jest to problem ciągły a nie dyskretny). Wybrałem pod
+ejście jak najbardziej zbliżone do modelu maszynowego. Kolor jest zapisywany w obrazach jako RGB lub RGBA. Model RGB (24
+bity) definiuje po 8 bitów na czerwony, zielony i niebieski kolor. Odpowiednie kombinacje tych składowych dają każdy wid
+zialny kolor. Założyłem, że przez jeden pixel wystrzelane są 3 promienie: czerwony, zielony i niebieski. Każdy z nich mo
+że mieć natężenie 8bitowe, tj: 0-255.
 
- Stworzono wiele technik które stosowane samodzielnie, bądź razem z raytracingiem pozwalają obejść te wady. Są to m.in. radiosity, photon map, global ilumination [5], forward raytracing.
+ Stworzono wiele technik które stosowane samodzielnie, bądź razem z raytracingiem pozwalają obejść te wady. Są to m.in. 
+radiosity, photon map, global ilumination [5], forward raytracing.
 
 1.1. Uproszczony algorytm raytracingu [1]
 
-      Z punktu, w którym znajduje się kamera wypuszczany jest promień (półprosta) w kierunku rzutni. Rzutnia podzielona jest na piksele, jeden (lub więcej) promieni przechodzi przez każdy pixel Typowe rzutnie mają 800x600 pikseli, co daje 480000 promieni, poza tym oddzielne promienie są używane dla kolorów R,G,B: daje to razem 1440000 promieni.
+      Z punktu, w którym znajduje się kamera wypuszczany jest promień (półprosta) w kierunku rzutni. Rzutnia podzielona 
+jest na piksele, jeden (lub więcej) promieni przechodzi przez każdy pixel Typowe rzutnie mają 800x600 pikseli, co daje 4
+80000 promieni, poza tym oddzielne promienie są używane dla kolorów R,G,B: daje to razem 1440000 promieni.
 
- 1. Wyszukiwane są wszystkie przecięcia promienia z obiektami. Tutaj szybkość algorytmu zależy nie tyle od efektywności wyznaczania współrzędnych punktu przecięcia promienia z powierzchnią obiektu, ale od tego by tych dokładnych obliczeń było jak najmniej, by przetwarzać tylko te obiekty, które wysłany w p.1 promień przecina. Mówiąc obrazowo: jeśli scena zawiera milion obiektów, by za każdym razem nie testować milion razy, czy promień przecina każdy z obiektów, ale testować jedynie te, które potencjalnie mogą mieć punkt przecięcia z promieniem. Ważne więc jest zastosowanie odpowiedniej lokalizacji (wykrywanie kolizji). Należy utworzyć drzewo hierarchiczne (BV – Bounding Volume)
+ 1. Wyszukiwane są wszystkie przecięcia promienia z obiektami. Tutaj szybkość algorytmu zależy nie tyle od efektywności 
+wyznaczania współrzędnych punktu przecięcia promienia z powierzchnią obiektu, ale od tego by tych dokładnych obliczeń by
+ło jak najmniej, by przetwarzać tylko te obiekty, które wysłany w p.1 promień przecina. Mówiąc obrazowo: jeśli scena zaw
+iera milion obiektów, by za każdym razem nie testować milion razy, czy promień przecina każdy z obiektów, ale testować j
+edynie te, które potencjalnie mogą mieć punkt przecięcia z promieniem. Ważne więc jest zastosowanie odpowiedniej lokaliz
+acji (wykrywanie kolizji). Należy utworzyć drzewo hierarchiczne (BV – Bounding Volume)
 
  1. Spośród uzyskanych punktów przecięć wybiera się ten, który leży najbliżej kamery.
 
- 1. Punkt ten jest następnie przetwarzany. Najpierw wypuszczamy promień z tego punktu w kierunku światła na scenie, by określić czy oświetla przetwarzany punkt. Na tym etapie można wyznaczyć cienie, testując czy odcinek pomiędzy punktem przecięcia, a światłem przecina jakiś obiekt - innymi słowy, czy jakiś obiekt zasłania światło. Tutaj możemy też uwzględnić jak “głęboki będzie ten cień”, na podstawie współczynnika przezroczystości obiektów na drodze do źródła światła. Następnie oblicza się, używając zadanego modelu oświetlenia (np. Lamberta, Phonga, Metal Shading), jasność punktu. Dodatkowo uwzględnia się takie parametry jak kolor punktu: np. Oczytany z tekstury lub zadany jako własność materiału
+ 1. Punkt ten jest następnie przetwarzany. Najpierw wypuszczamy promień z tego punktu w kierunku światła na scenie, by o
+kreślić czy oświetla przetwarzany punkt. Na tym etapie można wyznaczyć cienie, testując czy odcinek pomiędzy punktem prz
+ecięcia, a światłem przecina jakiś obiekt - innymi słowy, czy jakiś obiekt zasłania światło. Tutaj możemy też uwzględnić
+ jak “głęboki będzie ten cień”, na podstawie współczynnika przezroczystości obiektów na drodze do źródła światła. Następ
+nie oblicza się, używając zadanego modelu oświetlenia (np. Lamberta, Phonga, Metal Shading), jasność punktu. Dodatkowo u
+względnia się takie parametry jak kolor punktu: np. Oczytany z tekstury lub zadany jako własność materiału
 
- 1. Jeśli obiekt jest przezroczysty lub odbija światło, to z tego punktu wypuszczamy dodatkowe promienie może to być zarówno promień odbity, jak i promień załamany - dla tych promieni algorytm jest powtarzany od punktu 2. Wówczas, nim przypisze się kolor danemu pikselowi, przetwarzane jest drzewo promieni. Maksymalną głębokość rekursji można ograniczyć, gdyż mogłaby być nieskończona, np. wewnątrz sześcianu zbudowanego z luster.
+ 1. Jeśli obiekt jest przezroczysty lub odbija światło, to z tego punktu wypuszczamy dodatkowe promienie może to być zar
+ówno promień odbity, jak i promień załamany - dla tych promieni algorytm jest powtarzany od punktu 2. Wówczas, nim przyp
+isze się kolor danemu pikselowi, przetwarzane jest drzewo promieni. Maksymalną głębokość rekursji można ograniczyć, gdyż
+ mogłaby być nieskończona, np. wewnątrz sześcianu zbudowanego z luster.
 
  1. Powierzchnie NURBS
  1 Definicja powierzchni NURBS
  Powierzchnię NURBS (Non-Uniform Rational Bspline) możemy zdefiniować następująco:
  Wprowadźmy u i v - zmienne niezależne z przedziału [0,1].
-u i v będą parametryzacją powierzchni NURBS: [0,1] x [0,1]. Powierzchnię w punkcie u,v będziemy oznaczać P(u,v). u,v e [0,1]
+u i v będą parametryzacją powierzchni NURBS: [0,1] x [0,1]. Powierzchnię w punkcie u,v będziemy oznaczać P(u,v). u,v e [
+0,1]
  Wprowadźmy p1 i p2 – wymiary powierzchni NURBS (odpowiednio w kierunku u i v), p1,p2 >=1
- Wprowadźmy n1 i n2: ilość punktów kontrolnych w kierunku u i v. n1> p1, n2>p2. Punkty kontrolne tworzą macierz M[n1 x n2]
- Wprowadźmy węzły (nodes): t1[n1], t2[t2]. Podział wartości w węzłach jest najczęściej jednorodny, np. dla n1=5 mamy t1=[0 0.25 0.5 0.75 1]. Użytkownik może oczywiście wprowadzić własne węzły (nodes)
+ Wprowadźmy n1 i n2: ilość punktów kontrolnych w kierunku u i v. n1> p1, n2>p2. Punkty kontrolne tworzą macierz M[n1 x n
+2]
+ Wprowadźmy węzły (nodes): t1[n1], t2[t2]. Podział wartości w węzłach jest najczęściej jednorodny, np. dla n1=5 mamy t1=
+[0 0.25 0.5 0.75 1]. Użytkownik może oczywiście wprowadzić własne węzły (nodes)
  Wprowadźmy: m1, m2: m1=n1+p1, m2=n2+p2
- Wprowadźmy węzły (knots): knot1[m1+1], knot2[m2+1], np.: dla wymiaru = 3 i ilości punktów = 4 mamy p1=3, n1=4, m1=7 knot1[0 0 0 0 1 1 1 1] – typowe wartości węzłów. Węzły (knots) mają większy wymiar aby rekurencyjna funkcja bazowa bspline mogła “sięgać” do elementów przesuniętych o wartości nie przekraczające wymiaru (p). Jest wiele metod na obliczenie węzłów (knots), najczęściej oblicza się je używając węzłów (nodes). Powszechne metody parametryzacji to: jednorodna, naturalna, długość łuku [7] p+1 pierwszych elementów knot to 0, p+1 ostatnich to 1, a pozostałe to rozkład równomierny np. dla p=2 i n = 5 mamy: t[0 0.5 1], knot[0 0 0 0.25 0.5 0.75 1 1 1]
+ Wprowadźmy węzły (knots): knot1[m1+1], knot2[m2+1], np.: dla wymiaru = 3 i ilości punktów = 4 mamy p1=3, n1=4, m1=7 kno
+t1[0 0 0 0 1 1 1 1] – typowe wartości węzłów. Węzły (knots) mają większy wymiar aby rekurencyjna funkcja bazowa bspline 
+mogła “sięgać” do elementów przesuniętych o wartości nie przekraczające wymiaru (p). Jest wiele metod na obliczenie węzł
+ów (knots), najczęściej oblicza się je używając węzłów (nodes). Powszechne metody parametryzacji to: jednorodna, natural
+na, długość łuku [7] p+1 pierwszych elementów knot to 0, p+1 ostatnich to 1, a pozostałe to rozkład równomierny np. dla 
+p=2 i n = 5 mamy: t[0 0.5 1], knot[0 0 0 0.25 0.5 0.75 1 1 1]
 
 Teraz możemy wprowadzić funkcję bazową bspline:
 
@@ -189,7 +253,11 @@ Teraz możemy wprowadzić funkcję bazową bspline:
  Wtedy punkty krzywej NURBS wyrażają się następującym wzorem [11]:
 
 W moim algorytmie używam:
- b0(knot, t, i): jeżeli t >= knot[i]  oraz t <= knot[i+1] zwróć 1, inaczej zwróć 0, gdzie t to wartość parametru z [0,1]a knot to wprowadzone powyżej węzły. Funkcja ta jest używana na najniższym poziomie rekursji (stopnia zerowego). Aby obliczyć dla p-tego stopnia należy zbudować drzewo deCastlejau. Innym rozwiązaniem jest obliczenie rekurencyjne, w którym dla p-tego wymiaru wywołujemy funkcję bazową 2^p razy (ale jest to nieoptymalne). W mojej pracy wykorzystuje algorytm deCastlejau o złożoności O(N^2).
+ b0(knot, t, i): jeżeli t >= knot[i]  oraz t <= knot[i+1] zwróć 1, inaczej zwróć 0, gdzie t to wartość parametru z [0,1]
+a knot to wprowadzone powyżej węzły. Funkcja ta jest używana na najniższym poziomie rekursji (stopnia zerowego). Aby obl
+iczyć dla p-tego stopnia należy zbudować drzewo deCastlejau. Innym rozwiązaniem jest obliczenie rekurencyjne, w którym d
+la p-tego wymiaru wywołujemy funkcję bazową 2^p razy (ale jest to nieoptymalne). W mojej pracy wykorzystuje algorytm deC
+astlejau o złożoności O(N^2).
 
  2.1.1 Algorytm deCastlejau:
 Drzewo(knot, t, p, n):
@@ -219,7 +287,8 @@ Wejście: u,v
 Wyjście: wartość powierzchni NURBS w zadanych u,v
 
 D[i][j] – punkty kontrolne powierzchni NURBS
-w[i][j] – wagi punktów: 0 (nie brany pod uwagę) im większa tym bliżej tego punktu zostanie “dociągnięta” powierzchnia NURBS. Gdy wszystkie wagi = 1, to powierzchnia BSpline
+w[i][j] – wagi punktów: 0 (nie brany pod uwagę) im większa tym bliżej tego punktu zostanie “dociągnięta” powierzchnia NU
+RBS. Gdy wszystkie wagi = 1, to powierzchnia BSpline
 
 Obliczenie drzew deCastlejau dla knot1 (kierunek U) i knot2 (kierunek V)
 
@@ -239,36 +308,68 @@ od i = 0 do n1 wykonaj:
 
  1 Problemy dotyczące raytracingu powierzchni NURBS
 
- Bezpośredni raytracing powierzchni NURBS jest trudnym problemem. Są dwa główne powody dla których unika się bezpośredniego przetwarzania powierzchni Spline/NURBS:
+ Bezpośredni raytracing powierzchni NURBS jest trudnym problemem. Są dwa główne powody dla których unika się bezpośredni
+ego przetwarzania powierzchni Spline/NURBS:
 
- a) Szybkość działania. Metody obliczania punktu przecięcia powierzchni NURBS i promienia są iteracyjne, ich zbieżność jest bardzo wolna, często są problemy z tą zbieżnością, czas działania jest o kilka rzędów większy niż przy działaniu na trójkątach. Z testów wynika, że w najlepszym przypadku (dosyć płaska powierzchnia NURBS, ustawiona pod kątek normalnym do obserwatora) jest co najmniej 30x wolniej (Rzadko osiąga się to 30x, częściej jest to 100x). W sytuacji typowej jest to 100x-1000x wolniej!
+ a) Szybkość działania. Metody obliczania punktu przecięcia powierzchni NURBS i promienia są iteracyjne, ich zbieżność j
+est bardzo wolna, często są problemy z tą zbieżnością, czas działania jest o kilka rzędów większy niż przy działaniu na 
+trójkątach. Z testów wynika, że w najlepszym przypadku (dosyć płaska powierzchnia NURBS, ustawiona pod kątek normalnym d
+o obserwatora) jest co najmniej 30x wolniej (Rzadko osiąga się to 30x, częściej jest to 100x). W sytuacji typowej jest t
+o 100x-1000x wolniej!
 
- b) Niestabilność. Ogólnie są bardzo duże problemy ze zbieżnością metod numerycznych, wiele bibliotek/programów implementujących raytracing NURBS ma z tym problemy. Jest dużo przypadków szczególnych, należy robić wstępne podziały powierzchni na płatki wypukłe metoda deCastlejau, poza tym te płatki muszą mieć odpowiednio mała krzywizną. Promień musi być reprezentowany jako dwie przecinające się płaszczyzny (promień jest krawędzią ich przecięcia). Prawie żaden program NIE działa z dowolnymi powierzchniami NURBS: samoprzecięcia powierzchni, wielokrotne przecięcia z powierzchnią, rozbieżność Newtona, NURBS'y mogą mieć kawałki z ciągłością C0, w takich punktach obliczenia numeryczne zawodzą.
+ b) Niestabilność. Ogólnie są bardzo duże problemy ze zbieżnością metod numerycznych, wiele bibliotek/programów implemen
+tujących raytracing NURBS ma z tym problemy. Jest dużo przypadków szczególnych, należy robić wstępne podziały powierzchn
+i na płatki wypukłe metoda deCastlejau, poza tym te płatki muszą mieć odpowiednio mała krzywizną. Promień musi być repre
+zentowany jako dwie przecinające się płaszczyzny (promień jest krawędzią ich przecięcia). Prawie żaden program NIE dział
+a z dowolnymi powierzchniami NURBS: samoprzecięcia powierzchni, wielokrotne przecięcia z powierzchnią, rozbieżność Newto
+na, NURBS'y mogą mieć kawałki z ciągłością C0, w takich punktach obliczenia numeryczne zawodzą.
 
-Zacytuje: [4]  “Using the direct raytracing NURBS surfaces, one can achieve better quality of rendered images. Although, many such approaches have already been presented, almost all of them suffer from numerical problems or do not work in some special cases. “
+Zacytuje: [4]  “Using the direct raytracing NURBS surfaces, one can achieve better quality of rendered images. Although,
+ many such approaches have already been presented, almost all of them suffer from numerical problems or do not work in s
+ome special cases. “
 
 2.3 Metoda tradycyjna raytracingu powierzchni NURBS
-a) Wygładzanie: podział powierzchni NURBS na płatki wypukłe o odpowiednio małej krzywiźnie. Długi i skomplikowany proces – używany algorytm deCastlejau, dzielący płatki. [9]
+a) Wygładzanie: podział powierzchni NURBS na płatki wypukłe o odpowiednio małej krzywiźnie. Długi i skomplikowany proces
+ – używany algorytm deCastlejau, dzielący płatki. [9]
 
-b) Na podstawie tego podziału jest generowana hierarchia BV (Bounding Volumes), płatek po podziale nie jest przechowywany w pamięci. Cały podział był tylko po to aby uzyskać obszary na powierzchni NURBS (BV) w których mamy (ale nie na 100%) zagwarantowaną szybką zbieżność metody Newtona. W BV trzymamy współrzędne punktu startowego dla tego segmentu (u,v). W pamięci przechowujemy tylko oryginalny NURBS bez informacji o podziałach. Używane BV to AABB drzewa (Axis-aligned Bounding Boxes), OBB drzewa (Oriented Bounding Boxes) lub sfery (drogi koszt wyliczenia)
+b) Na podstawie tego podziału jest generowana hierarchia BV (Bounding Volumes), płatek po podziale nie jest przechowywan
+y w pamięci. Cały podział był tylko po to aby uzyskać obszary na powierzchni NURBS (BV) w których mamy (ale nie na 100%)
+ zagwarantowaną szybką zbieżność metody Newtona. W BV trzymamy współrzędne punktu startowego dla tego segmentu (u,v). W 
+pamięci przechowujemy tylko oryginalny NURBS bez informacji o podziałach. Używane BV to AABB drzewa (Axis-aligned Boundi
+ng Boxes), OBB drzewa (Oriented Bounding Boxes) lub sfery (drogi koszt wyliczenia)
 
-c) Promień przekształcamy na dwie powierzchnie, których płaszczyzną przecięcia jest promień. Będziemy szukać przecięć tych płaszczyzn i powierzchni NURBS. Najpierw będą wyznaczane przecięcia z BV a potem dopiero dla znalezionych punktów startowych metoda iteracyjna: np. Newtona.
+c) Promień przekształcamy na dwie powierzchnie, których płaszczyzną przecięcia jest promień. Będziemy szukać przecięć ty
+ch płaszczyzn i powierzchni NURBS. Najpierw będą wyznaczane przecięcia z BV a potem dopiero dla znalezionych punktów sta
+rtowych metoda iteracyjna: np. Newtona.
 
-d) Ostatecznie należy wyliczyć punkt metodą Newtona. W wielu przypadkach metoda jednak nie będzie zbieżna, należy ustawić maksymalną ilość kroków. Ogólnie całość działa bardzo wolno i pomimo użycia tylu narzędzi artefakty są najczęściej widoczne....
+d) Ostatecznie należy wyliczyć punkt metodą Newtona. W wielu przypadkach metoda jednak nie będzie zbieżna, należy ustawi
+ć maksymalną ilość kroków. Ogólnie całość działa bardzo wolno i pomimo użycia tylu narzędzi artefakty są najczęściej wid
+oczne....
 
  1. Metoda raytracingu powierzchni NURBS przez triangulację (stosowana w moim algorytmie)
 
-W preprocesingu dzielę powierzchnię NURBS na siatkę d1 x d2 punktów. Liczby d1 i d2 są podane przez użytkownika w definicji powierzchni NURBS. Podział nie jest jednorodny ponieważ w wyniku triangulacji powierzchnia NURBS nie będzie gładka, ale będzie przybliżana płaskimi trójkątami. Dlatego na obszarach położonych bliżej „krawędzi” powierzchni triangulacja jest „gęstsza” a na obszarach środkowych „rzadsza”.
+W preprocesingu dzielę powierzchnię NURBS na siatkę d1 x d2 punktów. Liczby d1 i d2 są podane przez użytkownika w defini
+cji powierzchni NURBS. Podział nie jest jednorodny ponieważ w wyniku triangulacji powierzchnia NURBS nie będzie gładka, 
+ale będzie przybliżana płaskimi trójkątami. Dlatego na obszarach położonych bliżej „krawędzi” powierzchni triangulacja j
+est „gęstsza” a na obszarach środkowych „rzadsza”.
 
-W moim algorytmie jest możliwość wybrania metody triangulacji. Podając parametr –v liczba, możemy ustawić jak ma być dzielona powierzchnia NURBS. –v 1 ustawia na podział równomierny, większe wartości ustawiają podział gęstszy na brzegach, mniejsze gęstszy w środku.
+W moim algorytmie jest możliwość wybrania metody triangulacji. Podając parametr –v liczba, możemy ustawić jak ma być dzi
+elona powierzchnia NURBS. –v 1 ustawia na podział równomierny, większe wartości ustawiają podział gęstszy na brzegach, m
+niejsze gęstszy w środku.
 
  Współczynniki te można podać z wiersza poleceń programu, lub pominąć – wtedy zostaną użyte rozsądne wartości domyślne.
 
- W punktach podziału obliczana jest powierzchnia NURBS dla tych punktów. D1 dzieli u[0,1] na d1 punktów, podobnie d2 dzieliło v[0,1] na d2 punktów. Powstaje nam w ten sposób d1*d2 czworokątów. Każdy z tych czworokątów dzielę na dwa trójkąty. Ostatecznie mamy 2*d1*d2 trójkątów z powierzchni NURBS. Kolejne powierzchnie NURBS są dodawane do listy trójkątów na końcu. tj. jeżeli scena miała 1000 trójkątów i był na niej NURBS o 256 trójkątach to indeksy jego trójkątów będą z przedziału [1000,1256] (oryginalnej sceny: [0,999])
+ W punktach podziału obliczana jest powierzchnia NURBS dla tych punktów. D1 dzieli u[0,1] na d1 punktów, podobnie d2 dzi
+eliło v[0,1] na d2 punktów. Powstaje nam w ten sposób d1*d2 czworokątów. Każdy z tych czworokątów dzielę na dwa trójkąty
+. Ostatecznie mamy 2*d1*d2 trójkątów z powierzchni NURBS. Kolejne powierzchnie NURBS są dodawane do listy trójkątów na k
+ońcu. tj. jeżeli scena miała 1000 trójkątów i był na niej NURBS o 256 trójkątach to indeksy jego trójkątów będą z przedz
+iału [1000,1256] (oryginalnej sceny: [0,999])
 
  2.4.1 Obliczanie normalnych powierzchni NURBS
 
- Aby tak ztriangulowana powierzchnia wyświetlała się dobrze, należy jeszcze obliczyć normalne we wszystkich wierzchołkach trójkątów. Normalna do powierzchni NURBS jest obliczana w przybliżeniu. Wektor normalny jest iloczynem wektorowym pochodnych w kierunku u i v, tj: n = Pv x Pu. Oto algorytm obliczający normalną do zadanej powierzchni NURBS:
+ Aby tak ztriangulowana powierzchnia wyświetlała się dobrze, należy jeszcze obliczyć normalne we wszystkich wierzchołkac
+h trójkątów. Normalna do powierzchni NURBS jest obliczana w przybliżeniu. Wektor normalny jest iloczynem wektorowym poch
+odnych w kierunku u i v, tj: n = Pv x Pu. Oto algorytm obliczający normalną do zadanej powierzchni NURBS:
 
 Algorytm:
 
@@ -303,13 +404,22 @@ Wyjście: x,y,z: współrzędne wektora normalnego
 
   jeżeli EpsilonU*EpsilonV > 0 to (x,y,z) = -(x,y,z)
 
- W ten sposób dla każdego trójkąta mamy obliczone 3 normalne w każdym z jego wierzchołków. Teraz aby obliczyć normalną w dowolnym punkcie trójkąta należy zastosować interpolację.
+ W ten sposób dla każdego trójkąta mamy obliczone 3 normalne w każdym z jego wierzchołków. Teraz aby obliczyć normalną w
+ dowolnym punkcie trójkąta należy zastosować interpolację.
 
  2.4.2 Triangulacja, sposób podziału powierzchni
 
- W ten sposób podzieliłem powierzchnię NURBS na 2*d1*d2 trójkątów GPT (Generalized Phong Triangles). Używam trójkątów GPT aby uzyskać gładkie przejścia pomiędzy wierzchołkami i poszczególnymi trójkątami. Artefakty będą widoczne głównie na brzegu powierzchni NURBS (będzie wyglądała na łamaną), mogą się także ujawnić przy cieniach (ponieważ są rzucane na płaskie trójkąty). Przy dość gęstej triangulacji i odpowiednio rozmieszczonej artefakty albo słabo widoczne albo nie widać ich w ogóle. Zysk szybkości jest olbrzymi w porównaniu do obliczeń iteracyjnych metodą Newtona. Ztriangulowane powierzchnie NURBS są dodawane do sceny jako zwykłe listy trójkątów i tworzone jest dla nich drzewo lokalizacyjne AABB-Tree (Axis-Aligned Boundig Box Tree). Algorytmy tworzące drzewo AABB będą opisane poniżej.
+ W ten sposób podzieliłem powierzchnię NURBS na 2*d1*d2 trójkątów GPT (Generalized Phong Triangles). Używam trójkątów GP
+T aby uzyskać gładkie przejścia pomiędzy wierzchołkami i poszczególnymi trójkątami. Artefakty będą widoczne głównie na b
+rzegu powierzchni NURBS (będzie wyglądała na łamaną), mogą się także ujawnić przy cieniach (ponieważ są rzucane na płask
+ie trójkąty). Przy dość gęstej triangulacji i odpowiednio rozmieszczonej artefakty albo słabo widoczne albo nie widać ic
+h w ogóle. Zysk szybkości jest olbrzymi w porównaniu do obliczeń iteracyjnych metodą Newtona. Ztriangulowane powierzchni
+e NURBS są dodawane do sceny jako zwykłe listy trójkątów i tworzone jest dla nich drzewo lokalizacyjne AABB-Tree (Axis-A
+ligned Boundig Box Tree). Algorytmy tworzące drzewo AABB będą opisane poniżej.
 
- Wszystkie właściwości trójkąta GPT są interpolowane z jego wierzchołków. Podstawowe właściwości to: normalne, kolor, współrzędne tekstury, współczynniki: załamania, odbicia, pochłaniania, chropowatości i rozbłysku dla każdego koloru. Powierzchnia NURBS zawiera wszystkie te właściwości zapisane w każdym punkcie kontrolnym.
+ Wszystkie właściwości trójkąta GPT są interpolowane z jego wierzchołków. Podstawowe właściwości to: normalne, kolor, ws
+półrzędne tekstury, współczynniki: załamania, odbicia, pochłaniania, chropowatości i rozbłysku dla każdego koloru. Powie
+rzchnia NURBS zawiera wszystkie te właściwości zapisane w każdym punkcie kontrolnym.
 
  2.4.3 Struktura trójkąta GPT
 
@@ -321,13 +431,21 @@ Materiał: kolor_r, kolor_g, kolor_b
      odbicie_r, odbicie_g, odbicie_b
      przezroczystość_r, przezroczystość_g, przezroczystość_b
 
-Wartości odpowiadają kolejnym kolorom: czerwony, zielony, niebieski: r,g,b oraz właściwościom: rozproszenie (kolor), odbijalność (odbicie) i przezroczystość. Wszystkie wartości są z przedziału [0;1]. Powinny sumować się do 1, jeżeli się nie sumują to są skalowane np. dla koloru czerwonego (c-kolor, s-odbijalność(specular), t-przezroczystość(transparency): cr=1, tr=2, sr=1. Zostaną skalowane do: c=0.25, s=0.25, t=0.5. Poszczególne kolory r, g, b są niezależne.
+Wartości odpowiadają kolejnym kolorom: czerwony, zielony, niebieski: r,g,b oraz właściwościom: rozproszenie (kolor), odb
+ijalność (odbicie) i przezroczystość. Wszystkie wartości są z przedziału [0;1]. Powinny sumować się do 1, jeżeli się nie
+ sumują to są skalowane np. dla koloru czerwonego (c-kolor, s-odbijalność(specular), t-przezroczystość(transparency): cr
+=1, tr=2, sr=1. Zostaną skalowane do: c=0.25, s=0.25, t=0.5. Poszczególne kolory r, g, b są niezależne.
 
 Współrzędna tekstury: s,t
-Współczynniki załamania mXX: pierwsza litera oznacza czy z ośrodka do powierzchni (D) lub z powierzchni do ośrodka (U). Druga odpowiada za kolor, mamy więc np. dla koloru czerwonego: Przechodząc z powierza do obszaru ograniczonego powierzchnią NURBS: używamy mDR, a wychodząc z obszaru ograniczonego powierzchnią: mUR. Ważne aby obszar ograniczony powierzchnią NURBS był zamknięty.
+Współczynniki załamania mXX: pierwsza litera oznacza czy z ośrodka do powierzchni (D) lub z powierzchni do ośrodka (U). 
+Druga odpowiada za kolor, mamy więc np. dla koloru czerwonego: Przechodząc z powierza do obszaru ograniczonego powierzch
+nią NURBS: używamy mDR, a wychodząc z obszaru ograniczonego powierzchnią: mUR. Ważne aby obszar ograniczony powierzchnią
+ NURBS był zamknięty.
 
 Współczynniki świetlistości.
- Odpowiadają za to jak „ostre” są rozbłyski światła na wypolerowanych powierzchniach osobno dla każdego koloru: czerwony, zielony i niebieski. Im większy ten współczynnik tym „ostrzejsze”. Odpowiada on za światło rozbłysku w modelu Phonga, jest to potęga do której podnosimy kosinus kąta między wektorem normalnym a wektorem skierowanym do obserwatora.
+ Odpowiadają za to jak „ostre” są rozbłyski światła na wypolerowanych powierzchniach osobno dla każdego koloru: czerwony
+, zielony i niebieski. Im większy ten współczynnik tym „ostrzejsze”. Odpowiada on za światło rozbłysku w modelu Phonga, 
+jest to potęga do której podnosimy kosinus kąta między wektorem normalnym a wektorem skierowanym do obserwatora.
 
 Trójkąt:
  Wierzchołek: a,b,c
@@ -345,7 +463,11 @@ LiczbaCałkowita: indeks_NURBS (indeks pow. NURBS do której należy lub –1)
  2.4.4 Obliczanie powierzchni w której zawiera się trójkąt
 Powierzchnia: A,B,C,D
 
- Definicja powierzchni może być dostarczona przez użytkownika, lub można podać 0,0,0,0 (nie reprezentujące żadnej powierzchni), wtedy program policzy powierzchnię sam. Opis powierzchni przez A,B,C,D: A,B,C to współczynniki normalnej tej powierzchni a D to funkcja odległości od środka układu współrzędnych (dla znormalizowanych A,B,C to jest odległość). Zapis nie jest jednoznaczny, można go skalować: tA,tB,tC,tD, dla t <> 0. powierzchnie są używane przy obliczaniu przecięć trójkątów i promieni.
+ Definicja powierzchni może być dostarczona przez użytkownika, lub można podać 0,0,0,0 (nie reprezentujące żadnej powier
+zchni), wtedy program policzy powierzchnię sam. Opis powierzchni przez A,B,C,D: A,B,C to współczynniki normalnej tej pow
+ierzchni a D to funkcja odległości od środka układu współrzędnych (dla znormalizowanych A,B,C to jest odległość). Zapis 
+nie jest jednoznaczny, można go skalować: tA,tB,tC,tD, dla t <> 0. powierzchnie są używane przy obliczaniu przecięć trój
+kątów i promieni.
 
  Algorytm obliczający powierzchnię dla zadanego trójkąta:
 
@@ -394,14 +516,20 @@ Na = Nb = Nc = (nx,ny,nz)
 
  2.4.6 Algorytmy interpolacji
 
- Wszystkie te wartości są interpolowane na powierzchni trójkąta. W szczególności interpolacja jest używana do obliczenia koordynatów tekstur na całym trójkącie. Są do wyboru dwa algorytmy interpolacji: bazowany na odległości od najbliższej krawędzi (wolniejszy i testy wykazały, że mniej odpowiedni) (1) oraz dwu-krokowy:  najpierw interpolacja na rzucie punktu przecięcia na jedną z krawędzi a potem interpolacja pomiędzy wynikiem pierwszego kroku a wierzchołkiem z którego wykonano rzut (szybszy i lepszy algorytm interpolacji dwuliniowej) (2). Oto algorytm pierwszy (1)
+ Wszystkie te wartości są interpolowane na powierzchni trójkąta. W szczególności interpolacja jest używana do obliczenia
+ koordynatów tekstur na całym trójkącie. Są do wyboru dwa algorytmy interpolacji: bazowany na odległości od najbliższej 
+krawędzi (wolniejszy i testy wykazały, że mniej odpowiedni) (1) oraz dwu-krokowy:  najpierw interpolacja na rzucie punkt
+u przecięcia na jedną z krawędzi a potem interpolacja pomiędzy wynikiem pierwszego kroku a wierzchołkiem z którego wykon
+ano rzut (szybszy i lepszy algorytm interpolacji dwuliniowej) (2). Oto algorytm pierwszy (1)
 
 Algorytm pierwszy:
 
 InterpolujAlg1(t,p)
 
 Wejście: Trójkąt t, Wierzchołek p (należący do trójkąta)
-Wyjście: wszystkie właściwości trójkąta interpolowane dla zadanego wierzchołka. Uwaga: funkcja zakłada, że wierzchołek należy do trójkąta, jest ona wywoływana gdy procedura Intersection (przecięcie) znajdzie punkt wspólny promienia i trójkąta.
+Wyjście: wszystkie właściwości trójkąta interpolowane dla zadanego wierzchołka. Uwaga: funkcja zakłada, że wierzchołek n
+ależy do trójkąta, jest ona wywoływana gdy procedura Intersection (przecięcie) znajdzie punkt wspólny promienia i trójką
+ta.
 
  ab = Linia [B – A]
  bc = Linia [C – B]
@@ -426,7 +554,8 @@ Wyjście: wszystkie właściwości trójkąta interpolowane dla zadanego wierzch
 
 (pozostałe właściwości podobnie)
 
-Obsługa przypadków szczególnych (takich jak punkt p bardzo blisko któregoś wierzchołka – patrz rayslib.c get_normal_new).
+Obsługa przypadków szczególnych (takich jak punkt p bardzo blisko któregoś wierzchołka – patrz rayslib.c get_normal_new)
+.
 
 Oto algorytm drugi (2). Domyślnie używany przez program, można jednak ustawić pierwszy.
 
@@ -435,7 +564,9 @@ Algorytm drugi
 InterpolujAlg2(t,p)
 
 Wejście: Trójkąt t, Wierzchołek p (należący do trójkąta)
-Wyjście: Wszystkie właściwości trójkąta interpolowane dla zadanego wierzchołka. Uwaga: funkcja zakłada, że wierzchołek należy do trójkąta, jest ona wywoływana gdy procedura Intersection (przecięcie) znajdzie punkt wspólny promienia i trójkąta.
+Wyjście: Wszystkie właściwości trójkąta interpolowane dla zadanego wierzchołka. Uwaga: funkcja zakłada, że wierzchołek n
+ależy do trójkąta, jest ona wywoływana gdy procedura Intersection (przecięcie) znajdzie punkt wspólny promienia i trójką
+ta.
 
 Normal tymczN
 
@@ -462,7 +593,11 @@ jeżeli d = przecięcie linii(bc, ap) nie istnieje to przypadek szczególny
 
  2.4.7 Algorytm przecięcia linii
 
-Używając powyższych algorytmów interpolowane są wszystkie właściwości trójkątów GPT, efekt jest dobry: szczególnie dobrze do testów tego typu są interpolacje tekstury. Funkcja obliczająca przecięcia linii została starannie napisana aby uwzględniać wszystkie przypadki szczególne: równoległości, nieskończenie wiele punktów, linie pionowe, poziome, równoległe do z itd. Jej kod jest bardzo długi, przedstawię tutaj tylko kawałek pseudo-kodu obliczający typowy przypadek, reszta jest w rayslib.c: line_intersect. Metoda ta oblicza przecięcia promieni, struktura opisująca promień jest następująca:
+Używając powyższych algorytmów interpolowane są wszystkie właściwości trójkątów GPT, efekt jest dobry: szczególnie dobrz
+e do testów tego typu są interpolacje tekstury. Funkcja obliczająca przecięcia linii została starannie napisana aby uwzg
+lędniać wszystkie przypadki szczególne: równoległości, nieskończenie wiele punktów, linie pionowe, poziome, równoległe d
+o z itd. Jej kod jest bardzo długi, przedstawię tutaj tylko kawałek pseudo-kodu obliczający typowy przypadek, reszta jes
+t w rayslib.c: line_intersect. Metoda ta oblicza przecięcia promieni, struktura opisująca promień jest następująca:
 
 Promień:
  Wierzchołek P jest to wierzchołek od którego biegnie promień
@@ -497,21 +632,31 @@ Wady przyjętego przeze mnie rozwiązania:
 
 a) Widoczne artefakty (fragmenty łamanej) na krawędzi powierzchni NURBS przy zbyt „rzadkiej” triangulacji.
 
-b) Źle rzucane cienie na powierzchnię (ponieważ są rzucane na płaskie trójkąty) – chyba największa wada. W algorytmie można wyłączyć/włączyć generowanie cieni.
+b) Źle rzucane cienie na powierzchnię (ponieważ są rzucane na płaskie trójkąty) – chyba największa wada. W algorytmie mo
+żna wyłączyć/włączyć generowanie cieni.
 
 c) Złe efekty gdy renderujemy powierzchnie pod dużymi kątami, szczególnie gdy powierzchnia jest do nas „bokiem”
 
-d) Wszystkie te wady da się rozwiązać przez odpowiednio gęstą triangulację (proces jest zbieżny do rozwiązania dokładnego) ale wtedy narastają wymagania pamięciowe i czas preprocesingu (tworzenie drzewa AABB)
+d) Wszystkie te wady da się rozwiązać przez odpowiednio gęstą triangulację (proces jest zbieżny do rozwiązania dokładneg
+o) ale wtedy narastają wymagania pamięciowe i czas preprocesingu (tworzenie drzewa AABB)
 
  2.6 Zalety przyjętego przeze mnie rozwiązania
 
-a) Czas działania. Zysk kilku rzędów wielkości: 100x – 1000x.  Nie są konieczne kosztowne obliczenia numeryczne, a trójkąty można umieścić w strukturze lokalizacyjnej tak samo jak pozostałe trójkąty sceny. Szybkość i efekty są  zadowalające
+a) Czas działania. Zysk kilku rzędów wielkości: 100x – 1000x.  Nie są konieczne kosztowne obliczenia numeryczne, a trójk
+ąty można umieścić w strukturze lokalizacyjnej tak samo jak pozostałe trójkąty sceny. Szybkość i efekty są  zadowalające
 
-b) Stabilność rozwiązania. Metoda Newtona boryka się z wieloma problemami zbieżności, przypadkami szczególnymi, wielokrotnymi rozwiązaniami, rozbieżnością itp. Jak już  wspomniałem powyżej wiele było prób napisania dokładnego algorytmu który byłby stabilny numerycznie i radził sobie ze wszystkimi przypadkami szczególnymi, większość tych prób zakończyła się niepowodzeniem. Moja metoda daje 100% stabilność i bardzo szybko generuje wynik, przy niewielkiej (relatywnie) stracie dokładności.
+b) Stabilność rozwiązania. Metoda Newtona boryka się z wieloma problemami zbieżności, przypadkami szczególnymi, wielokro
+tnymi rozwiązaniami, rozbieżnością itp. Jak już  wspomniałem powyżej wiele było prób napisania dokładnego algorytmu któr
+y byłby stabilny numerycznie i radził sobie ze wszystkimi przypadkami szczególnymi, większość tych prób zakończyła się n
+iepowodzeniem. Moja metoda daje 100% stabilność i bardzo szybko generuje wynik, przy niewielkiej (relatywnie) stracie do
+kładności.
 
-c) Zastosowanie trójkątów GPT i interpolacji pozwala usunąć prawie wszystkie problemy związane z tym, że trójkąty są płaskie
+c) Zastosowanie trójkątów GPT i interpolacji pozwala usunąć prawie wszystkie problemy związane z tym, że trójkąty są pła
+skie
 
-d) Ponieważ z powierzchni NURBS powstają listy trójkątów to możemy je przekształcać jak wszystkie inne obiekty w programie, np. przemieścić część, zmienić tekstury itd. Mamy także możliwość zapisania dobrego przybliżenia powierzchni NURBS jako trójkąty.
+d) Ponieważ z powierzchni NURBS powstają listy trójkątów to możemy je przekształcać jak wszystkie inne obiekty w program
+ie, np. przemieścić część, zmienić tekstury itd. Mamy także możliwość zapisania dobrego przybliżenia powierzchni NURBS j
+ako trójkąty.
 
  3. Główne Algorytmy
 
@@ -519,7 +664,11 @@ d) Ponieważ z powierzchni NURBS powstają listy trójkątów to możemy je prze
 
  3.1 Algorytmy przecięć
 
- Najważniejszym algorytmem Raytracingu jest niewątpliwie algorytm przecięcia: Intersection. Mój program przecina najpierw Hierarchię obiektów otaczających a dopiero na koniec przecina trójkąty. Tutaj opiszę algorytm najniższego poziomu tj. przecięcie promienia z trójkątem. W programie jest możliwość wyboru algorytmu przecinającego: stara wersja przecina po prostu promień ze wszystkimi trójkątami, a nowa używa BVH (Bounding Volume Hierarchy – AABB Tree). Poniżej przedstawiam algorytm wywoływany przez oba przecięcia na najniższym poziomie: przecięcie trójkąta i promienia:
+ Najważniejszym algorytmem Raytracingu jest niewątpliwie algorytm przecięcia: Intersection. Mój program przecina najpier
+w Hierarchię obiektów otaczających a dopiero na koniec przecina trójkąty. Tutaj opiszę algorytm najniższego poziomu tj. 
+przecięcie promienia z trójkątem. W programie jest możliwość wyboru algorytmu przecinającego: stara wersja przecina po p
+rostu promień ze wszystkimi trójkątami, a nowa używa BVH (Bounding Volume Hierarchy – AABB Tree). Poniżej przedstawiam a
+lgorytm wywoływany przez oba przecięcia na najniższym poziomie: przecięcie trójkąta i promienia:
 
 PrzetnijTrojkąt(t,r)
 
@@ -551,11 +700,24 @@ Wyjście: odpowiedź: tak lub nie
 
  3.2 Hierarchia obiektów otaczających (BVH)
 
-Krytycznym czynnikiem decydującym o szybkości raytracingu nie jest procedura przecinająca (chociaż ma ona bardzo duże znaczenie), najważniejsza jest odpowiednia lokalizacja obliczeń. Załóżmy, że mamy scenę składającą się z 20000 trójkątów o rozdzielczości 1000 x 1000. promieni mamy więc 1000 x 1000 x 3 = 3M. Każdy z tych promieni musi przetestować przecięcie z każdym z trójkątów (gdy nie mamy BVH) tj. 3M x 20000 = 60G. Doliczyć należy jeszcze rekursję promieni. Niech każdy promień załamuje się i ugina, mamy wtedy 2 promienie z jednego na poziomie 1 rekursji. Na poziomie np. 5-tym mamy 2^5 = 32 promienie. Nasze 60G należy pomnożyć przez 32 mamy 1,9T. Zakładając jednak, że mamy strukturę lokalizacyjną która przechowuje w drzewie trójkąty mamy koszt przejścia przez drzewo z grubsza logarytmiczny (o podstawie 2). Więc Log2(20000)  < 15. Jednak nie zawsze możemy aż tak zredukować  koszt obliczeń, w tej sytuacji (wynika to z testów) możemy liczyć na 200-krotne zmniejszenie ilości obliczeń. Jest to zysk dosyć znaczący.
+Krytycznym czynnikiem decydującym o szybkości raytracingu nie jest procedura przecinająca (chociaż ma ona bardzo duże zn
+aczenie), najważniejsza jest odpowiednia lokalizacja obliczeń. Załóżmy, że mamy scenę składającą się z 20000 trójkątów o
+ rozdzielczości 1000 x 1000. promieni mamy więc 1000 x 1000 x 3 = 3M. Każdy z tych promieni musi przetestować przecięcie
+ z każdym z trójkątów (gdy nie mamy BVH) tj. 3M x 20000 = 60G. Doliczyć należy jeszcze rekursję promieni. Niech każdy pr
+omień załamuje się i ugina, mamy wtedy 2 promienie z jednego na poziomie 1 rekursji. Na poziomie np. 5-tym mamy 2^5 = 32
+ promienie. Nasze 60G należy pomnożyć przez 32 mamy 1,9T. Zakładając jednak, że mamy strukturę lokalizacyjną która przec
+howuje w drzewie trójkąty mamy koszt przejścia przez drzewo z grubsza logarytmiczny (o podstawie 2). Więc Log2(20000)  <
+ 15. Jednak nie zawsze możemy aż tak zredukować  koszt obliczeń, w tej sytuacji (wynika to z testów) możemy liczyć na 20
+0-krotne zmniejszenie ilości obliczeń. Jest to zysk dosyć znaczący.
 
 Drzewo AABB
 
-Postanowiłem zaimplementować drzewo lokalizacji AABB-Tree. Nazwa z ang. Axis Aligned Bounding Box Tree – Drzewo wyrównanych do osi układu współrzędnych prostopadłościanów. Zastosowałem optymalizację drzewa użytą w bibliotece Opcode: mianowicie zlikwidowałem liście zawierające tylko jeden trójkąt, w najniższym poziomie drzewa (liściu) przechowywane są wskaźniki na dwa trójkąty, które ten liść otacza. Oznacza to konieczność wyszukania dwóch jak najbliższych trójkątów – co jest dosyć powszechne, gdyż modele są na ogół triangulowane przez siatkę prostokątną: każdy prostokąt to dwa trójkąty. Tak stworzone drzewo ma N-1 węzłów (dla N trójkątów), pełne drzewo miałoby 2N-1 węzłów.
+Postanowiłem zaimplementować drzewo lokalizacji AABB-Tree. Nazwa z ang. Axis Aligned Bounding Box Tree – Drzewo wyrównan
+ych do osi układu współrzędnych prostopadłościanów. Zastosowałem optymalizację drzewa użytą w bibliotece Opcode: mianowi
+cie zlikwidowałem liście zawierające tylko jeden trójkąt, w najniższym poziomie drzewa (liściu) przechowywane są wskaźni
+ki na dwa trójkąty, które ten liść otacza. Oznacza to konieczność wyszukania dwóch jak najbliższych trójkątów – co jest 
+dosyć powszechne, gdyż modele są na ogół triangulowane przez siatkę prostokątną: każdy prostokąt to dwa trójkąty. Tak st
+worzone drzewo ma N-1 węzłów (dla N trójkątów), pełne drzewo miałoby 2N-1 węzłów.
 
 Struktury danych BVH
 
@@ -576,7 +738,8 @@ Btree:
  Opiszę teraz algorytmy generowania, przecinania, wczytywania i zapisywania drzew AABB.
 
  3.2.1 Algorytm generacji drzewa AABB
- Są trzy możliwości wybrania algorytmu generującego drzewo: algorytm szybki, algorytm częściowy, algorytm pełny. Różnice polegają na sposobie minimalizacji wyboru boxa w każdym kroku tworzenia drzewa.
+ Są trzy możliwości wybrania algorytmu generującego drzewo: algorytm szybki, algorytm częściowy, algorytm pełny. Różnice
+ polegają na sposobie minimalizacji wyboru boxa w każdym kroku tworzenia drzewa.
 Algorytm preprocessingu sceny:
 
 PreprocessingSceny(t[])
@@ -638,7 +801,10 @@ lb = długość(ba)
 
  ZWRÓC 0.5 * sin(alfa) * la * lb
 
- Funkcja obliczająca objętość boxa, który będzie otaczał dwa trójkąty (liść po optymalizacji). Liść w drzewie zawiera dwa trójkąty. Funkcja jest obliczana przy wyszukiwaniu minimalnego boxa, gdy taki zostanie znaleziony to dwa trójkąty które otacza zostają dodane do listy boxów. Po przejściu listy trójkątów w ten sposób powstaje sufit(N/2) liści drzewa i należy dobudować drzewo w górę, robi to funkcja: utwórz_drzewo_z_listy.
+ Funkcja obliczająca objętość boxa, który będzie otaczał dwa trójkąty (liść po optymalizacji). Liść w drzewie zawiera dw
+a trójkąty. Funkcja jest obliczana przy wyszukiwaniu minimalnego boxa, gdy taki zostanie znaleziony to dwa trójkąty któr
+e otacza zostają dodane do listy boxów. Po przejściu listy trójkątów w ten sposób powstaje sufit(N/2) liści drzewa i nal
+eży dobudować drzewo w górę, robi to funkcja: utwórz_drzewo_z_listy.
 
 oblicz_box(t1,t2)
 
@@ -659,7 +825,13 @@ Wyjście: objętość boxa
 
 Funkcja dodaj_box działa analogicznie, poza tym, że obliczony box jest dodawany do listy.
 
-Najważniejszą funkcją jest funkcja tworząca drzewo z wygenerowanej listy boxów-liści. Jest ona wywoływana na końcu algorytmu: utwórz_drzewo_z_listy(lista_boxów). To właśnie w tej funkcji są rozgraniczenia na pełną/częściową/zerową optymalizację drzewa. Podobnie jak poprzednio minimalizowaliśmy wielkość boxa otaczającego dwa trójkąty, teraz będziemy minimalizować wielkość boxa otaczającego dwa boxy. Funkcja obliczająca box otaczający dla dwóch boxów (a nie trójkątów która została już zaprezentowana) działa bardzo podobnie do opisanej już funkcji oblicz_box. Nazwa tej funkcji to oblicz_box2. Cały algorytm generuje rekurenycje drzewo boxów, każdy box otaczający jest minimalnym boxem otaczającym swoje dzieci. Korzeniem drzewa jest box otaczający całą scenę.
+Najważniejszą funkcją jest funkcja tworząca drzewo z wygenerowanej listy boxów-liści. Jest ona wywoływana na końcu algor
+ytmu: utwórz_drzewo_z_listy(lista_boxów). To właśnie w tej funkcji są rozgraniczenia na pełną/częściową/zerową optymaliz
+ację drzewa. Podobnie jak poprzednio minimalizowaliśmy wielkość boxa otaczającego dwa trójkąty, teraz będziemy minimaliz
+ować wielkość boxa otaczającego dwa boxy. Funkcja obliczająca box otaczający dla dwóch boxów (a nie trójkątów która zost
+ała już zaprezentowana) działa bardzo podobnie do opisanej już funkcji oblicz_box. Nazwa tej funkcji to oblicz_box2. Cał
+y algorytm generuje rekurenycje drzewo boxów, każdy box otaczający jest minimalnym boxem otaczającym swoje dzieci. Korze
+niem drzewa jest box otaczający całą scenę.
 
 3.2.1.1 Oto algorytm generujący drzewo z listy:
 
@@ -688,7 +860,8 @@ Wyjście: AABB-Tree zbudowane dla tej listy (btree)
  Ilość = ilość - 1
  btree = głowa
 
-Ważną funkcją jest znajdz_najbliższe_boxy(), w zależności od tego jakiego typu funkcję wybierzemy na nią, otrzymamy algorytmy: bez minimalizacji, z minimalizacją częściową lub z pełną.
+Ważną funkcją jest znajdz_najbliższe_boxy(), w zależności od tego jakiego typu funkcję wybierzemy na nią, otrzymamy algo
+rytmy: bez minimalizacji, z minimalizacją częściową lub z pełną.
 
 3.2.1.2 Algorytm minimalizacji pełnej:
 
@@ -715,7 +888,14 @@ ZWRÓĆ bt
 
  3.2.1.3 Algorytm minimalizacji częściowej
 
-Minimalizacja częściowa: zarówno p1 jak I p2 są ograniczone w przeszukiwaniu listy jakąś liczbą całkowitą, np 10% oznacza, że p1 i p2 przeszukają tylko 2000 z 20000 trójkątów. Można tak zrobić ponieważ, drzewo boxów jest posortowane po kolejnych rosnących boxach, w pierwszym etapie (gdy tworzono listę liści) w którym zawsze jest stosowana minimalizacja pełna. Wygenerowane w ten sposób drzewo nie jest optymalne i w czasie procesu raytracingu może generować więcej kolizji, ale z reguły nie jest to duży narzut czasu. Złożoność maleje z O(N^3) dla pełnej minimalizacji do O(N^2) dla braku minimalizacji. Minimalizacja częściowa jest gdzieś pomiędzy (zależy ile procent). Zalecane wartości procentowe (przełącznik –F) to 0-8 % - dają już bardzo dobre wyniki. Minimalizacja pełna jest zalecana wyłącznie dla małych scen (ilość trójkątów mniejsza niż 8000). Brak minimalizacji nie jest zalecany w żadnym przypadku, należy użyć dowolnie małej wartości np. 0.01%.
+Minimalizacja częściowa: zarówno p1 jak I p2 są ograniczone w przeszukiwaniu listy jakąś liczbą całkowitą, np 10% oznacz
+a, że p1 i p2 przeszukają tylko 2000 z 20000 trójkątów. Można tak zrobić ponieważ, drzewo boxów jest posortowane po kole
+jnych rosnących boxach, w pierwszym etapie (gdy tworzono listę liści) w którym zawsze jest stosowana minimalizacja pełna
+. Wygenerowane w ten sposób drzewo nie jest optymalne i w czasie procesu raytracingu może generować więcej kolizji, ale 
+z reguły nie jest to duży narzut czasu. Złożoność maleje z O(N^3) dla pełnej minimalizacji do O(N^2) dla braku minimaliz
+acji. Minimalizacja częściowa jest gdzieś pomiędzy (zależy ile procent). Zalecane wartości procentowe (przełącznik –F) t
+o 0-8 % - dają już bardzo dobre wyniki. Minimalizacja pełna jest zalecana wyłącznie dla małych scen (ilość trójkątów mni
+ejsza niż 8000). Brak minimalizacji nie jest zalecany w żadnym przypadku, należy użyć dowolnie małej wartości np. 0.01%.
 
 Algorytm częściowy:
 
@@ -747,7 +927,12 @@ ZWRÓĆ bt
 
 3.2.1.4 Algorytm szybki
 
-Minimalizacja zerowa (brak minimalizacji) przeszukuje tylko dla jednego trójkąta. Pierwszy trójkąt z listy jest ustalony, a dla drugiego przeszukujemy wszystkie. Jest to dosyć dobre rozwiązanie ponieważ w procesie tworzenia listy liści drzewa posortowaliśmy boxy. Metoda jest bardzo szybka (właściwie preprocesing dla tej metody jest prawie natychmiastowy) i daje dobre rezultaty, jednak czas obliczeń kolizji wzrasta. W algorytmie jest także możliwość przetasowania listy, drzewa nie będą wtedy tak bardzo niezrównoważone. Istnieją przypadki dla których algorytm szybki może utworzyć zdegenerowane (liniowe) drzewo.
+Minimalizacja zerowa (brak minimalizacji) przeszukuje tylko dla jednego trójkąta. Pierwszy trójkąt z listy jest ustalony
+, a dla drugiego przeszukujemy wszystkie. Jest to dosyć dobre rozwiązanie ponieważ w procesie tworzenia listy liści drze
+wa posortowaliśmy boxy. Metoda jest bardzo szybka (właściwie preprocesing dla tej metody jest prawie natychmiastowy) i d
+aje dobre rezultaty, jednak czas obliczeń kolizji wzrasta. W algorytmie jest także możliwość przetasowania listy, drzewa
+ nie będą wtedy tak bardzo niezrównoważone. Istnieją przypadki dla których algorytm szybki może utworzyć zdegenerowane (
+liniowe) drzewo.
 
 Znajdz_najbliższe_boxy_algorytm_szybki(h, t, b1, b2)
 
@@ -768,17 +953,56 @@ bt.l = bl
 bt.r = br
 ZWRÓĆ bt
 
- Doświadczalnie okazało się, że nie należy przeprowadzać pełnej minimalizacji sceny o złożoności o(n^3), wystarczy przeprowadzić minimalizację częściową lub nawet nie używać minimalizacji o(n^2). Dla dużych scen czas preprocessingu spada z kilkunastu godzin do kilku minut, a czas generowania obrazu wzrasta nie więcej niż o rząd wielkości: najczęściej 1.1 do 4 krotnie. Istnieją jednak pewne sceny dla których drzewo wygenerowane algorytmem pomijającym minimalizację są bardzo nieoptymalne, w pesymistycznym przypadku wysokość drzewa może być nawet rzędu ilości trójkątów, dlatego należy nawet dla dużych scen zastosować minimalizację częściową, np 0.1%. Dla małych scen (<5000 trójkątów) warto stosować minimalizację pełną. Dla bardzo dużych scen składających się z wielu rozłącznych obiektów, należy wygenerować drzewa dla poszczególnych obiektów, a potem połączyć je programem BTREECONV. Doświadczalnie okazało się także, że poziomy rekursji powyżej 7-8 są nierozróżnialne dla człowieka (i na poziomie 8-bitowej rozdzielczości kanałów RGB), poza szczególnymi przypadkami np. kamera wewnątrz lustrzanego sześcianu z innym obiektem w centrum.
+ Doświadczalnie okazało się, że nie należy przeprowadzać pełnej minimalizacji sceny o złożoności o(n^3), wystarczy przep
+rowadzić minimalizację częściową lub nawet nie używać minimalizacji o(n^2). Dla dużych scen czas preprocessingu spada z 
+kilkunastu godzin do kilku minut, a czas generowania obrazu wzrasta nie więcej niż o rząd wielkości: najczęściej 1.1 do 
+4 krotnie. Istnieją jednak pewne sceny dla których drzewo wygenerowane algorytmem pomijającym minimalizację są bardzo ni
+eoptymalne, w pesymistycznym przypadku wysokość drzewa może być nawet rzędu ilości trójkątów, dlatego należy nawet dla d
+użych scen zastosować minimalizację częściową, np 0.1%. Dla małych scen (<5000 trójkątów) warto stosować minimalizację p
+ełną. Dla bardzo dużych scen składających się z wielu rozłącznych obiektów, należy wygenerować drzewa dla poszczególnych
+ obiektów, a potem połączyć je programem BTREECONV. Doświadczalnie okazało się także, że poziomy rekursji powyżej 7-8 są
+ nierozróżnialne dla człowieka (i na poziomie 8-bitowej rozdzielczości kanałów RGB), poza szczególnymi przypadkami np. k
+amera wewnątrz lustrzanego sześcianu z innym obiektem w centrum.
 
  3.2.1.5 Algorytm wokselowy
 
- Najszybszy dostępny algorytm wykorzystuje dwie dodatkowe techniki. Po pierwsze należy zauważyć, że najczęściej odwiedzanym miejscem w drzewie jest jego korzeń, im głębiej w drzewie tym szansa trafienia tam jest mniejsza. Dlatego stosowany jest algorytm “smart minimalize”. Jest to odmiana minimalizacji częściowej, im bliżej liści tym mniej trójkątów jest przeszukiwanych w celu znalezienia minimalnego boxa otaczającego, zysk szybkości jest duży ponieważ liści jest w drzewie najwięcej a tam szukamy najmniej, a im wyżej w górę drzewa tym lepszą minimalizację stosujemy, ale takich elementów jest dużo mniej niż liści. Zysk na czasie jest bardzo duży (rzędu kilkukrotny), strata jakości drzewa niewielka (mierzona w ilości przecięć drzewa przez promienie, oraz ilości przecięć trójkątów w stosunku do przecięć boxów). Strata jakości drzewa wynosi od kilku do maksymalnie kilkudziesięciu procent (nie więcej niż 30%-40%). Aby wybrać ten algorytm należy zastosować opcję -F 200.
+ Najszybszy dostępny algorytm wykorzystuje dwie dodatkowe techniki. Po pierwsze należy zauważyć, że najczęściej odwiedza
+nym miejscem w drzewie jest jego korzeń, im głębiej w drzewie tym szansa trafienia tam jest mniejsza. Dlatego stosowany 
+jest algorytm “smart minimalize”. Jest to odmiana minimalizacji częściowej, im bliżej liści tym mniej trójkątów jest prz
+eszukiwanych w celu znalezienia minimalnego boxa otaczającego, zysk szybkości jest duży ponieważ liści jest w drzewie na
+jwięcej a tam szukamy najmniej, a im wyżej w górę drzewa tym lepszą minimalizację stosujemy, ale takich elementów jest d
+użo mniej niż liści. Zysk na czasie jest bardzo duży (rzędu kilkukrotny), strata jakości drzewa niewielka (mierzona w il
+ości przecięć drzewa przez promienie, oraz ilości przecięć trójkątów w stosunku do przecięć boxów). Strata jakości drzew
+a wynosi od kilku do maksymalnie kilkudziesięciu procent (nie więcej niż 30%-40%). Aby wybrać ten algorytm należy zastos
+ować opcję -F 200.
 
- Drugą techniką jest zastosowanie wokseli. Algorytm posiada dwa parametry, K-ilość podziałów oraz N-przy jakiej ilości trójkątów stosować podział. Domyślne wartości to K=2 i N=10000. Ustawienie N=10000 oznacza ze woksel będzie dzielony na K*K*K wokseli gdy ilość trójkątów w nim przekroczy 7500. Najlepsze wyniki uzyskuje się ustawiając K na 2 (oct-tree przestrzenie) Biorąc np. Scenę o 100000 trójkątów, algorytm działa rekurencyjne: Dzieli box otaczający całą scenę na 2*2*2 = 8 wokseli (o równych objętościach). Dla każdego z wokseli wykonuje procedurę rekurencyjne, aż do momentu gdy w wokselu będzie mniej niż 10000 trójkątów, gdy tak się stanie zastosuje dla nich algorytm “smart minimalize” tworząc box wynikowy. W fazie łączenia wszystkie boxy zostaną potraktowane jak dane wejściowe do algorytmu minimalizacji pełnej lub “smart” gdy będzie ich bardzo dużo. Dla bardzo dużych N (większych od ilości trójkątów na scenie) algorytm. Dla dużych K algorytm tworzy bardzo nieoptymalne drzewa, ponieważ niektóre woksele mają bardzo mało trójkątów juz na pierwszym poziomie rekursji, a inne są wielokrotnie. A potem w fazie łączenia są traktowane jednakowo, więc ścieżka do niektórych trójkątów jest bardzo długa, a do innych bardzo krótka. Polecam stosowanie K=2,3...6 (chociaż program pozwala stosować nawet K=32). Co do N to im większe tym lepiej, ale przedłuża to czas preprocesingu. Dla małych N algorytm ma złożoność liniową O(N*N*ilosc_trójkątów), polecane jest takie N dla którego pełna minimalizacja nie jest jeszcze bardzo długa, np N=5000. Zysk szybkości jest następujący: Weźmy scenę z 100000 trójkątów. Pełna minimalizacja to O(N^3) --> 10^15, Minimalizacja szybka to O(N^2) = 10^10, minimalizacja przez woksele nie większe niż 5000 to: Ponieważ 100K / 5K = 20 to w najlepszym przypadku mamy 20 wokseli, wszystkie po 5000 trójkątów, ale tak się nie zdaża, załóżmy że otrzymamy około 30-50 wokseli. Obliczenie jednego maksymalnie dużego woksela to 5000^3 (pełna minimalizacja) lub 5000^2 (najszybsza minimalizacja) czyli od 2.5*10^7 do 1.25 * 10^11. należy jeszcze zminimalizować woksele wynikowe (jest ich mniej niż 100, pełna minimalizacja to 100^3 = 10^6 co nie ma znaczenia przy koszcie ich obliczenia od 2.5*10^7 do 1.25*10^11). Niech ilość wokseli to 50. Ogólny koszt to od około 1.25*10^9 do 6.125*10^12. porównajmy to z kosztami algorytmu bez wokseli:
+ Drugą techniką jest zastosowanie wokseli. Algorytm posiada dwa parametry, K-ilość podziałów oraz N-przy jakiej ilości t
+rójkątów stosować podział. Domyślne wartości to K=2 i N=10000. Ustawienie N=10000 oznacza ze woksel będzie dzielony na K
+*K*K wokseli gdy ilość trójkątów w nim przekroczy 7500. Najlepsze wyniki uzyskuje się ustawiając K na 2 (oct-tree przest
+rzenie) Biorąc np. Scenę o 100000 trójkątów, algorytm działa rekurencyjne: Dzieli box otaczający całą scenę na 2*2*2 = 8
+ wokseli (o równych objętościach). Dla każdego z wokseli wykonuje procedurę rekurencyjne, aż do momentu gdy w wokselu bę
+dzie mniej niż 10000 trójkątów, gdy tak się stanie zastosuje dla nich algorytm “smart minimalize” tworząc box wynikowy. 
+W fazie łączenia wszystkie boxy zostaną potraktowane jak dane wejściowe do algorytmu minimalizacji pełnej lub “smart” gd
+y będzie ich bardzo dużo. Dla bardzo dużych N (większych od ilości trójkątów na scenie) algorytm. Dla dużych K algorytm 
+tworzy bardzo nieoptymalne drzewa, ponieważ niektóre woksele mają bardzo mało trójkątów juz na pierwszym poziomie rekurs
+ji, a inne są wielokrotnie. A potem w fazie łączenia są traktowane jednakowo, więc ścieżka do niektórych trójkątów jest 
+bardzo długa, a do innych bardzo krótka. Polecam stosowanie K=2,3...6 (chociaż program pozwala stosować nawet K=32). Co 
+do N to im większe tym lepiej, ale przedłuża to czas preprocesingu. Dla małych N algorytm ma złożoność liniową O(N*N*ilo
+sc_trójkątów), polecane jest takie N dla którego pełna minimalizacja nie jest jeszcze bardzo długa, np N=5000. Zysk szyb
+kości jest następujący: Weźmy scenę z 100000 trójkątów. Pełna minimalizacja to O(N^3) --> 10^15, Minimalizacja szybka to
+ O(N^2) = 10^10, minimalizacja przez woksele nie większe niż 5000 to: Ponieważ 100K / 5K = 20 to w najlepszym przypadku 
+mamy 20 wokseli, wszystkie po 5000 trójkątów, ale tak się nie zdaża, załóżmy że otrzymamy około 30-50 wokseli. Obliczeni
+e jednego maksymalnie dużego woksela to 5000^3 (pełna minimalizacja) lub 5000^2 (najszybsza minimalizacja) czyli od 2.5*
+10^7 do 1.25 * 10^11. należy jeszcze zminimalizować woksele wynikowe (jest ich mniej niż 100, pełna minimalizacja to 100
+^3 = 10^6 co nie ma znaczenia przy koszcie ich obliczenia od 2.5*10^7 do 1.25*10^11). Niech ilość wokseli to 50. Ogólny 
+koszt to od około 1.25*10^9 do 6.125*10^12. porównajmy to z kosztami algorytmu bez wokseli:
  Woksele (pełna minimalizacja) / Pełna Minimalizacja  ~= 150
  Woksele (smart minimalize)    / Pełna minimalizacja  ~=10000
  Woksele (fast minimalize)       / Pełna minimalizacja ~= 1,000,000
- Zalecanym i najlepiej spisującym się algorytmem jest smart minimalize używającym wokseli. Parametry algorytmu wybiera się poprzez -H “K N”, np -H “2 5000”, oznacza wybranie podziałow na 2*2*2=8 wokseli w każdym kroku rekurencyjnm, z warunkiem stopu rekurencji: ilość trójkatów w wokselu < 10000. Aby wymusić dodatkowo algorytm “full minimalize” należy dodać -F -100, dla “smart” -F -200 (ale to jest domyslna opcja więc nie trzeba jej podawać)
+ Zalecanym i najlepiej spisującym się algorytmem jest smart minimalize używającym wokseli. Parametry algorytmu wybiera s
+ię poprzez -H “K N”, np -H “2 5000”, oznacza wybranie podziałow na 2*2*2=8 wokseli w każdym kroku rekurencyjnm, z warunk
+iem stopu rekurencji: ilość trójkatów w wokselu < 10000. Aby wymusić dodatkowo algorytm “full minimalize” należy dodać -
+F -100, dla “smart” -F -200 (ale to jest domyslna opcja więc nie trzeba jej podawać)
 
 Algorytm:
 
@@ -867,11 +1091,34 @@ w.ilość_trójkątów = ilość_trójkątów
 
  3.2.1.6 Sąsiedztwo trójkątów
 
- Ponieważ w jeden piksel są wystrzelana 3 promienie (czerwony, zielony i niebieski), przecięcia ze sceną są obliczane tylko raz i zapisywane w drzewie indeksowym (struktura drzewa jest taka jak struktura wystrzelonego promienia, tj. Ma gałęzie odpowiadające za odbicie, załamanie i obliczenie cienia, które są używane wtedy gdy promień tworzy w trakcie obliczeń wyżej wymienione promienie: odbity, załamany lub cień) Algorytm posiada parametr M, określający co ile pikseli obliczać przecięcie. Gdy obliczamy piksel o numerze równym wielokrotności M, to do obliczeń używamy algorytmu przecinającego całe AABB-drzewo, wpp ustawiamy indeksy trójkątów sprawdzanych przez drzewo indeksowe na -1 (oznaczając w ten sposób, że indeksy te należy policzyć od nowa). Obliczając przecięcie, sprawdzamy rekurencyjne indeksy trójkątów w drzewie, jeżeli indeks jest dodatni to testujemy przecięcie z trójkątem o tym indeksie, jeżeli przecięcie jest to oznaczamy je jako aktualne przecięcie i obliczamy następny piksel (uwaga – jest to uproszczenie, inne przecięcie też może istnieć i być bliżej źródła promienia, niż to obliczone, z tego powodu M powinno być równe 1, ponieważ obliczenia pozostałych kolorów dla tego samego piksela nie spowodują powstania przecięć bliżej obserwatora, ale w kolejnym pikselu taka sytuacja może juz zaistnieć, dlatego domyślną wartością M jest 1). należy także zwrócić uwagę na załamanie światła dla M=1, ponieważ załamane promienie mogą mieć różne kierunki, to obliczenia przecięcia dla kolejnych kolorów w tym samym pikselu, także mogą dać niepoprawne wyniki, jednak przekłamania są niewielkie i zostały przeze mnie zaakceptowane, aby wyłączyć obliczanie z użyciem sąsiedztwa, należy ustawić M=0). Jeżeli przy testowaniu przecięcia z indeksem w drzewie da wynik negatywny, to wartość tego indeksu jest ustawiana na trójkąt z którym jest przecięcie, obliczany za pomocą algorytmu standardowego używającego drzewa AABB. Na tym etapie można także wybrać algorytm wykrywający krawędzie trójkątów (wtedy gdy przechodzimy do kolejnego trójkąta następuje zmiana indeksu w drzewie, wystarczy zwrócić wtedy wynik testu jako TRUE, i w krawędziach otrzymamy kolor tła. Ustawianie dużych M (np > 10) daje algorytm znacznie szybszy, ale jego dokładność jest wysoce niezadowalająca!
+ Ponieważ w jeden piksel są wystrzelana 3 promienie (czerwony, zielony i niebieski), przecięcia ze sceną są obliczane ty
+lko raz i zapisywane w drzewie indeksowym (struktura drzewa jest taka jak struktura wystrzelonego promienia, tj. Ma gałę
+zie odpowiadające za odbicie, załamanie i obliczenie cienia, które są używane wtedy gdy promień tworzy w trakcie oblicze
+ń wyżej wymienione promienie: odbity, załamany lub cień) Algorytm posiada parametr M, określający co ile pikseli oblicza
+ć przecięcie. Gdy obliczamy piksel o numerze równym wielokrotności M, to do obliczeń używamy algorytmu przecinającego ca
+łe AABB-drzewo, wpp ustawiamy indeksy trójkątów sprawdzanych przez drzewo indeksowe na -1 (oznaczając w ten sposób, że i
+ndeksy te należy policzyć od nowa). Obliczając przecięcie, sprawdzamy rekurencyjne indeksy trójkątów w drzewie, jeżeli i
+ndeks jest dodatni to testujemy przecięcie z trójkątem o tym indeksie, jeżeli przecięcie jest to oznaczamy je jako aktua
+lne przecięcie i obliczamy następny piksel (uwaga – jest to uproszczenie, inne przecięcie też może istnieć i być bliżej 
+źródła promienia, niż to obliczone, z tego powodu M powinno być równe 1, ponieważ obliczenia pozostałych kolorów dla teg
+o samego piksela nie spowodują powstania przecięć bliżej obserwatora, ale w kolejnym pikselu taka sytuacja może juz zais
+tnieć, dlatego domyślną wartością M jest 1). należy także zwrócić uwagę na załamanie światła dla M=1, ponieważ załamane 
+promienie mogą mieć różne kierunki, to obliczenia przecięcia dla kolejnych kolorów w tym samym pikselu, także mogą dać n
+iepoprawne wyniki, jednak przekłamania są niewielkie i zostały przeze mnie zaakceptowane, aby wyłączyć obliczanie z użyc
+iem sąsiedztwa, należy ustawić M=0). Jeżeli przy testowaniu przecięcia z indeksem w drzewie da wynik negatywny, to warto
+ść tego indeksu jest ustawiana na trójkąt z którym jest przecięcie, obliczany za pomocą algorytmu standardowego używając
+ego drzewa AABB. Na tym etapie można także wybrać algorytm wykrywający krawędzie trójkątów (wtedy gdy przechodzimy do ko
+lejnego trójkąta następuje zmiana indeksu w drzewie, wystarczy zwrócić wtedy wynik testu jako TRUE, i w krawędziach otrz
+ymamy kolor tła. Ustawianie dużych M (np > 10) daje algorytm znacznie szybszy, ale jego dokładność jest wysoce niezadowa
+lająca!
 
  3.2.2 Zapis i odczyt drzewa AABB
 
-Po wykonaniu wszystkich opisanych powyżej kroków mamy wygenerowane AABB drzewo. Tak wygenerowane drzewo możemy następnie zapisać w pliku, dodając do każdego węzła jego numer (np. przechodząc drzewo pre-order lub dowolnie) i zamieniając wszystkie wskaźniki na indeksy odpowiednich węzłów. Należy także zapisać indeks korzenia drzewa. Podobnie możemy wczytać takie drzewo, generując tablicę węzłów i czytając indeksy zamieniać je na wskaźniki na odpowiednie elementy tablicy. W pliku mamy zapisany indeks korzenia. Algorytmy zapisu i odczytu wyglądają następująco:
+Po wykonaniu wszystkich opisanych powyżej kroków mamy wygenerowane AABB drzewo. Tak wygenerowane drzewo możemy następnie
+ zapisać w pliku, dodając do każdego węzła jego numer (np. przechodząc drzewo pre-order lub dowolnie) i zamieniając wszy
+stkie wskaźniki na indeksy odpowiednich węzłów. Należy także zapisać indeks korzenia drzewa. Podobnie możemy wczytać tak
+ie drzewo, generując tablicę węzłów i czytając indeksy zamieniać je na wskaźniki na odpowiednie elementy tablicy. W plik
+u mamy zapisany indeks korzenia. Algorytmy zapisu i odczytu wyglądają następująco:
 
 3.2.2.1 Zapis drzewa AABB
 
@@ -962,15 +1209,20 @@ Od i = 0 do n
 
  3.2.3 Algorytm przecięcia (Intersection)
 
- Potrafimy już wygenerować oraz zapisać/odczytać drzewo. Opiszę teraz najważniejszy algorytm dla którego AABB drzewo zostało stworzone: mianowicie obliczanie przecięć promieni ze sceną. Idea algorytmu jest następująca:
+ Potrafimy już wygenerować oraz zapisać/odczytać drzewo. Opiszę teraz najważniejszy algorytm dla którego AABB drzewo zos
+tało stworzone: mianowicie obliczanie przecięć promieni ze sceną. Idea algorytmu jest następująca:
 
- a) przecinamy promień z korzeniem drzewa (głównym największym boxem). Jeżeli nie ma przecięcia to zakańczamy algorytm, wpp. testujemy tą samą funkcją przecięcie z lewą i prawą gałęzią
+ a) przecinamy promień z korzeniem drzewa (głównym największym boxem). Jeżeli nie ma przecięcia to zakańczamy algorytm, 
+wpp. testujemy tą samą funkcją przecięcie z lewą i prawą gałęzią
 
 b) jeżeli box jest liściem i wystąpiło przecięcie z nim, to przechodzimy do testowania przecięć z trójkątami.
 
- c) cały algorytm jest rekurencyjny i eliminuje niepotrzebne obliczenia przecięć z wieloma obiektami sceny, zysk często bywa 100 krotny lub nawet więcej, w zależności od wielkości sceny. Ilość testowanych przecięć jest rzędu O(Log2(N))
+ c) cały algorytm jest rekurencyjny i eliminuje niepotrzebne obliczenia przecięć z wieloma obiektami sceny, zysk często 
+bywa 100 krotny lub nawet więcej, w zależności od wielkości sceny. Ilość testowanych przecięć jest rzędu O(Log2(N))
 
- Algorytm przecięcia może być wybrany spośród dwóch rodzajów: wykorzystujący AABB drzewo oraz nie (ten był napisany wcześniej na początku implementacji). Pomimo, że możliwość wyboru algorytmu istnieje, drugi algorytm jest stanowczo nie zalecany ze względu na jego bardzo powolne działanie
+ Algorytm przecięcia może być wybrany spośród dwóch rodzajów: wykorzystujący AABB drzewo oraz nie (ten był napisany wcze
+śniej na początku implementacji). Pomimo, że możliwość wyboru algorytmu istnieje, drugi algorytm jest stanowczo nie zale
+cany ze względu na jego bardzo powolne działanie
 
 Algorytm intersekcji (przecięcia):
 
@@ -1007,7 +1259,8 @@ Wyjście: Punkt: v, LiczbaCałkowita: idx
 
 Przecięcie_drzewa(lista, r, tree)
 
-Wejście: Lista lista (na niej zwracamy wszystkie przecięcia promienia z trójkątami), na początku ostatnie_rozwiązanie jest puste i lista jest pusta
+Wejście: Lista lista (na niej zwracamy wszystkie przecięcia promienia z trójkątami), na początku ostatnie_rozwiązanie je
+st puste i lista jest pusta
     Promień: r (promień przecinający)
     Btree: tree (drzewo z którym przecinamy)
     ostatnie rozwiązanie: Wierzchołek, na początku pusty, zmienna globalna
@@ -1051,22 +1304,46 @@ jeżeli x >= b.minx i x <= b.maxx i y >= b.miny i y <= b.maxy
 Przypadek_prawy_min_y:
 Podobnie z Y i X a potem lewa gałąź też Z,Y,X
   (...)
-Prawdziwa implementacja testuje jeszcze 4 ściany (bo sprawdziliśmy tylko tylną i przednią ścianę) oraz także lewą gałąź. Tutaj pokazany został tylko jeden przypadek. Funkcja przecinania z trójkątem została pokazana wcześniej.
+Prawdziwa implementacja testuje jeszcze 4 ściany (bo sprawdziliśmy tylko tylną i przednią ścianę) oraz także lewą gałąź.
+ Tutaj pokazany został tylko jeden przypadek. Funkcja przecinania z trójkątem została pokazana wcześniej.
 
  3.3 Algorytm anty-aliasingu i rzucania cieni
 
- Zaimplementowany algorytm anty-aliasingu jest bardzo prosty: obliczenia prowadzone są w 2X większej rozdzielczości a następnie uśredniane są 4 piksele (macierz 2x2). Powoduje to zlikwidowanie niektórych nieprzyjemnych efektów: ostre krawędzie, aliasing tekstur itp.
-Ponieważ promienie czerwony, zielony i niebieski są obliczane oddzielnie, więc jest możliwość uzyskania efektów rozszczepienia światła.
-Aby zlikwidować efekt głębokich, czarnych cieni zastosowałem metodę półcienia. Można określić w programie minimalny i maksymalny poziom cienia, elementy półprzezroczyste rzucają półcienie, w zależności od ich współczynnika przepuszczania światła. Współczynnik ten może być różny dla różnych barw, więc możliwe jest otrzymanie kolorowych cieni. Problem z cieniami jest taki, że brane są pod uwagę tylko pierwsze obiekty na drodze: obiekt-światło. Jeżeli obiekt ten będzie prawie przezroczysty, to rzucony przez niego cień będzie bardzo mało intensywny. Jeżeli po drodze do światła dalej będzie zupełnie nieprzezroczysty obiekt to cień rzucany powinien być zupełny, ale mój algorytm obliczy ten słaby cień od pierwszego napotkanego obiektu. Jak widać mój algorytm nie jest doskonały ale dla dokładnego wyznaczania cieni lepiej używać innego algorytmu niż raytracing: np. „forward raytracing” opisany we wstępie 1. opcję generowania cieni można włączać/wyłączać. Można także ustawiać wartości minimalnego i maksymalnego zacienienia, jeżeli maksymalne zacienienie jest ustawione np. na 0.7, to współczynnik rzucania cienia przez obiekty jest mnożony przez 0.7.
+ Zaimplementowany algorytm anty-aliasingu jest bardzo prosty: obliczenia prowadzone są w 2X większej rozdzielczości a na
+stępnie uśredniane są 4 piksele (macierz 2x2). Powoduje to zlikwidowanie niektórych nieprzyjemnych efektów: ostre krawęd
+zie, aliasing tekstur itp.
+Ponieważ promienie czerwony, zielony i niebieski są obliczane oddzielnie, więc jest możliwość uzyskania efektów rozszcze
+pienia światła.
+Aby zlikwidować efekt głębokich, czarnych cieni zastosowałem metodę półcienia. Można określić w programie minimalny i ma
+ksymalny poziom cienia, elementy półprzezroczyste rzucają półcienie, w zależności od ich współczynnika przepuszczania św
+iatła. Współczynnik ten może być różny dla różnych barw, więc możliwe jest otrzymanie kolorowych cieni. Problem z cienia
+mi jest taki, że brane są pod uwagę tylko pierwsze obiekty na drodze: obiekt-światło. Jeżeli obiekt ten będzie prawie pr
+zezroczysty, to rzucony przez niego cień będzie bardzo mało intensywny. Jeżeli po drodze do światła dalej będzie zupełni
+e nieprzezroczysty obiekt to cień rzucany powinien być zupełny, ale mój algorytm obliczy ten słaby cień od pierwszego na
+potkanego obiektu. Jak widać mój algorytm nie jest doskonały ale dla dokładnego wyznaczania cieni lepiej używać innego a
+lgorytmu niż raytracing: np. „forward raytracing” opisany we wstępie 1. opcję generowania cieni można włączać/wyłączać. 
+Można także ustawiać wartości minimalnego i maksymalnego zacienienia, jeżeli maksymalne zacienienie jest ustawione np. n
+a 0.7, to współczynnik rzucania cienia przez obiekty jest mnożony przez 0.7.
 
 3.4 Efekt Fresnela
 
-Zaimplementowany został także efekt Fresnela. Zgodnie z prawem Fresnela gdy promień światła załamuje się pod dużym kątem w stosunku do normalnej materiału to „duża część” tego promienia zostaje odbita. Im większy jest kąt z normalną tym więcej światła się odbije a mniej przeniknie. Zaś gdy kąt padania jest bardzo zbliżony do normalnej to przezroczystość dąży do maksimum
-W moim algorytmie założyłem, że dla promienia równoległego do normalnej mamy określone warunki w trójkącie (tj. współczynniki odnoszą się do kierunku normalnego). A wraz ze wzrostem kąta pomiędzy normalną a promieniem współczynnik załamania maleje na korzyść współczynnika odbicia (suma jest stała). Można zdefiniować z jaką potęgom jest zachowana ta proporcjonalność za pomocą współczynnika –k. Podanie –k 0 wyłącza efekt Fresnela, a np. –k 2 oznacza proporcjonalność kwadratową ze względu na iloczyn skalarny unormowanych wektorów. Np. równy 1 da w wyniku zawsze 1, ale np. 0.5 da: 1 dla –k 0 ale da 0.25 dla –k 2. Domyślna wartość to 0.625
+Zaimplementowany został także efekt Fresnela. Zgodnie z prawem Fresnela gdy promień światła załamuje się pod dużym kątem
+ w stosunku do normalnej materiału to „duża część” tego promienia zostaje odbita. Im większy jest kąt z normalną tym wię
+cej światła się odbije a mniej przeniknie. Zaś gdy kąt padania jest bardzo zbliżony do normalnej to przezroczystość dąży
+ do maksimum
+W moim algorytmie założyłem, że dla promienia równoległego do normalnej mamy określone warunki w trójkącie (tj. współczy
+nniki odnoszą się do kierunku normalnego). A wraz ze wzrostem kąta pomiędzy normalną a promieniem współczynnik załamania
+ maleje na korzyść współczynnika odbicia (suma jest stała). Można zdefiniować z jaką potęgom jest zachowana ta proporcjo
+nalność za pomocą współczynnika –k. Podanie –k 0 wyłącza efekt Fresnela, a np. –k 2 oznacza proporcjonalność kwadratową 
+ze względu na iloczyn skalarny unormowanych wektorów. Np. równy 1 da w wyniku zawsze 1, ale np. 0.5 da: 1 dla –k 0 ale d
+a 0.25 dla –k 2. Domyślna wartość to 0.625
 
  3.5 Algorytm wyznaczania koloru tła
 
- Zakładam że jeżeli promień nie natrafi na żaden obiekt, to jego kolor jest obliczany na podstawie tła. Tło może być zadane konkretnym kolorem przez użytkownika, lub można podać teksturę jako tło. Kolor tła jest podawany przez użytkownika i może być albo jednolity, albo obliczany na podstawie kierunku (8 kolorów na podstawie kierunków x,y,z: +,-). W przypadku tekstury współrzędne są obliczane na podstawie kierunku promienia zgodnie z następującym algorytmem:
+ Zakładam że jeżeli promień nie natrafi na żaden obiekt, to jego kolor jest obliczany na podstawie tła. Tło może być zad
+ane konkretnym kolorem przez użytkownika, lub można podać teksturę jako tło. Kolor tła jest podawany przez użytkownika i
+ może być albo jednolity, albo obliczany na podstawie kierunku (8 kolorów na podstawie kierunków x,y,z: +,-). W przypadk
+u tekstury współrzędne są obliczane na podstawie kierunku promienia zgodnie z następującym algorytmem:
 
  Algorytm obliczania koloru tła:
 
@@ -1115,7 +1392,8 @@ wpp.
  pobierz_teksture(xc,yc,red,green,blue)
  zwróć (red,green,blue)
 
-Nie jest to jedyny algorytm wyboru tekstury na podstawie kierunku, ale daje dość dobre efekty i dlatego go zastosowałem. Zalecenie: Tekstura powinna mieć rozmiary co najmniej 2x większe niż ekran i być samopowtarzalna.
+Nie jest to jedyny algorytm wyboru tekstury na podstawie kierunku, ale daje dość dobre efekty i dlatego go zastosowałem.
+ Zalecenie: Tekstura powinna mieć rozmiary co najmniej 2x większe niż ekran i być samopowtarzalna.
 
  3.6 Algorytm raytracingu
 
@@ -1166,7 +1444,9 @@ wpp
 
  3.6.1 Główna funkcja raytracingu – kolor_rekurencyjny:
 
- Maksymalna głębokość rekursji może być określona przez użytkownika, lub zostanie użyta domyślna: 6. Promień nie jest także obliczany gdy jego wkład w kolor jest mniejszy niż 1/256, ponieważ mamy tylko po 8 bitów na kolor na wyświetlaczu i taki piksel i tak nic by mnie mógł wnieść do wynikowego koloru.
+ Maksymalna głębokość rekursji może być określona przez użytkownika, lub zostanie użyta domyślna: 6. Promień nie jest ta
+kże obliczany gdy jego wkład w kolor jest mniejszy niż 1/256, ponieważ mamy tylko po 8 bitów na kolor na wyświetlaczu i 
+taki piksel i tak nic by mnie mógł wnieść do wynikowego koloru.
 
 Kolor_rekurencyjny(r, trójkąty, v, n, idx, f)
 
@@ -1362,13 +1642,15 @@ Materiał: LiczbaRzeczywista: c,s,t
  Kolejne zmienne to: c – kolor, rozproszenie (color),
  s - odbijalność (specular),
  t – przezroczystość (transparency)
- Używany przy określaniu właściwości materiałów dla wierzchołków. Pomiędzy wierzchołkami interpolacja. Poza tym w wierzchołkach mogą też być koordynaty tekstur.
+ Używany przy określaniu właściwości materiałów dla wierzchołków. Pomiędzy wierzchołkami interpolacja. Poza tym w wierzc
+hołkach mogą też być koordynaty tekstur.
 
 WspółczynnikTekstury: LiczbaRzeczywista: s,t
  Koordynaty tekstury: s,t e [0,1]
 
 Powierzchnia: LiczbaRzeczywista: A,B,C,D
- Dokładny opis znajduje się w 2.4.4, przy opisie generowania. Używana przy obliczeniach przecięć, każdy trójkąt musi mieć obliczoną powierzchnię w której się zawiera.
+ Dokładny opis znajduje się w 2.4.4, przy opisie generowania. Używana przy obliczeniach przecięć, każdy trójkąt musi mie
+ć obliczoną powierzchnię w której się zawiera.
 
 Promień:
  Wierzchołek: P  - punkt od którego promień podąża
@@ -1378,9 +1660,11 @@ Promień:
  Promienie są wypuszczane w kierunku ekranu od obserwatora. Cały algorytm polega na dokładnym obliczeniu ich tras.
 
 Trójkąt: Struktura została opisana dokładnie w 2.4.3, przy opisie trójkąta GPT.
- Całe sceny składają się z trójkątów, powierzchnie NURBS są triangulowane w preprocessingu i także ostatecznie są listą trójkątów.
+ Całe sceny składają się z trójkątów, powierzchnie NURBS są triangulowane w preprocessingu i także ostatecznie są listą 
+trójkątów.
 
-Box: Axis Aligned Bounding Box (AABB), prostopadłościan wyrównany do osi układu, dokładny opis w 3.2. Drzewo boxów jest obliczane w preprocesingu lub wczytywane z pliku.
+Box: Axis Aligned Bounding Box (AABB), prostopadłościan wyrównany do osi układu, dokładny opis w 3.2. Drzewo boxów jest 
+obliczane w preprocesingu lub wczytywane z pliku.
  Używany jako hierarchia otaczająca (BV – Bounding Volume)
 
 Btree: Drzewo AABB, opis i sposoby generacji w 3.2
@@ -1390,21 +1674,26 @@ Lista:
  WskaźnikNaListę: poprzedni, następny
  WskaźnikNaDane: dane
 
- Struktura używana do przechowywania list obiektów, które należy przekształcić, oraz bardzo często przechowująca dane tymczasowe różnych algorytmów.
+ Struktura używana do przechowywania list obiektów, które należy przekształcić, oraz bardzo często przechowująca dane ty
+mczasowe różnych algorytmów.
 
 Macierz: elementy[][]
- Przechowuje przekształcenia i transformacje świata, światła, obiektów, list obiektów itp. Alokowana dynamicznie, wielkość m i n należy określić alokując macierz.
+ Przechowuje przekształcenia i transformacje świata, światła, obiektów, list obiektów itp. Alokowana dynamicznie, wielko
+ść m i n należy określić alokując macierz.
 
 ListaTransformacji:
  Macierz: m, mn
  LiczbaCałkowita index1, index2
  LiczbaCałkowita NURBS_index1, NURBS_index2
- Macierz m przechowuję transformację wierzchołków, a macierz mn transformację normalnych (pochodną). Indeksy 1 i 2 oznaczają od którego do którego trójkąta/NURBSa obowiązuje przekształcenie. Indeksy dla NURBS’a mogą być równe –1 gdy przekształcenie nie dotyczy NURBS’ów
+ Macierz m przechowuję transformację wierzchołków, a macierz mn transformację normalnych (pochodną). Indeksy 1 i 2 oznac
+zają od którego do którego trójkąta/NURBSa obowiązuje przekształcenie. Indeksy dla NURBS’a mogą być równe –1 gdy przeksz
+tałcenie nie dotyczy NURBS’ów
 
 Tekstura:
  LiczbaCałkowita długość, szerokość
 Macierz: piksele,  każdemu pikselowi odpowiada kolor w formacie RBG, wielkość macierzy: długość x szerokość
-Tekstury są używane do teksturowania obiektów na scenie, główny ekran także jest teksturą o wymiarach identycznych z wielkością okna.
+Tekstury są używane do teksturowania obiektów na scenie, główny ekran także jest teksturą o wymiarach identycznych z wie
+lkością okna.
 
 NURBS: patrz też definicja NURBS w 2.1
  LiczbaCałkowita: idx – indeks(numer) powierzchni NURBS
@@ -1441,20 +1730,25 @@ Pozostałe tekstury są wczytywane z plików BMP/JPG i po wczytaniu wszystkich s
 
 Tekstura tekstury[]
 
-Drzewo lokalizacyjne (AABB drzewo) jest trzymane w liście poszczególnych boxów. Wszystkie one tworzą poza tym strukturę drzewiastą. W liście mamy dostęp kolejno do wszystkich boxów, drzewo zapewnia szybką lokalizację. Te dwie struktury współdzielą dane.
+Drzewo lokalizacyjne (AABB drzewo) jest trzymane w liście poszczególnych boxów. Wszystkie one tworzą poza tym strukturę 
+drzewiastą. W liście mamy dostęp kolejno do wszystkich boxów, drzewo zapewnia szybką lokalizację. Te dwie struktury wspó
+łdzielą dane.
 
 ListaBoxów: boxy
 AABBDrzewo: korzeń
 
-Wszystkie trójkąty są przechowywane na liście, powierzchnie NURBS po ztriangulowaniu dodają „swoje” trójkąty do listy, dodają także indeks na nie wskazujący.
+Wszystkie trójkąty są przechowywane na liście, powierzchnie NURBS po ztriangulowaniu dodają „swoje” trójkąty do listy, d
+odają także indeks na nie wskazujący.
 
 Lista trójkąty
 
-Przekształcenia świata są trzymane w dwóch macierzach: jedna przechowuje globalne przekształcenie całego świata, druga globalne przekształcenie wszystkich normalnych.
+Przekształcenia świata są trzymane w dwóch macierzach: jedna przechowuje globalne przekształcenie całego świata, druga g
+lobalne przekształcenie wszystkich normalnych.
 
 Macierz M, MN
 
-Przekształcenia list trójkątów są trzymane na liście. Jest to więc lista list trójkątów do przekształceń, szczegóły jak jest ona używana są w: 5.2.1.2
+Przekształcenia list trójkątów są trzymane na liście. Jest to więc lista list trójkątów do przekształceń, szczegóły jak 
+jest ona używana są w: 5.2.1.2
 
 Lista listy_przekształceń_trójkątów
 
@@ -1462,7 +1756,8 @@ Lista listy_przekształceń_trójkątów
 
  5.1 Odczyt i zapis danych
 
- Opiszę teraz obsługiwane przez mój algorytm formaty plików wejściowych i wyjściowych, a także które pliki do czego są używane.
+ Opiszę teraz obsługiwane przez mój algorytm formaty plików wejściowych i wyjściowych, a także które pliki do czego są u
+żywane.
 
 5.1.1 Odczyt danych
 
@@ -1477,35 +1772,64 @@ Lista listy_przekształceń_trójkątów
 
 Program potrafi odczytywać pośrednio lub bezpośrednio sceny zapisane w następujących formatach:
 
-DAT/FDAT: jest to standardowy tekstowy format pliku wejściowego używanego przez moją aplikację, może być wczytany bezpośrednio. Wszystkie inne formaty są konwertowane bezpośrednio do tego formatu. Format FDAT powstaje przez zapisanie bezpośrednio wszystkich trójkątów sceny po przekształceniach i triangulacji w oddzielnym pliku, używa się do tego opcji -B programu RAYS. Format pliku FDAT jest identyczny jak format pliku DAT, pliki te nie zawierają definicji powierzchni NURBS, tylko trójkąty składowe tych powierzchni po triangulacji. Oto przykładowy plik DAT zawierający wszystkie dostępne opcje wraz z komentarzami.
+DAT/FDAT: jest to standardowy tekstowy format pliku wejściowego używanego przez moją aplikację, może być wczytany bezpoś
+rednio. Wszystkie inne formaty są konwertowane bezpośrednio do tego formatu. Format FDAT powstaje przez zapisanie bezpoś
+rednio wszystkich trójkątów sceny po przekształceniach i triangulacji w oddzielnym pliku, używa się do tego opcji -B pro
+gramu RAYS. Format pliku FDAT jest identyczny jak format pliku DAT, pliki te nie zawierają definicji powierzchni NURBS, 
+tylko trójkąty składowe tych powierzchni po triangulacji. Oto przykładowy plik DAT zawierający wszystkie dostępne opcje 
+wraz z komentarzami.
 
  Przykładowy plik z opisem wszelkich opcji jako komentarze znajduje się w pliku dat\options.DAT
- BIN: Format wewnętrzny mojego algorytmu w którym cała scena jest zapisana binarnie (bez przekształceń, po prostu każdy trójkąt po obliczeniu ostatecznej pozycji). Format ten może być wczytany bezpośrednio, pliki BIN można wygenerować za pomocą mojego algorytmu na podstawie plików DAT lub FDAT.
+ BIN: Format wewnętrzny mojego algorytmu w którym cała scena jest zapisana binarnie (bez przekształceń, po prostu każdy 
+trójkąt po obliczeniu ostatecznej pozycji). Format ten może być wczytany bezpośrednio, pliki BIN można wygenerować za po
+mocą mojego algorytmu na podstawie plików DAT lub FDAT.
 
 NURBS: pliki te zawierają definicję powierzchni NURBS, aktualna wersja RAYS
-potrafi juz odczytywać definicje NURBS w plikach DAT, więc pliki NURBS nie są już potrzebne - ich zawartość można bezpośrednio wstawiać do DAT. Aby odczytać plik NURBS należy go najpierw skonwertować na DAT za pomocą programu NURBS2DAT.
+potrafi juz odczytywać definicje NURBS w plikach DAT, więc pliki NURBS nie są już potrzebne - ich zawartość można bezpoś
+rednio wstawiać do DAT. Aby odczytać plik NURBS należy go najpierw skonwertować na DAT za pomocą programu NURBS2DAT.
 
- IGES/IGS: Można odczytać definicje powierzchni NURBS z plików Iges, służy do tego program IGES2DAT konwertuje on plik IGES do pliku DAT, odnajduje w nim rekordy 126 i zamienia je na rekordy NURBS, można podać parametry dodatkowe powierzchni tj. gęstość triangulacji, kolor, skalowanie itp.
+ IGES/IGS: Można odczytać definicje powierzchni NURBS z plików Iges, służy do tego program IGES2DAT konwertuje on plik I
+GES do pliku DAT, odnajduje w nim rekordy 126 i zamienia je na rekordy NURBS, można podać parametry dodatkowe powierzchn
+i tj. gęstość triangulacji, kolor, skalowanie itp.
 
- TRI/ULI: pliki te przechowują trójkąty oraz normalne i koordynaty tekstur. Jest to format używany przez nas na VR i Grafice. Program ULI2DAT konwertuje pliki TRI/ULI na DAT, podobnie jak IGES2DAT można podać wiele opcji.
+ TRI/ULI: pliki te przechowują trójkąty oraz normalne i koordynaty tekstur. Jest to format używany przez nas na VR i Gra
+fice. Program ULI2DAT konwertuje pliki TRI/ULI na DAT, podobnie jak IGES2DAT można podać wiele opcji.
 
- MD2: format modeli w Quake2, brakuje w nim normalnych. Program MD22DAT konwertuje te pliki do DAT, także można podać wiele opcji.
+ MD2: format modeli w Quake2, brakuje w nim normalnych. Program MD22DAT konwertuje te pliki do DAT, także można podać wi
+ele opcji.
 
- 3DS: Pliki 3D Studio Max mogą być odczytane na dwa sposoby. Pierwszy program 3DS2TRI (starszy i gorszy) potrafi je skonwertować do formatu TRI/ULI, tracąc przy tym informacje o teksturach. Drugi (nowszy i lepszy) potrafi je skonwertować bezpośrednio do formatu DAT, zachowując informacje o teksturach. Można wybrać interpolację normalnych lub obliczenie ich zlecić mojemu algorytmowi opisanemu w 2.4.5. Program jest wysoce konfigurowalny, można zmienić wszystkie właściwości wierzchołka, zapisywać transformacje itp.
+ 3DS: Pliki 3D Studio Max mogą być odczytane na dwa sposoby. Pierwszy program 3DS2TRI (starszy i gorszy) potrafi je skon
+wertować do formatu TRI/ULI, tracąc przy tym informacje o teksturach. Drugi (nowszy i lepszy) potrafi je skonwertować be
+zpośrednio do formatu DAT, zachowując informacje o teksturach. Można wybrać interpolację normalnych lub obliczenie ich z
+lecić mojemu algorytmowi opisanemu w 2.4.5. Program jest wysoce konfigurowalny, można zmienić wszystkie właściwości wier
+zchołka, zapisywać transformacje itp.
 
 5.1.1.2 Wczytywanie tekstur i scen wygenerowanych częściowo
 
-Program potrafi odczytywać tekstury w formacie BMP (Bitmapa 24bitowa). Jeżeli w czasie kompilacji ustawiono odpowiednią opcję to jest możliwość wczytywania formatu JPG/JPEG. Poniżej zakładam, że obsługa JPEG jest włączona.
+Program potrafi odczytywać tekstury w formacie BMP (Bitmapa 24bitowa). Jeżeli w czasie kompilacji ustawiono odpowiednią 
+opcję to jest możliwość wczytywania formatu JPG/JPEG. Poniżej zakładam, że obsługa JPEG jest włączona.
 
 Odczyt tekstury:
 
-Tekstury są odczytywane według ich ID. Przeszukiwany jest katalog tekstur (który może być podany w definicji sceny lub z wiersza poleceń programu), najpierw następuje próba odczytu ID.bmp a potem (jeżeli odczyt BMP się nie powiódł) ID.jpg i ID.jpeg. Jeżeli ID jest równe 0 to algorytm zakłada, że obiekt nie ma tekstury. Odczyt plików JPEG odbywa się za pomocą napisanego przeze mnie algorytmu używającego biblioteki JPEGLIB, algorytm: load_jpeg_file w rayslib.c.
+Tekstury są odczytywane według ich ID. Przeszukiwany jest katalog tekstur (który może być podany w definicji sceny lub z
+ wiersza poleceń programu), najpierw następuje próba odczytu ID.bmp a potem (jeżeli odczyt BMP się nie powiódł) ID.jpg i
+ ID.jpeg. Jeżeli ID jest równe 0 to algorytm zakłada, że obiekt nie ma tekstury. Odczyt plików JPEG odbywa się za pomocą
+ napisanego przeze mnie algorytmu używającego biblioteki JPEGLIB, algorytm: load_jpeg_file w rayslib.c.
 
 Odczyt sceny częściowo wygenerowanej:
 
-Raytracing można przerwać w dowolnym momencie przez naciśnięcie CTRL+C, lub wysłanie sygnału z GUI, lub przez zdalne polecenie przerwania. Wysyłanie sygnałów i zdalne polecenia są opcjonalne. O tym czy są dostępne decydują flagi kompilacji. Program zapisuje wtedy to co obliczył do tej pory (z dokładnością do linii pionowej), oczywiście rozdzielczości obrazu wejściowego i obrazu generowanego muszą się zgadzać, ale jest to jedyna metoda sprawdzania czy kontynuujemy raytracing na tej samej scenie czy na innej. Jest więc możliwość stworzenia obrazu wynikowego składającego się z częściowych renderingów różnych scen.
+Raytracing można przerwać w dowolnym momencie przez naciśnięcie CTRL+C, lub wysłanie sygnału z GUI, lub przez zdalne pol
+ecenie przerwania. Wysyłanie sygnałów i zdalne polecenia są opcjonalne. O tym czy są dostępne decydują flagi kompilacji.
+ Program zapisuje wtedy to co obliczył do tej pory (z dokładnością do linii pionowej), oczywiście rozdzielczości obrazu 
+wejściowego i obrazu generowanego muszą się zgadzać, ale jest to jedyna metoda sprawdzania czy kontynuujemy raytracing n
+a tej samej scenie czy na innej. Jest więc możliwość stworzenia obrazu wynikowego składającego się z częściowych renderi
+ngów różnych scen.
 
-Taki plik można odczytać i kontynuować obliczenia od miejsca gdzie je zakończono (z dokładnością do linii pionowej). Algorytm przechodzi przez kolejne pionowe linie obrazu aż znajdzie cała czarną linię – od tej linii zaczyna obliczenia. Ważne aby plik częściowo wygenerowany był bitmapą a nie JPEGiem. W pliku JPEG takie znaczniki jak cała linia czarna mogą zostać zniszczone przez kompresję/dekompresję stratną. W przypadku próby kontynuacji na podstawie pliku JPEG zostanie wyświetlone stosowne ostrzeżenie.
+Taki plik można odczytać i kontynuować obliczenia od miejsca gdzie je zakończono (z dokładnością do linii pionowej). Alg
+orytm przechodzi przez kolejne pionowe linie obrazu aż znajdzie cała czarną linię – od tej linii zaczyna obliczenia. Waż
+ne aby plik częściowo wygenerowany był bitmapą a nie JPEGiem. W pliku JPEG takie znaczniki jak cała linia czarna mogą zo
+stać zniszczone przez kompresję/dekompresję stratną. W przypadku próby kontynuacji na podstawie pliku JPEG zostanie wyśw
+ietlone stosowne ostrzeżenie.
 
 Algorytm wykrywania skąd należy kontynuować obliczenia:
 
@@ -1524,7 +1848,9 @@ dla i = 0 do eksturat.X wykonaj:
 
  5.1.1.3 Wczytywanie drzewa AABB
 
- Plik zawierający drzewo AABB ma rozszerzenie BTREE, plik ten może być binarny lub tekstowy (rozszerzenie się nie różni). Zalecany format to binarny ponieważ drzewa lokalizacji i tak nie edytuje się „ręcznie”, plik binarny jest szybciej wczytywany. Procedura zapisu i odczytu takiego pliku została opisana w 3.2.2.1 (zapis) i 3.2.2.2 (odczyt)
+ Plik zawierający drzewo AABB ma rozszerzenie BTREE, plik ten może być binarny lub tekstowy (rozszerzenie się nie różni)
+. Zalecany format to binarny ponieważ drzewa lokalizacji i tak nie edytuje się „ręcznie”, plik binarny jest szybciej wcz
+ytywany. Procedura zapisu i odczytu takiego pliku została opisana w 3.2.2.1 (zapis) i 3.2.2.2 (odczyt)
 
  5.1.2. Zapis danych
 
@@ -1538,7 +1864,9 @@ Ogólnie zapis danych możemy podzielić na 5 grup:
 
 5.1.2.1 Zapis obrazów wynikowych/częściowych
 
- Obrazy wynikowe są zapisywane w formacie BMP a także jeżeli odpowiednio skonfigurowano program to w formacie JPEG. Istnieje także możliwość zapisania JPEG’ów w odcieniach szarości a także podwojonych rozmiarów bitmap w przypadku użycia antyaliasingu (potrzebne by potem wznowić obliczenia). Obrazy są zapisywane w różnych sytuacjach, takich jak:
+ Obrazy wynikowe są zapisywane w formacie BMP a także jeżeli odpowiednio skonfigurowano program to w formacie JPEG. Istn
+ieje także możliwość zapisania JPEG’ów w odcieniach szarości a także podwojonych rozmiarów bitmap w przypadku użycia ant
+yaliasingu (potrzebne by potem wznowić obliczenia). Obrazy są zapisywane w różnych sytuacjach, takich jak:
 
  -zakończenie obliczeń
  -błąd krytyczny
@@ -1546,7 +1874,12 @@ Ogólnie zapis danych możemy podzielić na 5 grup:
  -żądanie użytkownika
  -co pewną (pokreśloną przez użytkownika) ilość linii
 
- Dla każdej z tych sytuacji tworzone są inne pliki BMP/JPEG. Jest możliwość konfigurowania nazw tych plików a także tego kiedy będą generowane (np. co ile linii – autobackup). Opcję autobackup można skonfigurować w pliku ze sceną lub z wiersza poleceń programu, a także przez komunikację z serwerem przez internet lub przez odpowiedni klawisz na oknie GUI.. Obraz częściowy jest zapisywany do poprzedniej linii w stosunku do aktualnie obliczanej, aktualna jest zapisywana w całości na czarno – jako znacznik końca danych obliczonych, patrz odczyt częściowego obrazu w 5.1.1.2. Algorytm zapisu wygląda następująco:
+ Dla każdej z tych sytuacji tworzone są inne pliki BMP/JPEG. Jest możliwość konfigurowania nazw tych plików a także tego
+ kiedy będą generowane (np. co ile linii – autobackup). Opcję autobackup można skonfigurować w pliku ze sceną lub z wier
+sza poleceń programu, a także przez komunikację z serwerem przez internet lub przez odpowiedni klawisz na oknie GUI.. Ob
+raz częściowy jest zapisywany do poprzedniej linii w stosunku do aktualnie obliczanej, aktualna jest zapisywana w całośc
+i na czarno – jako znacznik końca danych obliczonych, patrz odczyt częściowego obrazu w 5.1.1.2. Algorytm zapisu wygląda
+ następująco:
 
 WyczyśćLinie(tekstura,idx)
 
@@ -1558,22 +1891,36 @@ Od i = 0 do tekstura.Y wykonaj:
 
 5.1.2.2 Zapis binarnych scen
 
- Sceny binarne BIN, mogą być wygenerowane z plików wejściowych DAT, jeżeli użytkownik poda odpowiednią opcję z wiersza poleceń programu. Pliki BIN mogą być bezpośrednio wczytywane przez algorytm, patrz: 5.1.1.1. Nie jest to jednak format zalecany, gdyż nie istnieje praktycznie żadna możliwość ingerencji w scenę, format binarny jest zalecany dla drzew AABB, których ręczna edycja na ogół nie ma sensu.
+ Sceny binarne BIN, mogą być wygenerowane z plików wejściowych DAT, jeżeli użytkownik poda odpowiednią opcję z wiersza p
+oleceń programu. Pliki BIN mogą być bezpośrednio wczytywane przez algorytm, patrz: 5.1.1.1. Nie jest to jednak format za
+lecany, gdyż nie istnieje praktycznie żadna możliwość ingerencji w scenę, format binarny jest zalecany dla drzew AABB, k
+tórych ręczna edycja na ogół nie ma sensu.
 
 5.1.2.3 Zapis obliczonego drzewa AABB
 
- Wygenerowane drzewo AABB może być zapisane w pliku BTREE, jeżeli zostanie podana jedna z dwóch opcji zapisywania drzewa z wiersza poleceń aplikacji. Jedna z opcji nakazuje zapis binarny drzewa a druga zapis tekstowy. Tylko jedna opcja na raz jest dozwolona, w przypadku użycia obu, obowiązującą będzie ta podana na końcu. Zapis drzewa BTREE jest opisany w 3.2.2.1 a odczyt w 3.2.2.2 i 5.1.1.3
+ Wygenerowane drzewo AABB może być zapisane w pliku BTREE, jeżeli zostanie podana jedna z dwóch opcji zapisywania drzewa
+ z wiersza poleceń aplikacji. Jedna z opcji nakazuje zapis binarny drzewa a druga zapis tekstowy. Tylko jedna opcja na r
+az jest dozwolona, w przypadku użycia obu, obowiązującą będzie ta podana na końcu. Zapis drzewa BTREE jest opisany w 3.2
+.2.1 a odczyt w 3.2.2.2 i 5.1.1.3
 
 5.1.2.4 Zapis przekształceń w trybie podglądu
 
- W trybie podglądu (renderingu normalnego a nie raytracingu), można dowolnie przekształcać scenę i światło. Po naciśnięciu odpowiedniego przycisku aktualne przekształcenie sceny i światła zostaje zapisane w pliku world_trans.DAT. Nie jest to poprawny plik DAT (nie zawiera nagłówka i danych), ale przekształcenie w nim zapisane można zapisać w pliku sceny na którym działamy za pomocą zwykłego edytora tekstu np. VI.. Przekształcenie jest zapisywane jako ListTransform/WorldTransform i LightTransform.
+ W trybie podglądu (renderingu normalnego a nie raytracingu), można dowolnie przekształcać scenę i światło. Po naciśnięc
+iu odpowiedniego przycisku aktualne przekształcenie sceny i światła zostaje zapisane w pliku world_trans.DAT. Nie jest t
+o poprawny plik DAT (nie zawiera nagłówka i danych), ale przekształcenie w nim zapisane można zapisać w pliku sceny na k
+tórym działamy za pomocą zwykłego edytora tekstu np. VI.. Przekształcenie jest zapisywane jako ListTransform/WorldTransf
+orm i LightTransform.
  5.1.2.5 Konwersje między formatowe
 
- Dodatkowe programy narzędziowe (poza RAYSLib) są w stanie konwertować pewne formaty danych do innych wczytywalnych przez RAYSLib: DAT, FDAT, BIN, BTREE. Krótkie omówienie konwersji danych jest w 5.1.1.1. Dokładniejsze informacje na ten temat można znaleźć w rozdziale 6, przy opisie poszczególnych programów.
+ Dodatkowe programy narzędziowe (poza RAYSLib) są w stanie konwertować pewne formaty danych do innych wczytywalnych prze
+z RAYSLib: DAT, FDAT, BIN, BTREE. Krótkie omówienie konwersji danych jest w 5.1.1.1. Dokładniejsze informacje na ten tem
+at można znaleźć w rozdziale 6, przy opisie poszczególnych programów.
 
 5.2 Przekształcenia sceny i kopiowanie obiektów
 
- W programie istnieje możliwość przekształcania świata, światła, trójkątów, list trójkątów, NURBS’ów. Istnieje także możliwość kopiowania trójkątów, list trójkątów, NURBS’ów, list NURBS’ów. Przy kopiowaniu obiektów można cofnąć zadane dla nich transformacje, a także grupowo zadać pewne nowe właściwości: np. nową teksturę.
+ W programie istnieje możliwość przekształcania świata, światła, trójkątów, list trójkątów, NURBS’ów. Istnieje także moż
+liwość kopiowania trójkątów, list trójkątów, NURBS’ów, list NURBS’ów. Przy kopiowaniu obiektów można cofnąć zadane dla n
+ich transformacje, a także grupowo zadać pewne nowe właściwości: np. nową teksturę.
 
 5.2.1 Przekształcenia obiektów
 
@@ -1586,11 +1933,16 @@ Od i = 0 do tekstura.Y wykonaj:
   -przekształcenia powierzchni NURBS
   -przekształcenia listy NURBS’ów
 
- Kolejność stosowania przekształceń. Najpierw konkretne dla danego trójkąta (jeżeli są), potem przekształcenia listy a na końcu przekształcenia świata. Przekształcenia NURBS’ów są niejawnie konwertowane do przekształceń odpowiednich list trójkątów, tj tych trójkątów które do danej powierzchni (lub lity powierzchni) należą. Przekształcenia kamery i światła są niezależne od opisanych powyżej przekształceń. Jeżeli jest kilka przekształceń list trójkątów to: przekształcenia list trójkątów są stosowane w kolejności od ostatniego zadanego (najniżej w pliku) do pierwszego (najwyżej w pliku)
+ Kolejność stosowania przekształceń. Najpierw konkretne dla danego trójkąta (jeżeli są), potem przekształcenia listy a n
+a końcu przekształcenia świata. Przekształcenia NURBS’ów są niejawnie konwertowane do przekształceń odpowiednich list tr
+ójkątów, tj tych trójkątów które do danej powierzchni (lub lity powierzchni) należą. Przekształcenia kamery i światła są
+ niezależne od opisanych powyżej przekształceń. Jeżeli jest kilka przekształceń list trójkątów to: przekształcenia list 
+trójkątów są stosowane w kolejności od ostatniego zadanego (najniżej w pliku) do pierwszego (najwyżej w pliku)
 
 5.2.1.1 Przekształcenia pojedynczego trójkąta
 
-W celu przekształcenia trójkąta musimy dysponować macierzą przekształcenia wierzchołków i normalnych (pochodna macierzy przekształcenia wierzchołków). Algorytm przekształcający pojedynczy trójkąt jest następujący
+W celu przekształcenia trójkąta musimy dysponować macierzą przekształcenia wierzchołków i normalnych (pochodna macierzy 
+przekształcenia wierzchołków). Algorytm przekształcający pojedynczy trójkąt jest następujący
 
 PrzekształćTrójkąt(t, m, mn)
 
@@ -1605,7 +1957,9 @@ T.na = T.na * mn
 T.nb = T.nb * mn
 T.nc = T.nc * mn
 
- Przedstawiam jeszcze fragment algorytmu obliczającego macierze przekształceń dla translacji, rotacji, skalowania oraz podawanie własnej macierzy. Algorytm ten analizuje przekształcenie i odpowiednio oblicza macierz, w rzeczywistości obsługiwane jest dużo więcej przekształceń, patrz read_transformation_long w rayslib.c
+ Przedstawiam jeszcze fragment algorytmu obliczającego macierze przekształceń dla translacji, rotacji, skalowania oraz p
+odawanie własnej macierzy. Algorytm ten analizuje przekształcenie i odpowiednio oblicza macierz, w rzeczywistości obsług
+iwane jest dużo więcej przekształceń, patrz read_transformation_long w rayslib.c
 
 OdczytajTransformacje(plik, m, mn)
 
@@ -1682,11 +2036,18 @@ Wyjście: obliczona macierz m
  m[1][0] = -sin(kąt)
  m[0][0] = cos(kąt)
 
-Przekształcenia kamery, światła i świata są analogiczne, z tym że kamera nie ma normalnej a światło jeżeli jest punktowe to jest przekształcane przez M a jeżeli wektorowe to przez MN. Przekształcenia świata zmieniają globalną macierz świata, która jest stosowana w ostatniej kolejności dla wszystkich obiektów na scenie.
+Przekształcenia kamery, światła i świata są analogiczne, z tym że kamera nie ma normalnej a światło jeżeli jest punktowe
+ to jest przekształcane przez M a jeżeli wektorowe to przez MN. Przekształcenia świata zmieniają globalną macierz świata
+, która jest stosowana w ostatniej kolejności dla wszystkich obiektów na scenie.
 
 5.2.1.2 Przekształcenia list trójkątów.
 
- Na liście do przekształceń znajdują się macierze przekształceń oraz indeksy: dolny i górny trójkątów, które będą przekształcane. Następujący algorytm przegląda wszystkie listy przekształceń i sprawdza dla każdej listy czy trójkąt do niej należy. Jeżeli należy, to stosowane jest dla niego przekształcenie tej listy. Wynika z tego, że przekształcenia list trójkątów są stosowane w kolejności od ostatniego zadanego (najniżej w pliku) do pierwszego (najwyżej w pliku). Aby przekształcić wszystkie trójkąty należy dla każdego z nich wywołać następujący algorytm. Ostateczne przekształcenie każdego trójkąta, który musi być przekształcony realizuje funkcja opisana w 5.2.1.1
+ Na liście do przekształceń znajdują się macierze przekształceń oraz indeksy: dolny i górny trójkątów, które będą przeks
+ztałcane. Następujący algorytm przegląda wszystkie listy przekształceń i sprawdza dla każdej listy czy trójkąt do niej n
+ależy. Jeżeli należy, to stosowane jest dla niego przekształcenie tej listy. Wynika z tego, że przekształcenia list trój
+kątów są stosowane w kolejności od ostatniego zadanego (najniżej w pliku) do pierwszego (najwyżej w pliku). Aby przekszt
+ałcić wszystkie trójkąty należy dla każdego z nich wywołać następujący algorytm. Ostateczne przekształcenie każdego trój
+kąta, który musi być przekształcony realizuje funkcja opisana w 5.2.1.1
 
 PrzekształćTrójkątListamiPrzekształceń(t)
 
@@ -1702,15 +2063,20 @@ Dopóki są listy przekształceń w „tmp”
   PrzekształćTrójkąt(t, lt.M, lt.MN)
  Tmp.następny
 
-Dokładana lista możliwych przekształceń znajduje się w pliku z przykładami użycia wszystkich opcji: dat/options.DAT. Przekształcenia możemy podzielić na:
+Dokładana lista możliwych przekształceń znajduje się w pliku z przykładami użycia wszystkich opcji: dat/options.DAT. Prz
+ekształcenia możemy podzielić na:
 
  -afiniczne:   opisane macierzami wierzchołków i normalnych
 
--materiałowe: przekształcenia zmieniające właściwości materiału, takie jak: tekstura, kolor, odbijalność, przepuszczalność, rozbłysk itp. Dla tych przekształceń można zadać warunek, że tylko trójkąty z zadaną tekstura podlegają przekształceniu
+-materiałowe: przekształcenia zmieniające właściwości materiału, takie jak: tekstura, kolor, odbijalność, przepuszczalno
+ść, rozbłysk itp. Dla tych przekształceń można zadać warunek, że tylko trójkąty z zadaną tekstura podlegają przekształce
+niu
 
 5.2.1.3 Przekształcenia list powierzchni NURBS
 
- Najpierw dla zadanych indeksów NURBS’ów obliczane są trójkąty w których są zawarte te powierzchni. Dla tych trójkątów tworzona jest lista przekształcenia jak opisałem w 5.2.1.2. Oto algorytm obliczający indeksy początkowego i końcowego trójkąta:
+ Najpierw dla zadanych indeksów NURBS’ów obliczane są trójkąty w których są zawarte te powierzchni. Dla tych trójkątów t
+worzona jest lista przekształcenia jak opisałem w 5.2.1.2. Oto algorytm obliczający indeksy początkowego i końcowego tró
+jkąta:
 
 ObliczIndeksyTrójkątów(i, j)
 
@@ -1729,7 +2095,9 @@ Wyjście: indeksy trójkątów dolny i górny w i,j
 
  Obliczanie indeksów trójkątów powierzchni NURBS w preprocesingu
 
-Indeksy trójkątów w powierzchni NURBS są przy ich triangulacji, trójkąty powierzchni NURBS są dodawane za trójkątami sceny, oto algorytm obliczający indeksy trójkątów powierzchni NURBS, każda powierzchnia NURBS ma już obliczone ile ma trójkątów (policzono to w trakcie triangulacji: d1 x d2 x 2)
+Indeksy trójkątów w powierzchni NURBS są przy ich triangulacji, trójkąty powierzchni NURBS są dodawane za trójkątami sce
+ny, oto algorytm obliczający indeksy trójkątów powierzchni NURBS, każda powierzchnia NURBS ma już obliczone ile ma trójk
+ątów (policzono to w trakcie triangulacji: d1 x d2 x 2)
 
 ObliczanieIndeksówNURBSów(nNURBS, nTris)
 
@@ -1745,11 +2113,13 @@ Dla i = 0 do nNURBS wykonaj:
 
 ZWRÓC nt
 
-Przy tak obliczonych indeksach możemy przekształcać powierzchnie (lub listy powierzchni) NURBS jak zwykłe listy trójkątów co zostało opisane w 5.2.1.2
+Przy tak obliczonych indeksach możemy przekształcać powierzchnie (lub listy powierzchni) NURBS jak zwykłe listy trójkątó
+w co zostało opisane w 5.2.1.2
 
 5.2.2 Kopiowanie obiektów
 
-Mój algorytm zakłada także, że możliwe jest kopiowanie obiektów. Ogólnie kopiowanie obiektów możemy podzielić ze względu na typy i ilość obiektów kopiowanych na:
+Mój algorytm zakłada także, że możliwe jest kopiowanie obiektów. Ogólnie kopiowanie obiektów możemy podzielić ze względu
+ na typy i ilość obiektów kopiowanych na:
 
  -kopiowanie pojedynczego trójkąta
  -kopiowanie listy trójkątów
@@ -1758,13 +2128,22 @@ Mój algorytm zakłada także, że możliwe jest kopiowanie obiektów. Ogólnie 
  -kopiowanie pojedynczej powierzchni NURBS
  -kopiowanie wielu powierzchni NURBS
 
- Przykłady różnych kopiowań obiektów znajdują się w pliku dat/options.DAT. Omówię teraz poszczególne rodzaje kopiowania i algorytmy użyte aby je zaimplementować..
+ Przykłady różnych kopiowań obiektów znajdują się w pliku dat/options.DAT. Omówię teraz poszczególne rodzaje kopiowania 
+i algorytmy użyte aby je zaimplementować..
 
  5.2.2.1 Kopiowanie pojedynczego trójkąta
 
- Najpierw sprawdzane są indeksy źródła i docelowy aby zweryfikować czy są poprawne, w zależności od tego czy wyspecyfikowano cofnięcie przekształceń czy nie jest ono wykonywane.
+ Najpierw sprawdzane są indeksy źródła i docelowy aby zweryfikować czy są poprawne, w zależności od tego czy wyspecyfiko
+wano cofnięcie przekształceń czy nie jest ono wykonywane.
 
- Najczęściej kopiujemy grupę trójkątów tworzącą np. jedna ścianę jakiejś bryły. Powielamy ją tyle razy ile jest ścian. Aby efekt był dobry należy wycofać np. przekształcenia świata aby łatwiej przenieść tą ścianę w odpowiednie miejsce. Często też kopiujemy już przekształcone listy trójkątów aby dokonać na nich innego przekształcenia, wtedy należy obowiązujące przekształcenie wycofać. Dlatego dodałem możliwość wybrania tego czy cofamy przekształcenia świata i listy przekształceń czy nie. Po cofnięciu listy przekształceń można zastosować inną na nowo powstałej grupie skopiowanych trójkątów. Przekształcenia własne danego trójkąta nie są cofane, gdyż należą one tylko do niego i są dla niego typowe (nawet nie są nigdzie zapamiętywane, tylko obliczane raz na stałe przy tworzeniu trójkąta – są zapisane na stałe w jego współczynnikach). Przedstawię teraz algorytm kopiujący pojedynczy trójkąt:
+ Najczęściej kopiujemy grupę trójkątów tworzącą np. jedna ścianę jakiejś bryły. Powielamy ją tyle razy ile jest ścian. A
+by efekt był dobry należy wycofać np. przekształcenia świata aby łatwiej przenieść tą ścianę w odpowiednie miejsce. Częs
+to też kopiujemy już przekształcone listy trójkątów aby dokonać na nich innego przekształcenia, wtedy należy obowiązując
+e przekształcenie wycofać. Dlatego dodałem możliwość wybrania tego czy cofamy przekształcenia świata i listy przekształc
+eń czy nie. Po cofnięciu listy przekształceń można zastosować inną na nowo powstałej grupie skopiowanych trójkątów. Prze
+kształcenia własne danego trójkąta nie są cofane, gdyż należą one tylko do niego i są dla niego typowe (nawet nie są nig
+dzie zapamiętywane, tylko obliczane raz na stałe przy tworzeniu trójkąta – są zapisane na stałe w jego współczynnikach).
+ Przedstawię teraz algorytm kopiujący pojedynczy trójkąt:
 
 KopiujTrójkąt(z, do)
 
@@ -1783,7 +2162,9 @@ PrzekształćTrójkąt(Trójkąt[do], macierzeŚwiata M i N)
 
 5.2.2.2 Kopiowanie listy trójkątów
 
- Przekształcenie listy trójkątów jest podobne do przekształcenia pojedynczego trójkąta: na początku sprawdzane są indeksy kopiujące, a potem jest wywoływana metoda dla pojedynczego trójkąta. W metodzie kopiujące wiele trójkątów na raz można określić czy wycofywać przekształcenia świata i list czy nie. Oto algorytm:
+ Przekształcenie listy trójkątów jest podobne do przekształcenia pojedynczego trójkąta: na początku sprawdzane są indeks
+y kopiujące, a potem jest wywoływana metoda dla pojedynczego trójkąta. W metodzie kopiujące wiele trójkątów na raz można
+ określić czy wycofywać przekształcenia świata i list czy nie. Oto algorytm:
 
 KopiujTrójkąty(do, z, ile, wycofajListe, wycofajŚwiat)
 
@@ -1798,40 +2179,72 @@ Dla i = do dopóki i < do+ile wykonaj:
 
  5.2.2.3 Kopiowanie powierzchni NURBS
 
-Metoda kopiująca powierzchnię NURBS jest wywoływana w preprocessingu. Kopiuje ona cała strukturę NURBS do innej docelowej (sprawdziwszy najpierw indeksy tak jak w 5.2.2.1). procedura jest wywoływana przed triangulacją, więc oddzielne trójkąty powstaną dla skopiowanej i oryginalnej powierzchni NURBS. Potem można obie powierzchnie przekształcać zarówno ListTransform (czyli podając ich trójkąty, patrz: 5.2.1.2) jak i NURBSTransform (czyli całe powierzchnie NURBS, patrz 5.2.1.3). Metoda kopiująca nie wycofuje żadnych przekształceń zadanych na powierzchni NURBS, ale można swobodnie stosować przekształcenia zarówno dla powierzchni źródłowej jak i docelowej, ponieważ kopiowanie odbywa się przed jakimkolwiek użyciem transformacji, nawet przed triangulacją!.
-Nie istnieje metoda kopiująca NURBS’y grupowo, pewnym zastępstwem tej metody może być kopiowanie listy trójkątów zawierającej zadane powierzchnie NURBS metodą CopyTriangles lub CopyTrianglesAdv, opisanej w 5.2.2.2. Trzeba jednak znać indeksy początkowe i końcowe tej listy – w czasie triangulacji wyświetlane są indeksy i ilości trójkątów należących do poszczególnych powierzchni NURBS.
+Metoda kopiująca powierzchnię NURBS jest wywoływana w preprocessingu. Kopiuje ona cała strukturę NURBS do innej docelowe
+j (sprawdziwszy najpierw indeksy tak jak w 5.2.2.1). procedura jest wywoływana przed triangulacją, więc oddzielne trójką
+ty powstaną dla skopiowanej i oryginalnej powierzchni NURBS. Potem można obie powierzchnie przekształcać zarówno ListTra
+nsform (czyli podając ich trójkąty, patrz: 5.2.1.2) jak i NURBSTransform (czyli całe powierzchnie NURBS, patrz 5.2.1.3).
+ Metoda kopiująca nie wycofuje żadnych przekształceń zadanych na powierzchni NURBS, ale można swobodnie stosować przeksz
+tałcenia zarówno dla powierzchni źródłowej jak i docelowej, ponieważ kopiowanie odbywa się przed jakimkolwiek użyciem tr
+ansformacji, nawet przed triangulacją!.
+Nie istnieje metoda kopiująca NURBS’y grupowo, pewnym zastępstwem tej metody może być kopiowanie listy trójkątów zawiera
+jącej zadane powierzchnie NURBS metodą CopyTriangles lub CopyTrianglesAdv, opisanej w 5.2.2.2. Trzeba jednak znać indeks
+y początkowe i końcowe tej listy – w czasie triangulacji wyświetlane są indeksy i ilości trójkątów należących do poszcze
+gólnych powierzchni NURBS.
 
 5.3 Inne algorytmy
 
 5.3.1 Obsługa komentarzy w pliku wejściowym
 
  W pliku wejściowym DAT mogą się znajdować komentarze w stylu C tj:
-/* komentarz */ i // komentarz. Pierwszy zaczyna się od /* a kończy na */, a drugi zaczyna się od // i kończy wraz z końcem linii.
+/* komentarz */ i // komentarz. Pierwszy zaczyna się od /* a kończy na */, a drugi zaczyna się od // i kończy wraz z koń
+cem linii.
 
 5.3.2 Obsługa sterowania przez Internet
 
- Zaimplementowany został prosty serwer nasłuchujący polecenia na zadanym porcie. Za pomocą dowolnego klienta (np. telnet), można połączyć się z serwerem i wydawać polecenia. Dokładny opis działania serwera i poleceń znajduje się w rozdziale 6. Między innymi można zmieniać głębokość rekursji, generować tymczasowe obrazy, zmieniać chropowatości powierzchni, wyświetlać statystyki raytracingu i wiele innych.. Serwer działa na oddzielnym wątku, którego jedynym zadaniem jest nasłuch połączeń. Serwer jest prosty i nie obsługuje wielu klientów na raz, jest to serwer iteracyjny. To czy serwer jest wkompilowany czy nie zależy od tego jakie flagi kompilacji zostały zastosowane.
+ Zaimplementowany został prosty serwer nasłuchujący polecenia na zadanym porcie. Za pomocą dowolnego klienta (np. telnet
+), można połączyć się z serwerem i wydawać polecenia. Dokładny opis działania serwera i poleceń znajduje się w rozdziale
+ 6. Między innymi można zmieniać głębokość rekursji, generować tymczasowe obrazy, zmieniać chropowatości powierzchni, wy
+świetlać statystyki raytracingu i wiele innych.. Serwer działa na oddzielnym wątku, którego jedynym zadaniem jest nasłuc
+h połączeń. Serwer jest prosty i nie obsługuje wielu klientów na raz, jest to serwer iteracyjny. To czy serwer jest wkom
+pilowany czy nie zależy od tego jakie flagi kompilacji zostały zastosowane.
 
 5.3.3 OpenGL GUI
 
- Jest możliwość wkompilowania w algorytm interfejsu graficznego w OpenGL. Interfejs graficzny działa w oddzielnym wątku i służy tylko do wyświetlania efektu częściowego oraz przyjmowania poleceń. Jeżeli interfejs ten został wkompilowany to możemy uruchomić program w dwóch trybach:
+ Jest możliwość wkompilowania w algorytm interfejsu graficznego w OpenGL. Interfejs graficzny działa w oddzielnym wątku 
+i służy tylko do wyświetlania efektu częściowego oraz przyjmowania poleceń. Jeżeli interfejs ten został wkompilowany to 
+możemy uruchomić program w dwóch trybach:
 
  -tryb raytracingu z wyświetlaniem w OpenGL
  -tryb podglądu sceny w OpenGL
 
  5.3.3.1 Wyświetlanie Raytracingu w OpenGL
 
- Przeprowadzany jest normalny raytracing, wynik można oglądać na bieżąco w oknie graficznym OpenGL. Częstotliwość odświeżania okna może być konfigurowana przez użytkownika, w oknie można też naciskać różne przyciski wysyłając w ten sposób polecenia do algorytmu raytracingu. Wykaz poleceń i ich dokładne działanie jest opisany w rozdziale 6. Między innymi można zmieniać głębokość rekursji, generować tymczasowe obrazy, zmieniać chropowatości powierzchni, wyświetlać statystyki raytracingu i wiele innych
+ Przeprowadzany jest normalny raytracing, wynik można oglądać na bieżąco w oknie graficznym OpenGL. Częstotliwość odświe
+żania okna może być konfigurowana przez użytkownika, w oknie można też naciskać różne przyciski wysyłając w ten sposób p
+olecenia do algorytmu raytracingu. Wykaz poleceń i ich dokładne działanie jest opisany w rozdziale 6. Między innymi możn
+a zmieniać głębokość rekursji, generować tymczasowe obrazy, zmieniać chropowatości powierzchni, wyświetlać statystyki ra
+ytracingu i wiele innych
 
  5.3.3.2 Podgląd sceny w OpenGL
 
- W tym trybie scena nie jest obliczana przez raytracing, ale jej uproszczenie jest renderowane przez OpenGL, zysk jest taki, że możemy w czasie rzeczywistym przekształcać scenę: translacje, rotacje, skalowania. Możemy także włączać/wyłączać: światło, tekstury, przezroczystość itp. Możemy oglądać punkty kontrolne NURBS’ów, zmieniać tryb renderowania z wireframe na solid i odwrotnie. Opis wszystkich opcji podglądu znajduje się w rozdziale 6. Najważniejszą opcją jest możliwość zapisu przekształceń w pliku world_trans.DAT i potem użycie go przy raytracingu. Patrz opis w 5.1.2.4
+ W tym trybie scena nie jest obliczana przez raytracing, ale jej uproszczenie jest renderowane przez OpenGL, zysk jest t
+aki, że możemy w czasie rzeczywistym przekształcać scenę: translacje, rotacje, skalowania. Możemy także włączać/wyłączać
+: światło, tekstury, przezroczystość itp. Możemy oglądać punkty kontrolne NURBS’ów, zmieniać tryb renderowania z wirefra
+me na solid i odwrotnie. Opis wszystkich opcji podglądu znajduje się w rozdziale 6. Najważniejszą opcją jest możliwość z
+apisu przekształceń w pliku world_trans.DAT i potem użycie go przy raytracingu. Patrz opis w 5.1.2.4
 
 5.3.4 Chropowatość powierzchni
 
- Istnieje możliwość zadania chropowatości wybranym (lub wszystkim) trójkątom. Dodano w tym celu właściwość NormalDistorber (RozproszenieNormalnej). Jest to właściwość każdego trójkąta. Aby rozpraszanie normalnych było brane pod uwagę należy uruchomić program z odpowiednią opcją, opis znajduje się w rozdziale 6. Kolejność obliczania współczynnika rozproszenia dla trójkąta. Najpierw jest brane rozproszenie podane w WorldTransform (jeżeli jest). Jeżeli podano globalne rozproszenie: opcja z wiersza poleceń użytkownika (dokładny opis w rozdziale 6), lub globalne w pliku to zastępuje ono to z WorldTransform.. Jeżeli trójkąt ma własne to go używa, a jeżeli jest przekształcenie listy, to zastępuje ono to zdefiniowane dla trójkąta.
+ Istnieje możliwość zadania chropowatości wybranym (lub wszystkim) trójkątom. Dodano w tym celu właściwość NormalDistorb
+er (RozproszenieNormalnej). Jest to właściwość każdego trójkąta. Aby rozpraszanie normalnych było brane pod uwagę należy
+ uruchomić program z odpowiednią opcją, opis znajduje się w rozdziale 6. Kolejność obliczania współczynnika rozproszenia
+ dla trójkąta. Najpierw jest brane rozproszenie podane w WorldTransform (jeżeli jest). Jeżeli podano globalne rozproszen
+ie: opcja z wiersza poleceń użytkownika (dokładny opis w rozdziale 6), lub globalne w pliku to zastępuje ono to z WorldT
+ransform.. Jeżeli trójkąt ma własne to go używa, a jeżeli jest przekształcenie listy, to zastępuje ono to zdefiniowane d
+la trójkąta.
 
-Algorytm obliczający rozproszenie jest prosty. Po obliczeniu normalnej zostanie ona zaburzona o losową wartość z przedziału [0,współczynnik_zaburzenia]. Zaburzane są także koordynaty tekstury (materiał jest chropowaty).Oto algorytm:
+Algorytm obliczający rozproszenie jest prosty. Po obliczeniu normalnej zostanie ona zaburzona o losową wartość z przedzi
+ału [0,współczynnik_zaburzenia]. Zaburzane są także koordynaty tekstury (materiał jest chropowaty).Oto algorytm:
 
 RozproszNormalną(wsp, n, tc)
 
@@ -1852,11 +2265,15 @@ Unormuj(n)
 
  5.3.5 Obsługa sygnału błędu segmentacji.
 
- Sygnał błędu segmentacji (SIGSEGV), jest przechwytywany i wersja debug programu wchodzi w nieskończoną pętle, oczekując na przyłączenie debuggera. Można wtedy sprawdzić CallStack i łatwiej znaleźć przyczynę wystąpienia błędu segmentacji (naruszenia ochrony pamięci).
+ Sygnał błędu segmentacji (SIGSEGV), jest przechwytywany i wersja debug programu wchodzi w nieskończoną pętle, oczekując
+ na przyłączenie debuggera. Można wtedy sprawdzić CallStack i łatwiej znaleźć przyczynę wystąpienia błędu segmentacji (n
+aruszenia ochrony pamięci).
 
  5.3.6. Generowanie sceny w odcieniach szarości.
 
- Można ustawić algorytm aby obliczał kolory tylko dla jednego promienia (zielonego) i wszystkim pozostałym przypisywał to samo natężenie R=G=B. Wtedy otrzymamy scenę w odcieniach szarości, ale 3x szybciej. Wszelkie efekty rozszczepienia światła (pryzmaty itp.) będą niewidoczne.
+ Można ustawić algorytm aby obliczał kolory tylko dla jednego promienia (zielonego) i wszystkim pozostałym przypisywał t
+o samo natężenie R=G=B. Wtedy otrzymamy scenę w odcieniach szarości, ale 3x szybciej. Wszelkie efekty rozszczepienia świ
+atła (pryzmaty itp.) będą niewidoczne.
  5.3.7 Łączenie i transformacje AABB-drzew
 
 Program BTREECONV obsługuje transformowanie i łączenie AABB drzew. Przedstawię używane algorytmy:
@@ -1922,7 +2339,9 @@ jeżeli minz > maxz to minz <-> maxz
 
 6.1 Dane techniczne
 
- Program jest napisany w języku C. Nic poza standardową biblioteką C nie jest wymagane, więc program można skompilować na praktycznie dowolnym systemie operacyjnym (najuboższą wersję). W zależności od dostępnych bibliotek można dołączyć biblioteki:
+ Program jest napisany w języku C. Nic poza standardową biblioteką C nie jest wymagane, więc program można skompilować n
+a praktycznie dowolnym systemie operacyjnym (najuboższą wersję). W zależności od dostępnych bibliotek można dołączyć bib
+lioteki:
 
 -LibJPEG:   odczyt/zapis w formacie JPEG (obrazy i tekstury)
 -POSIX Signals obsługa przerywania/wznawiania RT, zapisu na żądanie itd.
@@ -1934,28 +2353,37 @@ Procesor i386 i amd64.
 
  6.2 Opisy programów
 
-Moja aplikacja raytracingu składa się z głównego programu realizującego algorytm raytracingu oraz szeregu programów narzędziowych służących do generacji sceny, konwersji między formatami oraz służących do innych celów które zostaną opisane poniżej. Przedstawię teraz opis głównej aplikacji oraz programów narzędziowych:
+Moja aplikacja raytracingu składa się z głównego programu realizującego algorytm raytracingu oraz szeregu programów narz
+ędziowych służących do generacji sceny, konwersji między formatami oraz służących do innych celów które zostaną opisane 
+poniżej. Przedstawię teraz opis głównej aplikacji oraz programów narzędziowych:
 
 Programy składowe:
 
 RAYS główny program do RayTracing'u
 
-NURBS program generujący powierzchnie NURBS za pomocą interpolacji (generuje powierzchnię zadanych stopni u i v przechodzącą przez
+NURBS program generujący powierzchnie NURBS za pomocą interpolacji (generuje powierzchnię zadanych stopni u i v przechod
+zącą przez
 zadane punkty – metody numeryczne; interpolacja globalna)
 
-NURBS2DAT Zamienia pliku .NURBS na .DAT (aktualna wersja RAYS potrafi juz to robić automatycznie, więc pliki NURBS nie są już potrzebne -      ich zawartość można bezpośrednio wstawiać do DAT)
+NURBS2DAT Zamienia pliku .NURBS na .DAT (aktualna wersja RAYS potrafi juz to robić automatycznie, więc pliki NURBS nie s
+ą już potrzebne -      ich zawartość można bezpośrednio wstawiać do DAT)
 
-IGES2DAT konwertuje plik IGES do pliku DAT, odnajduje w nim rekordy 126 i     zamienia je na rekordy NURBS, można podać parametry dodatkowe powierzchni tj. gęstość triangulacji, kolor, skalowanie itp.
+IGES2DAT konwertuje plik IGES do pliku DAT, odnajduje w nim rekordy 126 i     zamienia je na rekordy NURBS, można podać 
+parametry dodatkowe powierzchni tj. gęstość triangulacji, kolor, skalowanie itp.
 
-BTREECONV program służący do manipulacjami drzew AABB. Potrafi konwertować     zapisane drzewa AABB z formatu binarnego do tekstowego,      dokonywać przekształceń na drzewach (skalowania, translacje i      ograniczone rotacje) a także potrafi łączyć drzewa.
+BTREECONV program służący do manipulacjami drzew AABB. Potrafi konwertować     zapisane drzewa AABB z formatu binarnego 
+do tekstowego,      dokonywać przekształceń na drzewach (skalowania, translacje i      ograniczone rotacje) a także potr
+afi łączyć drzewa.
 
 ULI2DAT konwertuje pliki TRI/ULI (używane przez nas na VR) na DAT,      podobnie jak IGES2DAT można podać wiele opcji
 
 MD22DAT konwertuje pliki danych Quake'a (MD2) do DAT, można podać wiele opcji
 
-3DS2TRI konwertuje pliki 3DS do plików TRI (potem można użyć ULI2DAT by uzyskać plik DAT), normalne są obliczane poprzez interpolacje w     wierzchołkach, ponieważ w plikach 3DS brak normalnych
+3DS2TRI konwertuje pliki 3DS do plików TRI (potem można użyć ULI2DAT by uzyskać plik DAT), normalne są obliczane poprzez
+ interpolacje w     wierzchołkach, ponieważ w plikach 3DS brak normalnych
 
-3DS2DAT konwertuje pliki 3DS do formatu DAT, możliwość interpolowania normalnych lub pozostawienia ich obliczenie dla RAYSLIB (powstaną płaskie trójkąty), zapisuje także przekształcenia i tekstury.
+3DS2DAT konwertuje pliki 3DS do formatu DAT, możliwość interpolowania normalnych lub pozostawienia ich obliczenie dla RA
+YSLIB (powstaną płaskie trójkąty), zapisuje także przekształcenia i tekstury.
 
 60FACES generuje 60 ścian, podanie odpowiednich opcji generuje ztriangulowany 12-ścian
 
@@ -1968,7 +2396,8 @@ generują losowe powierzchnie NURBS i zbiory trójkątów
 TABLE generuje stół z teksturami, przezroczystością
 
 TERMINAL, GETBMP:
-służą do komunikacji z serwerem RAYS pierwszy umożliwia wysyłanie zapytań przez sieć do serwera, drugi pobiera obliczany obraz (jako BMP, o co dotychczas wygenerowano)
+służą do komunikacji z serwerem RAYS pierwszy umożliwia wysyłanie zapytań przez sieć do serwera, drugi pobiera obliczany
+ obraz (jako BMP, o co dotychczas wygenerowano)
 
 WRAPPER interaktywny program pytający o wszystkie opcje i ostatecznie wywołujący odpowiednio RAYS
 
@@ -1976,7 +2405,8 @@ TEX generuje przykładową teksturę w formacie BMP
 
 6.2.1 Program RAYS
 
- Rays jest główną aplikacją raytracingu, w zależności od systemu operacyjnego na którym działamy nazwa programu to: cyg_rays.EXE (Windows) lub rays (UNIX/Linux). Przedstawiam poniżej opis działania i dostępne opcje programu rays.
+ Rays jest główną aplikacją raytracingu, w zależności od systemu operacyjnego na którym działamy nazwa programu to: cyg_
+rays.EXE (Windows) lub rays (UNIX/Linux). Przedstawiam poniżej opis działania i dostępne opcje programu rays.
 
 6.2.1.1 Opis opcji wiersza poleceń
 
@@ -1994,74 +2424,126 @@ TEX generuje przykładową teksturę w formacie BMP
    jeżeli użyjemy jeszcze opcji –J, -K, -g, to powstaną pliki:
 wynik.jpeg, wynik_gs.jpeg, wynik_aa.bmp, domyślnie „ondemand.bmp”
 
--S „nazwa pliku” nazwa pliku gdzie będzie zapisany wynik pośredni w reakcji na przerwanie (CTRL+C lub polecenie użytkownika), reakcja
+-S „nazwa pliku” nazwa pliku gdzie będzie zapisany wynik pośredni w reakcji na przerwanie (CTRL+C lub polecenie użytkown
+ika), reakcja
  na sygnał SIGINT, np. –S przerwane.bmp, domyślnie „signalled.bmp”
 
--P „nazwa pliku” nazwa pliku gdzie zostanie zapisany dotychczasowy wynik gdy wystąpi błąd krytyczny (tzw. Panic) –P error.bmp, domyślnie “panic.bmp”
+-P „nazwa pliku” nazwa pliku gdzie zostanie zapisany dotychczasowy wynik gdy wystąpi błąd krytyczny (tzw. Panic) –P erro
+r.bmp, domyślnie “panic.bmp”
 
--p “nazwa pliku” nazwa pliku gdzie zapisywane będą wyniki pośrednie co pewien ustalony przez użytkownika czas (dokładniej co ustaloną ilość linii), np. –p tymczasowa.bmp, domyślnie „partial.bmp”
+-p “nazwa pliku” nazwa pliku gdzie zapisywane będą wyniki pośrednie co pewien ustalony przez użytkownika czas (dokładnie
+j co ustaloną ilość linii), np. –p tymczasowa.bmp, domyślnie „partial.bmp”
 
 -T „ścieżka do katalogu”
-ustaw katalog w którym system będzie poszukiwał tekstur, nie jest to docelowy katalog z teksturami, a tylko miejsce z którego system będzie szukał „TextureDirectory”, domyślnie „.”, podanie np. /root/ będzie oznaczało, że w katalogu /root/ będzie szukany zadany w pliku sceny katalog np. texture, więc ostatecznie teksturty powinny być w /root/texture. Katalog powinien być zakończony „/”, np. –T /home/bla
+ustaw katalog w którym system będzie poszukiwał tekstur, nie jest to docelowy katalog z teksturami, a tylko miejsce z kt
+órego system będzie szukał „TextureDirectory”, domyślnie „.”, podanie np. /root/ będzie oznaczało, że w katalogu /root/ 
+będzie szukany zadany w pliku sceny katalog np. texture, więc ostatecznie teksturty powinny być w /root/texture. Katalog
+ powinien być zakończony „/”, np. –T /home/bla
 
 -r liczba maksymalny poziom rekursji, np. –r 5, domyślnie: 6
 
--R „nazwa pliku” nazwa pliku z którego system ma spróbować odczytać już obliczone dane i kontynuować raytracing. Powinna to być bitmapa, np. –R tyczasowa.bmp, domyślnie ten argument nie jest używany.
+-R „nazwa pliku” nazwa pliku z którego system ma spróbować odczytać już obliczone dane i kontynuować raytracing. Powinna
+ to być bitmapa, np. –R tyczasowa.bmp, domyślnie ten argument nie jest używany.
 
 -b liczba określa co ile linii zapisywać plik tymczasowy (patrz –p), np. –p 256, domyślnie 64
 
--x liczba ustawia rozdzielczość poziomą obrazu wynikowego, np. –x 1024, domyślnie używana jest opcja odczytana z pliku ze sceną
+-x liczba ustawia rozdzielczość poziomą obrazu wynikowego, np. –x 1024, domyślnie używana jest opcja odczytana z pliku z
+e sceną
 
--y liczba ustawia rozdzielczość pionową obrazu wynikowego, np. –y 768, domyślnie używana jest opcja odczytana z pliku ze sceną
+-y liczba ustawia rozdzielczość pionową obrazu wynikowego, np. –y 768, domyślnie używana jest opcja odczytana z pliku ze
+ sceną
 
 -s liczba ustaw „seed” randomu, domyślnie używany jest aktualny czas, np. –s 1742389779
 
--n procent ustawia globalne zaburzenie normalnych (chropowatość materiału) na zadany procent, aby zaburzenia normalnych działały musi być użyta także opcja –N, np. –n 1.2, domyślnie 0
+-n procent ustawia globalne zaburzenie normalnych (chropowatość materiału) na zadany procent, aby zaburzenia normalnych 
+działały musi być użyta także opcja –N, np. –n 1.2, domyślnie 0
 
--t milisekund ustawia czas po jakim następuje odświeżenie okna OpenGL, np. –t 1000 (co sekundę), domyślnie 500. Podanie zbyt małej wartości spowoduje duże obciążenie procesowa obliczaniem grafiki, a maksymalne FPS, może spowodować i tak większe opóźnienia.
+-t milisekund ustawia czas po jakim następuje odświeżenie okna OpenGL, np. –t 1000 (co sekundę), domyślnie 500. Podanie 
+zbyt małej wartości spowoduje duże obciążenie procesowa obliczaniem grafiki, a maksymalne FPS, może spowodować i tak wię
+ksze opóźnienia.
 
--m liczba minimalny cień rzucany przez obiekt, liczba z przedziału [0,1]. ustawienie na –m 0.1 spowoduje, że cień 0.1 będzie rzucany nawet przez 100% przezroczyste obiekty, domyślnie 0.05
+-m liczba minimalny cień rzucany przez obiekt, liczba z przedziału [0,1]. ustawienie na –m 0.1 spowoduje, że cień 0.1 bę
+dzie rzucany nawet przez 100% przezroczyste obiekty, domyślnie 0.05
 
 -M liczba maksymalny cień rzucany przez obiekt, liczba z przedziału [0,1]
  ustawienie np. –M 0.75 spowoduje, że nawet idealnie nieprzezroczysty obiekt będzie rzucał cień 0.75, domyślnie 0.5
 
--a liczba światło tła, liczba z przedziału [0,1], minimalne oświetlenie obiektu, światło rozproszone dochodzące ze wszystkich stron jednakowo, np. –a 0.35, domyślnie 0.3
+-a liczba światło tła, liczba z przedziału [0,1], minimalne oświetlenie obiektu, światło rozproszone dochodzące ze wszys
+tkich stron jednakowo, np. –a 0.35, domyślnie 0.3
 
--k liczba całkowita decyduje o sposobie liczenia efektu Fresnela. Liczby 0,1,2 są specjalne: 0 – oznacza nie licz w ogóle, 1 – oznacza efekt liniowy (dobre przybliżenie), 2 – oznacza efekt kwadratowy (bardzo intensywny efekt). Pozostałe liczby są dzielone przez 1000 i używane jako wykładnik proporcjonalności, np. –k 1500 da proporcjonalność z potęgą 1.5, domyślnie 775.
+-k liczba całkowita decyduje o sposobie liczenia efektu Fresnela. Liczby 0,1,2 są specjalne: 0 – oznacza nie licz w ogól
+e, 1 – oznacza efekt liniowy (dobre przybliżenie), 2 – oznacza efekt kwadratowy (bardzo intensywny efekt). Pozostałe lic
+zby są dzielone przez 1000 i używane jako wykładnik proporcjonalności, np. –k 1500 da proporcjonalność z potęgą 1.5, dom
+yślnie 775.
 
 -q procent określa jakość JPEG’a przy zapisie za pomocą LibJPEG, np. –q 60, domyślnie 90.
 
--Q kolor RGB kolor tła, format jest następujący RRGGBB, gdzie RR,GG,BB to 2-cyfrowe liczby hexadecymalne od 00 do FF określające nasycenie składowych czerwonej, zielonej i niebieskiej, np. –Q FFFF00 da nam żółty kolor, domyślnie: 7F7F7F: szary.
+-Q kolor RGB kolor tła, format jest następujący RRGGBB, gdzie RR,GG,BB to 2-cyfrowe liczby hexadecymalne od 00 do FF okr
+eślające nasycenie składowych czerwonej, zielonej i niebieskiej, np. –Q FFFF00 da nam żółty kolor, domyślnie: 7F7F7F: sz
+ary.
 
--W kolor RGB kolor światła, format jest następujący RRGGBB, gdzie RR,GG,BB to 2-cyfrowe liczby hexadecymalne od 00 do FF określające nasycenie składowych czerwonej, zielonej i niebieskiej, np. –Q 0000FF da nam niebieski kolor, domyślnie: FFFFFF: biały.
+-W kolor RGB kolor światła, format jest następujący RRGGBB, gdzie RR,GG,BB to 2-cyfrowe liczby hexadecymalne od 00 do FF
+ określające nasycenie składowych czerwonej, zielonej i niebieskiej, np. –Q 0000FF da nam niebieski kolor, domyślnie: FF
+FFFF: biały.
 
--w ustawia tryb tła (gdy nie jest używana tekstura tła). Ustawienie na 1 powoduje używanie koloru zadany przez –Q lub domyślnego. Dla –w 0 kolor domyślny lub zadany przez –Q jest zmieniany w zależności od kierunku. Dla –w 2 kolor jest generowany na podstawie kierunku promienia i domyślnego koloru lub zadanego przez –Q (zmiany są gładkie – jest to domyślna opcja). Patrz algorytm koloru tła w 3.5.
+-w ustawia tryb tła (gdy nie jest używana tekstura tła). Ustawienie na 1 powoduje używanie koloru zadany przez –Q lub do
+myślnego. Dla –w 0 kolor domyślny lub zadany przez –Q jest zmieniany w zależności od kierunku. Dla –w 2 kolor jest gener
+owany na podstawie kierunku promienia i domyślnego koloru lub zadanego przez –Q (zmiany są gładkie – jest to domyślna op
+cja). Patrz algorytm koloru tła w 3.5.
 
--z Ustawia tryb jednokolorowego raytracingu (3x szybciej). Wynik w odcieniach szarości. Poza tym uruchamia algorytm wykrywający krawędzie trójkątów patrz 3.2.1.6
+-z Ustawia tryb jednokolorowego raytracingu (3x szybciej). Wynik w odcieniach szarości. Poza tym uruchamia algorytm wykr
+ywający krawędzie trójkątów patrz 3.2.1.6
 
--Z Ustawia generowanie oddzielnych obrazów JPEG dla kanałów kolorów: czerwony, zielony, niebieski: powstaną dodatkowe pliki: obraz_r.jpeg, obraz_g.jpeg, obraz_b.jpeg dla kanałów R,G,B.
+-Z Ustawia generowanie oddzielnych obrazów JPEG dla kanałów kolorów: czerwony, zielony, niebieski: powstaną dodatkowe pl
+iki: obraz_r.jpeg, obraz_g.jpeg, obraz_b.jpeg dla kanałów R,G,B.
 
--F procent Ustawia algorytm minimalizujący przy generacji drzewa AABB. 0 oznacza algorytm szybki, 100 pełny, wartości (0,100) częściowy, np. –F 8. Domyślnie 100. Podanie wartości 200 lub więcej spowoduje użycie algorytmu “smart minimalize” opisanego w 3.2.1.5 Podanie wartości ujemnych powoduje zastosowanie algorytmu wokselowego, a algorytm minimalizacji wokseli to minus liczba podana, np. Podanie -200 oznacza użycie alorytmu wokselowego oraz algorytm minimalizacji 200 czyli “smart minimalize”, ta opcja jest domyślna. Podanie np -80 oznacza uzycie wokseli, z minimalizacją częściową 80%.  Patrz 3.2.1.
+-F procent Ustawia algorytm minimalizujący przy generacji drzewa AABB. 0 oznacza algorytm szybki, 100 pełny, wartości (0
+,100) częściowy, np. –F 8. Domyślnie 100. Podanie wartości 200 lub więcej spowoduje użycie algorytmu “smart minimalize” 
+opisanego w 3.2.1.5 Podanie wartości ujemnych powoduje zastosowanie algorytmu wokselowego, a algorytm minimalizacji woks
+eli to minus liczba podana, np. Podanie -200 oznacza użycie alorytmu wokselowego oraz algorytm minimalizacji 200 czyli “
+smart minimalize”, ta opcja jest domyślna. Podanie np -80 oznacza uzycie wokseli, z minimalizacją częściową 80%.  Patrz 
+3.2.1.
 
--1 M ustawia parametry algorytmu sąsiedztwa trójkątów, Liczba M oznacza ilość pikseli generowanych za pomocą jednego drzewa indeksowego, domyslna wartość 1, 0-wyłącza drzewo indeksowe, >1 powoduje znaczne przekłamania wyników, nie zalecane, patrz 3.2.1.6
+-1 M ustawia parametry algorytmu sąsiedztwa trójkątów, Liczba M oznacza ilość pikseli generowanych za pomocą jednego drz
+ewa indeksowego, domyslna wartość 1, 0-wyłącza drzewo indeksowe, >1 powoduje znaczne przekłamania wyników, nie zalecane,
+ patrz 3.2.1.6
 
--H “K N” Patrz opis w 3.2.1.5. Ustawia wartości N (kiedy dzielić) oraz K (na ile dzielić) algorytmu wokselowego. Domyślne wartości to K=2 i N=7500.
+-H “K N” Patrz opis w 3.2.1.5. Ustawia wartości N (kiedy dzielić) oraz K (na ile dzielić) algorytmu wokselowego. Domyśln
+e wartości to K=2 i N=7500.
 
--v liczba ustawia metodą triangulacji powierzchni NURBS, -v 1 oznacza triangulację równomierną, podanie wartości większej niż 1 oznacza gęstszą triangulację na brzegach a wartości mniejszej niż 1 gęstszą w środku powierzchni, patrz 2.4, np. –v 1.4, domyślnie 1.2, zalecany przedział wartości to <1.,2.>. Uwaga, użycie własnej wartości generuje w wyniku drzewo AABB dla tylko i wyłącznie tej wartości –v, co gorsza ilość trójkątów się nie zmieni więc drzewo dla innej wartości –v też się wczyta, ale boxy tego drzewa będą otaczały inne trójkąty. Można spodziewać się wtedy dziwnych efektów i niezdefiniowanego działania!
+-v liczba ustawia metodą triangulacji powierzchni NURBS, -v 1 oznacza triangulację równomierną, podanie wartości większe
+j niż 1 oznacza gęstszą triangulację na brzegach a wartości mniejszej niż 1 gęstszą w środku powierzchni, patrz 2.4, np.
+ –v 1.4, domyślnie 1.2, zalecany przedział wartości to <1.,2.>. Uwaga, użycie własnej wartości generuje w wyniku drzewo 
+AABB dla tylko i wyłącznie tej wartości –v, co gorsza ilość trójkątów się nie zmieni więc drzewo dla innej wartości –v t
+eż się wczyta, ale boxy tego drzewa będą otaczały inne trójkąty. Można spodziewać się wtedy dziwnych efektów i niezdefin
+iowanego działania!
 
--V liczba skalowanie ilości trójkątów, podanie np. –V 2 oznacza, że chcemy wygenerować w kierunku u i v po 2x tyle trójkątów w stosunku do ilości podanej w definicji powierzchni NURBS. Zalecany zakres wartości <0.33,3>. Uwaga, AABB drzewa obliczone w preprocesingu tracą swoją ważność – gdyż zmienia się ilość końcowa trójkątów!, np. –V 0.5, domyślnie 1
+-V liczba skalowanie ilości trójkątów, podanie np. –V 2 oznacza, że chcemy wygenerować w kierunku u i v po 2x tyle trójk
+ątów w stosunku do ilości podanej w definicji powierzchni NURBS. Zalecany zakres wartości <0.33,3>. Uwaga, AABB drzewa o
+bliczone w preprocesingu tracą swoją ważność – gdyż zmienia się ilość końcowa trójkątów!, np. –V 0.5, domyślnie 1
 
--j port na którym porcie uruchomić serwer rays nasłuchujący poleceń. Podanie tej opcji automatycznie uruchamia nowy wątek serwera na zadanym porcie. Porty o numerach mniejszych niż 1024 mogą być niedostępne dla użytkowników nie posiadających uprawnień administratora (nie dotyczy to użytkowników niektórych systemów Windows), np. –j 2500, domyślnie opcja ta jest wyłączona
+-j port na którym porcie uruchomić serwer rays nasłuchujący poleceń. Podanie tej opcji automatycznie uruchamia nowy wąte
+k serwera na zadanym porcie. Porty o numerach mniejszych niż 1024 mogą być niedostępne dla użytkowników nie posiadającyc
+h uprawnień administratora (nie dotyczy to użytkowników niektórych systemów Windows), np. –j 2500, domyślnie opcja ta je
+st wyłączona
 
--B włącza generowanie sceny binarnej (BIN) na podstawie sceny wejściowej oraz generowanie pliku sceny po przeliczeniu wszystkich przekształceń i triangulacji (plik jest na ogół dużo większy). Plik ten (FDAT) zawiera pełną definicję sceny jako wylistowanie wszystkich trójkątów składowych, nie zawiera powierzchni NURBS ponieważ są w nim zapisane jako trójkąty. Opcja ta jest domyślnie wyłączona
+-B włącza generowanie sceny binarnej (BIN) na podstawie sceny wejściowej oraz generowanie pliku sceny po przeliczeniu ws
+zystkich przekształceń i triangulacji (plik jest na ogół dużo większy). Plik ten (FDAT) zawiera pełną definicję sceny ja
+ko wylistowanie wszystkich trójkątów składowych, nie zawiera powierzchni NURBS ponieważ są w nim zapisane jako trójkąty.
+ Opcja ta jest domyślnie wyłączona
 
 -A włącza antyaliasing zmniejsza rozdzielczość poziomą i pionową dwukrotnie, ta opcja jest domyślnie wyłączona.
 
--K uruchamia opcję zapisu sceny z antyaliasingiem i bez (2 razy większa rozdzielczość), aby można było kontynuować przerwany raytracing scen z antyaliasingiem włączonym, generuje dodatkowy plik zapisu pełnej sceny z antyaliasingiem np. plik.bmp  plik_aa.bmp, domyślnie ta opcja nie jest aktywna
+-K uruchamia opcję zapisu sceny z antyaliasingiem i bez (2 razy większa rozdzielczość), aby można było kontynuować przer
+wany raytracing scen z antyaliasingiem włączonym, generuje dodatkowy plik zapisu pełnej sceny z antyaliasingiem np. plik
+.bmp  plik_aa.bmp, domyślnie ta opcja nie jest aktywna
 
--2 podwaja rozdzielczość pionową i poziomą, przy jednoczesnym podaniu –A (antyaliasingu) oznacza to, że rozdzielczość pozostanie bez zmian, a włączony zostanie antyaliasing, dodatkowo podanie –K oznacza, że przerwany raytracing z antyaliasingiem , będzie mógł być wznowiony.
+-2 podwaja rozdzielczość pionową i poziomą, przy jednoczesnym podaniu –A (antyaliasingu) oznacza to, że rozdzielczość po
+zostanie bez zmian, a włączony zostanie antyaliasing, dodatkowo podanie –K oznacza, że przerwany raytracing z antyaliasi
+ngiem , będzie mógł być wznowiony.
 
--l wyłącza światło, scena będzie domyślnie maksymalnie oświetlona ze wszystkich stron, domyślnie ta opcja jest nieaktywna
+-l wyłącza światło, scena będzie domyślnie maksymalnie oświetlona ze wszystkich stron, domyślnie ta opcja jest nieaktywn
+a
 
 -e wyłącza teksturowanie, domyślnie teksturowanie jest włączone
 
@@ -2069,25 +2551,34 @@ ustaw katalog w którym system będzie poszukiwał tekstur, nie jest to docelowy
 
 -u włącza generowanie cieni, domyślnie cienie nie są generowane
 
--J włącza obsługę JPEG, program wczytując pliki bmp jeżeli nie znajdzie bitmapy to będzie próbował odczytać plik jpeg, np. 1.bmp  1.jpeg, przy zapisie będzie zapisywał zarówno bitmapę jak i plik JPEG, domyślnie opcja ta jest wyłączona
+-J włącza obsługę JPEG, program wczytując pliki bmp jeżeli nie znajdzie bitmapy to będzie próbował odczytać plik jpeg, n
+p. 1.bmp  1.jpeg, przy zapisie będzie zapisywał zarówno bitmapę jak i plik JPEG, domyślnie opcja ta jest wyłączona
 
--g Włącza generowanie JPEG’a w odcieniach szarości, musi być użyta wraz z opcją –J, zapisuje pliki: plik.bmp, plik.jpeg, plik_gs.jpeg
+-g Włącza generowanie JPEG’a w odcieniach szarości, musi być użyta wraz z opcją –J, zapisuje pliki: plik.bmp, plik.jpeg,
+ plik_gs.jpeg
 
 -G włącza wyświetlanie w oknie OpenGL w osobnym wątku, patrz: 5.3.3, domyślnie ta opcja jest wyłączona
 
--f Uruchamia szybki podgląd sceny w OpenGL, patrz dokładny opis w 5.3.3, ta opcja musi być użyta z opcją –G, domyślnie jest wyłączona
+-f Uruchamia szybki podgląd sceny w OpenGL, patrz dokładny opis w 5.3.3, ta opcja musi być użyta z opcją –G, domyślnie j
+est wyłączona
 
--L wyłącza reakcje na wszelkie sygnały (SIGUSR1, SIGINT, SIGSEGV), domyślnie program reaguje na te sygnały. SIGUSR1 -> zapisuje obraz na żądanie,  SIGINT zapisuje obraz częściowy (przerwanie), SIGSEGV, zapisuje obraz jak w błędzie krytycznym (panic) i czeka na dołączenie debuggera.
+-L wyłącza reakcje na wszelkie sygnały (SIGUSR1, SIGINT, SIGSEGV), domyślnie program reaguje na te sygnały. SIGUSR1 -> z
+apisuje obraz na żądanie,  SIGINT zapisuje obraz częściowy (przerwanie), SIGSEGV, zapisuje obraz jak w błędzie krytyczny
+m (panic) i czeka na dołączenie debuggera.
 
--C włącza zapisywanie sceny wygenerowanej w preprocesingu do pliku BTREE w formacie tekstowym, np. scene.dat -> scene.btree, domyślnie drzewo nie jest zapisywane do pliku
+-C włącza zapisywanie sceny wygenerowanej w preprocesingu do pliku BTREE w formacie tekstowym, np. scene.dat -> scene.bt
+ree, domyślnie drzewo nie jest zapisywane do pliku
 
--E włącza zapisywanie sceny wygenerowanej w preprocesingu do pliku BTREE w formacie binarnym, np. scene.dat -> scene.btree, domyślnie drzewo nie jest zapisywane do pliku
+-E włącza zapisywanie sceny wygenerowanej w preprocesingu do pliku BTREE w formacie binarnym, np. scene.dat -> scene.btr
+ee, domyślnie drzewo nie jest zapisywane do pliku
 
--c włącza odczyt preprocessingu sceny z pliku, dla scece.dat próbuje wczytać scene.btree, jak to się nie powiedzie to tworzy drzewo od nowa i jeżeli użyto –C lub –E to ją zapisuje w scene.btree
+-c włącza odczyt preprocessingu sceny z pliku, dla scece.dat próbuje wczytać scene.btree, jak to się nie powiedzie to tw
+orzy drzewo od nowa i jeżeli użyto –C lub –E to ją zapisuje w scene.btree
 
 -N włącza przetwarzanie powierzchni chropowatych (rozproszenie normalnych), domyślnie rozproszenia nie są liczone
 
--O włącza randomizację drzewa w trakcie tworzenia, likwiduje to tendencje niektórych drzew do rozrastania się w określonym kierunku.
+-O włącza randomizację drzewa w trakcie tworzenia, likwiduje to tendencje niektórych drzew do rozrastania się w określon
+ym kierunku.
 
 -h wyświetla pomoc programu rays
 
@@ -2095,16 +2586,19 @@ Powyższa lista nie jest kompletna, aby uzyskać kompletną listę uruchom progr
 
 6.2.1.2 Opis poleceń w oknie graficznym OpenGL
 
- Gdy używany OpenGL GUI w trakcie raytracingu (opcja –G) i jednocześnie nie używamy podglądu (opcja –f), to możemy użyć następujących klawiszy.
+ Gdy używany OpenGL GUI w trakcie raytracingu (opcja –G) i jednocześnie nie używamy podglądu (opcja –f), to możemy użyć 
+następujących klawiszy.
 
 s Wysyła sygnał SIGUSR1 do wątku RT, powoduje wygenerowanie obrazu na życzenie
-k Wysyła sygnał SIGINT do wątku RT, powoduje przerwanie działania algorytmu i wygenerowanie obrazu częściowego (działanie jak CTRL+C)
+k Wysyła sygnał SIGINT do wątku RT, powoduje przerwanie działania algorytmu i wygenerowanie obrazu częściowego (działani
+e jak CTRL+C)
 K Wysyła sygnał SIGKILL bezwarunkowo/natychmiast unicestwiając wszystkie wątki, nic nie jest zapisywane
 J/j manipulacja jakością JPEG’a
 A/a manipulacja wartością oświetlenia tła
 M/m manipulacja wartością minimalnego cienia
 V/v manipulacja wartością maksymalnego cienia
-B/b manipulacja automatycznym zapisem obrazów częściowych zwiększanie/zmniejszanie liczby linii co ile automatyczny zapis
+B/b manipulacja automatycznym zapisem obrazów częściowych zwiększanie/zmniejszanie liczby linii co ile automatyczny zapi
+s
 R/r manipulacja maksymalnym poziomem rekursji
 p przełączanie generacji JPEG’a (włączone/wyłączone)
 t wstrzymaj/wznów raytracing
@@ -2121,7 +2615,9 @@ Powyższa lista nie jest kompletna, aby uzyskać kompletną listę uruchom progr
 
 6.2.1.3 Opis poleceń w oknie podglądu OpenGL
 
-Gdy używamy OpenGL GUI w trybie podglądu (opcja –G –f). Tryb podglądu służy głównie do wygenerowania odpowiedniego przekształcenia sceny, a następnie zapisania go w pliku world_trans.dat za pomocą klawisza w, oto dostępne klawisze w trybie podglądu.
+Gdy używamy OpenGL GUI w trybie podglądu (opcja –G –f). Tryb podglądu służy głównie do wygenerowania odpowiedniego przek
+ształcenia sceny, a następnie zapisania go w pliku world_trans.dat za pomocą klawisza w, oto dostępne klawisze w trybie 
+podglądu.
 
 ZzXxCc Translacje w kierunkach: x,y,z
 AaSsDdVv Skalowanie po: x,y,z, oraz wszystkie osie naraz
@@ -2134,13 +2630,19 @@ e Włącz/wyłącz wyświetlanie punktów kontrolnych powierzchni NURBS
 Rr Przełącz rysowanie: solid/wireframe
 n Odwróć normalne
 p Wyświetl aktualne przekształcenia
-w Zapisz przekształcenia jako ListTransform do pliku world_trans.dat, Uwaga nie jest to kompletny plik DAT, nie należy go wczytywać, należy skopiować z niego przekształcenia do sceny na której działamy za pomocą dowolnego edytora tekstowego, np. Vi.
+w Zapisz przekształcenia jako ListTransform do pliku world_trans.dat, Uwaga nie jest to kompletny plik DAT, nie należy g
+o wczytywać, należy skopiować z niego przekształcenia do sceny na której działamy za pomocą dowolnego edytora tekstowego
+, np. Vi.
 
 Powyższa lista nie jest kompletna, aby uzyskać kompletną listę uruchom program rays z opcja –h (pomoc)
 
 6.2.1.4 Opis poleceń serwera rays.
 
- Aby wydawać polecenia zdalnie należy użyć programu terminal (można też użyć programu telnet, jeżeli użytkownik zna protokół wymiany poleceń z serwerem rays), który służy do wydawania poleceń serwerowi rays, opis terminalu znajduje się w 6.2.2, należy pamiętać o podaniu odpowiedniego portu i adresu IP (lub nazwy) maszyny na której działa proces raytracingu. Można też zdalnie pobrać aktualnie wygenerowany obraz za pomocą programu getbmp opisanego w 6.2.3. Oto dostępne polecenia które można wysyłać do serwera rays:
+ Aby wydawać polecenia zdalnie należy użyć programu terminal (można też użyć programu telnet, jeżeli użytkownik zna prot
+okół wymiany poleceń z serwerem rays), który służy do wydawania poleceń serwerowi rays, opis terminalu znajduje się w 6.
+2.2, należy pamiętać o podaniu odpowiedniego portu i adresu IP (lub nazwy) maszyny na której działa proces raytracingu. 
+Można też zdalnie pobrać aktualnie wygenerowany obraz za pomocą programu getbmp opisanego w 6.2.3. Oto dostępne poleceni
+a które można wysyłać do serwera rays:
 
 qserver zakańcza działanie wątku serwera na zdalnej maszynie, dalsze połączenia będą niemożliwe.
 rthlt wstrzymuje raytracing
@@ -2169,7 +2671,8 @@ bkup manipulacja automatycznym zapisywaniem częściowego obrazu
 recl zmniejszanie/zwiększanie maksymalnego poziomu rekursji
 tgnorm zmiana algorytmu interpolacji (stary/nowy)
 tialg zmiana algorytmu przecięcia (stary/nowy)
-get pobiera bitmapę dotychczas wygenerowanego obrazu, nie powinno być używane bezpośrednio, używa program getbmp opisany w 6.2.3
+get pobiera bitmapę dotychczas wygenerowanego obrazu, nie powinno być używane bezpośrednio, używa program getbmp opisany
+ w 6.2.3
 stat wypisz statystyki działania algorytmu
 tex włącz/wyłącz teksturowanie (tryb podglądu)
 light włącz/wyłącz oświetlenie (tryb podglądu)
@@ -2182,12 +2685,14 @@ Przykłady użycia programu RAYS są w rozdziale 7.
 
 6.2.2 Program NURBS
 
-Program ten jest moim projektem z Metod Numerycznych. Generuje on powierzchnię BSPLINE interpolującą zadane punkty. Używa on algorytmu interpolacji globalnej.
+Program ten jest moim projektem z Metod Numerycznych. Generuje on powierzchnię BSPLINE interpolującą zadane punkty. Używ
+a on algorytmu interpolacji globalnej.
 
  6.2.2.1 Algorytm interpolacji globalnej
 
 ObliczInterpolacje(n,p,s)
-Wejście: n – ilość punktów interpolacji, p – wymiar powierzchni, s – wymiar przestrzeni, knot: węzły (knots), t: węzły (nodes), D – tensor punktów interpolacji
+Wejście: n – ilość punktów interpolacji, p – wymiar powierzchni, s – wymiar przestrzeni, knot: węzły (knots), t: węzły (
+nodes), D – tensor punktów interpolacji
 (n+1,n+1,s)
 Wyjście: powierzchnia BSpline
 
@@ -2240,20 +2745,36 @@ Dla i = 0 do n wykonaj: P[i] = NI * Q[i]
 NURBS
 d|n (l[w|o] file | f[w|o] dim npts def | r[w|o] dim npts | u[w|o] dim npts def1 def2 def3)
 
-Gdzie pierwszy argument d|n (oznaczenie | oznacza, że należy wybrać ‘d’ lub ‘n’). Wybranie ‘d’ spowoduje uruchomienie algorytmu deformacji kostką Beziera, zaś wybranie ‘n’ spowoduje pominięcie deformacji. Zalecaną opcją jest ‘n’ ponieważ deformacje nie dotyczą algorytmu raytracingu i są opcją dostępną w programie NURBS do innych celów (program NURBS jest projektem zaliczeniowych z przedmiotu Metody Numeryczne i w tej pracy dołączony jest jako użyteczne narzędzie do tworzenia/edycji powierzchni NURBS i tylko w tym celu).
+Gdzie pierwszy argument d|n (oznaczenie | oznacza, że należy wybrać ‘d’ lub ‘n’). Wybranie ‘d’ spowoduje uruchomienie al
+gorytmu deformacji kostką Beziera, zaś wybranie ‘n’ spowoduje pominięcie deformacji. Zalecaną opcją jest ‘n’ ponieważ de
+formacje nie dotyczą algorytmu raytracingu i są opcją dostępną w programie NURBS do innych celów (program NURBS jest pro
+jektem zaliczeniowych z przedmiotu Metody Numeryczne i w tej pracy dołączony jest jako użyteczne narzędzie do tworzenia/
+edycji powierzchni NURBS i tylko w tym celu).
 
-Drugi parametr może mieć jak widać wiele postaci. Ogólnie jest to argument dwuliterowy. Pierwsza litera to: ‘l’ lub ‘f’ lub ‘r’ lub ‘u’, natomiast druga to ‘w’ lub ‘o’. Dozwolone kombinacje są więc następujące: lo, lw, fo, fw, ro, rw, uo, uw.
+Drugi parametr może mieć jak widać wiele postaci. Ogólnie jest to argument dwuliterowy. Pierwsza litera to: ‘l’ lub ‘f’ 
+lub ‘r’ lub ‘u’, natomiast druga to ‘w’ lub ‘o’. Dozwolone kombinacje są więc następujące: lo, lw, fo, fw, ro, rw, uo, u
+w.
 
 Pierwsza litera determinuje sposób pozyskania danych:
 
-‘l’: wczytuje z pliku (wtedy trzeci argument to nazwa pliku). Pliki można zapisywać w trakcie działania programu z menu kontekstowego
-‘f’: nakazuje użyć funkcji jako źródła danych, wtedy następne trzy parametry to kolejno: wymiar powierzchni spline, ilość punktów i definicja funkcji. Wymiar powinien być co najmniej 2 aby funkcja była gładka, ilość punktów musi być co najmniej wymiar + 1. Jeżeli podamy wymiar np.: 3 a ilość punktów 5, to funkcja zostanie spróbkowana w 5 x 5 = 25 punktach (na siatce). Punkty te staną się punktami interpolacji. Ostatni parametr to definicja funkcji. Program jest wyposażony w parser więc można ją podać jako argument, np. ‘sin(x+y)-cos(x-y)’. Czyli cała linia poleceń byłaby np. taka: n fw 3 5 ‘sin(x+y)’
-‘r’: nakazuje użyć losowych danych, należy następnie podać wymiar i ilość punktów. Ilość punktów powinna być >= wymiar + 1, wymiar powinien być >= 2 aby powierzchnia była gładka. Przykładowa linia poleceń: n rw 3 10
-‘u’: Nakazuje użyć 3 funkcji dla każdej współrzędnej obrazu, czyli tak jak w ‘f’ ale należy podać 3 definicje funkcji. Podanie ‘x’ i ‘y’ jako dwóch ostatnich funkcji daje rezultat identyczny jak użycie ‘f’. Przykładowa linia poleceń: uw 3 10 ‘sin(x*y) ‘x^2’ ‘y^2’.
+‘l’: wczytuje z pliku (wtedy trzeci argument to nazwa pliku). Pliki można zapisywać w trakcie działania programu z menu 
+kontekstowego
+‘f’: nakazuje użyć funkcji jako źródła danych, wtedy następne trzy parametry to kolejno: wymiar powierzchni spline, iloś
+ć punktów i definicja funkcji. Wymiar powinien być co najmniej 2 aby funkcja była gładka, ilość punktów musi być co najm
+niej wymiar + 1. Jeżeli podamy wymiar np.: 3 a ilość punktów 5, to funkcja zostanie spróbkowana w 5 x 5 = 25 punktach (n
+a siatce). Punkty te staną się punktami interpolacji. Ostatni parametr to definicja funkcji. Program jest wyposażony w p
+arser więc można ją podać jako argument, np. ‘sin(x+y)-cos(x-y)’. Czyli cała linia poleceń byłaby np. taka: n fw 3 5 ‘si
+n(x+y)’
+‘r’: nakazuje użyć losowych danych, należy następnie podać wymiar i ilość punktów. Ilość punktów powinna być >= wymiar +
+ 1, wymiar powinien być >= 2 aby powierzchnia była gładka. Przykładowa linia poleceń: n rw 3 10
+‘u’: Nakazuje użyć 3 funkcji dla każdej współrzędnej obrazu, czyli tak jak w ‘f’ ale należy podać 3 definicje funkcji. P
+odanie ‘x’ i ‘y’ jako dwóch ostatnich funkcji daje rezultat identyczny jak użycie ‘f’. Przykładowa linia poleceń: uw 3 1
+0 ‘sin(x*y) ‘x^2’ ‘y^2’.
 
 Druga litera decyduje o sposobie wyświetlania wyników.
 ‘w’: Wyświetlanie poszczególnych trójkątów (zalecane)
-‘o’: Wyświetlanie zoptymalizowane całych powierzchni (przez OpenGL) – ładnie wygląda ale nie zalecane, ponieważ chcemy mieć kontrolę nad triangulacją.
+‘o’: Wyświetlanie zoptymalizowane całych powierzchni (przez OpenGL) – ładnie wygląda ale nie zalecane, ponieważ chcemy m
+ieć kontrolę nad triangulacją.
 
 Kilka przykładów uruchomienia:
 
@@ -2271,7 +2792,8 @@ Opiszę teraz opcje dostępne przy zastosowaniu menu kontekstowego:
 
 ‘write bspline surface’ zapisuje punkty kontrolne powierzchni w formacie wewnętrznym programu oraz w formacie NURBS
  pliki bspline_surfaceN oraz surface.NURBS
-‘write Rayslib NURBS surface’ zapisuje aktualną triangulację w raylab.dat oraz powierzchnię w formacie NURBS w NURBSsurfaceN.dat
+‘write Rayslib NURBS surface’ zapisuje aktualną triangulację w raylab.dat oraz powierzchnię w formacie NURBS w NURBSsurf
+aceN.dat
 ‘toggle D/P/Q points’ włącza i wyłącza wyświetlanie punktów interpolacji/pośrednich/kontrolnych
 ‘more/less u/v lines’   zwiększa/zmniejsza gęstość triangulacji w kierunkach u/v
 ‘lower/higher degree’ zmniejsza/zwiększa stopień powierzchni, minimalny: 1 maksymalny: ilość punktów – 1.
@@ -2281,7 +2803,8 @@ Opis klawiatury:
 1,2,3 włącza i wyłącza wyświetlanie punktów interpolacji/pośrednich/kontrolnych
 ESC,q zakańcza działanie aplikacji
 ` zapisuje aktualną triangulację w raylab.dat oraz powierzchnię w formacie NURBS w surface.NURBS
-r zapisuje punkty kontrolne powierzchni w formacie wewnętrznym programu oraz w formacie NURBS, pliki: bspline_surfaceN oraz NURBSsurfaceN.dat
+r zapisuje punkty kontrolne powierzchni w formacie wewnętrznym programu oraz w formacie NURBS, pliki: bspline_surfaceN o
+raz NURBSsurfaceN.dat
 h wyświetla pomoc
 wsadex przemieszcza punkt kontrolny (aktualnie zaznaczony)
 ikjlom obraca cały obiekt dookoła różnych osi
@@ -2295,7 +2818,9 @@ SPACJA powróć do domyślnych ustawień
 
  6.2.3 Program NURBS2DAT
 
- Program służy do konwersji plików NURBS do formatu DAT. Dawna wersja RAYS nie obsługiwała plików NURBS bezpośrednio więc taka konwersja była potrzeba, teraz program RAYS potrafi już bezpośrednio odczytać definicję NURBS w pliku DAT i ztriangulować tę powierzchnię „w locie”.
+ Program służy do konwersji plików NURBS do formatu DAT. Dawna wersja RAYS nie obsługiwała plików NURBS bezpośrednio wię
+c taka konwersja była potrzeba, teraz program RAYS potrafi już bezpośrednio odczytać definicję NURBS w pliku DAT i ztria
+ngulować tę powierzchnię „w locie”.
 
  Parametry programu, kolejno:
  -plik wejściowy np. powierzchnia.NURBS
@@ -2307,7 +2832,9 @@ Przykładowe użycie programu: NURBS2DAT input.NURBS output.DAT 0 1
 
  6.2.4 Program IGES2DAT
 
- Program służy do odczytu powierzchni NURBS zapisanych w pliku IGS, a następnie zapisaniu ich w pliku DAT. Program odczytuje wszystkie encje o numerze 128 (powierzchnie NURBS). Program jest bazowany na aplikacji renderującej NURBS’y z plików IGES – projekt z Laboratoriów Systemów CAD/CAM – xcam.
+ Program służy do odczytu powierzchni NURBS zapisanych w pliku IGS, a następnie zapisaniu ich w pliku DAT. Program odczy
+tuje wszystkie encje o numerze 128 (powierzchnie NURBS). Program jest bazowany na aplikacji renderującej NURBS’y z plikó
+w IGES – projekt z Laboratoriów Systemów CAD/CAM – xcam.
 
 Program obsługuje następujące opcje z linii poleceń:
 -h wyświetla pomoc
@@ -2330,8 +2857,10 @@ Przykładowe użycie programu:
 
  6.2.5 Program ULI2DAT
 
- Program konwertuje pliki ULI/TRI (nasz format na VR’ach) na pliki DAT. Należy podać następujące parametry z linii poleceń:
-index początkowy index numeracji. Jeżeli np. w pliku ULI będzie 1000 trójkątów i podamy index 100 to w pliku DAT zostaną zapisane od 100 do 1100
+ Program konwertuje pliki ULI/TRI (nasz format na VR’ach) na pliki DAT. Należy podać następujące parametry z linii polec
+eń:
+index początkowy index numeracji. Jeżeli np. w pliku ULI będzie 1000 trójkątów i podamy index 100 to w pliku DAT zostaną
+ zapisane od 100 do 1100
 tr tg tb Współczynniki przezroczystości dla kolejnych kolorów RGB np 0.2 0.4 0.35
 sr sg sb Współczynniki odbicia światła dla kolejnych kolorów RGB np.
  1 0.6 0.85
@@ -2341,7 +2870,8 @@ tfr tfg tfb Współczynniki załamania światła dla kolejnych kolorów np.
   1.22 1.25 1.27
 sf Współczynnik rozbłysku dla wszystkich kolorów, np. 64.0
 tid index tekstury
-fac 1 lub 2, czy materiał jest jednostronny czy dwustronny. Na dwustronnych materiałach rozbłysk i oświetlenie jest po obu stronach
+fac 1 lub 2, czy materiał jest jednostronny czy dwustronny. Na dwustronnych materiałach rozbłysk i oświetlenie jest po o
+bu stronach
 rand 0 lub 1, jeżeli włączone to spowoduje użycie losowych wartości
 hdr 0 lub 1, 1-zapisuje nagłówek pliku, 0-nie zapisuje
 
@@ -2350,7 +2880,8 @@ ULI2DAT 0 0.25 0.25 0.25 0.5 0.5 0.5 0.25 0.25 0.25 1.22 1.25 1.27 64.0 2 2 0 1 
 
  6.2.6 Program MD22DAT
 
- Program konwertuje pliku MD2 (modele z gry Quake II) do formatu DAT. Należy podać następujące parametry z linii poleceń:
+ Program konwertuje pliku MD2 (modele z gry Quake II) do formatu DAT. Należy podać następujące parametry z linii poleceń
+:
 
 tfr tfg tfb Współczynniki załamania światła dla kolejnych kolorów np.
    1.22 1.25 1.27
@@ -2361,9 +2892,11 @@ cr cg cb Kolor materiału (RGB) np. 1 0 0 daje czerwony, 0 1 0 zielony, np.
   0.5 0.5 0.1
 sf Współczynnik rozbłysku dla wszystkich kolorów, np. 64.0
 nd Współczynnik chropowatości (normal distorber)
-fac 1 lub 2, czy materiał jest jednostronny czy dwustronny. Na dwustronnych materiałach rozbłysk i oświetlenie jest po obu stronach
+fac 1 lub 2, czy materiał jest jednostronny czy dwustronny. Na dwustronnych materiałach rozbłysk i oświetlenie jest po o
+bu stronach
 tid index tekstury
-index początkowy index numeracji. Jeżeli np. w pliku MD2 będzie 1000 trójkątów i podamy index 100 to w pliku DAT zostaną zapisane od 100 do 1100
+index początkowy index numeracji. Jeżeli np. w pliku MD2 będzie 1000 trójkątów i podamy index 100 to w pliku DAT zostaną
+ zapisane od 100 do 1100
 hdr 0 lub 1, 1-zapisuje nagłówek pliku, 0-nie zapisuje
 
 Obsługa klawiatury:
@@ -2381,10 +2914,16 @@ MD22DAT 1.22 1.25 1.27 1 1 1 2 2 2 1 1 1 64 2.5 2 1 100 1 < ogre.MD2 > ogre.DAT
 
  6.2.7 Program 3DS2TRI
 
- Program służy do konwersji obiektów zapisanych w formacie 3DS do formatu TRI/ULI, który może być następnie skonwertowany do formatu DAT za pomocą programu ULI2DAT. W trakcie konwersji tracone są dane o teksturach. Ponieważ istnieje już wersja konwertująca bezpośrednio z 3DS do DAT (i zachowująca tekstury), więc program ten nie jest już na ogół używany. Opcje tego programu są podobne jak w programie 3DS2DAT.
+ Program służy do konwersji obiektów zapisanych w formacie 3DS do formatu TRI/ULI, który może być następnie skonwertowan
+y do formatu DAT za pomocą programu ULI2DAT. W trakcie konwersji tracone są dane o teksturach. Ponieważ istnieje już wer
+sja konwertująca bezpośrednio z 3DS do DAT (i zachowująca tekstury), więc program ten nie jest już na ogół używany. Opcj
+e tego programu są podobne jak w programie 3DS2DAT.
  6.2.8 Program 3DS2DAT
 
- Program konwertuje pliki 3DS do formatu DAT. Normalne (których nie ma w obiekcie 3DS są interpolowane dla każdego wierzchołka, dzięki czemu powstaje obiekt składający się z trójkątów GPT. Brak interpolacji powodował, zę obiekty wyglądały nienaturalnie, odpowiednie obrazki są załączone na koncu pracy. Można zapisać przekształcenia obiektu, nadać mu właściwości materiałowe itp. Oto dostępne opcje z linii poleceń, każdą opcję podaje się w formacie ‘opcja=wartość’:
+ Program konwertuje pliki 3DS do formatu DAT. Normalne (których nie ma w obiekcie 3DS są interpolowane dla każdego wierz
+chołka, dzięki czemu powstaje obiekt składający się z trójkątów GPT. Brak interpolacji powodował, zę obiekty wyglądały n
+ienaturalnie, odpowiednie obrazki są załączone na koncu pracy. Można zapisać przekształcenia obiektu, nadać mu właściwoś
+ci materiałowe itp. Oto dostępne opcje z linii poleceń, każdą opcję podaje się w formacie ‘opcja=wartość’:
 
 ‘cr=liczba’   wartość koloru czerwonego
 ‘cg=liczba’   wartość koloru zielonego
@@ -2423,24 +2962,30 @@ Przykładowe użycie programu:
 
  6.2.9 Program 60FACES
 
- Program generuje dwunastościan foremny składający się z 60 trójkątów (po 5 trójkątów na każdą ścianę). Należy podać następujące parametry z linii poleceń:
+ Program generuje dwunastościan foremny składający się z 60 trójkątów (po 5 trójkątów na każdą ścianę). Należy podać nas
+tępujące parametry z linii poleceń:
 
  Index tr tg tb sr sg sb cr cg cb tfr tfg tfb zraise sf tid fac lt
 
 Większość z tych parametrów została już opisana powyżej, opiszę tylko te które nie były dotychczas opisywane:
 
- zraise: o ile podnieść wierzchołek w środku każdego pięciokąta w stosunku do płaszczyzny ściany. Podanie 0 wygeneruje 12-ścian foremny, inne wartości spowodują wygenerowanie 60-ściana. Podanie wartości 100 spowoduje wybranie takiej wartości dla której wszystkie trójkąty będą równoboczne
+ zraise: o ile podnieść wierzchołek w środku każdego pięciokąta w stosunku do płaszczyzny ściany. Podanie 0 wygeneruje 1
+2-ścian foremny, inne wartości spowodują wygenerowanie 60-ściana. Podanie wartości 100 spowoduje wybranie takiej wartośc
+i dla której wszystkie trójkąty będą równoboczne
 
- lt: podanie 1 wygeneruje tylko listę przekształceń, podanie 0 wygeneruje tylko trójkąty, podanie 2 spowoduje wygenerowanie obu składników
+ lt: podanie 1 wygeneruje tylko listę przekształceń, podanie 0 wygeneruje tylko trójkąty, podanie 2 spowoduje wygenerowa
+nie obu składników
 
- Efektem działania programu jest fragment pliku DAT który może być użyty do wstawienia 12/60-ścianów do dowolnej sceny (generowane może być też ListTransform dla danego obiektu dla lt=1 lub 2)
+ Efektem działania programu jest fragment pliku DAT który może być użyty do wstawienia 12/60-ścianów do dowolnej sceny (
+generowane może być też ListTransform dla danego obiektu dla lt=1 lub 2)
 
  Przykładowe użycie programu:
   60FACES 1 1 1 0 0 0 1 1 1 1.1 1.2 1.3 0 48.0 2 1 2 > fragment.DAT
 
  6.2.10 Program TORRUSGEN
 
- Program generuje torrus na podstawie zadanych parametrów. Powstaje fragment pliku DAT który może być użyty w innych scenach. Należy podać następujące parametry z linii poleceń:
+ Program generuje torrus na podstawie zadanych parametrów. Powstaje fragment pliku DAT który może być użyty w innych sce
+nach. Należy podać następujące parametry z linii poleceń:
 
 R r N n index cr cg cb sr sg sb tr tg tb tid faces sf tfr tfg tfb
 
@@ -2454,7 +2999,8 @@ Przykładowe użycie programu:
 
  6.2.11 Program CONE
 
- Program generuje stożek na podstawie zadanych parametrów. Powstaje fragment pliku DAT który może być użyty w innych scenach. Należy podać następujące parametry z linii poleceń:
+ Program generuje stożek na podstawie zadanych parametrów. Powstaje fragment pliku DAT który może być użyty w innych sce
+nach. Należy podać następujące parametry z linii poleceń:
 
 r h n index cr cg cb sr sg sb tr tg tb tid faces sf tfr tfg tfb
 
@@ -2470,7 +3016,8 @@ CONE 10 30 120 0 1 0 0 0 1 0    0 0 1 10 1 128.0 1.25 1.26 1.27 > c.DAT
 
  6.2.12 Program CUBE
 
- Program generuje sześcian (12 trójkątów) na podstawie zadanych parametrów. Powstaje fragment pliku DAT który może być użyty w innych scenach. Należy podać następujące parametry z linii poleceń:
+ Program generuje sześcian (12 trójkątów) na podstawie zadanych parametrów. Powstaje fragment pliku DAT który może być u
+żyty w innych scenach. Należy podać następujące parametry z linii poleceń:
 
 index tr tg tb sr sg sb cr cg cb tid tfr tfg tfb sf sx sy sz rx ry rz tz ty tz invN fac lt
 
@@ -2488,7 +3035,8 @@ CUBE 0 1 1 1 1 1 1 1 1 1 2 1.2 1.3 1.4 64.0 4 2 3 30 20 10 –10 –20 50 0 1 2 
 
  6.2.13 Program CYLINDER
 
- Program generuje walec na podstawie zadanych parametrów. Powstaje fragment pliku DAT który może być użyty w innych scenach. Należy podać następujące parametry z linii poleceń:
+ Program generuje walec na podstawie zadanych parametrów. Powstaje fragment pliku DAT który może być użyty w innych scen
+ach. Należy podać następujące parametry z linii poleceń:
 
 r h n index cr cg cb sr sg sb tr tg tb tid faces sf tfr tfg tfb
 
@@ -2504,7 +3052,9 @@ CYLINDER 10 30 120 0 1 0 0 0 1 0    0 0 1 10 1 128.0 1.25 1.26 1.27 > cyl.DAT
 
  6.2.14 Program BALL
 
- Program generuje kulę jednostkową na podstawie zadanych parametrów. Powstała kula składa się z dwóch niezależnych półkul, dla których są generowane osobne listy przekształceń. Powstaje fragment pliku DAT który może być użyty w innych scenach. Należy podać następujące parametry z linii poleceń:
+ Program generuje kulę jednostkową na podstawie zadanych parametrów. Powstała kula składa się z dwóch niezależnych półku
+l, dla których są generowane osobne listy przekształceń. Powstaje fragment pliku DAT który może być użyty w innych scena
+ch. Należy podać następujące parametry z linii poleceń:
 
 index tr tg tb sr sg sb cr cg cb tid tfr tfg tfb sf sx sy sz rx ry rz tz ty tz invN fac lt pa pb
 
@@ -2518,7 +3068,10 @@ Przykładowe użycie programu:
 BALL 0 1 1 1 1 1 1 1 1 1 2 1.2 1.3 1.4 64.0 4 2 3 30 20 10 –10 –20 50 0 1 2 16 16 > b.DAT
 
  6.2.15 Program RANDNURB/RANDNURBFULL
-Oba programy przyjmują tylko jeden argument z linii poleceń: ilość powierzchni NURBS do wygenerowania. Generują one losowe powierzchnie NURBS (program RANDNURB generuje bardziej płaskie i stabilne powierzchnie, a RANDNURBFULL generuje bardzo losowe powierzchnie). Oba programy zapisują na stdout, wynik pliku można zapisać jako plik NURBS używając przekierowania.
+Oba programy przyjmują tylko jeden argument z linii poleceń: ilość powierzchni NURBS do wygenerowania. Generują one loso
+we powierzchnie NURBS (program RANDNURB generuje bardziej płaskie i stabilne powierzchnie, a RANDNURBFULL generuje bardz
+o losowe powierzchnie). Oba programy zapisują na stdout, wynik pliku można zapisać jako plik NURBS używając przekierowan
+ia.
 
 Przykładowe użycie programu:
 
@@ -2527,7 +3080,8 @@ RANDNURBFULL 1000 > 1000surfaces.NURBS
 
  6.2.16 Program RTRIANGLE
 
- Program przyjmuje jeden argument z linii poleceń: ilość trójkątów do wygenerowania. Wynik jest wypisywany na stdout, można go zapisać w pliku DAT jako samodzielną scenę.
+ Program przyjmuje jeden argument z linii poleceń: ilość trójkątów do wygenerowania. Wynik jest wypisywany na stdout, mo
+żna go zapisać w pliku DAT jako samodzielną scenę.
 
  Przykładowe użycie programu:
 
@@ -2535,7 +3089,8 @@ RANDNURBFULL 1000 > 1000surfaces.NURBS
 
  6.2.17 Program TABLE
 
- Program generuje stół używając do tego polecenia CUBE, wszystkie parametry podaje się z linii poleceń w następującej kolejności:
+ Program generuje stół używając do tego polecenia CUBE, wszystkie parametry podaje się z linii poleceń w następującej ko
+lejności:
 
  Index tid1 tid2 tid3 size cubecmd
 
@@ -2554,11 +3109,13 @@ RANDNURBFULL 1000 > 1000surfaces.NURBS
 
  6.2.18 Program TERMINAL
 
- Program służy do nawiązywania połączeń z serwerem RAYS oraz do wydawania poleceń serwerowi. Opcje programu są następujące:
+ Program służy do nawiązywania połączeń z serwerem RAYS oraz do wydawania poleceń serwerowi. Opcje programu są następują
+ce:
 
 -i  ‘adresIP’  podaj adres IP serwera, domyślny ‘127.0.0.1’
 -s serwer podaj nazwę serwera, obliczy IP używając systemowego DNS
--p port podaj port na którym nasłuchuje serwer, domyślny 2500. Jest to numer portu, który został podany za pomocą opcji –j w programie RAYS (patrz 6.2.1.1)
+-p port podaj port na którym nasłuchuje serwer, domyślny 2500. Jest to numer portu, który został podany za pomocą opcji 
+–j w programie RAYS (patrz 6.2.1.1)
 -c polecenie polecenie wysyłane do serwera RAYS, lista dostępnych poleceń znajduje się w 6.2.1.4.
 
 Przykładowe użycie programu:
@@ -2571,7 +3128,8 @@ TERMINAL –i ‘213.100.91.147’ –p 1999 –c ‘stat’
 
 -i  ‘adresIP’  podaj adres IP serwera, domyślny ‘127.0.0.1’
 -s serwer podaj nazwę serwera, obliczy IP używając systemowego DNS
--p port podaj port na którym nasłuchuje serwer, domyślny 2500. Jest to numer portu, który został podany za pomocą opcji –j w programie RAYS (patrz 6.2.1.1)
+-p port podaj port na którym nasłuchuje serwer, domyślny 2500. Jest to numer portu, który został podany za pomocą opcji 
+–j w programie RAYS (patrz 6.2.1.1)
 -o plik.bmp nazwa pliku wynikowego, domyślnie „output.bmp”
 
 Przykładowe użycie programu:
@@ -2579,10 +3137,12 @@ Przykładowe użycie programu:
 GETBMP –s starlight64 –p 1250 –o map.bmp
  6.2.20 Program TEX
 
- Program generuje przykładową teksturę w formacie BMP. Tekstura jest samopowtarzalna. Należy podać następujące parametry z linii poleceń:
+ Program generuje przykładową teksturę w formacie BMP. Tekstura jest samopowtarzalna. Należy podać następujące parametry
+ z linii poleceń:
 
  Texname: nazwa tekstury wynikowej, np.: tex.bmp
-Współczynnik potęgowy: liczba kontrolująca algorytm wyliczający kolory, zalecane: 0.2-16, im wyższa liczba tym „ostrzejsze” zmiany koloru
+Współczynnik potęgowy: liczba kontrolująca algorytm wyliczający kolory, zalecane: 0.2-16, im wyższa liczba tym „ostrzejs
+ze” zmiany koloru
 
 Przykładowe użycie programu:
 
@@ -2590,7 +3150,9 @@ Przykładowe użycie programu:
 
  6.2.21 Program WRAPPER
 
- Program uruchamiający RAYS z odpowiednimi parametrami. Jest to interaktywna nakładka tworząca skrypt wywołujący RAYS, pyta się o wszystkie opcje użytkownika i zapisuje ostateczny wiersz poleceń w pliku: scripts/rays_cmdN.sh. Program nie oczekuje żadnych opcji z linii poleceń, należy odpowiadać na pytania zadawane przez program:
+ Program uruchamiający RAYS z odpowiednimi parametrami. Jest to interaktywna nakładka tworząca skrypt wywołujący RAYS, p
+yta się o wszystkie opcje użytkownika i zapisuje ostateczny wiersz poleceń w pliku: scripts/rays_cmdN.sh. Program nie oc
+zekuje żadnych opcji z linii poleceń, należy odpowiadać na pytania zadawane przez program:
 
  Użycie programu:
 
@@ -2604,33 +3166,64 @@ Przykładowe użycie programu:
  -dokonywanie transformacji drzew (skalowania, translacje i niektóre rotacje)
  -łączenie dwóch drzew w jedno.
 
- Transformacje wykonywane są w następującej kolejności: skalowanie, rotacja, translacja. Ponieważ drzewa AABB z definicji muszą być wyrównane do osi układu współrzędnych to bez regeneracji drzewa można wykonać tylko następujące obroty: o 90, 180 i 270 stopni dookoła osi OX, OY lub OZ. Tylko takie obroty są obsługiwane, ponieważ program nie służy do regeneracji drzewa (generacją drzewa zajmuje się RAYS) . Program służy do szybkich modyfikacji AABB drzew nie wymagających ich tworzenia od nowa (co potrafi trwać godzinami przy dużych obiektach, a przekształcenie zajmuje najwyżej kilka sekund).
+ Transformacje wykonywane są w następującej kolejności: skalowanie, rotacja, translacja. Ponieważ drzewa AABB z definicj
+i muszą być wyrównane do osi układu współrzędnych to bez regeneracji drzewa można wykonać tylko następujące obroty: o 90
+, 180 i 270 stopni dookoła osi OX, OY lub OZ. Tylko takie obroty są obsługiwane, ponieważ program nie służy do regenerac
+ji drzewa (generacją drzewa zajmuje się RAYS) . Program służy do szybkich modyfikacji AABB drzew nie wymagających ich tw
+orzenia od nowa (co potrafi trwać godzinami przy dużych obiektach, a przekształcenie zajmuje najwyżej kilka sekund).
 
- Przy łączeniu drzew należy pamiętać o następujących rzeczach. Po pierwsze najlepiej łączyć drzewa obiektów rozłącznych – wtedy otrzymujemy w pełni optymalne drzewo, bardzo małym kosztem. np. generujemy drzewo dla obiektu mającego 40K trójkątów (około kilku godzin), następnie przekształcamy to drzewo translacją o 100 w kierunku np. X (około 2-3 sekund), kopiujemy drzewo systemowym poleceniem i przekształcamy o np -200. Mamy dwa drzewa, teraz łączymy je (około 2-3 sekund) i mamy drzewo dwóch obiektów (najlepiej aby były one rozłączne, tj ich wielkości w kierunku X nie były większe niż 100). W ten sposób mamy drzewo 80K w kilka sekund. Bez programu do konwersji drzew musielibyśmy stworzyć scenę z 80K trójkątów i dla niej wygenerować drzewo w całości (nie korzystając z rozłączności), potrwałoby to około doby!, ponieważ złożoność generatora drzew to O(n^3). Inny przykład: mamy obiekt mający 10K trójkątów, czas generacji około 1 minuty. Kopiujemy go 16 razy, mamy obiekt 160K czas generacji drzewa około 1-2 tygodnie!. A używając kopiowania drzewa obiektu to: 1min wygenerowanie jednego drzewa, a następnie kopiowanie 15 razy, powiedzmy około 15-30 min, zysk jest duży.
+ Przy łączeniu drzew należy pamiętać o następujących rzeczach. Po pierwsze najlepiej łączyć drzewa obiektów rozłącznych 
+– wtedy otrzymujemy w pełni optymalne drzewo, bardzo małym kosztem. np. generujemy drzewo dla obiektu mającego 40K trójk
+ątów (około kilku godzin), następnie przekształcamy to drzewo translacją o 100 w kierunku np. X (około 2-3 sekund), kopi
+ujemy drzewo systemowym poleceniem i przekształcamy o np -200. Mamy dwa drzewa, teraz łączymy je (około 2-3 sekund) i ma
+my drzewo dwóch obiektów (najlepiej aby były one rozłączne, tj ich wielkości w kierunku X nie były większe niż 100). W t
+en sposób mamy drzewo 80K w kilka sekund. Bez programu do konwersji drzew musielibyśmy stworzyć scenę z 80K trójkątów i 
+dla niej wygenerować drzewo w całości (nie korzystając z rozłączności), potrwałoby to około doby!, ponieważ złożoność ge
+neratora drzew to O(n^3). Inny przykład: mamy obiekt mający 10K trójkątów, czas generacji około 1 minuty. Kopiujemy go 1
+6 razy, mamy obiekt 160K czas generacji drzewa około 1-2 tygodnie!. A używając kopiowania drzewa obiektu to: 1min wygene
+rowanie jednego drzewa, a następnie kopiowanie 15 razy, powiedzmy około 15-30 min, zysk jest duży.
 
- Jeżeli drzewa łączone przecinają się to drzewo wynikowe będzie poprawne, ale nie optymalne. Jednak strata optymalności jest niewielka. Dla drzewa oddzielnych obiektów powstanie po prostu korzeń decyzyjny czy pójść do jednego obiektu czy do drugiego i dalej odpowiednio drzewo 1 lub 2 będzie przetwarzane. Dla drzew przecinających okaże się, że dla pewnych promieni będziemy sprawdzać oba drzewa, ale strata będzie niewielka, poza tym gdybyśmy wygenerowali całe drzewo bez łączenia to też byśmy musieli przeglądać elementy jednego i drugiego obiektu. Trudno oszacować stratę optymalności ale dla testów na łączeniu obiektów 4K i 4K nie zauważyłem istotnej straty wydajności: wysokości obu drzew (łączonego i generowanego) były identyczne, struktura się różniła, średnia ilość przecięć była podobna Dla rozłącznych obiektów otrzymałem: Ilość przecięć drzewa/trójkątów dla drzewa łączonego programem btreeconv:
+ Jeżeli drzewa łączone przecinają się to drzewo wynikowe będzie poprawne, ale nie optymalne. Jednak strata optymalności 
+jest niewielka. Dla drzewa oddzielnych obiektów powstanie po prostu korzeń decyzyjny czy pójść do jednego obiektu czy do
+ drugiego i dalej odpowiednio drzewo 1 lub 2 będzie przetwarzane. Dla drzew przecinających okaże się, że dla pewnych pro
+mieni będziemy sprawdzać oba drzewa, ale strata będzie niewielka, poza tym gdybyśmy wygenerowali całe drzewo bez łączeni
+a to też byśmy musieli przeglądać elementy jednego i drugiego obiektu. Trudno oszacować stratę optymalności ale dla test
+ów na łączeniu obiektów 4K i 4K nie zauważyłem istotnej straty wydajności: wysokości obu drzew (łączonego i generowanego
+) były identyczne, struktura się różniła, średnia ilość przecięć była podobna Dla rozłącznych obiektów otrzymałem: Ilość
+ przecięć drzewa/trójkątów dla drzewa łączonego programem btreeconv:
  3541064/958266 co daje odp procenty 0.227%/0.061%
  A dla wygenerowanego dla obu obiektów
  3635896/958012 co daje odp procenty 0.233%/0.061%
- procenty oznaczają ile było procent przecięć drzewa/trójkątów w stosunku do liczenia bez lokalizacji (brutal force). Jak widać dla rozłącznych obiektów przecięć z drzewem było nawet mniej niż w generowanym drzewie (o około 89000) za to ilość przecięć trójkątów była większa ale bardzo nieznacznie: o 254 przecięcia.
- Sprawa ma się gorzej dla przecinających się obiektów (utaj kule o promieniu 100 ze środkami w -10,0,0 i 10,0,0). Oto wyniki dla łączenia drzew:
+ procenty oznaczają ile było procent przecięć drzewa/trójkątów w stosunku do liczenia bez lokalizacji (brutal force). Ja
+k widać dla rozłącznych obiektów przecięć z drzewem było nawet mniej niż w generowanym drzewie (o około 89000) za to ilo
+ść przecięć trójkątów była większa ale bardzo nieznacznie: o 254 przecięcia.
+ Sprawa ma się gorzej dla przecinających się obiektów (utaj kule o promieniu 100 ze środkami w -10,0,0 i 10,0,0). Oto wy
+niki dla łączenia drzew:
  3181536/754462 procenty: 0.245%/0.058%
  A dla generowanego dla obu obiektów naraz (i bez łączenia):
  2610723/777926 procenty: 0.201%/0.060%
- Jak widać drzewo generowane dla obu obiektów jest rzadziej przecinane (jest bardziej dopasowane/optymalne), zaś drzewo łączone jest przecinane dużo częściej (około 20%)  jednak więcej przecięć drzewa nie generuje przecięcia z trójkątem.
+ Jak widać drzewo generowane dla obu obiektów jest rzadziej przecinane (jest bardziej dopasowane/optymalne), zaś drzewo 
+łączone jest przecinane dużo częściej (około 20%)  jednak więcej przecięć drzewa nie generuje przecięcia z trójkątem.
  Dla przypadku połączenia drzew dla identycznych obiektów mamy
  3422327/930272 procenty: 0.271%/0.074%
  A dla wygenerowania dla dwóch identycznych obiektów
  2152985/737084 procenty: 0.171%/0.058%
- Jak widać jest to najgorszy możliwy przypadek, dodatkowy nakład na przecinanie drzewa wynosi ponad 50%, zaś przecięć trójkątów jest o około 25% więcej. Nie jest to zły wynik.
+ Jak widać jest to najgorszy możliwy przypadek, dodatkowy nakład na przecinanie drzewa wynosi ponad 50%, zaś przecięć tr
+ójkątów jest o około 25% więcej. Nie jest to zły wynik.
 
- Należy także pamiętać o poprawnej kolejności łączenia drzew obiektów (zachowując jak najbardziej drzewiasta strukturę). Np. Można tak połączyć obiekt: a=b+c, d=a+e, f=d+g, h=f+i, j=h+k, l=j+m, n=l+o. otrzymamy w ten sposób strukturę o wysokości 7, a można te obiekty połączyć tak: a=b+c, b=d+e, c=f+g, d=h+i, e=j+k, f=l+m, g=n+o i otrzymamy zrównoważone drzewo o wysokości 3. W ten sposób otrzymamy bardziej optymalne drzewo bo niższe, obliczenia na tym drzewie będą przebiegały szybciej.
+ Należy także pamiętać o poprawnej kolejności łączenia drzew obiektów (zachowując jak najbardziej drzewiasta strukturę).
+ Np. Można tak połączyć obiekt: a=b+c, d=a+e, f=d+g, h=f+i, j=h+k, l=j+m, n=l+o. otrzymamy w ten sposób strukturę o wyso
+kości 7, a można te obiekty połączyć tak: a=b+c, b=d+e, c=f+g, d=h+i, e=j+k, f=l+m, g=n+o i otrzymamy zrównoważone drzew
+o o wysokości 3. W ten sposób otrzymamy bardziej optymalne drzewo bo niższe, obliczenia na tym drzewie będą przebiegały 
+szybciej.
 
-Program można uruchomić w dwóch trybach. Tryb transformacji drzewa i tryb łączenia drzew. Aby uruchomić w trybie transformacji drzewa należy podać następujące parametry z linii poleceń:
+Program można uruchomić w dwóch trybach. Tryb transformacji drzewa i tryb łączenia drzew. Aby uruchomić w trybie transfo
+rmacji drzewa należy podać następujące parametry z linii poleceń:
 
 t|b input.btree output.btree tx ty tz sx sy sz rot
 
-t|b oznacza, że należy podać format pliku wyjściowego: t-tekstowy, b-binarny, formatu pliku wejściowego nie należy podawać, zostaje on automatycznie wykryty.
+t|b oznacza, że należy podać format pliku wyjściowego: t-tekstowy, b-binarny, formatu pliku wejściowego nie należy podaw
+ać, zostaje on automatycznie wykryty.
 Input.btree i output.btree to kolejno wejściowy plik drzewa i wyjściowy plik drzewa
 koleje 6 parametrów to 3 parametry translacji i 3 parametry skalowania
 rot to rotacja drzewa, dozwolone wartości to:
@@ -2643,8 +3236,10 @@ Aby uruchomić program w trybie łączenia drzew należy podać następujące pa
 
  mt|mb input1.btree input2.btree output.btree
 
- mt|mb oznacza, że należy podać format pliku wyjściowego: mt-tekstowy, mb-binarny, formatu plików wejściowych nie należy podawać, zostaną one automatycznie wykryte.
- Kolejne 3 argumenty to nazwy plików, odpowiednio dwóch plików wejściowych i plik wyjściowy będący ich sumą (kolejność jest istotna, taka sama musi być w pliku DAT – tj. Ten drugi obiekt musi być także drugim w pliku DAT). Ostatecznie:
+ mt|mb oznacza, że należy podać format pliku wyjściowego: mt-tekstowy, mb-binarny, formatu plików wejściowych nie należy
+ podawać, zostaną one automatycznie wykryte.
+ Kolejne 3 argumenty to nazwy plików, odpowiednio dwóch plików wejściowych i plik wyjściowy będący ich sumą (kolejność j
+est istotna, taka sama musi być w pliku DAT – tj. Ten drugi obiekt musi być także drugim w pliku DAT). Ostatecznie:
 output.btree = input1.btree + input2.btree
 
 Przykładowe użycie programu:
@@ -2661,7 +3256,11 @@ Transformacje:
 
 7.1 Przykładowe sceny
 
- Przykładowe sceny znajdują się w katalogu DAT/, są to wszystkie sceny stworzone w trakcie tworzenia aplikacji RAYS. Gotowe przykłady demonstracyjne znajdują się w katalogu EXAMPLES/ - są to uruchamialne skrypty zawierające wszystkie opcje wywołania programu RAYS. Kolejne przykłady to exN.sh, gdzie n = {1,2,3....}. Każdy przykład wyświetla najpierw opis, a potem dokonuje obliczenia sceny. Przykłady demonstrują różne opcje programów,przed wykonaniem jakiegokolwiek polecenia wyświetlają to polecenie.
+ Przykładowe sceny znajdują się w katalogu DAT/, są to wszystkie sceny stworzone w trakcie tworzenia aplikacji RAYS. Got
+owe przykłady demonstracyjne znajdują się w katalogu EXAMPLES/ - są to uruchamialne skrypty zawierające wszystkie opcje 
+wywołania programu RAYS. Kolejne przykłady to exN.sh, gdzie n = {1,2,3....}. Każdy przykład wyświetla najpierw opis, a p
+otem dokonuje obliczenia sceny. Przykłady demonstrują różne opcje programów,przed wykonaniem jakiegokolwiek polecenia wy
+świetlają to polecenie.
 
 7.2 Kilka przykładów renderowania
 
@@ -2708,7 +3307,8 @@ RAYS -i nazwapliku.DAT -J -G -C -c -o wynik.BMP -r 10 -A
 RAYS -i nazwapliku.DAT -J -G -C -c -o wynik.BMP -r 10 -A -2
  ⁃ podwaja rozdzielczość w trybie antyaliasingu, więc ostateczna rozdzielczość jest bez zmian
 RAYS -i nazwapliku.DAT -J -G -C -c -o wynik.BMP MP -r 10 -A -K -2
- ⁃ umożliwia kontynuację raytracingu z antyaliasingiem (zapisuje dodatkowo plik o podwojonej rozdzielczości bez antyaliasingu)
+ ⁃ umożliwia kontynuację raytracingu z antyaliasingiem (zapisuje dodatkowo plik o podwojonej rozdzielczości bez antyalia
+singu)
 RAYS -i nazwapliku.DAT -G -C -c -o wynik.BMP -r 10 -e
  ⁃ wyłącza teksturing, wszelkie tekstury i odwołania do nich są pomijane
 RAYS -i nazwapliku.DAT -G -C -c -o wynik.BMP -r 10 -j 20000
@@ -2724,15 +3324,20 @@ RAYS -i nazwapliku.DAT -J -G -H “3 5000” -F -200
 
  7.3 Sposoby kompilacji
 
- Kompilacja w środowisku UNIX'owym odbywa się przez wydanie polecenia make lub gmake (GNU-Make). Program jest napisany w języku C, używa bibliotek: OpenGL, GLUT, JPEGlib. Można także kompilować wersję pozbawione pewnych funkcjonalności, należy dodać odpowiednie flagi kompilacji (patrz plik Makefile). Dostępne flagi to:
+ Kompilacja w środowisku UNIX'owym odbywa się przez wydanie polecenia make lub gmake (GNU-Make). Program jest napisany w
+ języku C, używa bibliotek: OpenGL, GLUT, JPEGlib. Można także kompilować wersję pozbawione pewnych funkcjonalności, nal
+eży dodać odpowiednie flagi kompilacji (patrz plik Makefile). Dostępne flagi to:
 
  -DNOINET:  nie wkompilowuje obsługi przez internet
  -DNOJPEG:  nie wkompilowuje obsługi JPEG
  -DNOGL:  nie wkompilowuje obsługi OpenGL GLUT
  -DNOSIGNALS: nie wkompilowuje obsługi sygnałow
 
- W przypadku braku programu make (głównie systemy Microsoftu), można skorzystać ze skryptów kompilacyjnych: bat/compile_rays.bat i bat/compile_win32.bat
- Zalecany kompilator to GNU GCC 3.X, 2.X powinien działać. Kompilator Microsoftu MSVC NIE jest obsługiwany (i nie będzie). Jedyna możliwość kompilacji w środowisku Windows to użycie pakietu Cygwin. Program testowano na następujących maszynach:
+ W przypadku braku programu make (głównie systemy Microsoftu), można skorzystać ze skryptów kompilacyjnych: bat/compile_
+rays.bat i bat/compile_win32.bat
+ Zalecany kompilator to GNU GCC 3.X, 2.X powinien działać. Kompilator Microsoftu MSVC NIE jest obsługiwany (i nie będzie
+). Jedyna możliwość kompilacji w środowisku Windows to użycie pakietu Cygwin. Program testowano na następujących maszyna
+ch:
 
  FreeBSD UNIX 6.0-BETA1 amd64:   platforma macierzysta
  FreeBSD UNIX 4.X,5.X, 6.X i386:   działa
@@ -2810,7 +3415,8 @@ Obiekt 3DS (świątynia) około 60000 trójkątów...
 
   Plik 3DS bez interpolacji normalnych (trójkąty mają jedna normalna, obliczaną z iloczynu wektorowego boków)
 
-A oto wyrenderowane obrazy tej samej sceny dla trójkątów GPT (interpolacja w wierzchołkach, z różnymi właściwościami materiałowymi)
+A oto wyrenderowane obrazy tej samej sceny dla trójkątów GPT (interpolacja w wierzchołkach, z różnymi właściwościami mat
+eriałowymi)
 
 Wnętrze obiektu 3DS, 60000 trójkątów
 
@@ -2818,11 +3424,13 @@ Wnętrze obiektu 3DS, 60000 trójkątów
 [1] http://pl.wikipedia.org/wiki/Ray_Tracing wikipedia, opis raytracingu
 [2] http://gpurt.sourceforge.net/DA07_0405_Ray_Tracing_on_GPU-1.0.5.pdf GPU RT
 [3]  – Forward Raytracing
-[4] http://portal.acm.org/citation.cfm?id=1090144&dl=GUIDE&coll=GUIDE&CFID=68216571&CFTOKEN=23648247 Robust and numerically stable Bézier clipping method for ray tracing NURBS surfaces
+[4] http://portal.acm.org/citation.cfm?id=1090144&dl=GUIDE&coll=GUIDE&CFID=68216571&CFTOKEN=23648247 Robust and numerica
+lly stable Bézier clipping method for ray tracing NURBS surfaces
 [5] http://www.ocf.berkeley.edu/~jmich/res/cs184report.pdf
 [6] http://www.cs.utah.edu/vissim/papers/raynurbs/node3.html – opis raytracingu NURBS
 [7] http://pl.wikipedia.org/wiki/Forward_raytracing
-[8] http://www.cs.mtu.edu/~shene/COURSES/cs3621/NOTES/spline/B-spline/bspline-basis.html – baza Bspline (używana przez powierzchnie NURBS)
+[8] http://www.cs.mtu.edu/~shene/COURSES/cs3621/NOTES/spline/B-spline/bspline-basis.html – baza Bspline (używana przez p
+owierzchnie NURBS)
 [9] http://www.cs.utah.edu/vissim/papers/raynurbs/node4.html – podział płatków NURBS
 [10] http://www.cs.utah.edu/vissim/papers/raynurbs/node6.html – rootfinder Newton,artefakty
 [11]http://pl.wikipedia.org/wiki/Krzywa_B-sklejana
