@@ -4,7 +4,7 @@ NURBS and other objects raytracing, written in C
 # descr
 
 Only in Polish:
-
+```
 
 
 
@@ -3123,4 +3123,4 @@ porównanie metod lokalizacji: BVH, BSP, OctTree, Cells
 
 	Oświadczam, że pracę dyplomoiwą wykonałem samodzielnie.
 	Łukasz Gryglicki
-
+```
