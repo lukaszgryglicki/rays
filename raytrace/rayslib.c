@@ -2020,8 +2020,8 @@ void load_jpeg_texture(Texture* t, FILE* texfile)
  int tex_x, tex_y;
  tex_data = NULL;
  err = load_jpeg_file(&tex_data, &tex_x, &tex_y, texfile);
- fclose(texfile);
  if (err) spanic(HERE, "load_jpeg_texture: jpeg decompress error: file=%s", texfile);
+ fclose(texfile);
  t->x = tex_x;
  t->y = tex_y;
  t->pixels = (unsigned char*)malloc(3*tex_x*tex_y*sizeof(unsigned char));
@@ -10827,7 +10827,7 @@ void help(char* fn)
  args_fprintf(stdout, "program will display commands list, use them to set many\n");
  args_fprintf(stdout, "runtime options for raytracer engine, these options are:\n");
  make_inet_help(bigbuf);
- printf(bigbuf);
+ printf("%s",bigbuf);
  /* TODO: add all inet option description here */
  args_fprintf(stdout, "FirstTry Multithreaded Version\n");
 #endif
